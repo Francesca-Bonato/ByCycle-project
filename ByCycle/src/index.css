@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "inter-tight";
+    src: url(src/assets/fonts/Inter-Tight/InterTight-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: "manrope";
+    src: url(src/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: "syne";
+    src: url(src/assets/fonts/Syne/Syne-VariableFont_wght.ttf);
+}
