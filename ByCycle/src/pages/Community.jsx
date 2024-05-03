@@ -1,4 +1,4 @@
-function Forum() {
+function Community() {
   return (
     <div>
       <h1>Forum</h1>
@@ -6,4 +6,4 @@ function Forum() {
   )
 }
 
-export default Forum
+export default Community

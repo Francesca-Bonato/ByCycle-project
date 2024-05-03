@@ -1,14 +1,136 @@
 @font-face {
-    font-family: "inter-tight";
-    src: url(src/assets/fonts/Inter-Tight/InterTight-VariableFont_wght.ttf);
+  font-family: "Inter-Tight";
+  src: url(src/assets/fonts/Inter_Tight/InterTight-VariableFont_wght.ttf);
 }
 
 @font-face {
-    font-family: "manrope";
-    src: url(src/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf);
+  font-family: "Manrope";
+  src: url(src/assets/fonts/Manrope/Manrope-VariableFont_wght.ttf);
 }
 
 @font-face {
-    font-family: "syne";
-    src: url(src/assets/fonts/Syne/Syne-VariableFont_wght.ttf);
+  font-family: "Syne";
+  src: url(src/assets/fonts/Syne/Syne-VariableFont_wght.ttf);
 }
+
+/* ! Reset */
+body,
+html {
+  font-family: "Manrope", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+ol,
+ul {
+  list-style-type: none;
+}
+
+img {
+  height: auto;
+}
+
+.display {
+  font-size: 50px;
+}
+
+h1 {
+  font-family: "Inter-Tight", Arial, Helvetica, sans-serif;
+  font-size: 44px;
+}
+h2 {
+  font-size: 38px;
+}
+h3 {
+  font-size: 34px;
+}
+h4 {
+  font-size: 30px;
+}
+h5 {
+  font-size: 24px;
+}
+h6 {
+  font-size: 20px;
+}
+
+.caption {
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Media query reset */
+@media (max-width: 768px) {
+  .display {
+    font-size: 32px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+}
+/* -------------------------------------------------------------------------------- */
+
+/* Homepage CSS */
+
+/* Homepage CSS media query */
+
+/* -------------------------------------------------------------------------------- */
+
+/* Login */
+
+/* Login CSS media query */
+
+/* -------------------------------------------------------------------------------- */
+
+/* Registration */
+
+/* Registration CSS media query */
+
+/* -------------------------------------------------------------------------------- */
+
+/* Dashboard CSS  */
+
+/* Dashboard CSS media query */
+
+/* -------------------------------------------------------------------------------- */
+
+/* Community CSS*/
+
+/* Community CSS media query */
+
+/* -------------------------------------------------------------------------------- */
+
+/* NewsPage CSS*/
+
+/* NewsPage CSS media query */
+
+/* -------------------------------------------------------------------------------- */
+
+/* BikeTrails CSS  */
+
+/* BikeTrails CSS media query */
+
+/* -------------------------------------------------------------------------------- */
+
+/* Questionnaire CSS  */
+
+/* Questionnaire CSS media query */
+
+/* -------------------------------------------------------------------------------- */
