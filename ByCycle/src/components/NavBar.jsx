@@ -7,7 +7,7 @@ function CustomNavbarBrand() {
   return (
     <Navbar.Brand href="#home" className="ms-4 me-auto">
       <img
-        src={}
+        src
         height="30"
         className="d-inline-block align-top me-4"
         alt="Logo"
