@@ -85,6 +85,21 @@ a {
     font-size: 20px;
   }
 }
+
+/* -------------------------------------------------------------------------------- */
+
+/* NavBar CSS */
+
+.navbar-toggler {
+  border: none !important;
+}
+
+.bg-body-tertiary {
+  background-color: rgba(255, 255, 255, 0.329) !important;
+  backdrop-filter: blur(10px) !important;
+}
+/* NavBar CSS media query */
+
 /* -------------------------------------------------------------------------------- */
 
 /* Homepage CSS */

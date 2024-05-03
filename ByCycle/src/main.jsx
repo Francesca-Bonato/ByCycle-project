@@ -4,9 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/Root";
 import Homepage from "./pages/Homepage";
-import Forum from "./pages/Forum";
+
 import BikeTrails from "./pages/BikeTrails";
 import Newspage from "./pages/Newspage";
+import Questionnaire from "./pages/Questionnaire";
 
 const router = createBrowserRouter([
   {
@@ -14,14 +15,14 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       { path: "/", element: <Homepage /> },
-      { path: "/forum", element: <Forum /> },
+      { path: "/questionnaire", element: <Questionnaire /> },
       { path: "/piste", element: <BikeTrails/> },
       { path: "/news", element: <Newspage /> },
     ],
   },
 ]);
 
- commit 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
 );
