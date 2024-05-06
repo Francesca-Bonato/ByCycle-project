@@ -1,59 +1,83 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Dropdown } from 'react-bootstrap';
 
-// Componente per il brand con il logo
-function CustomNavbarBrand() {
+const navigation = [
+  { name: "ALL PRODUCT", href: "/", current: false },
+  { name: "Jewelery", href: "/jewelery", current: false },
+  { name: "Electronic", href: "/electronic", current: false },
+  { name: "Clothing", href: "/clothing", current: false },
+];
+
+function Navbar() {
+  const [showMenu, setShowMenu] = useState(false);
+  const location = useLocation();
+
+  const handleToggle = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
-    <Navbar.Brand href="#home" className="ms-4 me-auto">
-      <img
-        src
-        height="30"
-        className="d-inline-block align-top me-4"
-        alt="Logo"
-      />
-    </Navbar.Brand>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div className="container-fluid">
+        <Link to="/" className="navbar-brand">
+          Your Company
+        </Link>
+
+        <button
+          className="navbar-toggler"
+          type="button"
+          onClick={handleToggle}
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className={`collapse navbar-collapse ${showMenu ? 'show' : ''}`}>
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            {navigation.map((item) => (
+              <li key={item.name} className="nav-item">
+                <Link
+                  to={item.href}
+                  className={`nav-link ${location.pathname === item.href ? 'active' : ''}`}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="d-flex align-items-center">
+            <Dropdown>
+              <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                <img
+                  className="rounded-circle"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
+                  width="32"
+                  height="32"
+                />
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item>
+                  <Link to="/profile">Your Profile</Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link to="/settings">Settings</Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link to="/cart">Cart</Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link to="/register">Sign out</Link>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 }
 
-function NavBar() {
-  return (
-    <Navbar
-      expand="lg"
-      className="bg-body-tertiary border-bottom border-black "
-    >
-      <Container fluid>
-        {/* Utilizza un componente personalizzato per il brand con il logo */}
-        <CustomNavbarBrand />
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#" className="me-3">
-              Home
-            </Nav.Link>
-            <Nav.Link href="#" className="me-3">
-              Bikes
-            </Nav.Link>
-            <Nav.Link href="#" className="me-3">
-              Accessories
-            </Nav.Link>
-            <Nav.Link href="#" className="me-3">
-              Community
-            </Nav.Link>
-            <Nav.Link href="#" className="me-3">
-              Blog
-            </Nav.Link>
-            <Nav.Link href="#" className="me-3">
-              Contact
-            </Nav.Link>
-          </Nav>
-          <button className="btn btn-outline-primary rounded-pill ms-2 px-3 py-2 custom-btn">
-            Book a Test Ride
-          </button>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  );
-}
-
-export default NavBar;
+export default Navbar;
