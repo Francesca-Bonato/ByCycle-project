@@ -1,12 +1,12 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/Root";
-import Homepage from "./pages/Homepage";
+import Community from "./pages/Community";
 import BikeTrails from "./pages/BikeTrails";
-import Newspage from "./pages/Newspage";
-import Questionnaire from "./pages/Questionnaire";
+import NewsPage from "./pages/NewsPage";
+import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
 
 const router = createBrowserRouter([
   {
@@ -14,9 +14,10 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       { path: "/", element: <Homepage /> },
-      { path: "/questionnaire", element: <Questionnaire /> },
-      { path: "/piste", element: <BikeTrails/> },
-      { path: "/news", element: <Newspage /> },
+      { path: "/community", element: <Community/> },
+      { path: "/trails", element: <BikeTrails/> },
+      { path: "/news", element: <NewsPage /> },
+      { path: "/login", element: <Login /> },
     ],
   },
 ]);

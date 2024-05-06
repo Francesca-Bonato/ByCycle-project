@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: "Inter-Tight";
   src: url(src/assets/fonts/Inter_Tight/InterTight-VariableFont_wght.ttf);
@@ -45,7 +49,7 @@ span {
 }
 
 h1 {
-  font-family: "Inter-Tight", Arial, Helvetica, sans-serif;
+  font-family: "Inter-tight", Arial, Helvetica, sans-serif;
   font-size: 44px;
 }
 h2 {
