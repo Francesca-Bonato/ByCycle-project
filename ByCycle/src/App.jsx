@@ -4,6 +4,7 @@ import Newspage from "./pages/Newspage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/Root";
 import BikeTrails from "./pages/BikeTrails";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const router = createBrowserRouter([

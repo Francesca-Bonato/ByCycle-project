@@ -1,0 +1,19 @@
+/* FOOTER CSS */
+
+.footer {
+  padding: 20px;
+}
+
+.footer-social-icon {
+  text-decoration: none;
+  color: black;
+  padding: 3px;
+}
+.footer-list-links {
+  color: black;
+  text-decoration: none;
+}
+
+.footer-list-links:hover {
+  color: rgb(0, 128, 68);
+}
