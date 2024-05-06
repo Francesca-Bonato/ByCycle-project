@@ -1,6 +1,6 @@
 
 
-function Newspage() {
+function NewsPage() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function Newspage() {
   )
 }
 
-export default Newspage
+export default NewsPage
