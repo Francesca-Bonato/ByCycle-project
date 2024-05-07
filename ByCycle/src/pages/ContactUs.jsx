@@ -43,7 +43,7 @@ function ContactUs() {
                   Full Name
                 </label>
                 <input
-                className="w-full p-[10px] border border-gray-300 rounded-3xl"
+                  className="w-full p-[10px] border border-gray-300 rounded-3xl"
                   type="text"
                   name="full-name"
                   value={user.fullName}
@@ -57,7 +57,7 @@ function ContactUs() {
                   Email Address
                 </label>
                 <input
-                className="w-full p-[10px] border border-gray-300 rounded-3xl"
+                  className="w-full p-[10px] border border-gray-300 rounded-3xl"
                   type="text"
                   name="email-address"
                   value={user.email}
@@ -86,7 +86,7 @@ function ContactUs() {
                   Description
                 </label>
                 <textarea
-                className="w-full p-[10px] border border-gray-300 rounded-3xl"
+                  className="w-full p-[10px] border border-gray-300 rounded-3xl"
                   name="message"
                   id="contact-us"
                   cols="30"
@@ -98,14 +98,7 @@ function ContactUs() {
                 ></textarea>
               </div>
             </form>
-            <Button
-              color="black_900"
-              size="sm"
-              shape="round"
-              className="min-w-[119px] font-semibold sm:px-5"
-            >
-              Submit
-            </Button>
+            <Button innerText="Submit"/>
           </div>
         </div>
       </div>
