@@ -15,18 +15,18 @@ export function Footer({ ...props }) {
         <div className="flex items-start md:flex-col ">
           <div className="flex flex-1 flex-col items-start gap-[11px] md:self-stretch">
             <Img
-              src="images/img_footer_logo.png"
+              src="assets/images/img_footer_logo.png"
               alt="footer logo"
-              className="h-[29px] w-[129px] object-contain"
+              className="h-[45px] w-[169px] object-contain"
             />
             <p as="p" className="w-[69%] leading-[150%] md:w-full">
-              "We value greatly that our community can have a place to share
+              We value greatly that our community can have a place to share
               their common passion and provide more information on cycling
               routes that bring more excitement and safety during the journey.
               Our team regularly commits to sharing updates regarding the world
               of bike lovers. Our common goal is to ensure that our community
               finds a place to share passions, information, experiences, and,
-              why not, even enjoy a bike ride together."
+              why not, even enjoy a bike ride together.
             </p>
           </div>
           <div className="flex w-[49%] items-start justify-between gap-5 md:w-full sm:flex-col p-5">
@@ -141,31 +141,31 @@ export function Footer({ ...props }) {
             shape="circle"
             className="w-[32px] !rounded-[16px] hover:bg-blue-700"
           >
-            <Img src="images/img_facebook.svg" />
+            <Img src="assets/images/img_facebook.svg" />
           </Button>
           <Button
             shape="circle"
-            className="w-[32px] !rounded-[16px] hover:bg-cyan-400"
+            className="w-[32px] !rounded-[16px] hover:bg-gray-900"
           >
-            <Img src="images/img_twitter.svg" />
+            <Img src="assets/images/img_x.svg" />
           </Button>
           <Button
             shape="circle"
             className="w-[32px] !rounded-[16px] hover:bg-fuchsia-600"
           >
-            <Img src="images/img_instagram.svg" />
+            <Img src="assets/images/img_instagram.svg" />
           </Button>
           <Button
             shape="circle"
             className="w-[32px] !rounded-[16px] hover:bg-blue-600"
           >
-            <Img src="images/img_link.svg" />
+            <Img src="assets/images/img_link.svg" />
           </Button>
           <Button
             shape="circle"
             className="w-[32px] !rounded-[16px] hover:bg-red-700 "
           >
-            <Img src="images/img_warning.svg" />
+            <Img src="assets/images/img_warning.svg" />
           </Button>
         </div>
       </div>
