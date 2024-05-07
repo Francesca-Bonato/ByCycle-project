@@ -1,160 +1,227 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "./Button";
+import { Fragment, useState } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/images/logo.png";
-import profile from "../assets/images/istockphoto-1495088043-612x612.jpg";
-function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isClickedProfile, setIsClickedProfile] = useState(false);
+const user = {
+  name: "Tom Cook",
+  email: "tom@example.com",
+  imageUrl:
+    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+};
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+const navigation = [
+  { name: "Home", href: "#", current: false },
+  { name: "Bikes", href: "#", current: false },
+  { name: "Accessories", href: "#", current: false },
+  { name: "Community", href: "#", current: false },
+  { name: "Blog", href: "#", current: false },
+  { name: "Contact", href: "#", current: false },
+];
 
-  const toggleProfile = () => {
-    setIsClickedProfile(!isClickedProfile); // Correggi la logica per invertire isClickedProfile
-  };
+const userNavigation = [
+  { name: "Your Profile", href: "#" },
+  { name: "Settings", href: "#" },
+  { name: "Sign out", href: "#" },
+];
 
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-10 backdrop-filter backdrop-blur-lg bg-transparent bg-gray-800 text-white py-4 ${
-        isOpen
-          ? ""
-          : "border-b border-gray-400 mb-4 transition-all duration-300"
-      }`}
-    >
-      <div className="container mx-auto flex justify-between items-center px-4 ">
-        <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="logo" className="h-8 w-auto w-20 h-20" />
-        </Link>
-
-        {/* Hamburger menu for mobile */}
-        <button
-          className="block text-white focus:outline-none md:hidden"
-          onClick={toggleMenu}
-        >
-          {isOpen ? (
-            <svg
-              className="w-6 h-6 text-black "
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          ) : (
-            <svg
-              className="w-6 h-6 text-black"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
-        </button>
-
-        {/* Navbar links */}
-        <nav
-          className={`${isOpen ? "md:flex" : ""}  md:items-center md:w-auto ${
-            isOpen ? "block" : "hidden"
-          } md:block absolute md:relative bg-transparent md:py-0 md:space-x-4 top-16 md:top-0 right-0 left-0 bg-gray-800 md:flex-row md:flex-1 ${
-            isOpen
-              ? "border-b border-gray-400 mb-4 transition-all duration-300"
-              : ""
-          } pb-5 `}
-        >
-          <ul
-            className={`flex  items-center  justify-center ${
-              isOpen ? "flex-col" : ""
-            }	 gap-4 md:gap-8 text-sm mt-4 md:mt-0 md:ml-auto `}
-          >
-            <li>
-              <Link to="/" className="hover:text-gray-300 text-black">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/bikes" className="hover:text-gray-300 text-black">
-                Bikes
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/accessories"
-                className="hover:text-gray-300 text-black"
-              >
-                Accessories
-              </Link>
-            </li>
-            <li>
-              <Link to="/community" className="hover:text-gray-300 text-black">
-                Community
-              </Link>
-            </li>
-            <li>
-              <Link to="/blog" className="hover:text-gray-300 text-black">
-                Blog
-              </Link>
-            </li>
-            <li>
-              <Link to="/contact" className="hover:text-gray-300 text-black">
-                Contact
-              </Link>
-            </li>
-            <li>
-              {isOpen && (
-                <div>
-                  <Link
-                    to="#"
-                    className="hover:text-gray-300 text-black"
-                    onClick={toggleProfile}
-                  >
-                    Your Profile
-                  </Link>
-                  {isClickedProfile && (
-                    <ul>
-                      <li>
-                        <Link to="#" className="text-xs  text-black">
-                          Log-Out
-                        </Link>
-                      </li>
-                    </ul>
-                  )}
-                </div>
-              )}
-            </li>
-          </ul>
-        </nav>
-
-        {/* Button for booking a test ride */}
-        <Button
-          color="white"
-          variant="outline"
-          shape="round"
-          className="hidden md:block text-black"
-          onClick={toggleProfile}
-        >
-          <img src={profile} alt="profilo" className="w-10" />
-          {isClickedProfile && (
-            <Link to="#" className="text-xs  text-black">
-              Log-Out
-            </Link>
-          )}
-        </Button>
-      </div>
-    </header>
-  );
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
 }
 
-export default Navbar;
+export default function Example() {
+  const [menuProfile, setMenuProfile] = useState(false);
+
+  function handlerOnProfile() {
+    setMenuProfile(!menuProfile);
+  }
+
+  return (
+    <>
+      <div className="min-h-full">
+        <Disclosure as="nav" className="">
+          {({ open }) => (
+            <>
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="flex h-16 items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0">
+                      <img className="h-8 w-8" src={logo} alt="Your Company" />
+                    </div>
+                    <div className="hidden md:block">
+                      <div className="ml-10 flex items-baseline space-x-4">
+                        {navigation.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className={
+                              " hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                            }
+                            aria-current={item.current ? "page" : undefined}
+                          >
+                            {item.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="hidden md:block">
+                    <div className="ml-4 flex items-center md:ml-6">
+                      {/* EVENTUALE BOTTONE NOTIFICHE descktop */}
+
+                      {/* <button
+                        type="button"
+                        className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      >
+                        <span className="absolute -inset-1.5" />
+                        <span className="sr-only">View notifications</span>
+                        <BellIcon className="h-6 w-6" aria-hidden="true" />
+                      </button> */}
+
+                      {/* Profile dropdown */}
+                      <Menu as="div" className="relative ml-3">
+                        <div>
+                          <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                            <span className="absolute -inset-1.5" />
+                            <span className="sr-only">Open user menu</span>
+                            <img
+                              className="h-8 w-8 rounded-full"
+                              src={user.imageUrl}
+                              alt=""
+                            />
+                          </Menu.Button>
+                        </div>
+                        <Transition
+                          as={Fragment}
+                          enter="transition ease-out duration-100 transform"
+                          enterFrom="opacity-0 scale-95"
+                          enterTo="opacity-100 scale-100"
+                          leave="transition ease-in duration-75 transform"
+                          leaveFrom="opacity-100 scale-100"
+                          leaveTo="opacity-0 scale-95"
+                        >
+                          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            {userNavigation.map((item) => (
+                              <Menu.Item key={item.name}>
+                                {({ active }) => (
+                                  <a
+                                    href={item.href}
+                                    className={classNames(
+                                      active ? "bg-gray-100" : "",
+                                      "block px-4 py-2 text-sm text-gray-700"
+                                    )}
+                                  >
+                                    {item.name}
+                                  </a>
+                                )}
+                              </Menu.Item>
+                            ))}
+                          </Menu.Items>
+                        </Transition>
+                      </Menu>
+                    </div>
+                  </div>
+                  <div className="-mr-2 flex md:hidden">
+                    {/* Mobile menu button */}
+                    <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md  p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                      <span className="absolute -inset-0.5" />
+                      <span className="sr-only">Open main menu</span>
+                      {open ? (
+                        <XMarkIcon
+                          className="block h-6 w-6 text-black"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <Bars3Icon
+                          className="block h-6 w-6 text-black"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </Disclosure.Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile menu panel with Transition */}
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-200 transform"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="transition ease-in duration-150 transform"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Disclosure.Panel className="md:hidden">
+                  <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                    {navigation.map((item) => (
+                      <Disclosure.Button
+                        key={item.name}
+                        as="a"
+                        href={item.href}
+                        className={
+                          " hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+                        }
+                        aria-current={item.current ? "page" : undefined}
+                      >
+                        {item.name}
+                      </Disclosure.Button>
+                    ))}
+                  </div>
+                  <div className="border-t border-gray-700 pb-3 pt-4">
+                    <div className="flex items-center px-5 cursor-pointer">
+                      <div className="flex-shrink-0">
+                        <img
+                          className="h-10 w-10 rounded-full"
+                          src={user.imageUrl}
+                          alt=""
+                          onClick={handlerOnProfile}
+                        />
+                      </div>
+                      <div className="ml-3 " onClick={handlerOnProfile}>
+                        <div className="text-base font-medium leading-none ">
+                          {user.name}
+                        </div>
+                        <div className="text-sm font-medium leading-none ">
+                          {user.email}
+                        </div>
+                      </div>
+
+                      {/* EVENTUALE BOTTONE NOTIFICHE mobile */}
+
+                      {/* <button
+                        type="button"
+                        className="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      >
+                        <span className="absolute -inset-1.5" />
+                        <span className="sr-only">View notifications</span>
+                        <BellIcon className="h-6 w-6" aria-hidden="true" />
+                      </button> 
+                      */}
+                    </div>
+
+                    <div
+                      className={`mt-3 space-y-1 px-2 shadow-2xl w-2/5 rounded-lg transition-opacity ${
+                        menuProfile ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      {userNavigation.map((item) => (
+                        <Disclosure.Button
+                          key={item.name}
+                          as="a"
+                          href={item.href}
+                          className="block rounded-md px-3 py-2 text-base font-medium hover:bg-gray-700 hover:text-white"
+                        >
+                          {item.name}
+                        </Disclosure.Button>
+                      ))}
+                    </div>
+                  </div>
+                </Disclosure.Panel>
+              </Transition>
+            </>
+          )}
+        </Disclosure>
+      </div>
+    </>
+  );
+}
