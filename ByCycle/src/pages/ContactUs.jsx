@@ -1,15 +1,25 @@
+import { useState } from "react";
 import { Button } from "../components/Button";
-import { Input } from "../components/Input";
-import { TextArea } from "../components/TextArea";
 
 function ContactUs() {
+  const [user, setUser] = useState({
+    fullName: "",
+    email: "",
+    contactNmb: "",
+    message: "",
+  });
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(`i tuoi dati: `, user);
+  }
+
   return (
     <div className="w-full bg-white-A700_01">
       {/* contact info section */}
       <div className="mt-[95px] flex flex-col items-center gap-40 md:gap-[120px] sm:gap-20">
-        <div className="container-xs flex items-start justify-between gap-5 md:flex-col md:p-5">
+        <div className="container-xs flex flex-col items-start justify-between gap-5 md:flex-row md:p-5">
           <div className="flex w-[37%] flex-col gap-[47px] md:w-full">
-            <p className="display text-gray-900">
+            <p className="display">
               Have a question about Morgans or need assistance with your bike?
               Get in contact with us.
             </p>
@@ -24,49 +34,70 @@ function ContactUs() {
             </div>
           </div>
           <div className="flex w-[48%] flex-col items-end gap-8 md:w-full">
-            <div className="flex flex-col gap-[31px] self-stretch">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col gap-[31px] self-stretch"
+            >
               <div className="flex flex-col items-start gap-3.5">
-                <label className="font-semibold text-black-900">
+                <label htmlFor="full-name" className="font-semibold">
                   Full Name
                 </label>
                 <input
-                  shape="round"
-                  name="Name Input"
-                  placeholder={`Ex. John Pablo`}
+                className="w-full p-[10px] border border-gray-300 rounded-3xl"
+                  type="text"
+                  name="full-name"
+                  value={user.fullName}
+                  onChange={(e) =>
+                    setUser({ ...user, fullName: e.target.value })
+                  }
                 />
               </div>
               <div className="flex flex-col items-start gap-3.5">
-                <label className="font-semibold text-black-900">
+                <label htmlFor="email-address" className="font-semibold">
                   Email Address
                 </label>
-                <Input
-                  shape="round"
-                  name="Email Input"
-                  placeholder={`Ex. Johnpablo@example.com`}
+                <input
+                className="w-full p-[10px] border border-gray-300 rounded-3xl"
+                  type="text"
+                  name="email-address"
+                  value={user.email}
+                  onChange={(e) => setUser({ ...user, email: e.target.value })}
                 />
               </div>
               <div className="flex flex-col items-start gap-3.5">
-                <label className="font-semibold text-black-900">
+                <label htmlFor="contact-number" className="font-semibold">
                   Phone Number
                 </label>
-                <Input
-                  shape="round"
-                  name="Phone Input"
-                  placeholder={`Ex. (808) 555-0111`}
+                <input
+                  className="w-full p-[10px] border border-gray-300 rounded-3xl"
+                  type="text"
+                  name="contact-number"
+                  value={user.contactNmb}
+                  onChange={(e) =>
+                    setUser({ ...user, contactNmb: e.target.value })
+                  }
                 />
               </div>
               <div className="flex flex-col items-start gap-3">
-                <label className="font-semibold text-black-900">
+                <label
+                  htmlFor="message"
+                  className="font-semibold text-black-900"
+                >
                   Description
                 </label>
-                <TextArea
-                  shape="round"
-                  name="Description Input"
-                  placeholder={`Ex. Hello there is something I want to ask..`}
-                  className="self-stretch !border-gray-500_01 text-gray-500 sm:pb-5 sm:pr-5"
-                />
+                <textarea
+                className="w-full p-[10px] border border-gray-300 rounded-3xl"
+                  name="message"
+                  id="contact-us"
+                  cols="30"
+                  rows="10"
+                  value={user.message}
+                  onChange={(e) =>
+                    setUser({ ...user, message: e.target.value })
+                  }
+                ></textarea>
               </div>
-            </div>
+            </form>
             <Button
               color="black_900"
               size="sm"
