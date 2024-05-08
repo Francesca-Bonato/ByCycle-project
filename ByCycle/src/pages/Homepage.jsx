@@ -3,6 +3,10 @@ import video_jumbotrom from "../assets/video/bg-jumbotron.mp4";
 import logoWheel from "../assets/images/img_homepage/img_jumbotron-removebg-preview.png";
 import image_one from "../assets/images/img_homepage/img_rectangle_7.png";
 import image_two from "../assets/images/img_homepage/img_triathlon_male.png";
+import image_three from "../assets/images/img_homepage/img_rectangle_7_1.png";
+import image_four from "../assets/images/img_homepage/img_rectangle_7_410x427.png";
+import image_five from "../assets/images/img_homepage/img_rectangle_7_2.png";
+import image_six from "../assets/images/img_homepage/immagine-footer.png";
 
 function Homepage() {
   return (
@@ -28,20 +32,20 @@ function Homepage() {
               width={"200px"}
               height={"200px"}
             />
-            <p className="w-full text-center leading-[150%] text-white ">
-              is your travel companion, allowing you to ride in <br></br>
-              comfortwith their flagship bike, the Morgans Bike. This bike is
-              <br></br>
-              designed to provide an unrivaled riding experience, with an
+            <p className="w-full text-center leading-[150%] text-4xl text-white ">
+              is your travel companion, allowing you to ride in comfortwith
+              their flagship <br /> bike, the Morgans Bike. This bike is
+              designed to provide an unrivaled riding <br /> experience, with an
               elegant design and the latest technology.
             </p>
           </div>
         </div>
       </div>
+
       {/* about section */}
-      <div className="container-xs flex items-center justify-center gap-5 md:flex-col md:p-5">
-        <div className="flex items-center justify-center gap-10 p-20">
-          <div className="flex flex-col items-center justify-center gap-10 break-words w-[35%]">
+      <div className="container-xs flex items-center justify-center gap-5 flex-col p-5 md:p-0">
+        <div className="flex items-center justify-center gap-10 p-10 flex-wrap lg:flex-nowrap">
+          <div className="flex flex-col items-center justify-center gap-10 break-words w-full lg:w-[35%]">
             <h3 className="w-full !font-intertight leading-[125%] break-words">
               {" "}
               Bike has been manufacturing bicycles and engineering components
@@ -59,20 +63,20 @@ function Homepage() {
             <img
               src={image_one}
               alt="image"
-              className="h-[592px] w-[49%] rounded-[16px] object-cover md:w-full"
+              className="h-[592px] rounded-[16px] object-cover w-full"
             />
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-10 p-20">
+        <div className="flex items-center justify-center gap-10 p-10 flex-wrap lg:flex-nowrap">
           <div>
             <img
               src={image_two}
               alt="image"
-              className="h-[592px] w-[49%] rounded-[16px] object-cover md:w-full"
+              className="h-[592px] w-full rounded-[16px] object-cover lg:w-[49%]"
             />
           </div>
-          <div className="flex flex-col items-center justify-center gap-10 break-words w-[35%]">
+          <div className="flex flex-col items-center justify-center gap-10 break-words w-full lg:w-[35%]">
             <h3 className="w-full !font-intertight leading-[125%] break-words">
               {" "}
               Get an exciting experience on a Morgans bike made for your ride.{" "}
@@ -86,112 +90,74 @@ function Homepage() {
           </div>
         </div>
       </div>
-      {/* features section */}
-      <div className="w-full h-[592px] bg-[#E6E6E6]">
-        <div class="bg-white py-24 sm:py-32">
-          <div class="mx-auto max-w-7xl px-6 lg:px-8 flex">
-            <div class="mx-auto max-w-2xl lg:mx-0 flex w-full">
-              <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                From the blog
-              </h2>
-              <p class="mt-2 text-lg leading-8 text-gray-600">
-                Learn how to grow your business with our expert advice.
+
+      {/* news section */}
+      <div className="mt-40 flex flex-col  gap-[50px] md:gap-14 sm:gap-[37px] bg-[#E6E6E6]">
+        <div className="container-xs flex flex-col items-center md:p-5">
+          <div className="flex flex-col items-start gap-[30px]">
+            <p className="font-intertight  text-black text-5xl">
+              News & Information
+            </p>
+          </div>
+        </div>
+        <div className="container-xs flex gap-6 md:p-5 items-center justify-center">
+          <div className="flex w-full flex-col gap-6 items-center justify-center">
+            <div className="rounded-[12px]">
+              <img
+                src={image_four}
+                alt="card image"
+                className="h-[410px] w-full rounded-[12px] object-cover md:h-auto cursor-pointer max-w-xs transition duration-300 ease-in-out hover:scale-110"
+              />
+            </div>
+            <div className="flex flex-col items-start gap-[25px]">
+              <p size="xl" className="w-full leading-[130%] tracking-[-0.48px]">
+                The growing trend of combining cycling with other workouts
               </p>
+              <a href="#" className="w-full">
+                <p className="!font-medium underline text-center">Read More</p>
+              </a>
             </div>
-            <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-              <article class="flex max-w-xl flex-col items-start justify-between">
-                <div class="flex items-center gap-x-4 text-xs">
-                  <time datetime="2020-03-16" class="text-gray-500">
-                    Mar 16, 2020
-                  </time>
-                  <a
-                    href="#"
-                    class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
-                  >
-                    Marketing
-                  </a>
-                </div>
-                <div class="group relative">
-                  <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Boost your conversion rate
-                    </a>
-                  </h3>
-                  <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
-                    Illo sint voluptas. Error voluptates culpa eligendi. Hic vel
-                    totam vitae illo. Non aliquid explicabo necessitatibus unde.
-                    Sed exercitationem placeat consectetur nulla deserunt vel.
-                    Iusto corrupti dicta.
-                  </p>
-                </div>
-                <div class="relative mt-8 flex items-center gap-x-4">
-                  <img
-                    src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                    class="h-10 w-10 rounded-full bg-gray-50"
-                  />
-                  <div class="text-sm leading-6">
-                    <p class="font-semibold text-gray-900">
-                      <a href="#">
-                        <span class="absolute inset-0"></span>
-                        Michael Foster
-                      </a>
-                    </p>
-                    <p class="text-gray-600">Co-Founder / CTO</p>
-                  </div>
-                </div>
-              </article>
+          </div>
+          <div className="flex w-full flex-col gap-6 items-center justify-center">
+            <div className="rounded-[12px]">
+              <img
+                src={image_three}
+                alt="card image"
+                className="h-[410px] w-full rounded-[12px] object-cover md:h-auto cursor-pointer max-w-xs transition duration-300 ease-in-out hover:scale-110"
+              />
             </div>
-            <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-              <article class="flex max-w-xl flex-col items-start justify-between">
-                <div class="flex items-center gap-x-4 text-xs">
-                  <time datetime="2020-03-16" class="text-gray-500">
-                    Mar 16, 2020
-                  </time>
-                  <a
-                    href="#"
-                    class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
-                  >
-                    Marketing
-                  </a>
-                </div>
-                <div class="group relative">
-                  <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                    <a href="#">
-                      <span class="absolute inset-0"></span>
-                      Boost your conversion rate
-                    </a>
-                  </h3>
-                  <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
-                    Illo sint voluptas. Error voluptates culpa eligendi. Hic vel
-                    totam vitae illo. Non aliquid explicabo necessitatibus unde.
-                    Sed exercitationem placeat consectetur nulla deserunt vel.
-                    Iusto corrupti dicta.
-                  </p>
-                </div>
-                <div class="relative mt-8 flex items-center gap-x-4">
-                  <img
-                    src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                    class="h-10 w-10 rounded-full bg-gray-50"
-                  />
-                  <div class="text-sm leading-6">
-                    <p class="font-semibold text-gray-900">
-                      <a href="#">
-                        <span class="absolute inset-0"></span>
-                        Michael Foster
-                      </a>
-                    </p>
-                    <p class="text-gray-600">Co-Founder / CTO</p>
-                  </div>
-                </div>
-              </article>
+            <div className="flex flex-col items-start gap-[25px]">
+              <p size="xl" className="w-full leading-[130%] tracking-[-0.48px]">
+                Thrilling finishes at international mountain biking championship
+              </p>
+              <a href="#" className="w-full">
+                <p as="p" className="!font-medium underline text-center">
+                  Read More
+                </p>
+              </a>
+            </div>
+          </div>
+          <div className="flex w-full flex-col gap-6 items-center justify-center">
+            <img
+              src={image_five}
+              alt="image"
+              className="h-[276px] w-[298px] rounded-[12px] object-cover cursor-pointer max-w-xs transition duration-300 ease-in-out hover:scale-110"
+            />
+            <div className="flex flex-col items-start gap-[25px]">
+              <p size="xl" className="w-full leading-[130%] tracking-[-0.48px]">
+                How bicycles are becoming the main choice in city transportation
+              </p>
+              <a href="#" className="w-full">
+                <p className="!font-medium underline text-center">Read More</p>
+              </a>
             </div>
           </div>
         </div>
       </div>
-      
+
+      <div>
+        <img src={image_six} className="w-full" alt="" />
+      </div>
     </>
   );
 }
