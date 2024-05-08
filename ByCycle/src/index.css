@@ -92,6 +92,11 @@ a {
 /* -------------------------------------------------------------------------------- */
 
 /* Homepage CSS */
+/* ! h1 font */
+.header_text {
+  font-family: "Syne";
+  font-weight: bolder;
+}
 
 /* Homepage CSS media query */
 
