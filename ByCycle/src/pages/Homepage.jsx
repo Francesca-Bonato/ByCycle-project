@@ -103,7 +103,7 @@ function Homepage() {
       </div>
 
       {/* news section */}
-      <div className="flex flex-col pl-5 pr-5 gap-[50px] bg-[#E6E6E6]">
+      <div className="flex flex-col pl-5 pr-5 gap-[50px] pb-5 bg-[#E6E6E6]">
         <div className="container-xs flex flex-col items-center pt-5 pb-5">
           <div className="w-full flex flex-col items-start gap-[30px]">
             <p>Excellence Evolved</p>
