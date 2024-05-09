@@ -8,11 +8,13 @@ import NewsPage from "./pages/Newspage";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import ContactUs from "./pages/ContactUs";
+import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <NotFound/>,
     children: [
       { path: "/", element: <Homepage /> },
       { path: "/community", element: <Community/> },
