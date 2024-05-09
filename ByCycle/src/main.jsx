@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/Root";
 import Community from "./pages/Community";
 import BikeTrails from "./pages/BikeTrails";
-import Newspage from "./pages/Newspage";
+import NewsPage from "./pages/NewsPage";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 
