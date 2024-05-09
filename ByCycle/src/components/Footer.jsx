@@ -3,6 +3,7 @@ import { Footer_CTA } from "./Footer_CTA";
 import { Heading } from "./Heading";
 import { Img } from "./Img/Img";
 import { Footer_SocialBTN } from "./Footer_SocialBTN";
+import { Link } from "react-router-dom";
 
 let year = new Date().getFullYear();
 
@@ -49,9 +50,9 @@ export function Footer({ ...props }) {
                   </a>
                 </li>
                 <li className="hover:underline">
-                  <a href="Community" target="_blank" rel="noreferrer">
+                  <Link to="/community" className="w-full">
                     <p as="p">Community</p>
-                  </a>
+                  </Link>
                 </li>
                 <li className="hover:underline">
                   <a href="Contact" target="_blank" rel="noreferrer">
@@ -66,9 +67,9 @@ export function Footer({ ...props }) {
               </Heading>
               <ul className="flex flex-col gap-[9px]">
                 <li className="hover:underline">
-                  <a href="News" target="_blank" rel="noreferrer">
+                  <Link to="/news" className="w-full">
                     <p as="p">News</p>
-                  </a>
+                  </Link>
                 </li>
                 <li className="hover:underline">
                   <a href="Newsletter" target="_blank" rel="noreferrer">
@@ -93,9 +94,9 @@ export function Footer({ ...props }) {
               </Heading>
               <ul className="flex flex-col items-start gap-[9px]">
                 <li className="hover:underline">
-                  <a href="#">
+                  <Link to="/privacy">
                     <p as="p">Privacy Policy</p>
-                  </a>
+                  </Link>
                 </li>
                 <li className="hover:underline">
                   <a href="#">
@@ -142,31 +143,31 @@ export function Footer({ ...props }) {
         <div className="flex gap-2.5">
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-gray-700 hover:bg-blue-700"
+            className="w-[32px] !rounded-[16px] bg-[#383838] hover:bg-blue-700"
           >
             <Img src="assets/images/img_facebook.svg" />
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-gray-700 hover:bg-black-900"
+            className="w-[32px] !rounded-[16px] bg-[#383838] hover:bg-black-900"
           >
             <Img src="assets/images/img_x.svg" />
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-gray-700 hover:bg-fuchsia-600"
+            className="w-[32px] !rounded-[16px] bg-[#383838] hover:bg-fuchsia-600"
           >
             <Img src="assets/images/img_instagram.svg" />
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-gray-700 hover:bg-blue-600"
+            className="w-[32px] !rounded-[16px] bg-[#383838] hover:bg-blue-600"
           >
             <Img src="assets/images/img_link.svg" />
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-gray-700 hover:bg-red-700 "
+            className="w-[32px] !rounded-[16px] bg-[#383838] hover:bg-red-700 "
           >
             <Img src="assets/images/img_warning.svg" />
           </Footer_SocialBTN>
