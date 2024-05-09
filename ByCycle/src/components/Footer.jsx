@@ -1,7 +1,8 @@
 import React from "react";
-import { Button } from "./Button";
+import { Footer_CTA } from "./Footer_CTA";
 import { Heading } from "./Heading";
 import { Img } from "./Img/Img";
+import { Footer_SocialBTN } from "./Footer_SocialBTN";
 
 let year = new Date().getFullYear();
 
@@ -9,11 +10,13 @@ export function Footer({ ...props }) {
   return (
     <footer
       {...props}
-      className={`${props.className} flex flex-col items-center w-full pt-14 pb-[22px] gap-[55px] md:pt-5 sm:gap-[27px] sm:py-5 bg-white-A700`}
+      className={`${props.className} flex flex-col items-center w-full pt-14 pb-[22px] md:pt-5 sm: sm:py-5 bg-white-A700`}
     >
-      <div className="container-xs flex flex-col gap-14 md:p-5 sm:gap-7 p-10 ">
+      <Footer_CTA />
+
+      <div className="container-xs flex flex-col gap-14 md:p-5 sm:gap-7 px-10 ">
         <div className="flex items-start md:flex-col ">
-          <div className="flex flex-1 flex-col items-start gap-[11px] md:self-stretch">
+          <div className="flex flex-1 flex-col items-start gap-[11px] md:self-stretch pt-5">
             <Img
               src="assets/images/img_footer_logo.png"
               alt="footer logo"
@@ -35,22 +38,22 @@ export function Footer({ ...props }) {
                 Company
               </Heading>
               <ul className="flex flex-col gap-[9px]">
-                <li className="hover:text-emerald-500">
+                <li className="hover:underline">
                   <a href="Bike" target="_blank" rel="noreferrer">
                     <p as="p">Bike</p>
                   </a>
                 </li>
-                <li className="hover:text-emerald-500">
+                <li className="hover:underline">
                   <a href="Accessories" target="_blank" rel="noreferrer">
                     <p as="p">Accessories</p>
                   </a>
                 </li>
-                <li className="hover:text-emerald-500">
+                <li className="hover:underline">
                   <a href="Community" target="_blank" rel="noreferrer">
                     <p as="p">Community</p>
                   </a>
                 </li>
-                <li className="hover:text-emerald-500">
+                <li className="hover:underline">
                   <a href="Contact" target="_blank" rel="noreferrer">
                     <p as="p">Contact</p>
                   </a>
@@ -62,22 +65,22 @@ export function Footer({ ...props }) {
                 Resource
               </Heading>
               <ul className="flex flex-col gap-[9px]">
-                <li className="hover:text-emerald-500">
+                <li className="hover:underline">
                   <a href="News" target="_blank" rel="noreferrer">
                     <p as="p">News</p>
                   </a>
                 </li>
-                <li className="hover:text-emerald-500">
+                <li className="hover:underline">
                   <a href="Newsletter" target="_blank" rel="noreferrer">
                     <p as="p">Newsletter</p>
                   </a>
                 </li>
-                <li className="hover:text-emerald-500">
+                <li className="hover:underline">
                   <a href="Careers" target="_blank" rel="noreferrer">
                     <p as="p">Careers</p>
                   </a>
                 </li>
-                <li className="hover:text-emerald-500">
+                <li className="hover:underline">
                   <a href="FAQS" target="_blank" rel="noreferrer">
                     <p as="p">FAQS</p>
                   </a>
@@ -89,22 +92,22 @@ export function Footer({ ...props }) {
                 Legal
               </Heading>
               <ul className="flex flex-col items-start gap-[9px]">
-                <li className="hover:text-emerald-500">
+                <li className="hover:underline">
                   <a href="#">
                     <p as="p">Privacy Policy</p>
                   </a>
                 </li>
-                <li className="hover:text-emerald-500">
+                <li className="hover:underline">
                   <a href="#">
                     <p as="p">Terms of Use</p>
                   </a>
                 </li>
-                <li className="hover:text-emerald-500">
+                <li className="hover:underline">
                   <a href="Cookies" target="_blank" rel="noreferrer">
                     <p as="p">Cookies</p>
                   </a>
                 </li>
-                <li className="hover:text-emerald-500">
+                <li className="hover:underline">
                   <a href="Sitemap" target="_blank" rel="noreferrer">
                     <p as="p">Sitemap</p>
                   </a>
@@ -132,41 +135,41 @@ export function Footer({ ...props }) {
         <div className="h-px bg-gray-200" />
       </div>
 
-      <div className="container-xs flex items-center justify-between gap-5 md:p-5">
+      <div className="container-xs flex items-center justify-between gap-5 p-5">
         <p size="md" as="p">
           Social Media
         </p>
         <div className="flex gap-2.5">
-          <Button
+          <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] hover:bg-blue-700"
+            className="w-[32px] !rounded-[16px] bg-gray-700 hover:bg-blue-700"
           >
             <Img src="assets/images/img_facebook.svg" />
-          </Button>
-          <Button
+          </Footer_SocialBTN>
+          <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] hover:bg-gray-900"
+            className="w-[32px] !rounded-[16px] bg-gray-700 hover:bg-black-900"
           >
             <Img src="assets/images/img_x.svg" />
-          </Button>
-          <Button
+          </Footer_SocialBTN>
+          <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] hover:bg-fuchsia-600"
+            className="w-[32px] !rounded-[16px] bg-gray-700 hover:bg-fuchsia-600"
           >
             <Img src="assets/images/img_instagram.svg" />
-          </Button>
-          <Button
+          </Footer_SocialBTN>
+          <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] hover:bg-blue-600"
+            className="w-[32px] !rounded-[16px] bg-gray-700 hover:bg-blue-600"
           >
             <Img src="assets/images/img_link.svg" />
-          </Button>
-          <Button
+          </Footer_SocialBTN>
+          <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] hover:bg-red-700 "
+            className="w-[32px] !rounded-[16px] bg-gray-700 hover:bg-red-700 "
           >
             <Img src="assets/images/img_warning.svg" />
-          </Button>
+          </Footer_SocialBTN>
         </div>
       </div>
 
