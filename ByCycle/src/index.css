@@ -93,14 +93,48 @@ a {
 
 /* Homepage CSS */
 /* ! h1 font */
+/* Header Text Styling */
 .header_text {
-  font-family: "Syne";
-  font-weight: bolder;
+  font-family: "Syne"; /* Specify the desired font family */
+  font-weight: bolder; /* Make the text bold */
 }
 
-/* Homepage CSS media query */
+/* App Container */
+#app {
+  height: 100%; /* Set the application container to take up the full viewport height */
+}
+
+/* Swiper Container Styling */
+.swiper {
+  width: 100%; /* Make the swiper container fill the entire width */
+  height: 100%; /* Make the swiper container fill the entire height */
+  padding: 10px !important; /* Set a base padding of 10px on all sides (override browser defaults) */
+  padding-left: 30px !important; /* Increase left padding for better spacing (override browser defaults) */
+  padding-right: 30px !important; /* Increase right padding for better spacing (override browser defaults) */
+}
+
+/* Swiper Slide Styling */
+.swiper-slide {
+  text-align: center; /* Center the content within each slide */
+  font-size: 18px; /* Set the font size for slide content */
+  background: #fff; /* Set the background color to white */
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center; /* Horizontally center the content within slides */
+  align-items: center; /* Vertically center the content within slides */
+}
+
+/* Swiper Slide Image Styling */
+.swiper-slide img {
+  display: block; /* Ensure the image displays as a block-level element */
+  width: 100%; /* Make the image fill the entire width of the slide */
+  height: 100%; /* Make the image fill the entire height of the slide */
+  object-fit: cover; /* Crop or stretch the image to cover the slide area while maintaining aspect ratio */
+}
+/* Homepage Media Query for Smaller Screens */
 @media (max-width: 768px) {
-  /* Imposta il padding a 10px su tutti i lati */
+  /* Set padding to 10px on all sides for smaller screens */
   .max-w {
     padding: 10px;
   }

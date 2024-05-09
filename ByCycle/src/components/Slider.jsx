@@ -1,84 +1,179 @@
-import React, { useState } from "react";
-import image1 from "../assets/images/img_homepage/img_cta.png"
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
 
-const Slider = () => {
-  const [indiceAttivo, setIndiceAttivo] = useState(0); // indiceAttivo tiene traccia dell'immagine attiva
-  const immagini = [
-    { src: image1, alt: "Immagine 1" },
-    { src: "../assets/images/img_mountain_bicycl.png", alt: "Immagine 2" },
-    { src: "../assets/images/img_mountain_bicycl.png", alt: "Immagine 3" },
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+
+// import required modules
+import { Autoplay, Pagination } from "swiper/modules";
+
+export default function Slider() {
+  const sliders = [
+    {
+      id: "c3f3b06b-6581-4706-bf8c-fc5fc3ce5337xnxx",
+      title: "Lorem Ipsum",
+      depscription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+      image:
+        "https://images.unsplash.com/photo-1505705694340-019e1e335916?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmljaWNsZXRhfGVufDB8fDB8fHww",
+    },
+    {
+      id: "c3f3b06b-6581-4706-bf8c-fc5fc3ce5337jk",
+      title: "Lorem Ipsum",
+      depscription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+      image:
+        "https://images.unsplash.com/photo-1615632778185-48e15a6f68bf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmljaWNsZXRhfGVufDB8fDB8fHww",
+    },
+    {
+      id: "c3f3b06b-6581-4706-bf8c-fc5fc3ce5337h",
+      title: "Lorem Ipsum",
+      depscription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+      image:
+        "https://images.unsplash.com/photo-1545575439-3261931f52f1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      id: "c3f3b06b-6581-4706-bf8c-fc",
+      title: "Lorem Ipsum",
+      depscription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+      image:
+        "https://images.unsplash.com/photo-1531851454380-ab14ff755bfb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      id: "c3f3b06b-6581-4706-bf8c-fc5",
+      title: "Lorem Ipsum",
+      depscription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+      image:
+        "https://images.unsplash.com/photo-1619194728665-36281d450fde?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      id: "c3f3b06b-6581-4706-bf8c-fc5fc",
+      title: "Lorem Ipsum",
+      depscription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+      image:
+        "https://images.unsplash.com/photo-1571081790807-6933479d240f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      id: "c3f3b06b-6581-4706-bf8c-fc5fc3",
+      title: "Lorem Ipsum",
+      depscription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+      image:
+        "https://images.unsplash.com/photo-1511277918544-4e638c620c25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      id: "c3f3b06b-6581-4706-bf8c-fc5fc3c",
+      title: "Lorem Ipsum",
+      depscription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+      image:
+        "https://images.unsplash.com/photo-1635159339046-68a9ac16a04d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      id: "c3f3b06b-6581-4706-bf8c-fc5fc3ce",
+      title: "Lorem Ipsum",
+      depscription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+      image:
+        "https://images.unsplash.com/photo-1714015262881-5bfaf6defb20?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJpY2ljbGV0YSUyMGJteHxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      id: "c3f3b06b-6581-4706-bf8c-fc5fc3ce5",
+      title: "Lorem Ipsum",
+      depscription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+      image:
+        "https://images.unsplash.com/photo-1613324089487-c618f5a52630?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjJ8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      id: "c3f3b06b-6581-4706-bf8c-fc5fc3ce53",
+      title: "Lorem Ipsum",
+      depscription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+      image:
+        "https://images.unsplash.com/photo-1626021397894-adae15b5ee76?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODN8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      id: "c3f3b06b-6581-4706-bf8c-fc5fc3ce533",
+      title: "Lorem Ipsum",
+      depscription:
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.",
+      image:
+        "https://images.unsplash.com/photo-1605537473255-b10095a6c1e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTAzfHxiaWNpY2xldGF8ZW58MHx8MHx8fDA%3D",
+    },
   ];
-
-  const gestisciPrecedente = () => {
-    setIndiceAttivo((indicePrecedente) =>
-      indicePrecedente === 0 ? immagini.length - 1 : indicePrecedente - 1
-    ); // scorri all'ultima immagine se siamo alla prima
-  };
-
-  const gestisciSuccessiva = () => {
-    setIndiceAttivo((indicePrecedente) =>
-      indicePrecedente === immagini.length - 1 ? 0 : indicePrecedente + 1
-    ); // scorri alla prima immagine se siamo all'ultima
-  };
-
   return (
-    <div className="relative w-full overflow-hidden">
-      <div className="flex justify-center">
-        {immagini.map((immagine, indice) => (
-          <div
-            key={indice}
-            className={`absolute top-0 left-0 w-full h-full opacity-0 transition-all duration-500 ${
-              indice === indiceAttivo ? "opacity-1" : "opacity-0"
-            }`}
-          >
-            <img
-              src={immagine.src}
-              alt={immagine.alt}
-              className="object-cover w-full h-full"
-            />
-          </div>
-        ))}
-      </div>
-
-      <button
-        className="absolute top-0 left-0 flex items-center px-4 py-2 bg-black opacity-50 hover:opacity-75 transition-all"
-        onClick={gestisciPrecedente}
+    <>
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={10}
+        effect={"cube"}
+        grabCursor={true}
+        pagination={{
+          clickable: true,
+        }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+        }}
+        modules={[Pagination, Autoplay]}
+        className="mySwiper"
       >
-        <svg
-          className="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M10 19l-6-6l6-6"
-          />
-        </svg>
-      </button>
+        <div>
+          {sliders.map((slide) => (
+            <SwiperSlide>
+              <div className="max-w-sm rounded overflow-hidden shadow-lg transition-all hover:translate-y-[-1.25rem]">
+                <div className="h-[256px]">
+                  <img
+                    className="w-full"
+                    src={slide.image}
+                    alt="Sunset in the mountains"
+                  />
+                </div>
 
-      <button
-        className="absolute top-0 right-0 flex items-center px-4 py-2 bg-black opacity-50 hover:opacity-75 transition-all"
-        onClick={gestisciSuccessiva}
-      >
-        <svg
-          className="w-6 h-6 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M14 19l6-6l-6-6"
-          />
-        </svg>
-      </button>
-    </div>
+                <div className="px-6 py-4">
+                  <div className="font-bold text-xl mb-2">{slide.title}</div>
+                  <p className="text-gray-700 text-base">
+                    {slide.depscription}
+                  </p>
+                </div>
+                <div className="px-6 pt-4 pb-2">
+                  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                    #photography
+                  </span>
+                  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                    #travel
+                  </span>
+                  <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                    #winter
+                  </span>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </div>
+      </Swiper>
+    </>
   );
-};
-
-export default Slider;
+}

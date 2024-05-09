@@ -6,9 +6,9 @@ import image_two from "../assets/images/img_homepage/img_triathlon_male.png";
 import image_three from "../assets/images/img_homepage/img_rectangle_7_1.png";
 import image_four from "../assets/images/img_homepage/img_rectangle_7_410x427.png";
 import image_five from "../assets/images/img_homepage/img_rectangle_7_2.png";
-import image_six from "../assets/images/img_homepage/immagine-footer.png";
-import Slider from "../components/Slider";
 import { Link } from "react-router-dom";
+import Slider from "../components/Slider";
+import Parallax from "../components/ParallaxComponent";
 
 function Homepage() {
   return (
@@ -39,13 +39,12 @@ function Homepage() {
               bike is designed to provide an unrivaled riding <br /> experience,
               with an elegant design and the latest technology.
             </p>
-            <button className="bg-white mt-10 pt-3 pb-3 pl-8 pr-8 rounded-[40px] font-bold  border transition hover:border-solid hover:border-white hover:bg-black hover:text-white">
+            <button className="bg-white mt-10 pt-3 pb-3 pl-8 pr-8 rounded-[40px] font-bold  border transition hover:border-solid hover:border-white hover:bg-[#232323] hover:text-white">
               Explore Bike
             </button>
           </div>
         </div>
       </div>
-
       {/* about section */}
       <div className="container-xs flex items-center justify-center gap-5 flex-col md:p-0">
         <div className="flex items-center justify-center gap-10 pt-20 mb-[60px] pl-5 pr-5 flex-wrap lg:flex-nowrap">
@@ -103,7 +102,6 @@ function Homepage() {
           </div>
         </div>
       </div>
-
       {/* news section */}
       <div className="flex flex-col pl-20 pr-20 pb-5 lg:pl-10 lg:pr-10 gap-[50px] bg-[#E6E6E6] max-w">
         <div className="container-xs flex flex-col items-center pt-5 pb-5">
@@ -186,9 +184,50 @@ function Homepage() {
           </div>
         </div>
       </div>
-
       {/* carousel */}
+      <section className="flex flex-wrap lg:flex-nowrap justify-between gap-[10%] lg:gap-[30%] pt-[40px] pb-[40px] pl-[30px] pr-[30px]">
+        <div className="w-full lg:w-[50%] text-sm lg:text-5xl font-extrabold display break-words leading-[105%]">
+          <p className="text-center">
+            More connections to experience new friends and families
+          </p>
+        </div>
+        <div className="w-full lg:w-[50%] mt-[20px] flex flex-col gap-5 items-center lg:items-end break-words leading-[150%]">
+          <p className="text-center lg:text-right">
+            Experience the joy of pedaling together, creating a bond that goes
+            beyond the road. Join the Morgan Bike Community and let the spirit
+            of camaraderie enrich your cycling experience with new friends who
+            feel like family.
+          </p>
+          <Link to={"/community"}>
+            <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
+              Join other bikers
+            </button>
+          </Link>
+        </div>
+      </section>
       <Slider />
+      <section className="flex flex-wrap lg:flex-nowrap gap-[30%] pl-[30px] pr-[30px] mt-[50px] mb-[50px]">
+        <div className="w-full lg:w-[50%]">
+          <p className="text-3xl lg:text-5xl text-center font-extrabold ">
+            Gear Up for a Sustainable Future: A Bicycle Usage and Perception
+            Survey
+          </p>
+        </div>
+        <div className="w-full mt-[20px] text-center lg:w-[50%] flex flex-col justify-end lg:text-right">
+          <p className="text-center lg:text-right pb-[20px]">
+            Welcome to the Bicycle Quiz! Test your cycling knowledge, from
+            history to safety rules. 20 multiple-choice questions, 30 seconds to
+            answer. Have fun and learn! Click "Pedal into the Quiz" to get
+            pedaling!
+          </p>
+          <Link to={"/quiz"}>
+            <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
+              Pedal into the Quiz
+            </button>
+          </Link>
+        </div>
+      </section>
+      <Parallax />
     </>
   );
 }
