@@ -99,7 +99,12 @@ a {
 }
 
 /* Homepage CSS media query */
-
+@media (max-width: 768px) {
+  /* Imposta il padding a 10px su tutti i lati */
+  .max-w {
+    padding: 10px;
+  }
+}
 /* -------------------------------------------------------------------------------- */
 
 /* Login */

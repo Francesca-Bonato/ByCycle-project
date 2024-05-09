@@ -8,6 +8,7 @@ import image_four from "../assets/images/img_homepage/img_rectangle_7_410x427.pn
 import image_five from "../assets/images/img_homepage/img_rectangle_7_2.png";
 import image_six from "../assets/images/img_homepage/immagine-footer.png";
 import Slider from "../components/Slider";
+import { Link } from "react-router-dom";
 
 function Homepage() {
   return (
@@ -104,7 +105,7 @@ function Homepage() {
       </div>
 
       {/* news section */}
-      <div className="flex flex-col pl-5 pr-5 gap-[50px] pb-5 bg-[#E6E6E6]">
+      <div className="flex flex-col pl-20 pr-20 pb-5 lg:pl-10 lg:pr-10 gap-[50px] bg-[#E6E6E6] max-w">
         <div className="container-xs flex flex-col items-center pt-5 pb-5">
           <div className="w-full flex flex-col items-start gap-[30px]">
             <p>Excellence Evolved</p>
@@ -116,11 +117,13 @@ function Homepage() {
         <div className="flex gap-[30px] flex-wrap lg:flex-nowrap items-baseline justify-center">
           <div className="flex w-full flex-col gap-6 items-center justify-center">
             <div className="w-full rounded-[12px] overflow-hidden">
-              <img
-                src={image_four}
-                alt="card image"
-                className="w-full rounded-[12px] object-cover h-auto cursor-pointer transition duration-300 ease-in-out hover:scale-110"
-              />
+              <Link to="/news" className="w-full">
+                <img
+                  src={image_four}
+                  alt="card image"
+                  className="w-full rounded-[12px] object-cover h-auto cursor-pointer transition duration-300 ease-in-out hover:scale-110"
+                />
+              </Link>
             </div>
             <div className="flex w-full flex-col items-start gap-[25px]">
               <p
@@ -129,45 +132,56 @@ function Homepage() {
               >
                 The growing trend of combining cycling with other workouts
               </p>
-              <a href="#" className="w-full">
-                <p className="!font-medium underline">Read More</p>
-              </a>
+              <Link to="/news" className="w-full">
+                <p className="!font-medium transition-all hover:text-[#26425a] hover:underline">
+                  Read More
+                </p>
+              </Link>
             </div>
           </div>
           <div className="flex w-full flex-col gap-6 items-center justify-center">
             <div className="w-full rounded-[12px] overflow-hidden">
-              <img
-                src={image_three}
-                alt="card image"
-                className="w-full rounded-[12px] object-cover h-auto cursor-pointer transition duration-300 ease-in-out hover:scale-110"
-              />
+              <Link to="/news" className="w-full">
+                <img
+                  src={image_three}
+                  alt="card image"
+                  className="w-full rounded-[12px] object-cover h-auto cursor-pointer transition duration-300 ease-in-out hover:scale-110"
+                />
+              </Link>
             </div>
             <div className="flex w-full flex-col items-start gap-[25px]">
               <p className="font-bold text-3xl w-full leading-[130%] tracking-[-0.48px]">
                 Thrilling finishes at international mountain biking championship
               </p>
-              <a href="#" className="w-full">
-                <p as="p" className="!font-medium underline">
+              <Link to="/news" className="w-full">
+                <p
+                  as="p"
+                  className="!font-medium transition-all hover:text-[#26425a] hover:underline"
+                >
                   Read More
                 </p>
-              </a>
+              </Link>
             </div>
           </div>
           <div className="flex w-full rounded-[12px] flex-col gap-6 items-center overflow-hidden justify-center">
             <div className="w-full rounded-[12px] overflow-hidden">
-              <img
-                src={image_five}
-                alt="card image"
-                className="w-full rounded-[12px] object-cover h-auto cursor-pointer transition duration-300 ease-in-out hover:scale-110"
-              />
+              <Link to="/news" className="w-full">
+                <img
+                  src={image_five}
+                  alt="card image"
+                  className="w-full rounded-[12px] object-cover h-auto cursor-pointer transition duration-300 ease-in-out hover:scale-110"
+                />
+              </Link>
             </div>
             <div className="flex w-full flex-col items-start gap-[25px]">
               <p className="w-full font-bold text-3xl leading-[130%] tracking-[-0.48px]">
                 How bicycles are becoming the main choice in city transportation
               </p>
-              <a href="#" className="w-full">
-                <p className="!font-medium underline">Read More</p>
-              </a>
+              <Link to="/news" className="w-full">
+                <p className="!font-medium transition-all hover:text-[#26425a] hover:underline">
+                  Read More
+                </p>
+              </Link>
             </div>
           </div>
         </div>
