@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @font-face {
   font-family: "Inter-Tight";
   src: url(src/assets/fonts/Inter_Tight/InterTight-VariableFont_wght.ttf);
