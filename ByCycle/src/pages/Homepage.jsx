@@ -7,6 +7,7 @@ import image_three from "../assets/images/img_homepage/img_rectangle_7_1.png";
 import image_four from "../assets/images/img_homepage/img_rectangle_7_410x427.png";
 import image_five from "../assets/images/img_homepage/img_rectangle_7_2.png";
 import image_six from "../assets/images/img_homepage/immagine-footer.png";
+import Slider from "../components/Slider";
 
 function Homepage() {
   return (
@@ -172,11 +173,9 @@ function Homepage() {
         </div>
       </div>
 
-      <div>
-        <img src={image_six} className="w-full" alt="" />
-      </div>
+      {/* carousel */}
+      <Slider />
     </>
   );
 }
-
 export default Homepage;
