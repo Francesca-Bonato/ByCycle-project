@@ -4,11 +4,15 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/Root";
 import Community from "./pages/Community";
 import BikeTrails from "./pages/BikeTrails";
-import NewsPage from "./pages/NewsPage";
+import Newspage from "./pages/Newspage";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
+<<<<<<< HEAD
 import Questionnaire from "./pages/Questionnaire";
 import { Privacy } from "./pages/Privacy";
+=======
+import ContactUs from "./pages/ContactUs";
+>>>>>>> 9005ece173b0b07602f2be1d77489e1e661ca83a
 
 const router = createBrowserRouter([
   {
@@ -18,10 +22,16 @@ const router = createBrowserRouter([
       { path: "/", element: <Homepage /> },
       { path: "/community", element: <Community /> },
       { path: "/trails", element: <BikeTrails /> },
+<<<<<<< HEAD
       { path: "/news", element: <NewsPage /> },
       { path: "/login", element: <Login /> },
       { path: "/questionnaire", element: <Questionnaire /> },
       { path: "/privacy", element: <Privacy /> },
+=======
+      { path: "/news", element: <Newspage /> },
+      { path: "/login", element: <Login /> },
+      { path: "/contacts", element: <ContactUs /> },
+>>>>>>> 9005ece173b0b07602f2be1d77489e1e661ca83a
     ],
   },
 ]);

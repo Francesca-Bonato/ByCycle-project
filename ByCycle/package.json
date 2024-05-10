@@ -10,7 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@tailwindcss/forms": "^0.5.7",
+=======
+    "@headlessui/react": "^2.0.0",
+    "@heroicons/react": "^2.1.3",
+>>>>>>> 9005ece173b0b07602f2be1d77489e1e661ca83a
     "bootstrap": "^5.3.3",
     "mdb-react-ui-kit": "^8.0.0",
     "react-dom": "^18.2.0",
