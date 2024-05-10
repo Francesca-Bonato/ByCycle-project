@@ -16,7 +16,7 @@ export function Footer({ ...props }) {
   return (
     <footer
       {...props}
-      className={`${props.className} flex flex-col items-center w-full pt-14 pb-[22px] md:pt-5 sm: sm:py-5 bg-white-A700`}
+      className={`${props.className} flex flex-col items-center w-full pb-[22px] sm:py-5 bg-white-A700`}
     >
       <Footer_CTA />
 
