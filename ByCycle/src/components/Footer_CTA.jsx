@@ -1,22 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Heading } from "./Heading";
 
-export function Footer_CTA({
-  getunlimited = "Do you want to stay updated on the latest community news?",
-  bikedescription = "Subscribe to our newsletter and enjoy the ride!",
-  ...props
-}) {
+export function Footer_CTA({ ...props }) {
   const [email, setEmail] = useState("");
+  const [isAlreadySubscribed, setIsAlreadySubscribed] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
 
-  async function handleNewsletterSubmit(e) {
+  useEffect(() => {
+    const storedEmail = localStorage.getItem(`${email}`);
+    setIsAlreadySubscribed(!!storedEmail);
+  }, [email]);
+
+  function handleNewsletterSubmit(e) {
     e.preventDefault();
-    console.log("Email submitted:", email);
-    setEmail("");
-  }
+    const storedEmail = localStorage.getItem(`${email}`);
 
-  const handleChange = (e) => {
-    setEmail(e.target.value);
-  };
+    if (storedEmail) {
+      setIsAlreadySubscribed(true);
+    } else {
+      localStorage.setItem(`${email}`, "subscribed");
+      setSubscribed(true);
+      setIsAlreadySubscribed(false);
+    }
+  }
 
   return (
     <div
@@ -27,28 +33,37 @@ export function Footer_CTA({
         <div className="w-[43%] flex flex-col gap-8 md:w-full">
           <div className="flex flex-col gap-6">
             <p as="p" className="leading-[125%] ">
-              {getunlimited}
+              Do you want to stay updated on the latest community news?
             </p>
             <Heading as="h6" className="leading-[150%] text-slate-50">
-              {bikedescription}
+              Subscribe to our newsletter and enjoy the ride!
             </Heading>
           </div>
-          <form
-            className="flex flex-wrap justify-center items-center gap-[10px] text-slate-50"
-            onSubmit={handleNewsletterSubmit}
-          >
-            <input
-              type="email"
-              value={email}
-              onChange={handleChange}
-              required
-              className="footer-form rounded-full w-[70%] text-black"
-              placeholder="Email address"
-            ></input>
-            <button type='submit' className="bg-[#383838] rounded-full w-[25%] h-[45px] hover:bg-[#181818]">
-              Submit
-            </button>
-          </form>
+          <div className="">
+            {!subscribed && (
+              <form
+                className="flex flex-wrap justify-center items-center gap-[10px] text-slate-50"
+                onSubmit={handleNewsletterSubmit}
+              >
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="footer-form rounded-full w-[70%] text-black"
+                  placeholder="Email address"
+                ></input>
+                <button
+                  type="submit"
+                  className="bg-[#383838] rounded-full w-[25%] h-[45px] hover:bg-[#181818]"
+                >
+                  Submit
+                </button>
+              </form>
+            )}
+            {subscribed && <p>Thank you for subscribing!</p>}
+            {isAlreadySubscribed && <p className="text-orange-400">This email is already subscribed. Insert a different email !</p>}
+          </div>
         </div>
       </div>
     </div>

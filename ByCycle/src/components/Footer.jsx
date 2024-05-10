@@ -8,6 +8,11 @@ import { Link } from "react-router-dom";
 let year = new Date().getFullYear();
 
 export function Footer({ ...props }) {
+  //return to top page
+  const handleClick = () => {
+    window.scrollTo({ top: 0 });
+  };
+
   return (
     <footer
       {...props}
@@ -15,9 +20,9 @@ export function Footer({ ...props }) {
     >
       <Footer_CTA />
 
-      <div className="container-xs flex flex-col gap-14 md:p-5 sm:gap-7 px-10 ">
+      <div className="container-xs flex flex-col gap-7 sm: px-5 ">
         <div className="flex items-start md:flex-col ">
-          <div className="flex flex-1 flex-col items-start gap-[11px] md:self-stretch pt-5">
+          <div className="flex flex-1 flex-col items-start text-justify gap-[11px] px-5 pt-5 md:self-stretch">
             <Img
               src="assets/images/img_footer_logo.png"
               alt="footer logo"
@@ -94,7 +99,7 @@ export function Footer({ ...props }) {
               </Heading>
               <ul className="flex flex-col items-start gap-[9px]">
                 <li className="hover:underline">
-                  <Link to="/privacy">
+                  <Link to="/privacy" onClick={handleClick}>
                     <p as="p">Privacy Policy</p>
                   </Link>
                 </li>
@@ -143,40 +148,40 @@ export function Footer({ ...props }) {
         <div className="flex gap-2.5">
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-[#353535] hover:bg-blue-700"
+            className="w-[32px] !rounded-[16px] bg-zinc-700 hover:bg-blue-700"
           >
             <Img src="assets/images/img_facebook.svg" />
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-[#353535] hover:bg-black-900"
+            className="w-[32px] !rounded-[16px] bg-zinc-700 hover:bg-black-900"
           >
             <Img src="assets/images/img_x.svg" />
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-[#353535] hover:bg-fuchsia-600"
+            className="w-[32px] !rounded-[16px] bg-zinc-700 hover:bg-fuchsia-600"
           >
             <Img src="assets/images/img_instagram.svg" />
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-[#353535] hover:bg-blue-600"
+            className="w-[32px] !rounded-[16px] bg-zinc-700 hover:bg-blue-600"
           >
             <Img src="assets/images/img_link.svg" />
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-[#353535] hover:bg-red-700 "
+            className="w-[32px] !rounded-[16px] bg-zinc-700 hover:bg-red-700 "
           >
             <Img src="assets/images/img_warning.svg" />
           </Footer_SocialBTN>
         </div>
       </div>
 
-      <div className="container-xs flex flex-col w-full gap-[55px] md:p-5 sm:gap-[27px]">
+      <div className="container-xs flex flex-col w-full gap-[40px] md:px-5 sm:gap-[27px]">
         <div className="h-px bg-gray-200 " />
-        <div className="flex items-start md:flex-col pl-5">
+        <div className="flex items-start md:flex-col">
           <p size="xs" as="p">
             {`© ${year} ByCycle All right reserved.`}
           </p>
