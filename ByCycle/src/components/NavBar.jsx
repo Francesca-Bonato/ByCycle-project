@@ -2,8 +2,9 @@ import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/ByCycle_logo_definitivo.png";
 import imageProfileCustom from "../assets/images/profile-user-icon-2048x2048-m41rxkoe.png";
+
 // Sample data for user and navigation
 const user = {
   name: "Tom Cook",
@@ -12,12 +13,12 @@ const user = {
 };
 
 const navigation = [
-  { name: "Home", href: "#", current: false },
-  { name: "Bikes", href: "#", current: false },
-  { name: "Accessories", href: "#", current: false },
-  { name: "Community", href: "#", current: false },
-  { name: "Blog", href: "#", current: false },
-  { name: "Contact", href: "#", current: false },
+  { name: "Home", href: "/", current: false },
+  { name: "Our Guides", href: "/guides", current: false },
+  { name: "Community", href: "/community", current: false },
+  { name: "Blog", href: "/blog", current: false },
+  { name: "News & Events", href: "/news", current: false },
+  { name: "Bike Trails", href: "/trails", current: false },
 ];
 
 const unLogged = [
@@ -26,8 +27,8 @@ const unLogged = [
 ];
 
 const logged = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
+  { name: "Your Profile", href: "/profile" },
+  { name: "Settings", href: "/profile-settings" },
   { name: "Log Out", href: "/" },
 ];
 
@@ -63,7 +64,6 @@ export default function Example() {
                     <div className="flex-shrink-0">
                       <Link to="#">
                         <img
-                          className="h-8 w-8"
                           src={logo}
                           alt="Your Company"
                         />
