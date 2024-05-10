@@ -143,31 +143,31 @@ export function Footer({ ...props }) {
         <div className="flex gap-2.5">
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-[#383838] hover:bg-blue-700"
+            className="w-[32px] !rounded-[16px] bg-[#353535] hover:bg-blue-700"
           >
             <Img src="assets/images/img_facebook.svg" />
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-[#383838] hover:bg-black-900"
+            className="w-[32px] !rounded-[16px] bg-[#353535] hover:bg-black-900"
           >
             <Img src="assets/images/img_x.svg" />
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-[#383838] hover:bg-fuchsia-600"
+            className="w-[32px] !rounded-[16px] bg-[#353535] hover:bg-fuchsia-600"
           >
             <Img src="assets/images/img_instagram.svg" />
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-[#383838] hover:bg-blue-600"
+            className="w-[32px] !rounded-[16px] bg-[#353535] hover:bg-blue-600"
           >
             <Img src="assets/images/img_link.svg" />
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-[#383838] hover:bg-red-700 "
+            className="w-[32px] !rounded-[16px] bg-[#353535] hover:bg-red-700 "
           >
             <Img src="assets/images/img_warning.svg" />
           </Footer_SocialBTN>
@@ -180,14 +180,6 @@ export function Footer({ ...props }) {
           <p size="xs" as="p">
             {`© ${year} ByCycle All right reserved.`}
           </p>
-          {/*  <Img
-            src="images/img_television.svg"
-            alt="television image"
-            className="ml-[784px] h-[16px] w-[16%] md:ml-0 md:w-full"
-          />
-          <p size="xs" as="p" className="ml-2 !text-gray-500_02 md:ml-0">
-            Base on 10.348 review
-          </p> */}
         </div>
       </div>
     </footer>

@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Heading } from "./Heading";
-import { useNavigate } from "react-router-dom";
 
 export function Footer_CTA({
-  getunlimited = "Are you undecided about the right bicycle for your journey? ",
-  bikedescription = "Fill out our quiz to discover which of our choices is best suited for you!",
+  getunlimited = "Do you want to stay updated on the latest community news?",
+  bikedescription = "Subscribe to our newsletter and enjoy the ride!",
   ...props
 }) {
-  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
 
-  function handleQuizClick() {
-    navigate("/questionnaire");
+  async function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    console.log("Email submitted:", email);
+    setEmail("");
   }
+
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+  };
 
   return (
     <div
@@ -28,15 +33,22 @@ export function Footer_CTA({
               {bikedescription}
             </Heading>
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-[30px] text-slate-50">
-            {/* <input className="rounded-full" placeholder="Email address"></input> */}
-            <button
-              className="bg-[#383838] rounded-full w-[50%] h-[45px] hover:bg-[#181818]"
-              onClick={handleQuizClick}
-            >
-              Start our Quiz!
+          <form
+            className="flex flex-wrap justify-center items-center gap-[10px] text-slate-50"
+            onSubmit={handleNewsletterSubmit}
+          >
+            <input
+              type="email"
+              value={email}
+              onChange={handleChange}
+              required
+              className="footer-form rounded-full w-[70%] text-black"
+              placeholder="Email address"
+            ></input>
+            <button type='submit' className="bg-[#383838] rounded-full w-[25%] h-[45px] hover:bg-[#181818]">
+              Submit
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
