@@ -1,5 +1,5 @@
 import { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/images/ByCycle_logo_definitivo.png";
@@ -39,6 +39,11 @@ function classNames(...classes) {
 
 // Main component
 export default function Example() {
+  // Get the current route information
+  const location = useLocation();
+
+
+
   // State to manage the profile menu display
   const [menuProfile, setMenuProfile] = useState(false);
 
@@ -53,11 +58,11 @@ export default function Example() {
       {/* All Container */}
       <div className="min-h-full">
         {/* Disclosure component to handle menu visibility */}
-        <Disclosure as="nav" >
+        <Disclosure as="nav">
           {({ open }) => (
             <>
               {/* Header */}
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> 
+              <div className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${location.pathname === "/" && "bg-transparent blur-sm text-white"}`} >
                 <div className="flex h-16 items-center justify-between">
                   {/* Logo */}
                   <div className="flex items-center">
@@ -218,31 +223,35 @@ export default function Example() {
                     </div>
 
                     {/* Profile Menu Buttons with Opacity Transition */}
-                    {menuProfile && <div
-                      className={`mt-3 space-y-1 px-2 shadow-2xl w-2/5 rounded-lg transition-opacity ${
-                        menuProfile ? "opacity-100" : "opacity-0"
-                      }`}
-                    >
-                      { localStorage.getItem("Utente") ? logged.map((item) => (
-                        <Disclosure.Button
-                          key={item.name}
-                          as="a"
-                          href={item.href}
-                          className="block rounded-md px-3 py-2 text-base font-medium"
-                        >
-                          {item.name}
-                        </Disclosure.Button>
-                      )) : unLogged.map((item) => (
-                        <Disclosure.Button
-                          key={item.name}
-                          as="a"
-                          href={item.href}
-                          className="block rounded-md px-3 py-2 text-base font-medium"
-                        >
-                          {item.name}
-                        </Disclosure.Button>
-                      ))}
-                    </div>}
+                    {menuProfile && (
+                      <div
+                        className={`mt-3 space-y-1 px-2 shadow-2xl w-2/5 rounded-lg transition-opacity ${
+                          menuProfile ? "opacity-100" : "opacity-0"
+                        }`}
+                      >
+                        {localStorage.getItem("Utente")
+                          ? logged.map((item) => (
+                              <Disclosure.Button
+                                key={item.name}
+                                as="a"
+                                href={item.href}
+                                className="block rounded-md px-3 py-2 text-base font-medium"
+                              >
+                                {item.name}
+                              </Disclosure.Button>
+                            ))
+                          : unLogged.map((item) => (
+                              <Disclosure.Button
+                                key={item.name}
+                                as="a"
+                                href={item.href}
+                                className="block rounded-md px-3 py-2 text-base font-medium"
+                              >
+                                {item.name}
+                              </Disclosure.Button>
+                            ))}
+                      </div>
+                    )}
                   </div>
                 </Disclosure.Panel>
               </Transition>
