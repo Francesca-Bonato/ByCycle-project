@@ -14,11 +14,11 @@ const user = {
 
 const navigation = [
   { name: "Home", href: "/", current: false },
-  { name: "Our Guides", href: "/guides", current: false },
+  { name: "Our Guides ", href: "/guides", current: false },
   { name: "Community", href: "/community", current: false },
   { name: "Blog", href: "/blog", current: false },
-  { name: "News & Events", href: "/news", current: false },
-  { name: "Bike Trails", href: "/trails", current: false },
+  { name: "News ", href: "/news", current: false },
+  { name: "Trails ", href: "/trails", current: false },
 ];
 
 const unLogged = [
@@ -64,8 +64,9 @@ export default function Example() {
                     <div className="flex-shrink-0">
                       <Link to="#">
                         <img
+                          className="w-[90px] mt-[2px]"
                           src={logo}
-                          alt="Your Company"
+                          alt="Company"
                         />
                       </Link>
                     </div>
@@ -113,7 +114,7 @@ export default function Example() {
                           leaveTo="opacity-0 scale-95"
                         >
                           <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                            {localStorage.getItem("user")
+                            {localStorage.getItem("Utente")
                               ? logged.map((item) => (
                                   <Menu.Item key={item.name}>
                                     {({ active }) => (
@@ -222,7 +223,7 @@ export default function Example() {
                         menuProfile ? "opacity-100" : "opacity-0"
                       }`}
                     >
-                      { localStorage.getItem("user") ? logged.map((item) => (
+                      { localStorage.getItem("Utente") ? logged.map((item) => (
                         <Disclosure.Button
                           key={item.name}
                           as="a"
