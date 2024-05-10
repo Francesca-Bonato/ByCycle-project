@@ -71,7 +71,7 @@ const Login = () => {
     <div className="w-full h-screen bg-white-A700_01">
       <div className="h-full flex flex-col items-center justify-between gap-5 md:flex-row-reverse">
         
-        <div className="flex w-full flex-col gap-8 md:w-[48%] 2xl:text-xl">
+        <div className="flex w-full flex-col gap-8 md:w-[48%]">
           <form
             onSubmit={handleSubmit}
             className="flex flex-col gap-[31px] self-stretch m-4"
