@@ -1,11 +1,11 @@
 import React from "react";
 import video_jumbotrom from "../assets/video/bg-jumbotron.mp4";
-import logoWheel from "../assets/images/img_homepage/img_jumbotron-removebg-preview.png";
 import image_one from "../assets/images/img_homepage/img_rectangle_7.png";
 import image_two from "../assets/images/img_homepage/img_triathlon_male.png";
 import image_three from "../assets/images/img_homepage/img_rectangle_7_1.png";
 import image_four from "../assets/images/img_homepage/img_rectangle_7_410x427.png";
 import image_five from "../assets/images/img_homepage/img_rectangle_7_2.png";
+import img_logo from "../assets/images/ByCycle logo definitivo.png";
 import { Link } from "react-router-dom";
 import Slider from "../components/Slider";
 import Parallax from "../components/ParallaxComponent";
@@ -25,23 +25,19 @@ function Homepage() {
         </video>
         <div className="text-jumbotron absolute top-0 left-0 flex items-center justify-center w-full h-full">
           <div className="flex flex-col items-center justify-center">
-            <h1 className="tracking-[-1.92px] text-center text-white text-4xl leading-[150%] header_text lg:text-6xl">
-              ByCycle Bike
-            </h1>
-            <img
-              src={logoWheel}
-              alt="wheel logo"
-              className="w-[200px] lg:w-[350px] lg:h-[200px]"
-            />
+            <img src={img_logo} alt="ByCycle logo" width={"500px"} />
             <p className="w-full text-center leading-[150%] pl-6 pr-6 text-white lg:p-0">
-              ByCycle is your travel companion, allowing you to ride in
-              comfortwith their flagship <br /> bike, the ByCycle Bike. This
-              bike is designed to provide an unrivaled riding <br /> experience,
-              with an elegant design and the latest technology.
+              Welcome to <strong>ByCycle</strong>, are you a cycling enthusiast
+              looking for advice, support, and camaraderie? <br /> Then you're
+              in the right place! Our forum is a vibrant and friendly community{" "}
+              <br /> open to cyclists of all levels, from beginners to
+              professionals.
             </p>
-            <button className="bg-white mt-10 pt-3 pb-3 pl-8 pr-8 rounded-[40px] font-bold  border transition hover:border-solid hover:border-white hover:bg-[#232323] hover:text-white">
-              Explore Bike
-            </button>
+            <Link to={"/community"}>
+              <button className="bg-white mt-10 pt-3 pb-3 pl-8 pr-8 rounded-[40px] font-bold  border transition hover:border-solid hover:border-white hover:bg-[#232323] hover:text-white">
+                Explore Community
+              </button>
+            </Link>
           </div>
         </div>
       </div>
