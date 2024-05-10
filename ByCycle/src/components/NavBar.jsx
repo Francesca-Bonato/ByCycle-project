@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-function NavBar() {
-  return <div></div>;
-}
-
 export default NavBar;
-=======
 import { Fragment, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
@@ -47,7 +41,7 @@ function classNames(...classes) {
 }
 
 // Main component
-export default function Example() {
+export function NavBar() {
   // Get the current route information
   const location = useLocation();
 
@@ -271,4 +265,3 @@ export default function Example() {
     </>
   );
 }
->>>>>>> 9005ece173b0b07602f2be1d77489e1e661ca83a
