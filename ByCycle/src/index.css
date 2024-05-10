@@ -93,6 +93,12 @@ a {
   }
 }
 
+/* Add general @media font-size */
+@media (min-width: 1536px ) {
+  html {
+    font-size: 1.2em;
+  }
+}
 /* -------------------------------------------------------------------------------- */
 
 /* NavBar CSS */

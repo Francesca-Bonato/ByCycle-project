@@ -2,7 +2,9 @@ import { Fragment, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import logo from "../assets/images/ByCycle_logo_definitivo.png";
+import logoBlack from "../assets/images/ByCycle_logo_definitivo.png";
+import logoWhite from "../assets/images/ByCycle_logo_definitivo_white.png";
+
 import imageProfileCustom from "../assets/images/profile-user-icon-2048x2048-m41rxkoe.png";
 
 // Sample data for user and navigation
@@ -62,7 +64,7 @@ export default function Example() {
           {({ open }) => (
             <>
               {/* Header */}
-              <div className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${location.pathname === "/" && "bg-transparent blur-sm text-white"}`} >
+              <div className={`mx-auto  px-4 sm:px-6 lg:px-8 ${location.pathname === "/" && "bg-transparent text-white"}`} >
                 <div className="flex h-16 items-center justify-between">
                   {/* Logo */}
                   <div className="flex items-center">
@@ -70,7 +72,7 @@ export default function Example() {
                       <Link to="#">
                         <img
                           className="w-[90px] mt-[2px]"
-                          src={logo}
+                          src={location.pathname === "/" ? logoWhite : logoBlack }
                           alt="Company"
                         />
                       </Link>
