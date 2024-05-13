@@ -68,9 +68,9 @@ const Login = () => {
   }
 
   return (
-    <div className="w-full h-screen bg-white-A700_01">
+    <div className="w-full h-full bg-white-A700_01">
       <div className="h-full flex flex-col items-center justify-between gap-5 md:flex-row-reverse">
-        
+
         <div className="flex w-full flex-col gap-8 md:w-[48%]">
           <form
             onSubmit={handleSubmit}
