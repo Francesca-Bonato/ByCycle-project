@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "bootstrap": "^5.3.3",
     "mdb-react-ui-kit": "^8.0.0",
     "react-alice-carousel": "^2.9.1",
     "react-dom": "^18.2.0",
