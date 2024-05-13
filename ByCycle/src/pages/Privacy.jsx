@@ -15,6 +15,7 @@ export function Privacy() {
         accordance with this Privacy Policy. This Privacy Policy has been
         created with the help of the{" "}
         <a
+          className="underline"
           href="https://www.privacypolicies.com/privacy-policy-generator/"
           target="_blank"
         >
@@ -106,6 +107,7 @@ export function Privacy() {
           <p>
             <strong>Website</strong> refers to ByCycle, accessible from{" "}
             <a
+              className="underline"
               href="https://www.bycycle.it/"
               rel="external nofollow noopener"
               target="_blank"
@@ -199,6 +201,7 @@ export function Privacy() {
         when You go offline, while Session Cookies are deleted as soon as You
         close Your web browser. Learn more about cookies on the{" "}
         <a
+          className="underline"
           href="https://www.privacypolicies.com/blog/privacy-policy-template/#Use_Of_Cookies_Log_Files_And_Tracking"
           target="_blank"
         >

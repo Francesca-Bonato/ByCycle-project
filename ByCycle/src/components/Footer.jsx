@@ -38,7 +38,7 @@ export function Footer({ ...props }) {
               why not, even enjoy a bike ride together.
             </p>
           </div>
-          <div className="flex w-[60%] flex-wrap flex-row items-start justify-between gap-5 sm: p-5">
+          <div className="flex w-[50%] flex-wrap flex-row items-start justify-between gap-5 sm: w-[100%] p-5">
             <div className="flex flex-col gap-2">
               <Heading as="h6" className="!font-bold">
                 Company

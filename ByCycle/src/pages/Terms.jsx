@@ -31,7 +31,7 @@ export function Terms() {
         basis to resolve disputes and also limit the remedies available to you
         in the event of a dispute. These Terms of Use were created with the help
         of the{" "}
-        <a href="https://www.termsofusegenerator.net">Terms Of Use Generator</a>
+        <a className="underline" href="https://www.termsofusegenerator.net">Terms Of Use Generator</a>
         .
       </p>
 

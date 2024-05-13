@@ -13,6 +13,7 @@ export function Cookies() {
               how that information is used. This Cookies Policy has been created
               with the help of the{" "}
               <a
+                className="underline"
                 href="https://www.freeprivacypolicy.com/free-cookies-policy-generator/"
                 target="_blank"
               >
@@ -55,6 +56,7 @@ export function Cookies() {
               <li>
                 <strong>Website</strong> refers to ByCycle, accessible from{" "}
                 <a
+                  className="underline"
                   href="https://www.bycycle.it"
                   target="_blank"
                   rel="external nofollow noopener"
@@ -138,6 +140,7 @@ export function Cookies() {
                   For the Chrome web browser, please visit this page from
                   Google:{" "}
                   <a
+                    className="underline"
                     href="https://support.google.com/accounts/answer/32050"
                     target="_blank"
                     rel="external nofollow noopener"
@@ -151,6 +154,7 @@ export function Cookies() {
                   For the Internet Explorer web browser, please visit this page
                   from Microsoft:{" "}
                   <a
+                    className="underline"
                     href="http://support.microsoft.com/kb/278835"
                     target="_blank"
                     rel="external nofollow noopener"
@@ -164,6 +168,7 @@ export function Cookies() {
                   For the Firefox web browser, please visit this page from
                   Mozilla:{" "}
                   <a
+                    className="underline"
                     href="https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored"
                     target="_blank"
                     rel="external nofollow noopener"
@@ -176,6 +181,7 @@ export function Cookies() {
                 <p>
                   For the Safari web browser, please visit this page from Apple:{" "}
                   <a
+                    className="underline"
                     href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac"
                     target="_blank"
                     rel="external nofollow noopener"
@@ -193,6 +199,7 @@ export function Cookies() {
             <p>
               You can learn more about cookies:{" "}
               <a
+                className="underline"
                 href="https://www.freeprivacypolicy.com/blog/cookies/"
                 target="_blank"
               >
@@ -209,6 +216,7 @@ export function Cookies() {
               <li>
                 By visiting this page on our website:{" "}
                 <a
+                  className="underline"
                   href="https://www.bycycle.it/cookies"
                   target="_blank"
                   rel="external nofollow noopener"

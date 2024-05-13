@@ -50,8 +50,8 @@ export function Footer_CTA({ ...props }) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="footer-form rounded-full w-[100%] h-[55px] text-black p-3 sm:w-[70%]"
-                  placeholder="Email address"
+                  className="footer-form rounded-full w-[100%] h-[55px] text-black p-3 sm:w-[70%] focus:outline-none"
+                  placeholder="Insert your email here"
                 ></input>
                 <button
                   type="submit"
@@ -63,9 +63,11 @@ export function Footer_CTA({ ...props }) {
             )}
             {subscribed && <p>Thank you for subscribing!</p>}
             {isAlreadySubscribed && (
-              <p className="text-orange-400 p-5">
-                This email is already subscribed. Insert a different email !
-              </p>
+              <div className="flex justify-center translate-y-5">
+                <p className="text-orange-600 absolute">
+                  This email is already subscribed. Insert a different email !
+                </p>
+              </div>
             )}
           </div>
         </div>
