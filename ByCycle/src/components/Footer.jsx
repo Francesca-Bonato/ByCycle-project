@@ -20,15 +20,15 @@ export function Footer({ ...props }) {
     >
       <Footer_CTA />
 
-      <div className="container-xs flex flex-col gap-7 sm: px-5 ">
-        <div className="flex items-start md:flex-col ">
-          <div className="flex flex-1 flex-col items-start text-justify gap-[11px] px-5 pt-5 md:self-stretch">
+      <div className="container-xs flex flex-row gap-7 sm:px-5 xl:text-2xl ">
+        <div className="flex items-start flex-col sm:flex-row">
+          <div className="flex flex-1 flex-col items-start text-justify gap-[11px] px-5 pt-5 md:self-stretch ">
             <Img
               src="assets/images/img_footer_logo.png"
               alt="footer logo"
               className="h-[45px] w-[169px] object-contain"
             />
-            <p as="p" className="w-[69%] leading-[150%] md:w-full">
+            <p as="p" className="w-full leading-[150%] md:w-full">
               We value greatly that our community can have a place to share
               their common passion and provide more information on cycling
               routes that bring more excitement and safety during the journey.
@@ -38,7 +38,7 @@ export function Footer({ ...props }) {
               why not, even enjoy a bike ride together.
             </p>
           </div>
-          <div className="flex w-[49%] items-start justify-between gap-5 md:w-full sm:flex-col p-5">
+          <div className="flex w-[60%] flex-wrap flex-row items-start justify-between gap-5 sm: p-5">
             <div className="flex flex-col gap-2">
               <Heading as="h6" className="!font-bold">
                 Company
@@ -138,9 +138,9 @@ export function Footer({ ...props }) {
             </div>
           </div>
         </div>
-        <div className="h-px bg-gray-200" />
       </div>
-
+      
+      <div className="h-px bg-gray-200" />
       <div className="container-xs flex items-center justify-between gap-5 p-5">
         <p size="md" as="p">
           Social Media
