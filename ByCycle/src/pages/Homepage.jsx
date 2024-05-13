@@ -5,7 +5,7 @@ import image_two from "../assets/images/img_homepage/img_triathlon_male.png";
 import image_three from "../assets/images/img_homepage/img_rectangle_7_1.png";
 import image_four from "../assets/images/img_homepage/img_rectangle_7_410x427.png";
 import image_five from "../assets/images/img_homepage/img_rectangle_7_2.png";
-import img_logo from "../assets/images/ByCycle logo definitivo.png";
+import img_logo from "../assets/images/ByCycle_logo_definitivo_white.png";
 import { Link } from "react-router-dom";
 import Slider from "../components/Slider";
 import Parallax from "../components/ParallaxComponent";
