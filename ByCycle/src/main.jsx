@@ -4,9 +4,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/Root";
 import Community from "./pages/Community";
 import BikeTrails from "./pages/BikeTrails";
-import NewsPage from "./pages/NewsPage";
+import NewsPage from "./pages/Newspage";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
+import Questionnaire from "./pages/Questionnaire";
 
 const router = createBrowserRouter([
   {
@@ -14,10 +15,11 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       { path: "/", element: <Homepage /> },
-      { path: "/community", element: <Community/> },
-      { path: "/trails", element: <BikeTrails/> },
+      { path: "/community", element: <Community /> },
+      { path: "/trails", element: <BikeTrails /> },
       { path: "/news", element: <NewsPage /> },
       { path: "/login", element: <Login /> },
+      { path: "/quiz", element: <Questionnaire /> },
     ],
   },
 ]);
