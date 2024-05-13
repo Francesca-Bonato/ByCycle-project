@@ -104,14 +104,14 @@ export function Footer({ ...props }) {
                   </Link>
                 </li>
                 <li className="hover:underline">
-                  <a href="#">
+                <Link to="/terms" onClick={handleClick}>
                     <p as="p">Terms of Use</p>
-                  </a>
+                  </Link>
                 </li>
                 <li className="hover:underline">
-                  <a href="Cookies" target="_blank" rel="noreferrer">
+                <Link to="/cookies" onClick={handleClick}>
                     <p as="p">Cookies</p>
-                  </a>
+                  </Link>
                 </li>
                 <li className="hover:underline">
                   <a href="Sitemap" target="_blank" rel="noreferrer">
