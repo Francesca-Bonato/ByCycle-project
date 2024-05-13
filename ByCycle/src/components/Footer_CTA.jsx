@@ -30,7 +30,7 @@ export function Footer_CTA({ ...props }) {
       className={`${props.className} flex justify-center items-center text-center h-[400px] w-full md:h-[400px] pt-[195px] pb-[194px] md:py-5 bg-[url(/public/assets/images/img_cta.png)] bg-cover bg-no-repeat text-slate-50`}
     >
       <div className="max-w-[1328px] mx-auto flex w-full justify-end px-10 md:p-5 xl:text-2xl">
-        <div className="w-[100%] justify-center align-center flex flex-col gap-8 md:w-full">
+        <div className="w-[100%] justify-center flex flex-col gap-8 md:w-full">
           <div className="flex flex-col gap-6">
             <p as="p" className="leading-[125%] ">
               Do you want to stay updated on the latest community news?
@@ -62,7 +62,7 @@ export function Footer_CTA({ ...props }) {
               </form>
             )}
             {subscribed && <p>Thank you for subscribing!</p>}
-            {isAlreadySubscribed && <p className="text-orange-400">This email is already subscribed. Insert a different email !</p>}
+            {isAlreadySubscribed && <p className="text-orange-400 p-5">This email is already subscribed. Insert a different email !</p>}
           </div>
         </div>
       </div>

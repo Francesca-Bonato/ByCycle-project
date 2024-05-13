@@ -16,13 +16,13 @@ export function Footer({ ...props }) {
   return (
     <footer
       {...props}
-      className={`${props.className} flex flex-col items-center w-full pt-14 pb-[22px] md:pt-5 sm: sm:py-5 bg-white-A700`}
+      className={`${props.className} flex flex-col items-center w-full box-border`}
     >
       <Footer_CTA />
 
-      <div className="container-xs flex flex-row gap-7 sm:px-5 xl:text-2xl ">
+      <div className="container-xs flex flex-row gap-7 sm:px-5 xl:text-2xl">
         <div className="flex items-start flex-col sm:flex-row">
-          <div className="flex flex-1 flex-col items-start text-justify gap-[11px] px-5 pt-5 md:self-stretch ">
+          <div className="flex flex-1 flex-col items-start text-justify gap-[11px] p-5 md:self-stretch ">
             <Img
               src="assets/images/img_footer_logo.png"
               alt="footer logo"
@@ -139,8 +139,7 @@ export function Footer({ ...props }) {
           </div>
         </div>
       </div>
-      
-      <div className="h-px bg-gray-200" />
+      <hr className="w-full h-px bg-gray-200 border-0" />
       <div className="container-xs flex items-center justify-between gap-5 p-5">
         <p size="md" as="p">
           Social Media
@@ -154,7 +153,7 @@ export function Footer({ ...props }) {
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
-            className="w-[32px] !rounded-[16px] bg-zinc-700 hover:bg-black-900"
+            className="w-[32px] !rounded-[16px] bg-zinc-700 hover:bg-black"
           >
             <Img src="assets/images/img_x.svg" />
           </Footer_SocialBTN>
@@ -178,10 +177,9 @@ export function Footer({ ...props }) {
           </Footer_SocialBTN>
         </div>
       </div>
-
-      <div className="container-xs flex flex-col w-full gap-[40px] md:px-5 sm:gap-[27px]">
-        <div className="h-px bg-gray-200 " />
-        <div className="flex items-start md:flex-col">
+      <hr className="w-full h-px bg-gray-200 border-0" />
+      <div className="container-xs flex items-center w-full md:px-5 sm:gap-[27px]">
+        <div className="flex items-start p-5 md:flex-col">
           <p size="xs" as="p">
             {`© ${year} ByCycle All right reserved.`}
           </p>
