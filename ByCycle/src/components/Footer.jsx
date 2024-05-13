@@ -126,7 +126,7 @@ export function Footer({ ...props }) {
               </Heading>
               <ul className="flex flex-col items-start gap-[9px]">
                 <li>
-                  <p as="p">Via Thailandia 6, Roma 00100 RM </p>
+                  <p as="p">Via Thailandia 6, Milano 20121 MI </p>
                 </li>
                 <li>
                   <p as="p">bycyclewebapp@email.it</p>
