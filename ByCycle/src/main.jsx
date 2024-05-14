@@ -8,6 +8,7 @@ import Newspage from "./pages/Newspage";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Questionnaire from "./pages/Questionnaire";
+import ContactUs from "./pages/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: "/news", element: <Newspage /> },
       { path: "/login", element: <Login /> },
       { path: "/quiz", element: <Questionnaire /> },
+      { path: "/contacts", element: <ContactUs /> },
     ],
   },
 ]);
