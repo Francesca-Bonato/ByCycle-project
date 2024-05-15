@@ -142,7 +142,7 @@ export default function Slider() {
       >
         <div>
           {sliders.map((slide) => (
-            <SwiperSlide>
+            <SwiperSlide key={slide.id}>
               <div className="max-w-sm rounded overflow-hidden shadow-lg transition-all hover:translate-y-[-1.25rem]">
                 <div className="h-[256px]">
                   <img

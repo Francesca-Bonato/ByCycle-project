@@ -57,7 +57,7 @@ export function NavBar() {
   return (
     <>
       {/* All Container */}
-      <div className="min-h-full">
+      <div className=" w-full sticky top-0 z-[999] bg-white shadow-lg">
         {/* Disclosure component to handle menu visibility */}
         <Disclosure as="nav">
           {({ open }) => (
@@ -82,7 +82,7 @@ export function NavBar() {
                     </div>
                     {/* Desktop Navigation */}
                     <div className="hidden md:block">
-                      <div className="ml-10 flex items-baseline space-x-4">
+                      <div className="ml-10 flex items-baseline space-x-4 ">
                         {navigation.map((item) => (
                           <Link
                             key={item.name}

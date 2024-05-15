@@ -53,11 +53,7 @@ export default function ParallaxComponent() {
               <p className="bubble left break-words">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
                 dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-                laoreet justo vitae porttitor porttitor. Suspendisse in sem
-                justo. Integer laoreet magna nec elit suscipit, ac laoreet nibh
-                euismod. Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
-                ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
-                tincidunt ut libero. Aenean feugiat non eros quis feugiat.
+                
               </p>
               <Link to="/quiz_two">
                 <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  mt-10 border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">

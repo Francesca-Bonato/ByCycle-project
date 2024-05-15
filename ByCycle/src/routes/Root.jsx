@@ -5,11 +5,11 @@ import NavBar from "../components/NavBar";
 function Root() {
   return (
     <div>
-      <NavBar/>
-      <Outlet/>
-      <Footer/>
+      <NavBar />
+      <Outlet />
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default Root
+export default Root;
