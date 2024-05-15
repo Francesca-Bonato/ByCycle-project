@@ -7,18 +7,18 @@ export function Footer_CTA({ ...props }) {
   const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
-    const storedEmail = localStorage.getItem(`${email}`);
+    const storedEmail = localStorage.getItem(email);
     setIsAlreadySubscribed(!!storedEmail);
   }, [email]);
 
   function handleNewsletterSubmit(e) {
     e.preventDefault();
-    const storedEmail = localStorage.getItem(`${email}`);
+    const storedEmail = localStorage.getItem(email);
 
     if (storedEmail) {
       setIsAlreadySubscribed(true);
     } else {
-      localStorage.setItem(`${email}`, "subscribed");
+      localStorage.setItem(email, "subscribed");
       setSubscribed(true);
       setIsAlreadySubscribed(false);
     }
