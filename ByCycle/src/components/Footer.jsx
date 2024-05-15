@@ -34,8 +34,8 @@ export function Footer({ ...props }) {
               routes that bring more excitement and safety during the journey.
               Our team regularly commits to sharing updates regarding the world
               of bike lovers. Our common goal is to ensure that our community
-              finds a place to share passions, information, experiences and,
-              why not, even enjoy a bike ride together.
+              finds a place to share passions, information, experiences and, why
+              not, even enjoy a bike ride together.
             </p>
           </div>
           <div className="flex w-[50%] flex-wrap flex-row items-start justify-between gap-5 sm: w-[100%] p-5">
@@ -104,12 +104,12 @@ export function Footer({ ...props }) {
                   </Link>
                 </li>
                 <li className="hover:underline">
-                <Link to="/terms" onClick={handleClick}>
+                  <Link to="/terms" onClick={handleClick}>
                     <p as="p">Terms of Use</p>
                   </Link>
                 </li>
                 <li className="hover:underline">
-                <Link to="/cookies" onClick={handleClick}>
+                  <Link to="/cookies" onClick={handleClick}>
                     <p as="p">Cookies</p>
                   </Link>
                 </li>
@@ -129,7 +129,9 @@ export function Footer({ ...props }) {
                   <p as="p">Via Thailandia 6, Milano 20121 MI </p>
                 </li>
                 <li>
-                  <p as="p">bycyclewebapp@email.it</p>
+                  <a className="hover:underline" href="mailto:bycyclewebapp@email.it">
+                    bycyclewebapp@email.it
+                  </a>
                 </li>
                 <li>
                   <p as="p">+39 333 4445555</p>
