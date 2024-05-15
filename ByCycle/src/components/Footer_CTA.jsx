@@ -61,11 +61,11 @@ export function Footer_CTA({ ...props }) {
                 </button>
               </form>
             )}
-            {subscribed && <p>Thank you for subscribing!</p>}
+            {subscribed && <p className="font-medium">Thank you for subscribing to our newsletter!</p>}
             {isAlreadySubscribed && (
               <div className="flex justify-center translate-y-5">
                 <p className="text-orange-600 absolute">
-                  This email is already subscribed. Insert a different email !
+                  This email is already subscribed. Please insert a different email !
                 </p>
               </div>
             )}

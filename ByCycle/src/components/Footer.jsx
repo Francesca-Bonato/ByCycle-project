@@ -34,7 +34,7 @@ export function Footer({ ...props }) {
               routes that bring more excitement and safety during the journey.
               Our team regularly commits to sharing updates regarding the world
               of bike lovers. Our common goal is to ensure that our community
-              finds a place to share passions, information, experiences, and,
+              finds a place to share passions, information, experiences and,
               why not, even enjoy a bike ride together.
             </p>
           </div>
@@ -59,11 +59,11 @@ export function Footer({ ...props }) {
                     <p as="p">Community</p>
                   </Link>
                 </li>
-                <li className="hover:underline">
+                {/* <li className="hover:underline">
                   <a href="Contact" target="_blank" rel="noreferrer">
                     <p as="p">Contact</p>
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="flex flex-col gap-2">
@@ -76,11 +76,11 @@ export function Footer({ ...props }) {
                     <p as="p">News</p>
                   </Link>
                 </li>
-                <li className="hover:underline">
+                {/* <li className="hover:underline">
                   <a href="Newsletter" target="_blank" rel="noreferrer">
                     <p as="p">Newsletter</p>
                   </a>
-                </li>
+                </li> */}
                 <li className="hover:underline">
                   <a href="Careers" target="_blank" rel="noreferrer">
                     <p as="p">Careers</p>
@@ -113,11 +113,11 @@ export function Footer({ ...props }) {
                     <p as="p">Cookies</p>
                   </Link>
                 </li>
-                <li className="hover:underline">
+                {/* <li className="hover:underline">
                   <a href="Sitemap" target="_blank" rel="noreferrer">
                     <p as="p">Sitemap</p>
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="flex flex-col items-start gap-2">
@@ -167,13 +167,13 @@ export function Footer({ ...props }) {
             shape="circle"
             className="w-[32px] !rounded-[16px] bg-zinc-700 hover:bg-blue-600"
           >
-            <Img src="assets/images/img_link.svg" />
+            <Img src="assets/images/img_linkedin.svg" />
           </Footer_SocialBTN>
           <Footer_SocialBTN
             shape="circle"
             className="w-[32px] !rounded-[16px] bg-zinc-700 hover:bg-red-700 "
           >
-            <Img src="assets/images/img_warning.svg" />
+            <Img src="assets/images/img_yt.svg" />
           </Footer_SocialBTN>
         </div>
       </div>
