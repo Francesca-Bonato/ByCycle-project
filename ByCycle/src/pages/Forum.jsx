@@ -1,242 +1,173 @@
-import { useState } from "react";
 
-// Array iniziale di commenti
-let initialDataComment = [
-  {
-    name: "John Doe",
-    date: "April 17, 2023",
-    title: "Title simple 1",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tenetur, suscipit sunt odit similique incidunt modi ratione sapiente, mollitia laudantium debitis molestiae quis voluptate inventore non libero iure eos quibusdam?",
-  },
-  {
-    name: "John Doe",
-    date: "April 17, 2023",
-    title: "Title simple 2",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tenetur, suscipit sunt odit similique incidunt modi ratione sapiente, mollitia laudantium debitis molestiae quis voluptate inventore non libero iure eos quibusdam?",
-  },
-  {
-    name: "John Doe",
-    date: "April 17, 2023",
-    title: "Title simple 3",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tenetur, suscipit sunt odit similique incidunt modi ratione sapiente, mollitia laudantium debitis molestiae quis voluptate inventore non libero iure eos quibusdam?",
-  },
-];
+import { useState } from 'react';
 
-// Definizione del componente Forum
-function Forum() {
-  // Utilizzo dello useState per gestire lo stato dei commenti e del nuovo commento
-  const [dataComment, setDataComment] = useState(initialDataComment);
-  const [newComment, setNewComment] = useState({
-    name: "",
-    title: "",
-    comment: "",
-  });
-
-  // Stato per l'indice del commento in modifica (-1 se nessuna modifica in corso)
-  const [editIndex, setEditIndex] = useState(-1);
-
-  // Funzione per gestire il cambio di valore negli input del form
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    // Aggiornamento dello stato del nuovo commento con il valore dell'input corrente
-    setNewComment((prevComment) => ({
-      ...prevComment,
-      [name]: value,
-    }));
-  };
-
-  // Funzione per gestire l'aggiunta o modifica di un commento
-  const handleAddComment = (e) => {
-    e.preventDefault();
-    // Verifica che i campi name, title e comment siano stati compilati
-    if (newComment.name && newComment.title && newComment.comment) {
-      // Ottieni la data corrente formattata come stringa
-      const currentDate = new Date().toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
-
-      if (editIndex !== -1) {
-        // Se è in corso la modifica di un commento esistente
-        const updatedComments = dataComment.map((comment, index) =>
-          index === editIndex
-            ? {
-                name: newComment.name,
-                date: currentDate,
-                title: newComment.title,
-                comment: newComment.comment,
-              }
-            : comment
-        );
-
-        // Aggiorna lo stato dei commenti con il commento modificato
-        setDataComment(updatedComments);
-
-        // Reset dell'indice di modifica
-        setEditIndex(-1);
-      } else {
-        // Se si sta aggiungendo un nuovo commento
-        const updatedComments = [
-          {
-            name: newComment.name,
-            date: currentDate,
-            title: newComment.title,
-            comment: newComment.comment,
+const Forum = () => {
+  const [topics, setTopics] = useState([
+    {
+      id: 1,
+      title: 'Discussione su React Hooks',
+      description: 'Discussione su come utilizzare useState e useEffect.',
+      author: {
+        name: 'Mario Rossi',
+        profilePic: 'https://example.com/profile-pic.jpg',
+      },
+      replies: [
+        {
+          id: 1,
+          text: 'Grazie per la discussione! Molto utile.',
+          author: {
+            name: 'Luigi Verdi',
+            profilePic: 'https://example.com/profile-pic-2.jpg',
           },
-          ...dataComment, // Aggiungi i commenti esistenti dopo il nuovo commento
-        ];
-        setDataComment(updatedComments); // Aggiorna lo stato dei commenti
+        },
+        // Puoi aggiungere altri commenti qui
+      ],
+    },
+    // Puoi aggiungere altri argomenti qui
+  ]);
+
+  const [newTopicTitle, setNewTopicTitle] = useState('');
+  const [newTopicDescription, setNewTopicDescription] = useState('');
+  const [replyText, setReplyText] = useState('');
+  const [activeTopicId, setActiveTopicId] = useState(null); // ID dell'argomento attivo per rispondere
+
+  const handleAddTopic = () => {
+    if (newTopicTitle.trim() === '' || newTopicDescription.trim() === '') {
+      alert('Inserisci un titolo e una descrizione per il nuovo argomento.');
+      return;
+    }
+
+    const newTopic = {
+      id: topics.length + 1,
+      title: newTopicTitle,
+      description: newTopicDescription,
+      author: {
+        name: 'Nome Utente',
+        profilePic: 'https://example.com/default-profile-pic.jpg',
+      },
+      replies: [],
+    };
+
+    setTopics([...topics, newTopic]);
+    setNewTopicTitle('');
+    setNewTopicDescription('');
+  };
+
+  const handleAddReply = (topicId) => {
+    if (replyText.trim() === '') {
+      alert('Inserisci una risposta.');
+      return;
+    }
+
+    const updatedTopics = topics.map((topic) => {
+      if (topic.id === topicId) {
+        const newReply = {
+          id: topic.replies.length + 1,
+          text: replyText,
+          author: {
+            name: 'Nome Utente',
+            profilePic: 'https://example.com/default-profile-pic.jpg',
+          },
+        };
+        return { ...topic, replies: [...topic.replies, newReply] };
       }
-      // Reset dello stato del nuovo commento dopo l'aggiunta/modifica
-      setNewComment({ name: "", title: "", comment: "" });
-    }
-  };
-
-  // Funzione per gestire l'eliminazione di un commento
-  const handleDelete = (index) => {
-    // Filtra i commenti per rimuovere il commento con l'indice specificato
-    const updatedComments = dataComment.filter((comment, i) => i !== index);
-    // Aggiorna lo stato dei commenti con i commenti filtrati
-    setDataComment(updatedComments);
-    // Reset dell'indice di modifica se stiamo eliminando il commento attualmente in modifica
-    if (index === editIndex) {
-      setEditIndex(-1); // Reset dell'indice di modifica
-    }
-  };
-
-  // Funzione per gestire l'inizio della modifica di un commento esistente
-  const handleEdit = (index) => {
-    const commentToEdit = dataComment[index];
-    // Imposta lo stato del nuovo commento con i dati del commento selezionato per la modifica
-    setNewComment({
-      name: commentToEdit.name,
-      title: commentToEdit.title,
-      comment: commentToEdit.comment,
+      return topic;
     });
-    setEditIndex(index); // Imposta l'indice di modifica
+
+    setTopics(updatedTopics);
+    setReplyText('');
+    setActiveTopicId(null); // Resetta l'argomento attivo dopo aver inviato la risposta
   };
 
-  // Rendering del componente Forum
   return (
-    <div>
-      <div className="bg-gray-100 p-6">
-        <h2 className="text-lg font-bold mb-4">DISCUSSION</h2>
-        <div className="flex flex-col space-y-4">
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-4">Forum di Discussione</h1>
 
-          {/* Sezione del form per aggiungere/modificare un commento */}
-          <form
-            className="bg-white p-4 rounded-lg shadow-md"
-            onSubmit={handleAddComment}
-          >
+      {/* Form per aggiungere un nuovo argomento */}
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleAddTopic();
+        }}
+        className="mb-4"
+      >
+        <input
+          type="text"
+          placeholder="Titolo"
+          value={newTopicTitle}
+          onChange={(e) => setNewTopicTitle(e.target.value)}
+          className="w-full border p-2 mb-2"
+        />
+        <textarea
+          placeholder="Descrizione"
+          value={newTopicDescription}
+          onChange={(e) => setNewTopicDescription(e.target.value)}
+          className="w-full border p-2 mb-2"
+        />
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+        >
+          Aggiungi Nuovo Argomento
+        </button>
+      </form>
 
-            {/* Titolo del form in base all'azione (aggiunta/modifica) */}
-            <h3 className="text-lg font-bold mb-2">
-              {editIndex === -1 ? "Add a comment" : "Edit comment"}
-            </h3>
-
-            {/* Input per il nome dell'autore del commento */}
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 font-bold mb-2"
-                htmlFor="name"
-              >
-                Name
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="name"
-                name="name"
-                type="text"
-                value={newComment.name}
-                onChange={handleInputChange}
-                placeholder="Enter your name"
-              />
-            </div>
-
-            {/* Input per il titolo del commento */}
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 font-bold mb-2"
-                htmlFor="title"
-              >
-                Title
-              </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="title"
-                name="title"
-                type="text"
-                value={newComment.title}
-                onChange={handleInputChange}
-                placeholder="Enter your title"
-              />
-            </div>
-
-            {/* Area di testo per il corpo del commento */}
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 font-bold mb-2"
-                htmlFor="comment"
-              >
-                Comment
-              </label>
-              <textarea
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="comment"
-                name="comment"
-                rows="3"
-                value={newComment.comment}
-                onChange={handleInputChange}
-                placeholder="Enter your comment"
-              ></textarea>
-            </div>
-
-            {/* Pulsante per inviare il commento o salvare le modifiche */}
-            <button
-              className="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
+      {/* Lista degli argomenti */}
+      {topics.map((topic) => (
+        <div key={topic.id} className="border p-4 mb-4 rounded-lg">
+          <h3 className="text-xl font-semibold mb-2">{topic.title}</h3>
+          <p className="text-gray-600 mb-2">{topic.description}</p>
+          <p className="text-sm text-gray-500">Creato da: {topic.author.name}</p>
+          
+          {/* Form per aggiungere una risposta */}
+          {activeTopicId === topic.id && (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleAddReply(topic.id);
+              }}
+              className="mb-2"
             >
-              {editIndex === -1 ? "Submit" : "Save Changes"}
-            </button>
-          </form>
+              <textarea
+                placeholder="Scrivi una risposta..."
+                value={replyText}
+                onChange={(e) => setReplyText(e.target.value)}
+                className="w-full border p-2 mb-2"
+              />
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+              >
+                Invia Risposta
+              </button>
+            </form>
+          )}
 
-          {/* Sezione per visualizzare i commenti esistenti */}
-          {dataComment.map((com, index) => (
-            <div key={index} className="bg-white p-4 rounded-lg shadow-md">
-              <h3 className="text-lg font-bold">{com.name}</h3>
-              <p className="text-gray-700 text-sm mb-2">{com.date}</p>
-              <span className="font-bold">{com.title}</span>
-              <p className="text-gray-700">{com.comment}</p>
-              
-              {/* Pulsanti per eliminare e modificare il commento */}
-              <div className="flex justify-end mt-2">
-                {/* Pulsante per eliminare il commento */}
-                <button
-                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2 focus:outline-none focus:shadow-outline"
-                  onClick={() => handleDelete(index)}
-                >
-                  Delete
-                </button>
+          {/* Pulsante per visualizzare i commenti */}
+          <button
+            onClick={() => setActiveTopicId(topic.id)}
+            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-1 px-2 rounded mt-2"
+          >
+            {activeTopicId === topic.id ? 'Nascondi Commenti' : 'Visualizza Commenti'}
+          </button>
 
-                {/* Pulsante per modificare il commento */}
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  onClick={() => handleEdit(index)}
-                >
-                  Edit
-                </button>
-              </div>
+          {/* Elenco delle risposte */}
+          {activeTopicId === topic.id && topic.replies.length > 0 && (
+            <div className="mt-4">
+              <h4 className="font-semibold mb-2">Risposte:</h4>
+              {topic.replies.map((reply) => (
+                <div key={reply.id} className="border p-2 rounded">
+                  <p>{reply.text}</p>
+                  <p className="text-sm text-gray-500">Da: {reply.author.name}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
-      </div>
+      ))}
     </div>
   );
-}
+};
 
-// Esporta il componente Forum
 export default Forum;
+
