@@ -7,7 +7,7 @@ import BikeTrails from "./pages/BikeTrails";
 import Newspage from "./pages/Newspage";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
-import Questionnaire from "./pages/Questionnaire";
+import Quiz1 from "./pages/quiz/Quiz1";
 import ContactUs from "./pages/ContactUs";
 
 const router = createBrowserRouter([
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
       { path: "/trails", element: <BikeTrails /> },
       { path: "/news", element: <Newspage /> },
       { path: "/login", element: <Login /> },
-      { path: "/quiz", element: <Questionnaire /> },
+      { path: "/quiz", element: <Quiz1 /> },
       { path: "/contacts", element: <ContactUs /> },
     ],
   },
