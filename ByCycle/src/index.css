@@ -111,7 +111,7 @@ a {
 }
 
 /* Lines of the Toggler */
-.toggler-icon{
+.toggler-icon {
   width: 30px;
   height: 3px;
   background-color: #e74c3c;
@@ -120,7 +120,7 @@ a {
 }
 
 /* Adds Space between the lines */
-.middle-bar{
+.middle-bar {
   margin: 5px auto;
 }
 
@@ -161,12 +161,7 @@ a {
   background-color: #777777;
 }
 
-
-
 /* NavBar CSS media query */
-
-
-
 
 /* -------------------------------------------------------------------------------- */
 
@@ -186,9 +181,8 @@ a {
   padding: 10px;
   border-inline: var(--t) solid #0000;
   border-radius: calc(var(--r) + var(--t)) / var(--r);
-  mask:
-    radial-gradient(100% 100% at var(--_p) 0, #0000 99%, #000 102%) var(--_p)
-      100% / var(--t) var(--t) no-repeat,
+  mask: radial-gradient(100% 100% at var(--_p) 0, #0000 99%, #000 102%)
+      var(--_p) 100% / var(--t) var(--t) no-repeat,
     linear-gradient(#000 0 0) padding-box;
   background: #232323 border-box;
   color: #fff;
@@ -286,5 +280,15 @@ a {
 /* Questionnaire CSS  */
 
 /* Questionnaire CSS media query */
+
+/* -------------------------------------------------------------------------------- */
+
+/* Quiz css */
+.container-image-quiz {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.664) 0%, rgba(33, 32, 32, 0.829) 100%), url(./assets/images/giphy.gif)  center center;
+  background-position: center;
+  height: 100vh;
+}
+
 
 /* -------------------------------------------------------------------------------- */

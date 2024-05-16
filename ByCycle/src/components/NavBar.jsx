@@ -57,7 +57,7 @@ export function NavBar() {
   return (
     <>
       {/* All Container */}
-      <div className="min-h-full">
+      <div className="min-h-full relative z-[99999999]">
         {/* Disclosure component to handle menu visibility */}
         <Disclosure as="nav">
           {({ open }) => (

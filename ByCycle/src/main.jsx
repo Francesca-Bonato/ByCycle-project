@@ -9,6 +9,9 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Quiz1 from "./pages/quiz/Quiz1";
 import ContactUs from "./pages/ContactUs";
+import Questionnaire from "./pages/Questionnaire";
+import Quiz2 from "./pages/quiz/Quiz2";
+import Quiz3 from "./pages/quiz/Quiz3";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +23,11 @@ const router = createBrowserRouter([
       { path: "/trails", element: <BikeTrails /> },
       { path: "/news", element: <Newspage /> },
       { path: "/login", element: <Login /> },
-      { path: "/quiz", element: <Quiz1 /> },
+      { path: "/quiz", element: <Questionnaire /> },
       { path: "/contacts", element: <ContactUs /> },
+      { path: "/quiz1", element: <Quiz1 /> },
+      { path: "/quiz2", element: <Quiz2 /> },
+      { path: "/quiz3", element: <Quiz3 /> },
     ],
   },
 ]);

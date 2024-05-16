@@ -50,7 +50,7 @@ const questions = [
     punteggio: 8,
   },
 ];
-const Quiz1 = () => {
+const Quiz2 = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [point, setPoint] = useState(0);
@@ -96,4 +96,4 @@ const Quiz1 = () => {
   );
 };
 
-export default Quiz1;
+export default Quiz2;

@@ -1,4 +1,4 @@
-import React from "react";
+
 import video_jumbotrom from "../assets/video/bg-jumbotron.mp4";
 import image_one from "../assets/images/img_homepage/img_rectangle_7.png";
 import image_two from "../assets/images/img_homepage/img_triathlon_male.png";
