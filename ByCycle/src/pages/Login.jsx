@@ -5,7 +5,7 @@ import { Button } from "../components/Button";
 
 const Login = () => {
   const [data, setData] = useState({
-    email: "",
+    usermail: "",
     password: "",
   });
 
@@ -32,7 +32,7 @@ const Login = () => {
             firstname: "Emanuele",
             lastname: "Avitabile",
             ruolo: "Admin",
-            email: "emanuele@gmail.com",
+            usermail: "emanuele@gmail.com",
           };
 
           const token =
@@ -70,23 +70,24 @@ const Login = () => {
   return (
     <div className="w-full h-full bg-white-A700_01">
       <div className="h-full flex flex-col items-center justify-between gap-5 md:flex-row-reverse">
-
         <div className="flex w-full flex-col gap-8 md:w-[48%]">
           <form
             onSubmit={handleSubmit}
             className="flex flex-col gap-[31px] self-stretch m-4"
           >
-             <h1 className=" text-center font-semibold md:text-2xl md:text-start">Log in to start your journey...</h1>
+            <h1 className=" text-center font-semibold md:text-2xl md:text-start">
+              Log in to start your journey...
+            </h1>
             <div className="flex flex-col items-start gap-3.5">
               <label htmlFor="usermail" className="font-semibold">
                 E-mail
               </label>
               <input
                 className="w-full p-[10px] border border-gray-300 rounded-3xl"
-                type="text"
+                type="email"
                 name="usermail"
                 id="usermail"
-                value={data.useremail}
+                value={data.usermail}
                 onChange={handleChange}
               />
             </div>
@@ -96,7 +97,7 @@ const Login = () => {
               </label>
               <input
                 className="w-full p-[10px] border border-gray-300 rounded-3xl"
-                type="text"
+                type="password"
                 name="password"
                 value={data.password}
                 onChange={handleChange}
