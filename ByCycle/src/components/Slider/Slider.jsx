@@ -113,6 +113,10 @@ export default function Slider() {
   return (
     <>
       <Swiper
+      style={{
+        paddingLeft: "4rem",
+        paddingRight: "4rem",
+      }}
         slidesPerView={1}
         spaceBetween={10}
         effect={"cube"}

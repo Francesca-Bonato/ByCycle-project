@@ -7,7 +7,7 @@ import image_four from "../assets/images/img_homepage/img_rectangle_7_410x427.pn
 import image_five from "../assets/images/img_homepage/img_rectangle_7_2.png";
 import img_logo from "../assets/images/ByCycle_logo_definitivo_white.png";
 import { Link } from "react-router-dom";
-import Slider from "../components/Slider";
+import Slider from "../components/Slider/Slider";
 import Parallax from "../components/ParallaxComponent";
 import animation_logo from "../assets/images/ByCycle logo ridotto.png";
 

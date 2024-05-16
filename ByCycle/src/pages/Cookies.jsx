@@ -1,9 +1,9 @@
 export function Cookies() {
   return (
     <>
-      <div class="container-fluid flex-row tracking-widest p-10">
-        <div class="container">
-          <div id="en" class="tab-content translations-content-item en visible">
+      <div className="container-fluid flex-row tracking-widest p-10">
+        <div className="container">
+          <div id="en" className="tab-content translations-content-item en visible">
             <h1 className="font-bold">Cookies Policy</h1>
             <p>Last updated: May 13, 2024</p>
             <p>
