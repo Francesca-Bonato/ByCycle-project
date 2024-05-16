@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "./parallax.css"
 
 // import required modules
 import { Parallax, Pagination, Navigation } from "swiper/modules";
@@ -19,6 +20,7 @@ export default function ParallaxComponent() {
           "--swiper-navigation-color": "#fff",
           "--swiper-pagination-color": "#fff",
           height: "800px",
+          marginBottom: "8%",
         }}
         speed={1200}
         parallax={true}
@@ -30,8 +32,6 @@ export default function ParallaxComponent() {
         navigation={true}
         modules={[Parallax, Pagination, Navigation]}
       >
-        
-
         <SwiperSlide>
           <div className="text-left flex flex-col gap-5 h-full bg-[url(https://fiabitalia.it/wp-content/uploads/2021/06/FIAB_Cicloturismo_2-copia-scaled.jpg)] bg-center bg-contein bg-no-repeat  text-white p-5">
             <div
@@ -53,7 +53,6 @@ export default function ParallaxComponent() {
               <p className="bubble left break-words">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
                 dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-                
               </p>
               <Link to="/quiz_two">
                 <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  mt-10 border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">

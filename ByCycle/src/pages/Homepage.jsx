@@ -27,99 +27,109 @@ function Homepage() {
         <div className="text-jumbotron absolute top-0 left-0 flex items-center justify-center w-full h-full">
           <div className="flex flex-col items-center justify-center">
             <img src={img_logo} alt="ByCycle logo" width={"500px"} />
-            <p className="w-full text-center leading-[150%] pl-6 pr-6 text-white lg:p-0">
-              Welcome to <strong>ByCycle</strong>,are you a cycling enthusiast
-              looking for advice, support, and camaraderie? <br /> Then you're
-              in the right place! Our forum is a vibrant and friendly community{" "}
-              <br /> open to cyclists of all levels, from beginners to
-              professionals.
+            <p className="max-w-[700px] w-full text-center leading-[150%] pl-6 pr-6 text-white lg:p-0">
+              Welcome to <strong>ByCycle</strong>! <br /> If you&apos;re
+              passionate about cycling and seeking advice, support, and a sense
+              of community, you&apos;ve come to the right place.
+              <br /> Our forum is a friendly community open to cyclists of all
+              levels, from beginners to professionals.
             </p>
             <Link to={"/community"}>
               <button className="bg-white mt-10 pt-3 pb-3 pl-8 pr-8 rounded-[40px] font-bold  border transition hover:border-solid hover:border-white hover:bg-[#232323] hover:text-white">
-                Explore Community
+                Explore Our Community
               </button>
             </Link>
           </div>
         </div>
       </div>
-      {/* about section */}
-      <div className="container-xs flex items-center justify-center gap-5 flex-col md:p-0">
-        <div className="flex items-center justify-center gap-10 pt-20 mb-[60px] pl-5 pr-5 flex-wrap lg:flex-nowrap">
-          <div className="flex flex-col items-center justify-center gap-10 break-words w-full lg:w-[35%]">
-            <p className="w-full text-center lg:text-left">
-              What is ByCycle?{" "}
+      {/* About Us section */}
+      <div className="container-xs flex items-center justify-center flex-col pt-16 px-5 md:px-10 lg:px-16">
+        <div className="flex items-center justify-center gap-10 mb-[30px] flex-wrap lg:flex-nowrap lg:justify-between">
+          <div className="flex flex-col items-center justify-center gap-5 break-words w-full lg:w-[42%]">
+            <p className="w-full text-center text-lg lg:text-left">About us </p>
+            <h3 className="w-full text-center text-[30px] font-bold leading-[125%] break-words lg:text-left xl:text-[45px]">
+              Pedaling Dreams into Reality
+            </h3>
+            <div className="flex lg:w-full ">
               <img
                 src={animation_logo}
                 alt="ByCycle logo"
                 className="animate-spin"
                 width={"100px"}
               />
-            </p>
-            <h3 className="w-full text-[30px] xl:text-[45px] !font-intertight font-bold leading-[125%] break-words">
-              {" "}
-              ByCycle Bike has been manufacturing bicycles and engineering
-              components for more than 24 years.{" "}
-            </h3>
-            <p className="leading-[150%] text-gray-600 break-words">
-              For over 24 years, ByCycle Bike has been a leader in manufacturing
-              bicycles and engineering components. With a rich history and
-              commitment to quality and innovation, we consistently deliver
-              exceptional bikes that embody precision, performance and
-              durability.
+            </div>
+            <p className="leading-[150%] text-gray-600 break-words text-justify">
+              Once upon a time, in a quaint little town nestled amidst the
+              rolling hills and the scenic trails of Tuscany, three friends –
+              Luigi, Daniele, and Sergio, – shared a deep bond forged through
+              their mutual love for cycling. Together, they envisioned a vibrant
+              online community where cyclists could connect, share, and thrive.
+              With passion as their fuel and determination as their compass,
+              they launched ByCycle – a dynamic forum where pedal-powered
+              adventures come to life. Join the ride and be part of their
+              journey to pedal-powered greatness!
             </p>
           </div>
           <div className="w-full lg:w-auto">
             <img
               src={image_one}
               alt="image"
-              className="h-[300px] rounded-[16px] object-cover w-full lg:h-[592px]"
+              className="h-[300px] rounded-[16px] object-cover w-full lg:h-[560px]"
             />
           </div>
         </div>
 
-        <div className="flex items-center justify-center pt-20 pl-5 pr-5 flex-wrap lg:flex-nowrap">
+        <div className="flex flex-col-reverse items-center justify-center pt-15 flex-wrap lg:flex-row lg:flex-nowrap lg:justify-between lg:items-end">
           <div className="w-full lg:w-auto">
             <img
               src={image_two}
               alt="image"
-              className="w-full h-[300px] rounded-[16px] object-cover lg:h-[592px]"
+              className="w-full h-[300px] object-top rounded-[16px] object-cover sm:object-center lg:h-100 lg:h-[560px]"
             />
           </div>
-          <div className="flex flex-col items-center mt-[10px] mb-[10px] justify-center gap-10 break-words w-full lg:w-[35%]">
-            <p className="w-full text-center lg:text-left mt-10 lg:mt-0">
-              The next journey{" "}
+          <div className="flex flex-col items-center my-[10px] justify-center gap-5 break-words w-full lg:w-[42%]">
+            <p className="w-full text-center text-lg lg:text-left mt-10 lg:mt-0">
+              Every ride is an adventure{" "}
+            </p>
+            <h3 className="w-full text-[30px] text-center xl:text-[45px] font-bold leading-[125%] break-words lg:text-left">
+              {" "}
+              Connect with fellow ByCycle enthusiasts{" "}
+            </h3>
+            <div className="flex lg:w-full ">
               <img
                 src={animation_logo}
                 alt="ByCycle logo"
                 className="animate-spin"
                 width={"100px"}
               />
+            </div>
+            <p className="leading-[150%] text-gray-600 break-words text-justify">
+              Experience the joy of pedaling together, creating a bond that goes
+              beyond the handlebars. Embark on an exciting journey with ByCycle,
+              where connections go beyond the handlebars. Join our vibrant
+              community of cyclists from all backgrounds. Share stories, seek
+              advice, and forge new friendships as we explore the endless
+              possibilities of cycling together. Plus, stay tuned for exciting
+              opportunities to join group rides and cycling trips with fellow
+              enthusiasts. Ready to pedal into the future? Let&apos;s ride!
             </p>
-            <h3 className="w-full text-[30px] xl:text-[45px] font-bold leading-[125%] break-words">
-              {" "}
-              Get an exciting experience on a ByCycle bike made for your ride.{" "}
-            </h3>
-            <p className="leading-[150%] text-gray-600 break-words">
-              Embark on an exciting journey with ByCycle, where each bike is
-              carefully crafted to give you an exciting and personalized riding
-              experience. Get ready for an exciting experience when you ride on
-              a ByCycle bike designed just for you.
-            </p>
-            <div className="w-full">
+            <div className="flex lg:w-full mb-7">
               <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
-                Start From $10.000
+                Join other bikers
               </button>
             </div>
           </div>
         </div>
       </div>
       {/* news section */}
-      <div className="flex flex-col pl-20 pr-20 pb-5 lg:pl-10 lg:pr-10 gap-[50px] bg-[#E6E6E6] max-w">
-        <div className="container-xs flex flex-col items-center pt-5 pb-5">
+      <div className="flex flex-col pt-16 pb-7 px-5 md:px-10 lg:px-16 gap-[50px] bg-[#E6E6E6]">
+        <div className="container-xs flex flex-col items-center">
           <div className="w-full flex flex-col items-start gap-[30px]">
-            <p>Excellence Evolved</p>
-            <p className="w-full font-intertight font-extrabold text-black text-5xl">
-              News & Information
+            <p className="text-center w-full text-lg lg:text-left">
+              Stay tuned for events
+            </p>
+            <p className="w-full text-center font-extrabold text-black text-5xl lg:text-left">
+              News & Events
             </p>
           </div>
         </div>
@@ -130,11 +140,11 @@ function Homepage() {
                 <img
                   src={image_four}
                   alt="card image"
-                  className="w-full rounded-[12px] object-cover h-auto cursor-pointer transition duration-300 ease-in-out hover:scale-110"
+                  className="w-full object-top rounded-[12px] object-cover h-auto cursor-pointer transition duration-300 ease-in-out hover:scale-110 sm:h-[350px] lg:h-auto"
                 />
               </Link>
             </div>
-            <div className="flex w-full flex-col items-start gap-[25px]">
+            <div className="flex w-full flex-col justify-between items-start gap-[25px] lg:h-[205px]">
               <p
                 size="xl"
                 className="text-3xl font-bold w-full leading-[130%] tracking-[-0.48px]"
@@ -142,31 +152,28 @@ function Homepage() {
                 The growing trend of combining cycling with other workouts
               </p>
               <Link to="/news" className="w-full">
-                <p className="!font-medium transition-all hover:text-[#26425a] hover:underline">
+                <p className="!font-medium transition-all hover:text-[#26425a] underline">
                   Read More
                 </p>
               </Link>
             </div>
           </div>
           <div className="flex w-full flex-col gap-6 items-center justify-center">
-            <div className="w-full rounded-[12px] overflow-hidden">
+            <div className="w-full rounded-[12px] overflow-hidden sm:height-[350px] lg:h-auto">
               <Link to="/news" className="w-full">
                 <img
                   src={image_three}
                   alt="card image"
-                  className="w-full rounded-[12px] object-cover h-auto cursor-pointer transition duration-300 ease-in-out hover:scale-110"
+                  className="w-full rounded-[12px] object-cover h-auto cursor-pointer transition duration-300 ease-in-out hover:scale-110 sm:h-[350px] lg:h-auto"
                 />
               </Link>
             </div>
-            <div className="flex w-full flex-col items-start gap-[25px]">
+            <div className="flex w-full flex-col justify-between items-start gap-[25px] lg:h-[205px]">
               <p className="font-bold text-3xl w-full leading-[130%] tracking-[-0.48px]">
                 Thrilling finishes at international mountain biking championship
               </p>
               <Link to="/news" className="w-full">
-                <p
-                  as="p"
-                  className="!font-medium transition-all hover:text-[#26425a] hover:underline"
-                >
+                <p className="!font-medium transition-all hover:text-[#26425a] underline">
                   Read More
                 </p>
               </Link>
@@ -178,16 +185,16 @@ function Homepage() {
                 <img
                   src={image_five}
                   alt="card image"
-                  className="w-full rounded-[12px] object-cover h-auto cursor-pointer transition duration-300 ease-in-out hover:scale-110"
+                  className="w-full rounded-[12px] object-cover h-auto cursor-pointer transition duration-300 ease-in-out hover:scale-110 sm:h-[350px] lg:h-auto"
                 />
               </Link>
             </div>
-            <div className="flex w-full flex-col items-start gap-[25px]">
+            <div className="flex w-full flex-col justify-between items-start gap-[25px] lg:h-[205px]">
               <p className="w-full font-bold text-3xl leading-[130%] tracking-[-0.48px]">
                 How bicycles are becoming the main choice in city transportation
               </p>
               <Link to="/news" className="w-full">
-                <p className="!font-medium transition-all hover:text-[#26425a] hover:underline">
+                <p className="!font-medium transition-all hover:text-[#26425a] underline">
                   Read More
                 </p>
               </Link>
@@ -195,20 +202,27 @@ function Homepage() {
           </div>
         </div>
       </div>
-      {/* carousel */}
-      <section className="flex flex-wrap lg:flex-nowrap justify-between gap-[10%] lg:gap-[30%] pt-20 pb-[40px] pl-[30px] pr-[30px]">
-        <div className="w-full lg:w-[50%] text-sm lg:text-5xl font-extrabold display break-words leading-[105%]">
-          <p className="text-center">
-          Connect with fellow ByCycle enthusiasts
-          </p>
+      {/* Blog carousel */}
+      <section className="pt-16 pb-5 px-5 md:px-10 lg:px-16 ">
+        <div className="flex flex-wrap lg:flex-nowrap lg:items-center gap-[10%]">
+          <div className="w-full lg:w-[50%]">
+            <p className="font-extrabold break-words text-center text-4xl lg:text-5xl lg:text-left">
+              ByCycle Press:
+              <br /> insights from our editorial board
+            </p>
+          </div>
+          <div className="w-full lg:w-[50%] mt-[20px] flex flex-col gap-5 items-center break-words leading-[150%]">
+            <p className="text-justify">
+              Our blog section is where our editorial board shares the latest
+              trends and informative articles about the cycling world. From gear
+              reviews to training advice and inspirational stories, ByCycle
+              Press is your go-to resource for staying informed and inspired on
+              your cycling journey. Join us as we explore the diverse and
+              dynamic world of cycling together!
+            </p>
+          </div>
         </div>
-        <div className="w-full lg:w-[50%] mt-[20px] flex flex-col gap-5 items-center lg:items-end break-words leading-[150%]">
-          <p className="text-center lg:text-right">
-            Experience the joy of pedaling together, creating a bond that goes
-            beyond the road. Join the Morgan Bike Community and let the spirit
-            of camaraderie enrich your cycling experience with new friends who
-            feel like family.
-          </p>
+        <div className="flex justify-center lg:justify-end py-5">
           <Link to={"/community"}>
             <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
               Join other bikers
@@ -217,20 +231,25 @@ function Homepage() {
         </div>
       </section>
       <Slider />
-      <section className="flex flex-wrap lg:flex-nowrap gap-[30%] pl-[30px] pr-[30px] mt-[50px] mb-[50px]">
-        <div className="w-full lg:w-[50%]">
-          <p className="text-3xl lg:text-5xl text-center font-extrabold ">
-            Gear Up for a Sustainable Future: A Bicycle Usage and Perception
-            Survey
-          </p>
+      {/* Quiz carousel */}
+      <section className="pt-16 pb-5 px-5 md:px-10 lg:px-16">
+        <div className="flex flex-row-reverse flex-wrap lg:flex-nowrap lg:items-center gap-[20%]">
+          <div className="w-full lg:w-[50%]">
+            <p className="font-extrabold break-words text-center text-4xl lg:text-5xl lg:text-left lg:max-w-[610px] xl:max-w-[1200px]">
+              Gear up for our quiz collection!
+            </p>
+          </div>
+          <div className="w-full lg:w-[50%] mt-[20px] flex flex-col gap-5 items-center break-words leading-[150%]">
+            <p className="text-justify">
+              Welcome to the Bicycle Quiz! Test your cycling knowledge, from
+              history to safety rules. 20 multiple-choice questions, 30 seconds
+              to answer. Have fun and learn! Click &quot;Pedal into the
+              Quiz&quot; to get pedaling!
+            </p>
+          </div>
         </div>
-        <div className="w-full mt-[20px] text-center lg:w-[50%] flex flex-col justify-end lg:text-right">
-          <p className="text-center lg:text-right pb-[20px]">
-            Welcome to the Bicycle Quiz! Test your cycling knowledge, from
-            history to safety rules. 20 multiple-choice questions, 30 seconds to
-            answer. Have fun and learn! Click "Pedal into the Quiz" to get
-            pedaling!
-          </p>
+
+        <div className="flex justify-center lg:justify-start py-5">
           <Link to={"/quiz"}>
             <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
               Pedal into the Quiz
@@ -238,7 +257,7 @@ function Homepage() {
           </Link>
         </div>
       </section>
-      <Parallax />
+      <Parallax/>
     </>
   );
 }
