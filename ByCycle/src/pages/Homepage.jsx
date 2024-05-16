@@ -9,7 +9,7 @@ import img_logo from "../assets/images/ByCycle_logo_definitivo_white.png";
 import { Link } from "react-router-dom";
 import Slider from "../components/Slider";
 import Parallax from "../components/ParallaxComponent";
-import animation_logo from '../assets/images/ByCycle logo ridotto.png'
+import animation_logo from "../assets/images/ByCycle logo ridotto.png";
 
 function Homepage() {
   return (
@@ -26,7 +26,7 @@ function Homepage() {
         </video>
         <div className="text-jumbotron absolute top-0 left-0 flex items-center justify-center w-full h-full">
           <div className="flex flex-col items-center justify-center">
-            <img src={img_logo} alt="ByCycle logo"  width={"500px"} />
+            <img src={img_logo} alt="ByCycle logo" width={"500px"} />
             <p className="w-full text-center leading-[150%] pl-6 pr-6 text-white lg:p-0">
               Welcome to <strong>ByCycle</strong>,are you a cycling enthusiast
               looking for advice, support, and camaraderie? <br /> Then you're
@@ -46,7 +46,15 @@ function Homepage() {
       <div className="container-xs flex items-center justify-center gap-5 flex-col md:p-0">
         <div className="flex items-center justify-center gap-10 pt-20 mb-[60px] pl-5 pr-5 flex-wrap lg:flex-nowrap">
           <div className="flex flex-col items-center justify-center gap-10 break-words w-full lg:w-[35%]">
-            <p className="w-full text-center lg:text-left">What is ByCycle? <img src={animation_logo} alt="ByCycle logo" className="animate-spin" width={"100px"} /></p>
+            <p className="w-full text-center lg:text-left">
+              What is ByCycle?{" "}
+              <img
+                src={animation_logo}
+                alt="ByCycle logo"
+                className="animate-spin"
+                width={"100px"}
+              />
+            </p>
             <h3 className="w-full text-[30px] xl:text-[45px] !font-intertight font-bold leading-[125%] break-words">
               {" "}
               ByCycle Bike has been manufacturing bicycles and engineering
@@ -79,7 +87,13 @@ function Homepage() {
           </div>
           <div className="flex flex-col items-center mt-[10px] mb-[10px] justify-center gap-10 break-words w-full lg:w-[35%]">
             <p className="w-full text-center lg:text-left mt-10 lg:mt-0">
-              The next journey <img src={animation_logo} alt="ByCycle logo" className="animate-spin" width={"100px"} />
+              The next journey{" "}
+              <img
+                src={animation_logo}
+                alt="ByCycle logo"
+                className="animate-spin"
+                width={"100px"}
+              />
             </p>
             <h3 className="w-full text-[30px] xl:text-[45px] font-bold leading-[125%] break-words">
               {" "}
@@ -182,10 +196,10 @@ function Homepage() {
         </div>
       </div>
       {/* carousel */}
-      <section className="flex flex-wrap lg:flex-nowrap justify-between gap-[10%] lg:gap-[30%] pt-[40px] pb-[40px] pl-[30px] pr-[30px]">
+      <section className="flex flex-wrap lg:flex-nowrap justify-between gap-[10%] lg:gap-[30%] pt-20 pb-[40px] pl-[30px] pr-[30px]">
         <div className="w-full lg:w-[50%] text-sm lg:text-5xl font-extrabold display break-words leading-[105%]">
           <p className="text-center">
-            More connections to experience new friends and families
+          Connect with fellow ByCycle enthusiasts
           </p>
         </div>
         <div className="w-full lg:w-[50%] mt-[20px] flex flex-col gap-5 items-center lg:items-end break-words leading-[150%]">
