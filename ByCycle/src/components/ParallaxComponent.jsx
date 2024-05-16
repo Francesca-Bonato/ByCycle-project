@@ -16,7 +16,7 @@ export default function ParallaxComponent() {
     <>
       <Swiper
         style={{
-          "--swiper-navigation-color": "#fff",
+          "--swiper-navigation-color": "#232323",
           "--swiper-pagination-color": "#fff",
           height: "800px",
           marginBottom: "8%",
