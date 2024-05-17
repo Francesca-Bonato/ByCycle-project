@@ -50,7 +50,7 @@ export function Footer_CTA({ ...props }) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="footer-form rounded-full w-[100%] h-[55px] text-black p-3 sm:w-[70%] focus:outline-none"
+                  className="footer-form rounded-full w-[100%] h-[55px] text-black p-5 sm:w-[70%] focus:outline-none"
                   placeholder="Insert your email here"
                 ></input>
                 <button

@@ -9,9 +9,9 @@ let year = new Date().getFullYear();
 
 export function Footer({ ...props }) {
   //return to top page
-  const handleClick = () => {
+  function handleClick() {
     window.scrollTo({ top: 0 });
-  };
+  }
 
   return (
     <footer
@@ -20,7 +20,7 @@ export function Footer({ ...props }) {
     >
       <Footer_CTA />
 
-      <div className=" break-word px-[1.25rem] py-10 flex flex-col items-start justify-between gap-[3rem] lg:flex-row lg:px-[4rem] lg:gap-[15rem] md:px-[2.5rem] xl:text-2xl">
+      <div className=" break-word px-5 md:px-10 lg:px-16 py-10 flex flex-col items-start justify-between gap-16 lg:flex-row lg:gap-[20%]">
         <div className="w-[100%] flex flex-col items-start text-justify gap-[10px] md:self-stretch md:w-[100%]">
           <Img
             src="assets/images/img_footer_logo.png"
@@ -58,11 +58,11 @@ export function Footer({ ...props }) {
                   <p as="p">Community</p>
                 </Link>
               </li>
-              {/* <li className="hover:underline">
-                  <a href="Contact" target="_blank" rel="noreferrer">
-                    <p as="p">Contact</p>
-                  </a>
-                </li> */}
+              <li className="hover:underline">
+                <Link to="/contacts" onClick={handleClick}>
+                  <p as="p">Contact Us</p>
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="flex flex-col gap-2">
@@ -121,7 +121,7 @@ export function Footer({ ...props }) {
           </div>
           <div className="flex flex-col items-start gap-2">
             <Heading as="h6" className="!font-bold">
-              Contact Us
+              Contacts
             </Heading>
             <ul className="flex flex-col items-start gap-[9px]">
               <li>
@@ -181,7 +181,7 @@ export function Footer({ ...props }) {
         </div>
       </div>
       <hr className="w-full h-px bg-gray-200 border-0" />
-      <div className="container-xs flex items-center w-full md:px-5 sm:gap-[27px]">
+      <div className="container-xs md:px-10 lg:px-16 flex items-center w-full sm:gap-[27px]">
         <div className="flex items-start p-5 md:flex-col">
           <p size="xs" as="p">
             {`© ${year} ByCycle All right reserved.`}

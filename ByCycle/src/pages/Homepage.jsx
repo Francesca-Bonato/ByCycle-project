@@ -11,6 +11,7 @@ import Parallax from "../components/ParallaxComponent";
 import animation_logo from "../assets/images/ByCycle logo ridotto.png";
 
 function Homepage() {
+
   return (
     <>
       {/* jumbotron section */}
@@ -256,7 +257,7 @@ function Homepage() {
           </Link>
         </div>
       </section>
-      <Parallax/>
+      <Parallax />
     </>
   );
 }
