@@ -1,8 +1,7 @@
 // src/Quiz.js
 import { useState } from "react";
 
-
-const Quiz1 = ({objQuiz}) => {
+const Quiz = ({ objQuiz }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [point, setPoint] = useState(0);
@@ -18,7 +17,7 @@ const Quiz1 = ({objQuiz}) => {
     }
   };
 
-console.log(objQuiz);
+  console.log(objQuiz);
 
   return (
     <>
@@ -58,4 +57,4 @@ console.log(objQuiz);
   );
 };
 
-export default Quiz1;
+export default Quiz;
