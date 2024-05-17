@@ -14,11 +14,13 @@ import CookieConsent from "react-cookie-consent";
 import { Cookies } from "./pages/Cookies";
 import { Terms } from "./pages/Terms";
 import ContactUs from "./pages/ContactUs";
+import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <NotFound/>,
     children: [
       { path: "/", element: <Homepage /> },
       { path: "/community", element: <Community /> },
