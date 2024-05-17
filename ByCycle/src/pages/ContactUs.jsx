@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../components/Button";
+import { Button } from "../components/Button";
 
 function ContactUs() {
   const [user, setUser] = useState({
@@ -89,7 +89,7 @@ function ContactUs() {
                   }
                 ></textarea>
               </div>
-              <Button label="Submit" customclass="self-end" />
+              <Button innerText="Submit" className="self-end" />
             </form>
           </div>
         </div>

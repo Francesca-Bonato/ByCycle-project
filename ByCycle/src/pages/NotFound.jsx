@@ -1,4 +1,4 @@
-import Button from "../components/Button";
+import {Button} from "../components/Button";
 import { Link } from "react-router-dom";
 
 function NotFound() {
@@ -14,7 +14,7 @@ function NotFound() {
           Come back to ByCycle Home and discover more about the latest news{" "}
         </p>
         <Link to="/">
-          <Button label="Back to Homepage" />
+          <Button innerText="Back to Homepage" />
         </Link>
       </div>
     </div>
