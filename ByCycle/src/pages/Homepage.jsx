@@ -54,7 +54,7 @@ function Homepage() {
                 src={animation_logo}
                 alt="ByCycle logo"
                 className="animate-spin"
-                width={"100px"}
+                width={"80px"}
               />
             </div>
             <p className="leading-[150%] text-gray-600 break-words text-justify">
@@ -99,7 +99,7 @@ function Homepage() {
                 src={animation_logo}
                 alt="ByCycle logo"
                 className="animate-spin"
-                width={"100px"}
+                width={"80px"}
               />
             </div>
             <p className="leading-[150%] text-gray-600 break-words text-justify">
