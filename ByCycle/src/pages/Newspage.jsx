@@ -1,11 +1,9 @@
-
-
-function NewsPage() {
+function Newspage() {
   return (
-    <div>
-      
-    </div>
-  )
+    <>
+   
+    </>
+  );
 }
 
-export default NewsPage
+export default Newspage;
