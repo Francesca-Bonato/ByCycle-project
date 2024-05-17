@@ -19,13 +19,11 @@ function ContactUs() {
       <div className="mt-[95px] flex flex-col items-center gap-40">
         <div className="container-xs flex flex-col items-center justify-between gap-10 md:flex-row md:p-5">
           <div className="flex w-full flex-col gap-[47px] p-5">
-            <p className="display mb-2 md:px-5 md:w-full md: px-5">
-              Have a question about Morgans or need assistance with your bike?
-              Get in contact with us.
+            <p className="display mb-2 md:px-5 md:w-full md: px-5 font-semibold">
+              Have a question for the ByCycle team or need assistance with your
+              account? Get in contact with us.
             </p>
-            {/* <div className="h-px bg-gray-500_7f" />
-            <div className="flex flex-col items-start gap-[22px]">
-            </div> */}
+            <div className="flex flex-col items-start gap-[22px]"></div>
           </div>
           <div className="flex flex-col items-end gap-8 w-full p-5">
             <form
