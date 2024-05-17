@@ -10,8 +10,7 @@ import Login from "./pages/Login";
 import Quiz1 from "./pages/quiz/Quiz1";
 import ContactUs from "./pages/ContactUs";
 import Questionnaire from "./pages/Questionnaire";
-import Quiz2 from "./pages/quiz/Quiz2";
-import Quiz3 from "./pages/quiz/Quiz3";
+import useAllQuiz from "./pages/quiz/useAllQuiz";
 
 const router = createBrowserRouter([
   {
@@ -25,9 +24,9 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/quiz", element: <Questionnaire /> },
       { path: "/contacts", element: <ContactUs /> },
-      { path: "/quiz1", element: <Quiz1 /> },
-      { path: "/quiz2", element: <Quiz2 /> },
-      { path: "/quiz3", element: <Quiz3 /> },
+      { path: "/quiz1", element: <Quiz1 objQuiz={useAllQuiz[0].quiz1} /> },
+      { path: "/quiz2", element: <Quiz1 objQuiz={useAllQuiz[1].quiz2} /> },
+      { path: "/quiz3", element: <Quiz1 objQuiz={useAllQuiz[2].quiz3} /> },
     ],
   },
 ]);
