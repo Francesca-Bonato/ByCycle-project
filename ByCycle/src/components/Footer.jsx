@@ -143,9 +143,7 @@ export function Footer({ ...props }) {
       </div>
       <hr className="w-full h-px bg-gray-200 border-0" />
       <div className="container-xs flex items-center justify-between gap-5 p-5">
-        <p size="md">
-          Social Media
-        </p>
+        <p size="md">Social Media</p>
         <div className="flex gap-2.5">
           <Footer_SocialBTN
             shape="circle"
@@ -182,9 +180,7 @@ export function Footer({ ...props }) {
       <hr className="w-full h-px bg-gray-200 border-0" />
       <div className="container-xs md:px-10 lg:px-16 flex items-center w-full sm:gap-[27px]">
         <div className="flex items-start p-5 md:flex-col">
-          <p size="xs">
-            {`© ${year} ByCycle All right reserved.`}
-          </p>
+          <p size="xs">{`© ${year} ByCycle All right reserved.`}</p>
         </div>
       </div>
     </footer>

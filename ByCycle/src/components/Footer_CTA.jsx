@@ -55,17 +55,22 @@ export function Footer_CTA({ ...props }) {
                 ></input>
                 <button
                   type="submit"
-                  className="text-black bg-white pt-3 pb-3 px-8 rounded-[40px] font-bold border transition hover:border-solid hover:border-white hover:bg-[#232323] hover:text-white"
+                  className="text-white bg-[#232323] pt-3 pb-3 px-8 rounded-[40px] font-bold border transition hover:border-solid hover:border-white hover:bg-white hover:text-black"
                 >
                   Submit
                 </button>
               </form>
             )}
-            {subscribed && <p className="font-medium">Thank you for subscribing to our newsletter!</p>}
+            {subscribed && (
+              <p className="font-medium">
+                Thank you for subscribing to our newsletter!
+              </p>
+            )}
             {isAlreadySubscribed && (
               <div className="flex justify-center translate-y-5">
-                <p className="text-orange-600 absolute">
-                  This email is already subscribed. Please insert a different email !
+                <p className="text-orange-600 absolute backdrop-blur-sm rounded-full p-1">
+                  This email is already subscribed. Please insert a different
+                  email !
                 </p>
               </div>
             )}
