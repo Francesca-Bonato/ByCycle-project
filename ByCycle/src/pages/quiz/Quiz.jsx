@@ -36,10 +36,10 @@ const Quiz = ({ objQuiz }) => {
       <div className="container-image-quiz relative z-10 flex justify-center items-center h-full">
         {isDone ? (
           <div className="text-center text-white p-10 bg-[#f3f3f33d] backdrop-blur-lg	 rounded-[10px] ">
-            <p>Thank you for taking this quiz!</p>
+            <p className="text-[23px]">Thank you for taking this quiz!</p>
             <p>{`Your score is: ${point}`}</p>
             <Link to={"/questionnaire"}>
-              <button className="font-light bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px] border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
+              <button className="text-[15px] bg-[#232323] text-white  mt-2  pt-1 pb-1 pl-5 pr-5 rounded-[40px] border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
                 GO Back
               </button>
             </Link>

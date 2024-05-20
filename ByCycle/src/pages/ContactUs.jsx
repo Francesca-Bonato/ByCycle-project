@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "../components/Button";
+import Button  from "../components/Button";
 
 function ContactUs() {
   const [user, setUser] = useState({
@@ -16,27 +16,19 @@ function ContactUs() {
   return (
     <div className="w-full bg-white-A700_01">
       {/* contact info section */}
-      <div className="mt-[95px] flex flex-col items-center gap-40 md:gap-[120px] sm:gap-20">
-        <div className="container-xs flex flex-col items-start justify-between gap-5 md:flex-row md:p-5">
-          <div className="flex w-[37%] flex-col gap-[47px] md:w-full">
-            <p className="display">
-              Have a question about Morgans or need assistance with your bike?
-              Get in contact with us.
+      <div className="flex flex-col items-center gap-40">
+        <div className="container-xs flex flex-col items-center justify-between gap-10 md:flex-row md:p-5">
+          <div className="flex w-full flex-col gap-[47px] p-5">
+            <p className="display mb-2 md:px-5 md:w-full md: px-5 font-semibold">
+              Have a question for the ByCycle team or need assistance with your
+              account? Get in contact with us.
             </p>
-            <div className="h-px bg-gray-500_7f" />
-            <div className="flex flex-col items-start gap-[22px]">
-              <h5>Trusted by over 100 companies</h5>
-              <img
-                src="images/img_logo.svg"
-                alt="company logo"
-                className="h-[88px] w-full md:h-auto"
-              />
-            </div>
+            <div className="flex flex-col items-start gap-[22px]"></div>
           </div>
-          <div className="flex w-[48%] flex-col items-end gap-8 md:w-full">
+          <div className="flex flex-col items-end gap-8 w-full p-5">
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-[31px] self-stretch"
+              className="flex flex-col gap-[31px] self-stretch w-full"
             >
               <div className="flex flex-col items-start gap-3.5">
                 <label htmlFor="full-name" className="font-semibold">
@@ -97,8 +89,8 @@ function ContactUs() {
                   }
                 ></textarea>
               </div>
+              <Button innerText="Submit" className="self-end" />
             </form>
-            <Button innerText="Submit"/>
           </div>
         </div>
       </div>
