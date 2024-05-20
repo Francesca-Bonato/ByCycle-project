@@ -21,8 +21,7 @@ const useAllQuiz = [
         punteggio: 6,
       },
       {
-        question:
-          "What was the original name of the bicycle when it was invented?",
+        question: "What was the original name of the bicycle when it was invented?",
         options: ["Laufmaschine", "Draisine", "Biciclette", "Velocipede"],
         correctAnswer: "Laufmaschine",
         difficulty: "difficult",
@@ -36,8 +35,7 @@ const useAllQuiz = [
         punteggio: 6,
       },
       {
-        question:
-          "Who introduced the modern concept of the bicycle with two wheels of the same diameter?",
+        question: "Who introduced the modern concept of the bicycle with two wheels of the same diameter?",
         options: [
           "Pierre Michaux",
           "John Kemp Starley",
@@ -101,8 +99,7 @@ const useAllQuiz = [
         punteggio: 6,
       },
       {
-        question:
-          "What should you do if your bicycle's gears start to skip or click while pedaling?",
+        question: "What should you do if your bicycle's gears start to skip or click while pedaling?",
         options: [
           "Nothing, it is normal",
           "Adjust the derailleur cable tension",
@@ -137,8 +134,7 @@ const useAllQuiz = [
         punteggio: 6,
       },
       {
-        question:
-          "What should you do if you hear a strange noise coming from your bicycle's rear wheel?",
+        question: "What should you do if you hear a strange noise coming from your bicycle's rear wheel?",
         options: [
           "Ignore it",
           "Tighten the spokes",
@@ -162,8 +158,7 @@ const useAllQuiz = [
         punteggio: 6,
       },
       {
-        question:
-          "What is the correct method for cleaning your bicycle's chain?",
+        question: "What is the correct method for cleaning your bicycle's chain?",
         options: [
           "Using only water",
           "Using a specific chain cleaner",

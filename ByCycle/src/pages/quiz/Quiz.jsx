@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // src/Quiz.js
 import { useState } from "react";
 
@@ -25,7 +26,7 @@ const Quiz = ({ objQuiz }) => {
         {isDone ? (
           <h1 className="text-center text-white p-10 bg-[#f3f3f33d] backdrop-blur-lg	 rounded-[10px] ">
             Thank you for taking this quiz!
-            <p>{`Il tuo punteggio è: ${point}`}</p>
+            <p>{`Your score is: ${point}`}</p>
             {point ? localStorage.setItem("point", point) : null}
           </h1>
         ) : (

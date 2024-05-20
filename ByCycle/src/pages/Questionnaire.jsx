@@ -16,7 +16,7 @@ const cardsQuiz = [
     title: "Bicycle Inventors and History",
     description:
       "Test your knowledge about the inventors and key historical milestones of the bicycle.",
-    link: "quiz1",
+    link: "/quiz1",
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const cardsQuiz = [
     title: "Bicycle Maintenance Essentials",
     description:
       " Learn how to properly maintain your bicycle with questions on tire pressure, lubrication, and more.",
-    link: "quiz2",
+    link: "/quiz2",
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ const cardsQuiz = [
     title: "Bicycle Riding Tips",
     description:
       "Discover the best practices for efficient and safe cycling, from saddle position to chain care.",
-    link: "quiz1",
+    link: "/quiz1",
   },
 ];
 

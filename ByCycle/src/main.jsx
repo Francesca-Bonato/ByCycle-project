@@ -11,7 +11,6 @@ import Quiz from "./pages/quiz/Quiz";
 import ContactUs from "./pages/ContactUs";
 import Questionnaire from "./pages/Questionnaire";
 import useAllQuiz from "./pages/quiz/useAllQuiz";
-
 const router = createBrowserRouter([
   {
     path: "/",
