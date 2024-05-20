@@ -15,18 +15,20 @@ import { Cookies } from "./pages/Cookies";
 import { Terms } from "./pages/Terms";
 import ContactUs from "./pages/ContactUs";
 import NotFound from "./pages/NotFound";
+import Registration from "./pages/Registration";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <NotFound/>,
+    errorElement: <NotFound />,
     children: [
       { path: "/", element: <Homepage /> },
       { path: "/community", element: <Community /> },
       { path: "/trails", element: <BikeTrails /> },
       { path: "/news", element: <Newspage /> },
       { path: "/login", element: <Login /> },
+      { path: "/register", element: <Registration /> },
       { path: "/quiz", element: <Questionnaire /> },
       { path: "/contacts", element: <ContactUs /> },
       { path: "/questionnaire", element: <Questionnaire /> },

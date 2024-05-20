@@ -31,7 +31,7 @@ export default function ParallaxComponent() {
         modules={[Parallax, Pagination, Navigation]}
       >
         <SwiperSlide>
-          <div className="w-full text-left flex flex-col gap-5 h-full bg-gradient bg-center bg-contein bg-no-repeat  text-white p-5">
+          <div className="w-full text-left flex flex-col gap-5 h-full bg-gradient bg-center bg-contein bg-no-repeat  text-white p-5 2xl:text-lg">
             <div
               className="title text-[40px] text-center text-gray-900"
               data-swiper-parallax="-300"

@@ -20,13 +20,9 @@ function NewsCard({ title, img }) {
           {title}
         </p>
         <Link to="/news" className="w-full">
-         {/*  <p className="!font-medium transition-all hover:text-[#26425a] underline">
+          <p className="!font-medium transition-all hover:text-[#26425a] underline">
             Read More
-          </p> */}
-
-          <button className="!font-medium px-3 border text-white bg-[#232323] rounded-full transition-all hover:text-black hover:bg-white hover:border-black">
-            Read More
-          </button>
+          </p>
         </Link>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function CarouselQuiz() {
   return (
-      <section className="pt-16 pb-5 px-5 md:px-10 lg:px-16">
+      <section className="pt-16 pb-5 px-5 md:px-10 lg:px-16 2xl:text-lg">
         <div className="flex flex-row-reverse flex-wrap lg:flex-nowrap lg:items-center gap-[20%]">
           <div className="w-full lg:w-[50%]">
             <p className="font-extrabold break-words text-center text-4xl lg:text-5xl lg:text-left lg:max-w-[610px] xl:max-w-[1200px]">

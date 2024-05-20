@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Jumbotron() {
   return (
-    <div className="jumbotron bg-black relative">
+    <div className="jumbotron bg-black relative 2xl:text-lg">
       <video
         className="w-full h-[850px] object-cover opacity-[0.4]"
         autoPlay

@@ -4,7 +4,7 @@ import animation_logo from "../assets/images/ByCycle logo ridotto.png";
 
 function AboutUsHomepage() {
   return (
-    <div className="container-xs flex items-center justify-center flex-col pt-16 px-5 md:px-10 lg:px-16">
+    <div className="container-xs flex items-center justify-center flex-col pt-16 px-5 md:px-10 lg:px-16 2xl:text-lg">
       <div className="flex items-center justify-center gap-10 mb-[30px] flex-wrap lg:flex-nowrap lg:justify-between">
         <div className="flex flex-col items-center justify-center gap-5 break-words w-full lg:w-[42%]">
           <p className="w-full text-center text-lg lg:text-left">About us </p>

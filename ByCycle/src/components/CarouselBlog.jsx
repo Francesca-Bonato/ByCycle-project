@@ -4,7 +4,7 @@ import Slider from "./Slider/Slider";
 function CarouselBlog() {
   return (
     <>
-      <section className="pt-16 pb-5 px-5 md:px-10 lg:px-16 ">
+      <section className="pt-16 pb-5 px-5 md:px-10 lg:px-16 2xl:text-lg">
         <div className="flex flex-wrap lg:flex-nowrap lg:items-center gap-[10%]">
           <div className="w-full lg:w-[50%]">
             <p className="font-extrabold break-words text-center text-4xl lg:text-5xl lg:text-left">

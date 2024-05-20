@@ -4,7 +4,7 @@ import NewsCard from "./NewsCard";
 function NewsSection() {
   return (
     <>
-      <div className="flex flex-col pt-16 pb-7 px-5 md:px-10 lg:px-16 gap-[50px] bg-[#E6E6E6]">
+      <div className="flex flex-col pt-16 pb-7 px-5 md:px-10 lg:px-16 gap-[50px] bg-[#E6E6E6] 2xl:text-lg">
         <div className="container-xs flex flex-col items-center">
           <div className="w-full flex flex-col items-start gap-[30px]">
             <p className="text-center w-full text-lg lg:text-left">
