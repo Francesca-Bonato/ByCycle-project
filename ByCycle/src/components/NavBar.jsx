@@ -79,7 +79,7 @@ export function NavBar() {
                     <div className="flex-shrink-0">
                       <Link to="#">
                         <img
-                          className="w-[90px] mt-[2px]"
+                          className="w-[150px] mt-[2px]"
                           src={logoBlack}
                           alt="Company"
                         />
@@ -87,7 +87,7 @@ export function NavBar() {
                     </div>
                     {/* Desktop Navigation */}
                     <div className="hidden md:block">
-                      <div className="ml-10 flex items-baseline space-x-4 ">
+                      <div className="ml-10 text-center flex justify-center items-baseline space-x-4 ">
                         {navigation.map((item) => (
                           <Link
                             key={item.name}
@@ -181,7 +181,7 @@ export function NavBar() {
                         />
                       ) : (
                         <Bars3Icon
-                          className="block h-6 w-6 text-black"
+                          className="block h-6 w-6 text-black "
                           aria-hidden="true"
                         />
                       )}
@@ -216,8 +216,8 @@ export function NavBar() {
                       </Disclosure.Button>
                     ))}
                   </div>
-                  <div className="border-t border-gray-700 pb-3 pt-4">
-                    <div className="flex items-center px-5 cursor-pointer">
+                  <div className="border-t border-gray-700 pb-3 pt-4 ">
+                    <div className="flex items-center px-5 cursor-pointer ">
                       <div className="flex-shrink-0">
                         <img
                           className="h-10 w-10 rounded-full"
