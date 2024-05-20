@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
 // src/Quiz.js
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Quiz = ({ objQuiz }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [point, setPoint] = useState(0);
   const [isDone, setIsDone] = useState(false);
-
+  const keys = Object.keys(objQuiz);
   const handleAnswer = (answer) => {
     setAnswers([...answers, answer]);
     setCurrentQuestion(currentQuestion + 1);
@@ -18,17 +19,31 @@ const Quiz = ({ objQuiz }) => {
     }
   };
 
-  console.log(objQuiz);
+  function localPoint() {
+    if (keys.includes("quiz1")) {
+      return localStorage.setItem("point Q1", point);
+    } else if (keys.includes("quiz2")) {
+      return localStorage.setItem("point Q2", point);
+    } else {
+      return localStorage.setItem("point Q3", point);
+    }
+  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => localPoint(), [point]);
 
   return (
     <>
       <div className="container-image-quiz relative z-10 flex justify-center items-center h-full">
         {isDone ? (
-          <h1 className="text-center text-white p-10 bg-[#f3f3f33d] backdrop-blur-lg	 rounded-[10px] ">
-            Thank you for taking this quiz!
+          <div className="text-center text-white p-10 bg-[#f3f3f33d] backdrop-blur-lg	 rounded-[10px] ">
+            <p>Thank you for taking this quiz!</p>
             <p>{`Your score is: ${point}`}</p>
-            {point ? localStorage.setItem("point", point) : null}
-          </h1>
+            <Link to={"/questionnaire"}>
+              <button className="font-light bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px] border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
+                GO Back
+              </button>
+            </Link>
+          </div>
         ) : (
           <div className="relative z-[8888] max-w-lg mx-auto mt-10 p-4 bg-white shadow-md rounded-md">
             {currentQuestion < objQuiz.length ? (

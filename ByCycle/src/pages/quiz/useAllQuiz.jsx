@@ -21,7 +21,8 @@ const useAllQuiz = [
         punteggio: 6,
       },
       {
-        question: "What was the original name of the bicycle when it was invented?",
+        question:
+          "What was the original name of the bicycle when it was invented?",
         options: ["Laufmaschine", "Draisine", "Biciclette", "Velocipede"],
         correctAnswer: "Laufmaschine",
         difficulty: "difficult",
@@ -35,7 +36,8 @@ const useAllQuiz = [
         punteggio: 6,
       },
       {
-        question: "Who introduced the modern concept of the bicycle with two wheels of the same diameter?",
+        question:
+          "Who introduced the modern concept of the bicycle with two wheels of the same diameter?",
         options: [
           "Pierre Michaux",
           "John Kemp Starley",
@@ -99,7 +101,8 @@ const useAllQuiz = [
         punteggio: 6,
       },
       {
-        question: "What should you do if your bicycle's gears start to skip or click while pedaling?",
+        question:
+          "What should you do if your bicycle's gears start to skip or click while pedaling?",
         options: [
           "Nothing, it is normal",
           "Adjust the derailleur cable tension",
@@ -117,24 +120,25 @@ const useAllQuiz = [
       {
         question: "What is the correct saddle position for efficient pedaling?",
         options: [
-          "Hip level",
+          "At hip level",
           "Below knee level",
-          "Knee level",
+          "At knee level",
           "Above hip level",
         ],
-        correctAnswer: "Hip level",
+        correctAnswer: "At hip level",
         difficulty: "medium",
-        punteggio: 6,
+        score: 6,
       },
       {
         question: "What is the ideal tire pressure for a road bike?",
         options: ["20-30 psi", "30-40 psi", "70-90 psi", "100-120 psi"],
         correctAnswer: "70-90 psi",
         difficulty: "medium",
-        punteggio: 6,
+        score: 6,
       },
       {
-        question: "What should you do if you hear a strange noise coming from your bicycle's rear wheel?",
+        question:
+          "What should you do if you hear a strange noise coming from your bicycle's rear wheel?",
         options: [
           "Ignore it",
           "Tighten the spokes",
@@ -143,7 +147,7 @@ const useAllQuiz = [
         ],
         correctAnswer: "Check the hub and cassette",
         difficulty: "medium",
-        punteggio: 6,
+        score: 6,
       },
       {
         question: "When should you replace your bicycle's chain?",
@@ -155,10 +159,11 @@ const useAllQuiz = [
         ],
         correctAnswer: "When it is visibly worn",
         difficulty: "medium",
-        punteggio: 6,
+        score: 6,
       },
       {
-        question: "What is the correct method for cleaning your bicycle's chain?",
+        question:
+          "What is the correct method for cleaning your bicycle's chain?",
         options: [
           "Using only water",
           "Using a specific chain cleaner",
@@ -167,7 +172,7 @@ const useAllQuiz = [
         ],
         correctAnswer: "Using a specific chain cleaner",
         difficulty: "difficult",
-        punteggio: 8,
+        score: 8,
       },
     ],
   },

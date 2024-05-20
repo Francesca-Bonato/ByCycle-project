@@ -50,7 +50,7 @@ const cardsQuiz = [
     title: "Bicycle Riding Tips",
     description:
       "Discover the best practices for efficient and safe cycling, from saddle position to chain care.",
-    link: "/quiz1",
+    link: "/quiz3",
   },
 ];
 
