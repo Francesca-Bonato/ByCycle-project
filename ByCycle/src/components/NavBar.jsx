@@ -40,6 +40,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+//Function to return to top page
+function handleClick() {
+  window.scrollTo({ top: 0 });
+}
+
 // Main component
 export function NavBar() {
   // Get the current route information
@@ -87,6 +92,7 @@ export function NavBar() {
                           <Link
                             key={item.name}
                             to={item.href}
+                            onClick={handleClick}
                             className={classNames(
                               location.pathname === item.href
                                 ? "bg-gray-900 text-white"

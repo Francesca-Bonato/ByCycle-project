@@ -7,6 +7,7 @@ import CarouselQuiz from "../components/CarouselQuiz";
 
 
 function Homepage() {
+
   return (
     <>
       {/* jumbotron section */}

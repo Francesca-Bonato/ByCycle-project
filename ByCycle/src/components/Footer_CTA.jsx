@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Heading } from "./Heading";
 
 export function Footer_CTA({ ...props }) {
@@ -32,7 +32,7 @@ export function Footer_CTA({ ...props }) {
       <div className="max-w-[1328px] mx-auto flex w-full justify-end px-5 md:p-5 xl:text-2xl">
         <div className="w-[100%] justify-center flex flex-col gap-8 md:w-full">
           <div className="flex flex-col gap-6">
-            <p as="p" className="leading-[125%] ">
+            <p className="leading-[125%] ">
               Do you want to stay updated on the latest community news?
             </p>
             <Heading as="h6" className="leading-[150%] text-slate-50">
@@ -50,7 +50,7 @@ export function Footer_CTA({ ...props }) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="footer-form rounded-full w-[100%] h-[55px] text-black p-3 sm:w-[70%] focus:outline-none"
+                  className="footer-form rounded-full w-[100%] h-[55px] text-black p-5 sm:w-[70%] focus:outline-none"
                   placeholder="Insert your email here"
                 ></input>
                 <button

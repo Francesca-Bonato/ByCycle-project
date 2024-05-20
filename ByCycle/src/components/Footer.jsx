@@ -1,4 +1,3 @@
-import React from "react";
 import { Footer_CTA } from "./Footer_CTA";
 import { Heading } from "./Heading";
 import { Img } from "./Img/Img";
@@ -9,9 +8,9 @@ let year = new Date().getFullYear();
 
 export function Footer({ ...props }) {
   //return to top page
-  const handleClick = () => {
+  function handleClick() {
     window.scrollTo({ top: 0 });
-  };
+  }
 
   return (
     <footer
@@ -20,14 +19,14 @@ export function Footer({ ...props }) {
     >
       <Footer_CTA />
 
-      <div className=" break-word px-[1.25rem] py-10 flex flex-col items-start justify-between gap-[3rem] lg:flex-row lg:px-[4rem] lg:gap-[15rem] md:px-[2.5rem] xl:text-2xl">
+      <div className=" break-word px-5 md:px-10 lg:px-16 py-10 flex flex-col items-start justify-between gap-16 lg:flex-row lg:gap-[20%]">
         <div className="w-[100%] flex flex-col items-start text-justify gap-[10px] md:self-stretch md:w-[100%]">
           <Img
             src="assets/images/img_footer_logo.png"
             alt="footer logo"
             className="h-[45px] w-[169px] object-contain"
           />
-          <p as="p" className="w-full leading-[150%] md:w-full">
+          <p className="w-full leading-[150%] md:w-full">
             We value greatly that our community can have a place to share their
             common passion and provide more information on cycling routes that
             bring more excitement and safety during the journey. Our team
@@ -45,24 +44,24 @@ export function Footer({ ...props }) {
             <ul className="flex flex-col gap-[9px]">
               <li className="hover:underline">
                 <a href="Bike" target="_blank" rel="noreferrer">
-                  <p as="p">Bike</p>
+                  <p>Bike</p>
                 </a>
               </li>
               <li className="hover:underline">
                 <a href="Accessories" target="_blank" rel="noreferrer">
-                  <p as="p">Accessories</p>
+                  <p>Accessories</p>
                 </a>
               </li>
               <li className="hover:underline">
                 <Link to="/community" className="w-full">
-                  <p as="p">Community</p>
+                  <p>Community</p>
                 </Link>
               </li>
-              {/* <li className="hover:underline">
-                  <a href="Contact" target="_blank" rel="noreferrer">
-                    <p as="p">Contact</p>
-                  </a>
-                </li> */}
+              <li className="hover:underline">
+                <Link to="/contacts" onClick={handleClick}>
+                  <p>Contact Us</p>
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="flex flex-col gap-2">
@@ -72,7 +71,7 @@ export function Footer({ ...props }) {
             <ul className="flex flex-col gap-[9px]">
               <li className="hover:underline">
                 <Link to="/news" className="w-full">
-                  <p as="p">News</p>
+                  <p>News</p>
                 </Link>
               </li>
               {/* <li className="hover:underline">
@@ -82,12 +81,12 @@ export function Footer({ ...props }) {
                 </li> */}
               <li className="hover:underline">
                 <a href="Careers" target="_blank" rel="noreferrer">
-                  <p as="p">Careers</p>
+                  <p>Careers</p>
                 </a>
               </li>
               <li className="hover:underline">
                 <a href="FAQS" target="_blank" rel="noreferrer">
-                  <p as="p">FAQS</p>
+                  <p>FAQS</p>
                 </a>
               </li>
             </ul>
@@ -99,17 +98,17 @@ export function Footer({ ...props }) {
             <ul className="flex flex-col items-start gap-[9px]">
               <li className="hover:underline">
                 <Link to="/privacy" onClick={handleClick}>
-                  <p as="p">Privacy Policy</p>
+                  <p>Privacy Policy</p>
                 </Link>
               </li>
               <li className="hover:underline">
                 <Link to="/terms" onClick={handleClick}>
-                  <p as="p">Terms of Use</p>
+                  <p>Terms of Use</p>
                 </Link>
               </li>
               <li className="hover:underline">
                 <Link to="/cookies" onClick={handleClick}>
-                  <p as="p">Cookies</p>
+                  <p>Cookies</p>
                 </Link>
               </li>
               {/* <li className="hover:underline">
@@ -121,11 +120,11 @@ export function Footer({ ...props }) {
           </div>
           <div className="flex flex-col items-start gap-2">
             <Heading as="h6" className="!font-bold">
-              Contact Us
+              Contacts
             </Heading>
             <ul className="flex flex-col items-start gap-[9px]">
               <li>
-                <p as="p">Via Thailandia 6, Milano 20121 MI </p>
+                <p>Via Thailandia 6, Milano 20121 MI </p>
               </li>
               <li>
                 <a
@@ -136,7 +135,7 @@ export function Footer({ ...props }) {
                 </a>
               </li>
               <li>
-                <p as="p">+39 333 4445555</p>
+                <p>+39 333 4445555</p>
               </li>
             </ul>
           </div>
@@ -144,7 +143,7 @@ export function Footer({ ...props }) {
       </div>
       <hr className="w-full h-px bg-gray-200 border-0" />
       <div className="container-xs flex items-center justify-between gap-5 p-5">
-        <p size="md" as="p">
+        <p size="md">
           Social Media
         </p>
         <div className="flex gap-2.5">
@@ -181,9 +180,9 @@ export function Footer({ ...props }) {
         </div>
       </div>
       <hr className="w-full h-px bg-gray-200 border-0" />
-      <div className="container-xs flex items-center w-full md:px-5 sm:gap-[27px]">
+      <div className="container-xs md:px-10 lg:px-16 flex items-center w-full sm:gap-[27px]">
         <div className="flex items-start p-5 md:flex-col">
-          <p size="xs" as="p">
+          <p size="xs">
             {`© ${year} ByCycle All right reserved.`}
           </p>
         </div>

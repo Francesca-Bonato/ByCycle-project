@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../components/Button";
+import Button  from "../components/Button";
 
 function ContactUs() {
   const [user, setUser] = useState({
@@ -16,7 +16,7 @@ function ContactUs() {
   return (
     <div className="w-full bg-white-A700_01">
       {/* contact info section */}
-      <div className="mt-[95px] flex flex-col items-center gap-40">
+      <div className="flex flex-col items-center gap-40">
         <div className="container-xs flex flex-col items-center justify-between gap-10 md:flex-row md:p-5">
           <div className="flex w-full flex-col gap-[47px] p-5">
             <p className="display mb-2 md:px-5 md:w-full md: px-5 font-semibold">
@@ -89,7 +89,7 @@ function ContactUs() {
                   }
                 ></textarea>
               </div>
-              <Button label="Submit" customclass="self-end" />
+              <Button innerText="Submit" className="self-end" />
             </form>
           </div>
         </div>
