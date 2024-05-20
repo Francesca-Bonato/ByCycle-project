@@ -8,9 +8,9 @@ function Events() {
       {/* Header section */}
       <header className="flex flex-col justify-center items-center">
         {/* Main title */}
-        <div className="text-center text-neutral-800 text-[44px] font-medium leading-[55px]">
+        <h1 className="text-center text-neutral-800 text-[44px] font-medium leading-[55px]">
           Join events with our community
-        </div>
+        </h1>
         {/* Subtitle */}
         <div className="text-zinc-500 text-justify md:font-semibold max-w-[960px] pt-8">
           Our mission is to break down barriers and make cycling accessible to
@@ -41,9 +41,9 @@ function Events() {
       </header>
 
       {/* Event highlight section with image and description */}
-      <div className="text-center text-neutral-800 text-[44px] font-medium leading-[55px] pt-16">
+      <h className="text-center text-neutral-800 text-[44px] font-medium leading-[55px] pt-16">
         Highlight of the month
-      </div>
+      </h>
 
       <div className="flex items-center justify-center gap-10 pt-8 flex-wrap lg:flex-nowrap lg:justify-between">
       <div className="w-full lg:w-auto">
@@ -55,9 +55,9 @@ function Events() {
         </div>
         <div className="flex flex-col items-center justify-center gap-5 break-words w-full lg:w-[42%] lg:items-start">
 
-          <h3 className="w-full text-center text-[38px] font-bold leading-[125%] break-words lg:text-left xl:text-[45px]">
+          <h5 className="w-full text-center text-[35px] font-bold leading-[125%] break-words lg:text-left xl:text-[40px]">
             {highlightEvent.title}
-          </h3>
+          </h5>
 
           <p className="leading-[150%] text-lg text-gray-600 break-words text-justify">
             {highlightEvent.description}
