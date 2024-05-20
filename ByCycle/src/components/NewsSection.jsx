@@ -1,4 +1,4 @@
-import {newsData} from "../data";
+import { eventsData } from "../data";
 import NewsCard from "./NewsCard";
 
 function NewsSection() {
@@ -15,10 +15,12 @@ function NewsSection() {
             </p>
           </div>
         </div>
-        <div className="flex gap-[30px] flex-wrap lg:flex-nowrap items-baseline justify-center">
-        {newsData.map((item, index) => (
-          <NewsCard title={item.title} img={item.img} key={index} />
-        ))}
+        <div className="flex gap-[30px] flex-wrap md:flex-nowrap items-baseline justify-center">
+          {eventsData.map((item, index) => {
+            if (index < 3) {
+              return <NewsCard title={item.title} img={item.img} key={index} />;
+            }
+          })}
         </div>
       </div>
     </>

@@ -17,10 +17,10 @@ const user = {
 
 const navigation = [
   { name: "Home", href: "/", current: false },
-  { name: "Our Guides ", href: "/guides", current: false },
+  { name: "Quiz", href: "/guides", current: false },
   { name: "Community", href: "/community", current: false },
   { name: "Blog", href: "/blog", current: false },
-  { name: "News&Events ", href: "/events", current: false },
+  { name: "News & Events ", href: "/events", current: false },
   { name: "Trails ", href: "/trails", current: false },
 ];
 

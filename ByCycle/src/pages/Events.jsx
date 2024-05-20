@@ -1,137 +1,79 @@
+import NewsCard from "../components/NewsCard.jsx";
+import { eventsData } from "../data.js";
+import animation_logo from "../assets/images/ByCycle logo ridotto.png";
+
 function Events() {
+  const highlightEvent = eventsData.find((item) => item.highlight === true);
   return (
     <div className="flex flex-col justify-center pt-16 px-5 md:px-10 lg:px-16">
-      <header className="flex flex-col justify-center">
+      {/* Header section */}
+      <header className="flex flex-col justify-center items-center">
         {/* Main title */}
-        <div className=" text-center text-neutral-800 text-[44px] font-medium leading-[55px]">
+        <div className="text-center text-neutral-800 text-[44px] font-medium leading-[55px]">
           Join events with our community
         </div>
         {/* Subtitle */}
-        <div className="text-zinc-500 text-base font-semibold pt-8">
+        <div className="text-zinc-500 text-justify md:font-semibold max-w-[960px] pt-8">
           Our mission is to break down barriers and make cycling accessible to
           everyone, regardless of age, background or experience level. Through
           initiatives that prioritize affordability and availability, Bycycle
           aims to empower individuals to embrace the multiple benefits of
-          cycling
+          cycling.
         </div>
         {/* Navigation bar for filtering events */}
-        <div className="py-8 flex justify-center items-center gap-2">
+        <div className="w-full pt-5 text-sm flex flex-col justify-center items-center gap-2 md:flex-row lg:px-8">
           {/* Each button represents a different category of events */}
-          <div className="px-8 py-2 rounded-[40px] border border-neutral-400 justify-center items-center gap-2 flex">
-            <div className="text-center text-neutral-950 text-sm font-semibold font-['Manrope'] leading-[21px]">
-              All
-            </div>
-          </div>
-          <div className="px-8 py-2 rounded-[40px] border border-neutral-400 justify-center items-center gap-2 flex">
-            <div className="text-center text-neutral-950 text-sm font-semibold font-['Manrope'] leading-[21px]">
-              Upcoming
-            </div>
-          </div>
-          <div className="px-8 py-2 rounded-[40px] border border-neutral-400 justify-center items-center gap-2 flex">
-            <div className="text-center text-neutral-950 text-sm font-semibold font-['Manrope'] leading-[21px]">
-              Current Month
-            </div>
-          </div>
-          <div className="px-8 py-2 rounded-[40px] border border-neutral-400 justify-center items-center gap-2 flex">
-            <div className="text-center text-neutral-950 text-sm font-semibold font-['Manrope'] leading-[21px]">
-              Beginner Level
-            </div>
-          </div>
-          <div className="px-8 py-2 rounded-[40px] border border-neutral-400 justify-center items-center gap-2 flex">
-            <div className="text-center text-neutral-950 text-sm font-semibold font-['Manrope'] leading-[21px]">
-              Trips
-            </div>
-          </div>
+          <button className="leading-[21px] px-3 py-2 w-[90%] rounded-[40px] border  border-neutral-400 justify-center items-center gap-2 flex text-neutral-950 text-sm font-semibold transition hover:border-black hover:bg-white hover:text-black hover:border max-w-[360px] lg:max-w-[160px]">
+            All
+          </button>
+          <button className="leading-[21px] px-3 py-2 w-[90%] rounded-[40px] border  border-neutral-400 justify-center items-center gap-2 flex text-neutral-950 text-sm font-semibold transition hover:border-black hover:bg-white hover:text-black hover:border max-w-[360px] lg:max-w-[160px]">
+            Upcoming
+          </button>
+          <button className="leading-[21px] px-3 py-2 w-[90%] rounded-[40px] border  border-neutral-400 justify-center items-center gap-2 flex text-neutral-950 text-sm font-semibold transition hover:border-black hover:bg-white hover:text-black hover:border max-w-[360px] lg:max-w-[160px]">
+            Current Month
+          </button>
+          <button className="leading-[21px] px-3 py-2 w-[90%] rounded-[40px] border  border-neutral-400 justify-center items-center gap-2 flex text-neutral-950 text-sm font-semibold transition hover:border-black hover:bg-white hover:text-black hover:border max-w-[360px] lg:max-w-[160px]">
+            Beginner Level
+          </button>
+          <button className="leading-[21px] px-3 py-2 w-[90%] rounded-[40px] border  border-neutral-400 justify-center items-center gap-2 flex text-neutral-950 text-sm font-semibold transition hover:border-black hover:bg-white hover:text-black hover:border max-w-[360px] lg:max-w-[160px]">
+            Trips
+          </button>
         </div>
       </header>
 
       {/* Event highlight section with image and description */}
-      <div className="flex flex-row justify-center items-center gap-[76px] px-14">
-        <img
-          className="rounded-2xl"
-          src="https://via.placeholder.com/650x600"
-        />
-        <div className="flex flex-col self-stretch justify-start items-start gap-16 inline-flex">
-          <div className="self-stretch h-[317px] flex-col justify-start items-start gap-8 flex">
-            <div className="self-stretch text-neutral-800 text-[44px] font-medium font-['Inter Tight'] leading-[55px]">
-              Join events with our community
-            </div>
-            <div className="w-[570px] text-zinc-500 text-base font-semibold font-['Manrope'] leading-normal">
-              Our mission is to break down barriers and make cycling accessible
-              to everyone, regardless of age, background or experience level.
-              Through initiatives that prioritize affordability and
-              availability, Bycycle aims to empower individuals to embrace the
-              multiple benefits of cycling
-            </div>
-          </div>
-          <div className="px-8 py-3 bg-neutral-950 rounded-[40px] justify-center items-center gap-2 inline-flex">
-            <div className="text-white text-base font-semibold font-['Manrope'] leading-normal">
-              Join other bikers
-            </div>
-          </div>
+      <div className="text-center text-neutral-800 text-[44px] font-medium leading-[55px] pt-16">
+        Highlight of the month
+      </div>
+
+      <div className="flex items-center justify-center gap-10 pt-8 flex-wrap lg:flex-nowrap lg:justify-between">
+      <div className="w-full lg:w-auto">
+          <img
+            src={highlightEvent.img}
+            alt="image"
+            className="h-[300px] rounded-[16px] object-cover w-full lg:h-[560px]"
+          />
+        </div>
+        <div className="flex flex-col items-center justify-center gap-5 break-words w-full lg:w-[42%] lg:items-start">
+
+          <h3 className="w-full text-center text-[38px] font-bold leading-[125%] break-words lg:text-left xl:text-[45px]">
+            {highlightEvent.title}
+          </h3>
+
+          <p className="leading-[150%] text-lg text-gray-600 break-words text-justify">
+            {highlightEvent.description}
+          </p>
         </div>
       </div>
+
       {/* Section for listing multiple events */}
-      <div className="h-[852px] flex-col justify-center items-center gap-[72px] inline-flex">
-        <div className="self-stretch flex-col justify-center items-center gap-8 inline-flex"></div>
-        <div className="self-stretch flex-col justify-start items-center gap-16 inline-flex">
-          <div className="justify-center items-center gap-6 inline-flex">
-            {/* Individual event cards */}
-            <div className="flex-col justify-start items-start gap-6 inline-flex">
-              <div className="w-[427px] h-[410px] rounded-xl justify-center items-center inline-flex">
-                <img
-                  className="w-[427px] h-[410px] rounded-lg"
-                  src="https://via.placeholder.com/427x410"
-                />
-              </div>
-              <div className="h-[110px] flex-col justify-start items-start gap-6 flex">
-                <div className="self-stretch text-neutral-950 text-2xl font-medium font-['Inter'] leading-[31.20px]">
-                  Morgan Bikes Demo Day: Test Drive the Newest Models!
-                </div>
-                <div className="self-stretch text-neutral-950 text-base font-medium font-['Manrope'] underline leading-normal">
-                  Read More
-                </div>
-              </div>
-            </div>
-            <div className="flex-col justify-start items-start gap-6 inline-flex">
-              <div className="w-[427px] h-[410px] rounded-xl justify-center items-center inline-flex">
-                <img
-                  className="w-[427px] h-[410px] rounded-lg"
-                  src="https://via.placeholder.com/427x410"
-                />
-              </div>
-              <div className="h-[110px] flex-col justify-start items-start gap-6 flex">
-                <div className="self-stretch text-neutral-950 text-2xl font-medium font-['Inter'] leading-[31.20px]">
-                  RideFest 2024, Morgan Bikes' Celebration of Cycling Excellence
-                </div>
-                <div className="self-stretch text-neutral-950 text-base font-medium font-['Manrope'] underline leading-normal">
-                  Read More
-                </div>
-              </div>
-            </div>
-            <div className="flex-col justify-start items-start gap-6 inline-flex">
-              <div className="w-[427px] h-[410px] rounded-xl justify-center items-center inline-flex">
-                <img
-                  className="w-[427px] h-[410px] rounded-lg"
-                  src="https://via.placeholder.com/427x410"
-                />
-              </div>
-              <div className="h-[110px] flex-col justify-start items-start gap-6 flex">
-                <div className="self-stretch text-neutral-950 text-2xl font-medium font-['Inter'] leading-[31.20px]">
-                  Bike Bash: Morgan Bikes' Ultimate Cycling Carnival 2024
-                </div>
-                <div className="self-stretch text-neutral-950 text-base font-medium font-['Manrope'] underline leading-normal">
-                  Read More
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="px-8 py-3 bg-neutral-950 rounded-[40px] justify-center items-center gap-2 inline-flex">
-            <div className="text-white text-base font-semibold font-['Manrope'] leading-normal">
-              See All Event
-            </div>
-          </div>
-        </div>
+      <div className="text-center text-neutral-800 text-[44px] font-medium leading-[55px] pt-16">
+        All events
+      </div>
+      <div className="flex gap-[30px] flex-wrap lg:flex-nowrap items-baseline justify-center pt-8 pb-16">
+        {eventsData.map((item, index) => (
+          <NewsCard title={item.title} img={item.img} key={index} />
+        ))}
       </div>
     </div>
   );
