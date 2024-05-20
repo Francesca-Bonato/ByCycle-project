@@ -2,8 +2,7 @@ const useAllQuiz = [
   {
     quiz1: [
       {
-        question:
-          "Chi è generalmente considerato l'inventore della bicicletta?",
+        question: "Who is generally considered the inventor of the bicycle?",
         options: [
           "Leonardo da Vinci",
           "Karl Drais",
@@ -11,34 +10,34 @@ const useAllQuiz = [
           "J.K. Starley",
         ],
         correctAnswer: "Karl Drais",
-        difficulty: "media",
+        difficulty: "medium",
         punteggio: 6,
       },
       {
-        question: "In che anno è stata inventata la prima bicicletta?",
+        question: "In what year was the first bicycle invented?",
         options: ["1700", "1801", "1817", "1863"],
         correctAnswer: "1817",
-        difficulty: "media",
+        difficulty: "medium",
         punteggio: 6,
       },
       {
         question:
-          "Qual era il nome originale della bicicletta quando è stata inventata?",
+          "What was the original name of the bicycle when it was invented?",
         options: ["Laufmaschine", "Draisine", "Biciclette", "Velocipede"],
         correctAnswer: "Laufmaschine",
-        difficulty: "difficile",
+        difficulty: "difficult",
         punteggio: 8,
       },
       {
-        question: "Quando è stata introdotta la prima bicicletta con pedali?",
+        question: "When was the first bicycle with pedals introduced?",
         options: ["1840", "1853", "1867", "1885"],
         correctAnswer: "1867",
-        difficulty: "media",
+        difficulty: "medium",
         punteggio: 6,
       },
       {
         question:
-          "Chi ha introdotto il concetto moderno di bicicletta con due ruote dello stesso diametro?",
+          "Who introduced the modern concept of the bicycle with two wheels of the same diameter?",
         options: [
           "Pierre Michaux",
           "John Kemp Starley",
@@ -46,7 +45,7 @@ const useAllQuiz = [
           "John Boyd Dunlop",
         ],
         correctAnswer: "John Kemp Starley",
-        difficulty: "difficile",
+        difficulty: "difficult",
         punteggio: 8,
       },
     ],
@@ -54,68 +53,64 @@ const useAllQuiz = [
   {
     quiz2: [
       {
-        question:
-          "A che frequenza dovresti controllare la pressione delle gomme della tua bicicletta?",
+        question: "How often should you check your bicycle's tire pressure?",
         options: [
-          "Ogni mese",
-          "Ogni settimana",
-          "Ogni due settimane",
-          "Prima di ogni corsa",
+          "Every month",
+          "Every week",
+          "Every two weeks",
+          "Before every ride",
         ],
-        correctAnswer: "Ogni settimana",
-        difficulty: "media",
+        correctAnswer: "Every week",
+        difficulty: "medium",
+        punteggio: 6,
+      },
+      {
+        question: "Which parts of the bicycle should you lubricate regularly?",
+        options: [
+          "Only the chain",
+          "Only the brakes",
+          "Only the wheel hubs",
+          "Chain, hubs, and crankset",
+        ],
+        correctAnswer: "Chain, hubs, and crankset",
+        difficulty: "medium",
+        punteggio: 6,
+      },
+      {
+        question: "How can you prevent rust on your bicycle's metal parts?",
+        options: [
+          "By applying oil",
+          "By keeping the bicycle indoors",
+          "By using anti-rust products",
+          "By cleaning and lubricating regularly",
+        ],
+        correctAnswer: "By cleaning and lubricating regularly",
+        difficulty: "medium",
+        punteggio: 6,
+      },
+      {
+        question: "When should you replace your bicycle's brake pads?",
+        options: [
+          "Every two years",
+          "Every six months",
+          "Only when they no longer work",
+          "When they wear out to the limit",
+        ],
+        correctAnswer: "When they wear out to the limit",
+        difficulty: "medium",
         punteggio: 6,
       },
       {
         question:
-          "Quali parti della bicicletta dovresti lubrificare regolarmente?",
+          "What should you do if your bicycle's gears start to skip or click while pedaling?",
         options: [
-          "Solo la catena",
-          "Solo i freni",
-          "Solo i mozzi delle ruote",
-          "Catena, mozzi e guarnitura",
+          "Nothing, it is normal",
+          "Adjust the derailleur cable tension",
+          "Replace the derailleur cable",
+          "Replace the derailleur",
         ],
-        correctAnswer: "Catena, mozzi e guarnitura",
-        difficulty: "media",
-        punteggio: 6,
-      },
-      {
-        question:
-          "Come puoi prevenire la ruggine sulle parti metalliche della bicicletta?",
-        options: [
-          "Applicando olio",
-          "Tenendo la bicicletta al coperto",
-          "Utilizzando prodotti anti-ruggine",
-          "Pulendo e lubrificando regolarmente",
-        ],
-        correctAnswer: "Pulendo e lubrificando regolarmente",
-        difficulty: "media",
-        punteggio: 6,
-      },
-      {
-        question:
-          "Quando dovresti sostituire i pastiglie dei freni della tua bicicletta?",
-        options: [
-          "Ogni due anni",
-          "Ogni sei mesi",
-          "Solo quando non funzionano più",
-          "Quando si consumano al limite",
-        ],
-        correctAnswer: "Quando si consumano al limite",
-        difficulty: "media",
-        punteggio: 6,
-      },
-      {
-        question:
-          "Cosa dovresti fare se il cambio della bicicletta inizia a saltare o a scattare durante la pedalata?",
-        options: [
-          "Niente, è normale",
-          "Regolare la tensione del cavo del cambio",
-          "Sostituire il cavo del cambio",
-          "Sostituire il cambio stesso",
-        ],
-        correctAnswer: "Regolare la tensione del cavo del cambio",
-        difficulty: "difficile",
+        correctAnswer: "Adjust the derailleur cable tension",
+        difficulty: "difficult",
         punteggio: 8,
       },
     ],
@@ -123,62 +118,60 @@ const useAllQuiz = [
   {
     quiz3: [
       {
-        question:
-          "Qual è la corretta posizione del sellino per una pedalata efficiente?",
+        question: "What is the correct saddle position for efficient pedaling?",
         options: [
-          "Al livello delle anche",
-          "Sotto il livello delle ginocchia",
-          "Al livello delle ginocchia",
-          "Sopra il livello delle anche",
+          "Hip level",
+          "Below knee level",
+          "Knee level",
+          "Above hip level",
         ],
-        correctAnswer: "Al livello delle anche",
-        difficulty: "media",
+        correctAnswer: "Hip level",
+        difficulty: "medium",
         punteggio: 6,
       },
       {
-        question:
-          "Qual è la pressione ideale dei pneumatici per una bici da strada?",
+        question: "What is the ideal tire pressure for a road bike?",
         options: ["20-30 psi", "30-40 psi", "70-90 psi", "100-120 psi"],
         correctAnswer: "70-90 psi",
-        difficulty: "media",
+        difficulty: "medium",
         punteggio: 6,
       },
       {
         question:
-          "Cosa dovresti fare se senti un rumore strano provenire dalla ruota posteriore della tua bicicletta?",
+          "What should you do if you hear a strange noise coming from your bicycle's rear wheel?",
         options: [
-          "Ignorarlo",
-          "Stringere i raggi",
-          "Controllare il mozzo e il pacco pignoni",
-          "Lubrificare la catena",
+          "Ignore it",
+          "Tighten the spokes",
+          "Check the hub and cassette",
+          "Lubricate the chain",
         ],
-        correctAnswer: "Controllare il mozzo e il pacco pignoni",
-        difficulty: "media",
+        correctAnswer: "Check the hub and cassette",
+        difficulty: "medium",
         punteggio: 6,
       },
       {
-        question: "Quando è necessario sostituire la catena della bicicletta?",
+        question: "When should you replace your bicycle's chain?",
         options: [
-          "Ogni 500 km",
-          "Ogni 1000 km",
-          "Quando è visibilmente usurata",
-          "Quando salta frequentemente durante la pedalata",
+          "Every 500 km",
+          "Every 1000 km",
+          "When it is visibly worn",
+          "When it frequently skips while pedaling",
         ],
-        correctAnswer: "Quando è visibilmente usurata",
-        difficulty: "media",
+        correctAnswer: "When it is visibly worn",
+        difficulty: "medium",
         punteggio: 6,
       },
       {
         question:
-          "Qual è il metodo corretto per pulire la catena della bicicletta?",
+          "What is the correct method for cleaning your bicycle's chain?",
         options: [
-          "Utilizzare solo acqua",
-          "Utilizzare un detergente specifico per catene",
-          "Utilizzare olio motore",
-          "Utilizzare sapone e acqua",
+          "Using only water",
+          "Using a specific chain cleaner",
+          "Using motor oil",
+          "Using soap and water",
         ],
-        correctAnswer: "Utilizzare un detergente specifico per catene",
-        difficulty: "difficile",
+        correctAnswer: "Using a specific chain cleaner",
+        difficulty: "difficult",
         punteggio: 8,
       },
     ],
