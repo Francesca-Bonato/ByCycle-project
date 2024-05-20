@@ -9,4 +9,4 @@ const Button = ({ innerText, className = "" }) => {
   );
 };
 
-export { Button };
+export default Button;

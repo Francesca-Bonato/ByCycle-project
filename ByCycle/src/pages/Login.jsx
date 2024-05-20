@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import loginImage from "../assets/images/login-image-small.jpg";
-import { Button } from "../components/Button";
+import  Button  from "../components/Button";
 
 const Login = () => {
   const [data, setData] = useState({
