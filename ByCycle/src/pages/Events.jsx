@@ -1,6 +1,5 @@
 import NewsCard from "../components/NewsCard.jsx";
 import { eventsData } from "../data.js";
-import animation_logo from "../assets/images/ByCycle logo ridotto.png";
 
 function Events() {
   const highlightEvent = eventsData.find((item) => item.highlight === true);

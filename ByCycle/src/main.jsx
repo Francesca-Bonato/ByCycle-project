@@ -15,6 +15,7 @@ import { Terms } from "./pages/Terms";
 import ContactUs from "./pages/ContactUs";
 import NotFound from "./pages/NotFound";
 import Events from "./pages/Events";
+import EventDetailsPage from "./pages/EventDetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       { path: "/community", element: <Community /> },
       { path: "/trails", element: <BikeTrails /> },
       { path: "/events", element: <Events /> },
+      { path: "/events/:eventId", element: <EventDetailsPage /> },
       { path: "/login", element: <Login /> },
       { path: "/quiz", element: <Questionnaire /> },
       { path: "/contacts", element: <ContactUs /> },
