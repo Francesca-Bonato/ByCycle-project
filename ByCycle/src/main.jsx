@@ -6,6 +6,7 @@ import Homepage from "./pages/Homepage";
 import Forum from "./pages/Forum";
 import BikeTrails from "./pages/BikeTrails";
 import Newspage from "./pages/Newspage";
+import Events from "./pages/Events";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: "/forum", element: <Forum /> },
       { path: "/piste", element: <BikeTrails/> },
       { path: "/news", element: <Newspage /> },
+      { path: "/events", element: <Events/>}
     ],
   },
 ]);
