@@ -1,10 +1,27 @@
-function Homepage() {
-  return (
-    <div>
-      <h1>Homepage</h1>
-      
-    </div>
-  )
-}
+import Parallax from "../components/ParallaxComponent";
+import Jumbotron from "../components/Jumbotron";
+import AboutUsHomepage from "../components/AboutUsHomepage";
+import NewsSection from "../components/NewsSection";
+import CarouselBlog from "../components/CarouselBlog";
+import CarouselQuiz from "../components/CarouselQuiz";
 
-export default Homepage
+
+function Homepage() {
+
+  return (
+    <>
+      {/* jumbotron section */}
+      <Jumbotron />
+      {/* About Us section */}
+      <AboutUsHomepage />
+      {/* news section */}
+      <NewsSection/>
+      {/* Blog carousel */}
+      <CarouselBlog/>
+      {/* Quiz carousel */}
+      <CarouselQuiz/>
+      <Parallax />
+    </>
+  );
+}
+export default Homepage;
