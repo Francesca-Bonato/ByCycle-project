@@ -1,23 +1,24 @@
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/Root";
-import Community from "./pages/Community";
-import BikeTrails from "./pages/BikeTrails";
 import Homepage from "./pages/Homepage";
+import QuizList from "./pages/QuizList";
+import Quiz from "./pages/Quiz";
+import Community from "./pages/Community";
+import Events from "./pages/Events";
+import EventDetails from "./pages/EventDetails";
+import BikeTrails from "./pages/BikeTrails";
 import Login from "./pages/Login";
-import Questionnaire from "./pages/Questionnaire";
+import Registration from "./pages/Registration";
+import Profile from "./pages/Profile";
+import ContactUs from "./pages/ContactUs";
 import { Privacy } from "./pages/Privacy";
-import React from "react";
 import CookieConsent from "react-cookie-consent";
 import { Cookies } from "./pages/Cookies";
 import { Terms } from "./pages/Terms";
-import ContactUs from "./pages/ContactUs";
 import NotFound from "./pages/NotFound";
-import Events from "./pages/Events";
-import EventDetails from "./pages/EventDetails";
-import Registration from "./pages/Registration";
-import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -26,19 +27,19 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       { path: "/", element: <Homepage /> },
+      { path: "/quiz", element: <QuizList /> },
+      { path: "/quiz/:id", element: <Quiz /> },
       { path: "/community", element: <Community /> },
-      { path: "/trails", element: <BikeTrails /> },
       { path: "/events", element: <Events /> },
       { path: "/events/:id", element: <EventDetails /> },
+      { path: "/trails", element: <BikeTrails /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Registration /> },
-      { path: "/quiz", element: <Questionnaire /> },
+      { path: "/profile", element: <Profile /> },
       { path: "/contacts", element: <ContactUs /> },
-      { path: "/questionnaire", element: <Questionnaire /> },
       { path: "/privacy", element: <Privacy /> },
       { path: "/cookies", element: <Cookies /> },
       { path: "/terms", element: <Terms /> },
-      { path: "/profile", element: <Profile /> },
     ],
   },
 ]);

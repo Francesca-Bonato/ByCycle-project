@@ -3,7 +3,10 @@ export function Cookies() {
     <>
       <div className="container-fluid flex-row tracking-widest p-10">
         <div className="container">
-          <div id="en" className="tab-content translations-content-item en visible">
+          <div
+            id="en"
+            className="tab-content translations-content-item en visible"
+          >
             <h1 className="font-bold">Cookies Policy</h1>
             <p>Last updated: May 13, 2024</p>
             <p>
@@ -11,7 +14,7 @@ export function Cookies() {
               You should read this policy so You can understand what type of
               cookies We use, or the information We collect using Cookies and
               how that information is used. This Cookies Policy has been created
-              with the help of the{" "}
+              with the help of thed
               <a
                 className="underline"
                 href="https://www.freeprivacypolicy.com/free-cookies-policy-generator/"
@@ -54,7 +57,7 @@ export function Cookies() {
                 among its many uses.
               </li>
               <li>
-                <strong>Website</strong> refers to ByCycle, accessible from{" "}
+                <strong>Website</strong> refers to ByCycle, accessible fromd
                 <a
                   className="underline"
                   href="https://www.bycycle.it"
@@ -138,7 +141,7 @@ export function Cookies() {
               <li>
                 <p>
                   For the Chrome web browser, please visit this page from
-                  Google:{" "}
+                  Google:d
                   <a
                     className="underline"
                     href="https://support.google.com/accounts/answer/32050"
@@ -152,7 +155,7 @@ export function Cookies() {
               <li>
                 <p>
                   For the Internet Explorer web browser, please visit this page
-                  from Microsoft:{" "}
+                  from Microsoft:d
                   <a
                     className="underline"
                     href="http://support.microsoft.com/kb/278835"
@@ -166,7 +169,7 @@ export function Cookies() {
               <li>
                 <p>
                   For the Firefox web browser, please visit this page from
-                  Mozilla:{" "}
+                  Mozilla:d
                   <a
                     className="underline"
                     href="https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored"
@@ -179,7 +182,7 @@ export function Cookies() {
               </li>
               <li>
                 <p>
-                  For the Safari web browser, please visit this page from Apple:{" "}
+                  For the Safari web browser, please visit this page from Apple:d
                   <a
                     className="underline"
                     href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac"
@@ -197,7 +200,7 @@ export function Cookies() {
             </p>
             <h4>More Information about Cookies</h4>
             <p>
-              You can learn more about cookies:{" "}
+              You can learn more about cookies:d
               <a
                 className="underline"
                 href="https://www.freeprivacypolicy.com/blog/cookies/"
@@ -214,7 +217,7 @@ export function Cookies() {
             </p>
             <ul>
               <li>
-                By visiting this page on our website:{" "}
+                By visiting this page on our website:d
                 <a
                   className="underline"
                   href="https://www.bycycle.it/cookies"

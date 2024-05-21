@@ -17,7 +17,7 @@ const user = {
 
 const navigation = [
   { name: "Home", href: "/", current: false },
-  { name: "Quiz", href: "/guides", current: false },
+  { name: "Quiz", href: "/quiz", current: false },
   { name: "Community", href: "/community", current: false },
   { name: "Blog", href: "/blog", current: false },
   { name: "News & Events ", href: "/events", current: false },
@@ -96,7 +96,7 @@ export function NavBar() {
                             className={classNames(
                               location.pathname === item.href
                                 ? "bg-gray-900 text-white"
-                                : "text-black hover:bg-gray-700 hover:text-white",
+                                : "text-black transition-all hover:bg-gray-700 hover:text-white",
                               "rounded-md px-3 py-2 text-sm font-medium"
                             )}
                             aria-current={item.current ? "page" : undefined}
