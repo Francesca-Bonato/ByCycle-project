@@ -70,11 +70,22 @@ function Registration() {
       return; // Interrompi la procedura di registrazione
     }
 
-    // Controllo se il nome utenteo email sono già presenti nel localStorage
-    if (
-      localStorage.getItem(data.username) ||
-      localStorage.getItem(data.usermail)
-    ) {
+    // Controlla se il nome utente o l'email sono già presenti nel localStorage
+    const existingUsers = Object.keys(localStorage).filter(
+      (key) => key !== "Token"
+    );
+
+    const isUsernameTaken = existingUsers.some((key) => {
+      const user = JSON.parse(localStorage.getItem(key));
+      return user.username === data.username;
+    });
+
+    const isEmailTaken = existingUsers.some((key) => {
+      const user = JSON.parse(localStorage.getItem(key));
+      return user.usermail === data.usermail;
+    });
+
+    if (isUsernameTaken || isEmailTaken) {
       console.log("Username or email already in use. Please correct");
       alert("Username or email already in use. Please correct");
       return; // Interrompi la procedura di registrazione
