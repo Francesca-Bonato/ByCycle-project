@@ -68,7 +68,7 @@ export function Footer_CTA({ ...props }) {
             )}
             {isAlreadySubscribed && (
               <div className="flex justify-center translate-y-5">
-                <p className="text-orange-600 absolute backdrop-blur-sm rounded-full p-1">
+                <p className="text-orange-600 absolute p-1 drop-shadow-[0_1px_10px_rgba(255,255,255,1)]">
                   This email is already subscribed. Please insert a different
                   email !
                 </p>

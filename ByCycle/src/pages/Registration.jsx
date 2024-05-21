@@ -15,40 +15,41 @@ function Registration() {
   const navigate = useNavigate();
 
   function handleChange(e) {
-    setData((data) => {
-      const name = e.target.name;
-      const value = e.target.value;
-      return {
-        ...data,
-        [name]: value,
-      };
-    });
+    setData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
   }
 
-  function handleRegister(username, birthDate, email, password, passwordConf) {
+  function handleRegister(
+    username,
+    birthDate,
+    usermail,
+    password,
+    passwordConf
+  ) {
     return new Promise((resolve, reject) => {
       //Simuliamo il ritardo nell'interrogazione del server affinchè recuperi i dati dell'utente dal database:
       setTimeout(() => {
         if (
           username !== "" &&
           birthDate !== "" &&
-          email !== "" &&
+          usermail !== "" &&
           password !== "" &&
           passwordConf !== ""
         ) {
-          //simuliamo i dati ricevuti dal server:
-          const userData = {
-            firstname: "Emanuele",
-            lastname: "Avitabile",
-            ruolo: "Admin",
-            usermail: "emanuele@gmail.com",
+          const realData = {
+            username: username,
+            birthdate: birthDate,
+            usermail: usermail,
+            role: "User",
           };
 
           const token =
             "LBJimGWT7oxHtJfVFez4dbKyL3eYcKTJh2FrpwlIAQtqYysLQHziFqEVz676IeoX";
           //I dati dell'utente vengono restituiti dal metodo handleRegister:
           resolve({
-            data: userData,
+            data: realData,
             token: token,
           });
         } else {
@@ -60,12 +61,31 @@ function Registration() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    //controlla password se corrisponde
+    if (data.password !== data.passwordConf) {
+      console.log("Password doesn't match.Please correct");
+      alert("Password doesn't match. Please correct");
+      // Aggiungi qui la logica per visualizzare un messaggio di errore all'utente
+      return; // Interrompi la procedura di registrazione
+    }
+
+    // Controllo se il nome utenteo email sono già presenti nel localStorage
+    if (
+      localStorage.getItem(data.username) ||
+      localStorage.getItem(data.usermail)
+    ) {
+      console.log("Username or email already in use. Please correct");
+      alert("Username or email already in use. Please correct");
+      return; // Interrompi la procedura di registrazione
+    }
+
     console.log(data);
     //Al submit del form, chiamiamo il metodo handleRegister, il quale restituisce userData:
     handleRegister(
       data.username,
       data.birthDate,
-      data.email,
+      data.usermail,
       data.password,
       data.passwordConf
     )
@@ -73,7 +93,7 @@ function Registration() {
         console.log(response);
         //Trasformiamo i dati utente ricevuti in una stringa prima di salvarlo nel local storage:
         const responseToString = JSON.stringify(response.data);
-        localStorage.setItem("Utente", responseToString);
+        localStorage.setItem(data.username, responseToString);
         //Salviamo il token ricevuto nel local storage:
         localStorage.setItem("Token", response.token);
         navigate("/dashboard");
@@ -91,7 +111,7 @@ function Registration() {
             onSubmit={handleSubmit}
             className="flex flex-col gap-[31px] self-stretch p-[31px] lg:p-0 lg:px-10"
           >
-            <h1 className="text-white text-center font-semibold md:text-2xl md:text-start md:text-[#111827]">
+            <h1 className="text-white text-center font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-2xl md:text-start md:text-[#111827]">
               Register to our community
             </h1>
             <div className="flex flex-col items-start gap-3.5 ">
