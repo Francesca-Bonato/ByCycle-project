@@ -1,4 +1,4 @@
-import newsData from "../data";
+import { eventsData } from "../data";
 import NewsCard from "./NewsCard";
 
 function NewsSection() {
@@ -20,7 +20,7 @@ function NewsSection() {
 
         {/* Container for the news cards with responsive layout */}
         <div className="flex gap-[30px] flex-wrap lg:flex-nowrap items-baseline justify-center">
-          {newsData.map((item, index) => (
+          {eventsData.map((item, index) => (
             <>
               {/*NewsCard component for each news item*/}
               <NewsCard title={item.title} img={item.img} key={index} />
