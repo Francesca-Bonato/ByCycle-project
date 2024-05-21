@@ -76,7 +76,7 @@ const Login = () => {
             onSubmit={handleSubmit}
             className="flex flex-col gap-[31px] self-stretch m-4"
           >
-            <h1 className="text-white text-center font-semibold md:text-2xl md:text-start md:text-[#111827]">
+            <h1 className="text-white text-center font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-2xl md:text-start md:text-[#111827]">
               Log in to start your journey
             </h1>
             <div className="flex flex-col items-start gap-3.5">
