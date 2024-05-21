@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import loginImage from "../assets/images/login-image-small.jpg";
-import  Button  from "../components/Button";
+import Button from "../components/Button";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -22,17 +22,15 @@ const Login = () => {
     });
   }
 
-  function handleLogin(email, password) {
+  function handleLogin(usermail, password) {
     return new Promise((resolve, reject) => {
       //Simuliamo il ritardo nell'interrogazione del server affinchè recuperi i dati dell'utente dal database:
       setTimeout(() => {
-        if (email != "" && password != "") {
+        if (usermail !== "" && password !== "") {
           //simuliamo i dati ricevuti dal server:
           const userData = {
-            firstname: "Emanuele",
-            lastname: "Avitabile",
-            ruolo: "Admin",
-            usermail: "emanuele@gmail.com",
+            usermail: usermail,
+            role: "User",
           };
 
           const token =
@@ -48,20 +46,39 @@ const Login = () => {
       }, 2000);
     });
   }
-  
+
   function handleSubmit(e) {
     e.preventDefault();
+
+    // Controlla se l'email è già presente nel localStorage
+    const existingUsers = Object.keys(localStorage).filter(
+      (key) => key !== "Token"
+    );
+
+    const isEmailTaken = existingUsers.some((key) => {
+      const user = JSON.parse(localStorage.getItem(key));
+      return user.usermail === data.usermail;
+    });
+
+    if (!isEmailTaken) {
+      console.log("Email not found. Please correct");
+      alert("Email not found. Please correct");
+      return; // Interrompi la procedura di registrazione
+    }
+
     console.log(data);
     //Al submit del form, chiamiamo il metodo handleLogin, il quale restituisce userData:
-    handleLogin(data.email, data.password)
+    handleLogin(data.usermail, data.password)
       .then((response) => {
         console.log(response);
-        //Trasformiamo i dati utente ricevuti in una stringa prima di salvarlo nel local storage:
+
+        //Trasformiamo i dati utente ricevuti in una stringa prima di salvarlo nel session storage:
         const responseToString = JSON.stringify(response.data);
-        localStorage.setItem("Utente", responseToString);
+        sessionStorage.setItem(data.usermail, responseToString);
+
         //Salviamo il token ricevuto nel local storage:
         localStorage.setItem("Token", response.token);
-        navigate("/dashboard");
+        navigate("/profile");
       })
       .catch((error) => {
         console.log(error);
@@ -80,7 +97,10 @@ const Login = () => {
               Log in to start your journey
             </h1>
             <div className="flex flex-col items-start gap-3.5">
-              <label htmlFor="usermail" className="text-white font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-[#111827]">
+              <label
+                htmlFor="usermail"
+                className="text-white font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-[#111827]"
+              >
                 E-mail
               </label>
               <input
@@ -94,7 +114,10 @@ const Login = () => {
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
-              <label htmlFor="password" className="text-white font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-[#111827]">
+              <label
+                htmlFor="password"
+                className="text-white font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-[#111827]"
+              >
                 Password
               </label>
               <input

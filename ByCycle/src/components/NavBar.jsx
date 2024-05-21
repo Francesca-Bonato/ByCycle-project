@@ -239,7 +239,7 @@ export function NavBar() {
                     {/* Profile Menu Buttons with Opacity Transition */}
                     {menuProfile && (
                       <div
-                        className={`mt-3 space-y-1 px-2 shadow-2xl w-2/5 rounded-lg transition-opacity ${
+                        className={`mt-3 space-y-1 px-2 lg:shadow-2xl w-2/5 rounded-lg transition-opacity ${
                           menuProfile ? "opacity-100" : "opacity-0"
                         }`}
                       >

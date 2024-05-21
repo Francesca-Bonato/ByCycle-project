@@ -86,8 +86,8 @@ function Registration() {
     });
 
     if (isUsernameTaken || isEmailTaken) {
-      console.log("Username or email already in use. Please correct");
-      alert("Username or email already in use. Please correct");
+      console.log("Username or email already in use. Please correct.");
+      alert("Username or email already in use. Please correct.");
       return; // Interrompi la procedura di registrazione
     }
 
@@ -107,7 +107,7 @@ function Registration() {
         localStorage.setItem(data.username, responseToString);
         //Salviamo il token ricevuto nel local storage:
         localStorage.setItem("Token", response.token);
-        navigate("/dashboard");
+        navigate("/profile");
       })
       .catch((error) => {
         console.log(error);
