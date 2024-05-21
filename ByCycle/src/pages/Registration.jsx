@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import loginImage from "../assets/images/registration-image.jpg";
+import registerImage from "../assets/images/registration-image.jpg";
 import Button from "../components/Button";
 
 function Registration() {
   const [data, setData] = useState({
+    username: "",
+    birthDate: "",
     usermail: "",
     password: "",
+    passwordConf: "",
   });
 
   const navigate = useNavigate();
@@ -22,11 +25,17 @@ function Registration() {
     });
   }
 
-  function handleLogin(email, password) {
+  function handleRegister(username, birthDate, email, password, passwordConf) {
     return new Promise((resolve, reject) => {
       //Simuliamo il ritardo nell'interrogazione del server affinchè recuperi i dati dell'utente dal database:
       setTimeout(() => {
-        if (email != "" && password != "") {
+        if (
+          username !== "" &&
+          birthDate !== "" &&
+          email !== "" &&
+          password !== "" &&
+          passwordConf !== ""
+        ) {
           //simuliamo i dati ricevuti dal server:
           const userData = {
             firstname: "Emanuele",
@@ -37,7 +46,7 @@ function Registration() {
 
           const token =
             "LBJimGWT7oxHtJfVFez4dbKyL3eYcKTJh2FrpwlIAQtqYysLQHziFqEVz676IeoX";
-          //I dati dell'utente vengono restituiti dal metodo handleLogin:
+          //I dati dell'utente vengono restituiti dal metodo handleRegister:
           resolve({
             data: userData,
             token: token,
@@ -52,8 +61,14 @@ function Registration() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(data);
-    //Al submit del form, chiamiamo il metodo handleLogin, il quale restituisce userData:
-    handleLogin(data.email, data.password)
+    //Al submit del form, chiamiamo il metodo handleRegister, il quale restituisce userData:
+    handleRegister(
+      data.username,
+      data.birthDate,
+      data.email,
+      data.password,
+      data.passwordConf
+    )
       .then((response) => {
         console.log(response);
         //Trasformiamo i dati utente ricevuti in una stringa prima di salvarlo nel local storage:
@@ -74,7 +89,7 @@ function Registration() {
         <div className="flex w-full flex-col gap-8 bg-register-bg bg-cover md:bg-none md:w-[48%]">
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col gap-[31px] self-stretch m-4"
+            className="flex flex-col gap-[31px] self-stretch p-[31px] lg:p-0 lg:px-10"
           >
             <h1 className="text-white text-center font-semibold md:text-2xl md:text-start md:text-[#111827]">
               Register to our community
@@ -89,15 +104,16 @@ function Registration() {
               <input
                 className="w-full p-[10px] border border-gray-300 rounded-3xl"
                 type="text"
-                name="name"
-                id="name"
-                value={data.name}
+                name="username"
+                id="username"
+                value={data.username}
                 onChange={handleChange}
+                required
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
               <label
-                htmlFor="birth-date"
+                htmlFor="birthDate"
                 className="text-white font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-[#111827]"
               >
                 Birth Date
@@ -105,10 +121,11 @@ function Registration() {
               <input
                 className="w-full p-[10px] border border-gray-300 rounded-3xl"
                 type="date"
-                name="date"
-                id="date"
-                value={data.date}
+                name="birthDate"
+                id="birthDate"
+                value={data.birthDate}
                 onChange={handleChange}
+                required
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
@@ -125,6 +142,7 @@ function Registration() {
                 id="usermail"
                 value={data.usermail}
                 onChange={handleChange}
+                required
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
@@ -140,11 +158,12 @@ function Registration() {
                 name="password"
                 value={data.password}
                 onChange={handleChange}
+                required
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
               <label
-                htmlFor="password-conf"
+                htmlFor="passwordConf"
                 className="text-white font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-[#111827]"
               >
                 Confirm Password
@@ -152,19 +171,20 @@ function Registration() {
               <input
                 className="w-full p-[10px] border border-gray-300 rounded-3xl"
                 type="password"
-                name="password-conf"
-                value={data.password}
+                name="passwordConf"
+                value={data.passwordConf}
                 onChange={handleChange}
+                required
               />
             </div>
             <Button innerText="Submit" className="self-center md:self-end" />
           </form>
         </div>
-        <div className="h-full w-full gap-[47px] hidden md:w-[48%] md:block lg:w-1/2">
+        <div className="h-screen w-full gap-[47px] hidden md:w-[48%] md:block lg:w-1/2">
           <img
             alt=""
-            src={loginImage}
-            className="inset-0 w-full h-full object-cover"
+            src={registerImage}
+            className="inset-0 w-full h-full overflow-hidden object-cover"
           />
         </div>
       </div>

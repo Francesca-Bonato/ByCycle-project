@@ -70,17 +70,17 @@ const Login = () => {
 
   return (
     <div className="w-full h-full bg-white-A700_01">
-      <div className="h-full flex flex-col items-center justify-between gap-5 md:flex-row-reverse">
+      <div className="h-full flex flex-col items-center bg-login-bg bg-cover bg-bottom md:bg-none justify-between gap-5 md:flex-row-reverse">
         <div className="flex w-full flex-col gap-8 md:w-[48%]">
           <form
             onSubmit={handleSubmit}
             className="flex flex-col gap-[31px] self-stretch m-4"
           >
-            <h1 className=" text-center font-semibold md:text-2xl md:text-start">
-              Log in to start your journey...
+            <h1 className="text-white text-center font-semibold md:text-2xl md:text-start md:text-[#111827]">
+              Log in to start your journey
             </h1>
             <div className="flex flex-col items-start gap-3.5">
-              <label htmlFor="usermail" className="font-semibold">
+              <label htmlFor="usermail" className="text-white font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-[#111827]">
                 E-mail
               </label>
               <input
@@ -90,10 +90,11 @@ const Login = () => {
                 id="usermail"
                 value={data.usermail}
                 onChange={handleChange}
+                required
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
-              <label htmlFor="password" className="font-semibold">
+              <label htmlFor="password" className="text-white font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-[#111827]">
                 Password
               </label>
               <input
@@ -102,12 +103,13 @@ const Login = () => {
                 name="password"
                 value={data.password}
                 onChange={handleChange}
+                required
               />
             </div>
             <Button innerText="Log In" className="self-center md:self-end" />
           </form>
         </div>
-        <div className="h-full w-full gap-[47px] md:w-[48%] lg:w-1/2">
+        <div className="h-full w-full gap-[47px] hidden md:block md:w-[48%] lg:w-1/2">
           <img
             alt=""
             src={loginImage}
