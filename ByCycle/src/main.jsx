@@ -17,7 +17,7 @@ import NotFound from "./pages/NotFound";
 import Events from "./pages/Events";
 import EventDetails from "./pages/EventDetails";
 import Registration from "./pages/Registration";
-import Profile from "./pages/Profile"
+import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       { path: "/privacy", element: <Privacy /> },
       { path: "/cookies", element: <Cookies /> },
       { path: "/terms", element: <Terms /> },
-      { path: "/profile", element: <Profile /> }
+      { path: "/profile", element: <Profile /> },
     ],
   },
 ]);
