@@ -4,6 +4,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: { manrope: "Manrope" },
+      backgroundImage: theme => ({
+        'login-bg': "url('src/assets/images/login-image-small.jpg')",
+        'register-bg': "url('src/assets/images/registration-image.jpg')",
+      }),
     },
   },
   plugins: [],
