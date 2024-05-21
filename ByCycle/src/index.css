@@ -80,16 +80,16 @@ a {
 /* Media query reset */
 @media (max-width: 768px) {
   .display {
-    font-size: 32px;
+    font-size: 40px;
   }
   h1 {
-    font-size: 28px;
+    font-size: 36px;
   }
   h2 {
-    font-size: 24px;
+    font-size: 32px;
   }
   h3 {
-    font-size: 20px;
+    font-size: 30px;
   }
 }
 

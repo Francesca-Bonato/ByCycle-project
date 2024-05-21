@@ -4,14 +4,21 @@ import Slider from "./Slider/Slider";
 function CarouselBlog() {
   return (
     <>
-      <section className="pt-16 pb-5 px-5 md:px-10 lg:px-16 2xl:text-lg">
+    {/* Header container with responsive padding */}
+      <section className="max-w-[1536px] mx-auto pt-16 pb-5 px-5 md:px-10 lg:px-16 2xl:text-lg">
+
+        {/* Flex container for the heading and description/CTA*/}
         <div className="flex flex-wrap lg:flex-nowrap lg:items-center gap-[10%]">
+
+          {/* Heading section */}
           <div className="w-full lg:w-[50%]">
             <p className="font-extrabold break-words text-center text-4xl lg:text-5xl lg:text-left">
               ByCycle Press:
               <br /> insights from our editorial board
             </p>
           </div>
+
+          {/* Description section */}
           <div className="w-full lg:w-[50%] mt-[20px] flex flex-col gap-5 items-center break-words leading-[150%]">
             <p className="text-justify">
               Our blog section is where our editorial board shares the latest
@@ -23,10 +30,12 @@ function CarouselBlog() {
             </p>
           </div>
         </div>
+
+        {/* CTA button section */}
         <div className="flex justify-center lg:justify-end py-5">
-          <Link to={"/community"}>
+          <Link to={"/blog"}>
             <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
-              Join other bikers
+             Read the blog
             </button>
           </Link>
         </div>

@@ -6,7 +6,7 @@ function Jumbotron() {
   return (
     <div className="jumbotron bg-black relative 2xl:text-lg">
       <video
-        className="w-full h-[850px] object-cover opacity-[0.4]"
+        className="w-full h-[500px] object-cover opacity-[0.4] lg:h-[850px]"
         autoPlay
         loop
         muted
@@ -14,7 +14,7 @@ function Jumbotron() {
         <source src={video_jumbotrom} type="video/mp4" />
       </video>
       <div className="text-jumbotron absolute top-0 left-0 flex items-center justify-center w-full h-full">
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center p-5 md:p-0">
           <img src={img_logo} alt="ByCycle logo" width={"500px"} />
           <p className="max-w-[700px] w-full text-center leading-[150%] pl-6 pr-6 text-white lg:p-0">
             Welcome to <strong>ByCycle</strong>! <br /> If you&apos;re
