@@ -4,7 +4,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./routes/Root";
 import Community from "./pages/Community";
 import BikeTrails from "./pages/BikeTrails";
-import Newspage from "./pages/Newspage";
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Questionnaire from "./pages/Questionnaire";
@@ -15,6 +14,8 @@ import { Cookies } from "./pages/Cookies";
 import { Terms } from "./pages/Terms";
 import ContactUs from "./pages/ContactUs";
 import NotFound from "./pages/NotFound";
+import Events from "./pages/Events";
+import EventDetails from "./pages/EventDetails";
 import Registration from "./pages/Registration";
 import Profile from "./pages/Profile";
 
@@ -27,7 +28,8 @@ const router = createBrowserRouter([
       { path: "/", element: <Homepage /> },
       { path: "/community", element: <Community /> },
       { path: "/trails", element: <BikeTrails /> },
-      { path: "/news", element: <Newspage /> },
+      { path: "/events", element: <Events /> },
+      { path: "/events/:id", element: <EventDetails /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Registration /> },
       { path: "/quiz", element: <Questionnaire /> },
