@@ -8,7 +8,7 @@ function NewsCard({ title, img, id }) {
   return (
     <div className="flex w-full flex-col gap-6 items-center justify-center">
       <div className="w-full rounded-[12px] overflow-hidden">
-        <Link to={`/events/${id}`} className="w-full">
+        <Link to={`/events/${id}`} className="w-full" onClick={handleClick}>
           <img
             src={img}
             alt="card image"
