@@ -1,6 +1,7 @@
 import image_three from "./assets/images/img_homepage/img_rectangle_7_1.png";
 import image_four from "./assets/images/img_homepage/img_rectangle_7_410x427.png";
 import image_five from "./assets/images/img_homepage/img_rectangle_7_2.png";
+import image_six from "./assets/images/img_homepage/image-six-rectangle.jpg";
 import bycycleIcon from "./assets/images/bycycle-icon-quiz.svg";
 
 const quizData = [
@@ -282,11 +283,11 @@ const eventsData = [
   {
     id: 4,
     title: "Tuscany Trail",
-    img: image_five,
+    img: image_six,
     startDate: "24-05-2024",
     endDate: "25-05-2024",
     eventLocation: "Castagneto Carducci, Toscana, Italy",
-    description: `Tuscany Trail is a gravel bike event in the bikepacking category in Italy,
+    description: `The Tuscany Trail is a gravel bike event in the bikepacking category in Italy,
     in the Tuscany region, and it was first organized in 2014. The 2024 edition of the Tuscany Trail
     will take place on Friday, May 24, 2024, starting from Castagneto Carducci, in the province of Livorno, Tuscany.
     The Tuscany Trail offers a 460 km route for gravel bikes.`,
