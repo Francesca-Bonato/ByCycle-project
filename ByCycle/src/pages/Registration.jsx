@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import loginImage from "../assets/images/login-image-small.jpg";
+import loginImage from "../assets/images/registration-image.jpg";
 import Button from "../components/Button";
 
 function Registration() {
@@ -71,17 +71,20 @@ function Registration() {
   return (
     <div className="w-full h-full bg-white-A700_01">
       <div className="h-full flex flex-col items-center justify-between gap-5 md:flex-row-reverse">
-        <div className="flex w-full flex-col gap-8 md:w-[48%]">
+        <div className="flex w-full flex-col gap-8 bg-register-bg bg-cover md:bg-none md:w-[48%]">
           <form
             onSubmit={handleSubmit}
             className="flex flex-col gap-[31px] self-stretch m-4"
           >
-            <h1 className=" text-center font-semibold md:text-2xl md:text-start">
+            <h1 className="text-white text-center font-semibold md:text-2xl md:text-start md:text-[#111827]">
               Register to our community
             </h1>
-            <div className="flex flex-col items-start gap-3.5">
-              <label htmlFor="usermail" className="font-semibold">
-                Name
+            <div className="flex flex-col items-start gap-3.5 ">
+              <label
+                htmlFor="username"
+                className="text-white font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-[#111827]"
+              >
+                Username
               </label>
               <input
                 className="w-full p-[10px] border border-gray-300 rounded-3xl"
@@ -93,20 +96,10 @@ function Registration() {
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
-              <label htmlFor="usermail" className="font-semibold">
-                Surname
-              </label>
-              <input
-                className="w-full p-[10px] border border-gray-300 rounded-3xl"
-                type="text"
-                name="surname"
-                id="surname"
-                value={data.surname}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="flex flex-col items-start gap-3.5">
-              <label htmlFor="usermail" className="font-semibold">
+              <label
+                htmlFor="birth-date"
+                className="text-white font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-[#111827]"
+              >
                 Birth Date
               </label>
               <input
@@ -119,7 +112,10 @@ function Registration() {
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
-              <label htmlFor="usermail" className="font-semibold">
+              <label
+                htmlFor="usermail"
+                className="text-white font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-[#111827]"
+              >
                 E-mail
               </label>
               <input
@@ -132,7 +128,10 @@ function Registration() {
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
-              <label htmlFor="password" className="font-semibold">
+              <label
+                htmlFor="password"
+                className="text-white font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-[#111827]"
+              >
                 Password
               </label>
               <input
@@ -144,13 +143,16 @@ function Registration() {
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
-              <label htmlFor="password" className="font-semibold">
+              <label
+                htmlFor="password-conf"
+                className="text-white font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-[#111827]"
+              >
                 Confirm Password
               </label>
               <input
                 className="w-full p-[10px] border border-gray-300 rounded-3xl"
                 type="password"
-                name="password"
+                name="password-conf"
                 value={data.password}
                 onChange={handleChange}
               />
@@ -158,7 +160,7 @@ function Registration() {
             <Button innerText="Submit" className="self-center md:self-end" />
           </form>
         </div>
-        <div className="h-full w-full gap-[47px] md:w-[48%] lg:w-1/2">
+        <div className="h-full w-full gap-[47px] hidden md:w-[48%] md:block lg:w-1/2">
           <img
             alt=""
             src={loginImage}
