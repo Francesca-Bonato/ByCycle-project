@@ -12,7 +12,7 @@ function Events() {
           Join events with our community
         </h1>
         {/* Subtitle */}
-        <div className="text-zinc-500 text-justify md:font-semibold max-w-[960px] pt-8">
+        <div className="text-zinc-500 text-justify md:font-semibold max-w-[1260px] pt-8">
           Our mission is to break down barriers and make cycling accessible to
           everyone, regardless of age, background or experience level. Through
           initiatives that prioritize affordability and availability, Bycycle

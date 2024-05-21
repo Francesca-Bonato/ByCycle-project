@@ -2,7 +2,7 @@ import image_three from "./assets/images/img_homepage/img_rectangle_7_1.png";
 import image_four from "./assets/images/img_homepage/img_rectangle_7_410x427.png";
 import image_five from "./assets/images/img_homepage/img_rectangle_7_2.png";
 
-const newsData = [
+const blogData = [
   {
     title: "The growing trend of combining cycling with other workouts",
     img: image_four,
@@ -81,5 +81,61 @@ const eventsData = [
   },
 ];
 
-export { newsData, eventsData };
+const communityData = [
+  {
+    id: 1,
+    title: "Best Bikepacking Routes in Europe",
+    description: `Hey everyone! I'm planning a bikepacking trip across Europe this summer and I'm looking for some route suggestions. I'm interested in scenic routes that offer a mix of challenging terrains and beautiful landscapes. Any recommendations or personal experiences to share? Thanks!`,
+    author: {
+      name: "Mario Rossi",
+      profilePic: "https://example.com/profile-pic.jpg",
+    },
+    replies: [
+      {
+        id: 1,
+        text: `If you haven't already, check out the EuroVelo routes. EuroVelo 6, which goes from the Atlantic Ocean to the Black Sea, is absolutely stunning and covers a diverse range of landscapes. Another personal favorite is the Danube Cycle Path - it's relatively easy and passes through some beautiful towns and cities.`,
+        author: {
+          name: "Luigi Verdi",
+          profilePic: "https://example.com/profile-pic-2.jpg",
+        },
+      },
+      {
+        id: 2,
+        text: `I second the EuroVelo routes! Additionally, the Great Divide Mountain Bike Route in Spain is incredible if you're up for a challenge. The landscapes are breathtaking and it's a great mix of off-road trails and paved paths. Happy cycling!`,
+        author: {
+          name: "Francesca Negri",
+          profilePic: "https://example.com/profile-pic-2.jpg",
+        },
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Tips for Improving Climbing Endurance",
+    description: `Hi all! I've been struggling with long climbs during my rides and I'm looking for advice on how to improve my endurance and technique. What are your go-to strategies for building strength and stamina for uphill cycling? Any specific training routines or dietary tips?`,
+    author: {
+      name: "Giulia Brambilla",
+      profilePic: "https://example.com/profile-pic.jpg",
+    },
+    replies: [
+      {
+        id: 1,
+        text: `Hi there! For improving your climbing endurance, I recommend incorporating interval training into your routine. Short, intense bursts of climbing followed by recovery periods can really help build your strength. Also, don't forget to stay hydrated and fueled - proper nutrition is key!`,
+        author: {
+          name: "Daniele de Lise",
+          profilePic: "https://example.com/profile-pic-2.jpg",
+        },
+      },
+      {
+        id: 2,
+        text: `One thing that helped me a lot was focusing on my core strength. Strong core muscles can make a big difference in your overall stability and power when climbing. Planks, Russian twists, and leg raises are great exercises to add to your training. Good luck!`,
+        author: {
+          name: "Maria Chiara Andreini",
+          profilePic: "https://example.com/profile-pic-2.jpg",
+        },
+      },
+    ],
+  },
+];
 
+export { blogData, eventsData, communityData };

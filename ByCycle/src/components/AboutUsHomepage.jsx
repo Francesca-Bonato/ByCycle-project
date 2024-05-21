@@ -21,12 +21,12 @@ function AboutUsHomepage() {
           </div>
           <p className="leading-[150%] text-gray-600 break-words text-justify">
             Once upon a time, in a quaint little town nestled amidst the rolling
-            hills and the scenic trails of Tuscany, three friends – Luigi,
-            Daniele, and Sergio, – shared a deep bond forged through their
+            hills and the scenic trails of Tuscany, three friends - Luigi,
+            Daniele, and Sergio, - shared a deep bond forged through their
             mutual love for cycling. Together, they envisioned a vibrant online
             community where cyclists could connect, share, and thrive. With
             passion as their fuel and determination as their compass, they
-            launched ByCycle – a dynamic forum where pedal-powered adventures
+            launched ByCycle - a dynamic forum where pedal-powered adventures
             come to life. Join the ride and be part of their journey to
             pedal-powered greatness!
           </p>
