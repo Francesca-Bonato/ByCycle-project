@@ -83,8 +83,8 @@ function AboutUsHomepage() {
               opportunities to join group rides and cycling trips with fellow
               enthusiasts. Ready to pedal into the future? Let&apos;s ride!
             </p>
+            {/* CTA to join community */}
             <div className="flex lg:w-full mb-7">
-              {/* CTA to join community */}
               <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
                 Join other bikers
               </button>
