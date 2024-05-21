@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function NewsCard({ title, img }) {
+function NewsCard({ title, img, id }) {
   return (
       <div className="flex w-full flex-col gap-6 items-center justify-center">
         <div className="w-full rounded-[12px] overflow-hidden">
@@ -19,7 +19,7 @@ function NewsCard({ title, img }) {
           >
             {title}
           </p>
-          <Link to="/news" className="w-full">
+          <Link to={`/events/${id}`}  className="w-full">
             <p className="!font-medium transition-all hover:text-[#26425a] underline">
               Read More
             </p>

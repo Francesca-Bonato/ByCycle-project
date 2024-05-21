@@ -69,7 +69,7 @@ export function NavBar() {
             <>
               {/* Header */}
               <div
-                className={`mx-auto  px-4 sm:px-6 lg:px-8 ${
+                className={`mx-auto px-4 sm:px-6 lg:px-8 ${
                   location.pathname === "/" && "bg-transparent text-white"
                 }`}
               >

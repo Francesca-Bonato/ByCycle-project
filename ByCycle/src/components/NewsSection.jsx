@@ -18,7 +18,7 @@ function NewsSection() {
         <div className="flex gap-[30px] flex-wrap md:flex-nowrap items-baseline justify-center">
           {eventsData.map((item, index) => {
             if (index < 3) {
-              return <NewsCard title={item.title} img={item.img} key={index} />;
+              return <NewsCard title={item.title} img={item.img} id={item.id} key={index} />;
             }
           })}
         </div>

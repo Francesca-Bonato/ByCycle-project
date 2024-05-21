@@ -22,7 +22,8 @@ const eventsData = [
     id: 1,
     title: "MTB tour Schwarzeald-Cross",
     img: image_four,
-    eventDate: "8-12 June 2024",
+    startDate: "8-06-2024",
+    endDate: "12-06-2024",
     eventLocation: "Ettlingen, Germany",
     description: `The MTB Schwarzwald-Cross Tour is an exhilarating adventure through the breathtaking landscapes of the Black Forest.
     This tour offers a unique experience for mountain biking enthusiasts, combining technical trails with spectacular views.
@@ -37,7 +38,8 @@ const eventsData = [
     id: 2,
     title: "Csain Tourism Cup 2024",
     img: image_three,
-    eventDate: "1-31 March 2024",
+    startDate: "1-03-2024",
+    endDate: "31-03-2024",
     eventLocation: "Imperia, Liguria, Italy",
     description: `The Csain Tourism Cup is an event for e-bikes, gravel bikes, and road bikes in the orientation category, held in the Liguria region of Italy. It was first organized in 2022.
     The 2024 edition of the Csain Tourism Cup is part of the Csain Ciclismo Liguria circuit and will take place on Friday, March 1, 2024, starting in Imperia, Province of Imperia, Liguria.
@@ -51,7 +53,8 @@ const eventsData = [
     id: 3,
     title: "Transmurgiana: Bike Journey in the Heart of Apulia",
     img: image_five,
-    eventDate: "24-31 May 2024",
+    startDate: "24-05-2024",
+    endDate: "31-05-2024",
     eventLocation: "Bari, Puglia, Italy",
     description: `The TRANSMURGIANA is a bicycle adventure in the heart of Apulia, one of the most beautiful regions in Southern Italy.
     This is a self-guided journey, lasting 8 days (7 nights), starting from Bari (the regional capital). Along the route, you will visit:
@@ -69,7 +72,8 @@ const eventsData = [
     id: 4,
     title: "Tuscany Trail",
     img: image_five,
-    eventDate: "24-25 May 2024",
+    startDate: "24-05-2024",
+    endDate: "25-05-2024",
     eventLocation: "Castagneto Carducci, Toscana, Italy",
     description: `Tuscany Trail is a gravel bike event in the bikepacking category in Italy,
     in the Tuscany region, and it was first organized in 2014. The 2024 edition of the Tuscany Trail
