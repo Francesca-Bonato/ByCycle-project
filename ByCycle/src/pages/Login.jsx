@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import loginImage from "../assets/images/login-image-small.jpg";
 import Button from "../components/Button";
+import { users } from "/src/users";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -50,7 +51,10 @@ const Login = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    // Controlla se l'email è già presente nel localStorage
+    ////////////
+    /* LOGICA CON LOCALSTORAGE */
+
+    /* // Controlla se l'email è già presente nel localStorage
     const existingUsers = Object.keys(localStorage).filter(
       (key) => key !== "Token"
     );
@@ -61,10 +65,32 @@ const Login = () => {
     });
 
     if (!isEmailTaken) {
-      console.log("Email not found. Please correct");
-      alert("Email not found. Please correct");
+      console.log("Email not found. Please register");
+      alert("Email not found. Please register");
       return; // Interrompi la procedura di registrazione
+    } */
+
+    /////////////
+
+    /////////////
+    /* LOGICA CON FILE USERS.JS */
+
+    // Controlla se l'email e la password corrispondono a quelle presenti nell'array `users`
+    const user = users.find(
+      (user) =>
+        user.usermail === data.usermail && user.password === data.password
+    );
+
+    if (!user) {
+      console.log("Invalid email or password. Please try again.");
+      alert("Invalid email or password. Please try again.");
+      return; // Interrompi la procedura di login
     }
+
+    console.log("User logged in successfully");
+    alert("User logged in successfully");
+
+    //////////////////
 
     console.log(data);
     //Al submit del form, chiamiamo il metodo handleLogin, il quale restituisce userData:

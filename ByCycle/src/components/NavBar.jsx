@@ -1,12 +1,12 @@
-export default NavBar;
 import { Fragment, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logoBlack from "../assets/images/ByCycle_logo_definitivo.png";
 // import logoWhite from "../assets/images/ByCycle_logo_definitivo_white.png";
-
 import imageProfileCustom from "../assets/images/profile-user-icon-2048x2048-m41rxkoe.png";
+import { users } from "/src/users";
+/////////////////
 
 // Sample data for user and navigation
 const user = {
@@ -14,6 +14,7 @@ const user = {
   email: "tom@example.com",
   imageUrl: imageProfileCustom,
 };
+///////////////////
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -226,7 +227,7 @@ export function NavBar() {
                           onClick={handlerOnProfile}
                         />
                       </div>
-                      <div className="ml-3 " onClick={handlerOnProfile}>
+                      <div className="ml-3" onClick={handlerOnProfile}>
                         <div className="text-base font-medium leading-none ">
                           {localStorage.getItem("user") ? user.name : ""}
                         </div>
@@ -276,3 +277,5 @@ export function NavBar() {
     </>
   );
 }
+
+export default NavBar;

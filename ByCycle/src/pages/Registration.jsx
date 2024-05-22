@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import registerImage from "../assets/images/registration-image.jpg";
 import Button from "../components/Button";
+import { users } from "/src/users";
 
 function Registration() {
   const [data, setData] = useState({
@@ -42,6 +43,7 @@ function Registration() {
             username: username,
             birthdate: birthDate,
             usermail: usermail,
+            password: password,
             role: "User",
           };
 
@@ -70,26 +72,52 @@ function Registration() {
       return; // Interrompi la procedura di registrazione
     }
 
-    // Controlla se il nome utente o l'email sono già presenti nel localStorage
-    const existingUsers = Object.keys(localStorage).filter(
-      (key) => key !== "Token"
+
+
+    /////////////////
+    /*  LOGICA CON LOCALSTORAGE */
+
+    /*   // Controlla se il nome utente o l'email sono già presenti nel file Users
+   
+    const isUsernameTaken = users.some(
+      (user) => user.username === data.username
     );
-
-    const isUsernameTaken = existingUsers.some((key) => {
-      const user = JSON.parse(localStorage.getItem(key));
-      return user.username === data.username;
-    });
-
-    const isEmailTaken = existingUsers.some((key) => {
-      const user = JSON.parse(localStorage.getItem(key));
-      return user.usermail === data.usermail;
-    });
+    const isEmailTaken = users.some((user) => user.usermail === data.usermail);
 
     if (isUsernameTaken || isEmailTaken) {
       console.log("Username or email already in use. Please correct.");
       alert("Username or email already in use. Please correct.");
       return; // Interrompi la procedura di registrazione
+    } */
+
+    //////////////////
+    
+
+
+    /////////////
+    /* LOGICA CON FILE USERS.JS */
+    
+    // Controlla se email o username sono già presenti nell'array `users`
+    const isEmailTaken = users.some((user) => user.usermail === data.usermail);
+    const isNameTaken = users.some((user) => user.username === data.username);
+
+    if (isEmailTaken || isNameTaken) {
+      console.log(
+        "Email or Username already in use. Please register with different datas."
+      );
+      alert(
+        "Email or Username already in use. Please register with different datas."
+      );
+      return; // Interrompi la procedura di registrazione
     }
+
+    // Aggiungi i dati dell'utente all'array `users`
+    users.push(data);
+    console.log("User registered successfully");
+    alert("User registered successfully");
+    navigate("/profile");
+
+    //////////////
 
     console.log(data);
     //Al submit del form, chiamiamo il metodo handleRegister, il quale restituisce userData:
@@ -105,6 +133,7 @@ function Registration() {
         //Trasformiamo i dati utente ricevuti in una stringa prima di salvarlo nel local storage:
         const responseToString = JSON.stringify(response.data);
         localStorage.setItem(data.username, responseToString);
+        localeStorege.setItem("user", data.username);
         //Salviamo il token ricevuto nel local storage:
         localStorage.setItem("Token", response.token);
         navigate("/profile");
