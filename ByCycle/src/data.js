@@ -274,7 +274,7 @@ const blogData = [
   [
     {
       id: 7,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1505705694340-019e1e335916?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmljaWNsZXRhfGVufDB8fDB8fHww",
       title: "The benefits of cycling for cardiovascular health",
       abstract:
         "Cycling is an excellent way to improve cardiovascular health. It strengthens the heart, lowers blood pressure, and enhances circulation. Regular cycling can significantly reduce the risk of heart disease and stroke. It's a low-impact exercise that's easy on the joints, making it suitable for people of all ages and fitness levels.",
@@ -282,7 +282,7 @@ const blogData = [
     },
     {
       id: 8,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1615632778185-48e15a6f68bf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmljaWNsZXRhfGVufDB8fDB8fHww",
       title: "Cycling tips for beginners",
       abstract:
         "Starting a cycling routine can be daunting for beginners. It's important to start slowly and gradually increase the intensity and duration of your rides. Make sure to invest in a good quality bike and helmet. Learn basic maintenance skills to keep your bike in good condition. Join a local cycling group for support and motivation.",
@@ -290,7 +290,7 @@ const blogData = [
     },
     {
       id: 9,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1545575439-3261931f52f1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
       title: "The best cycling apps for tracking your rides",
       abstract:
         "There are several apps available that can enhance your cycling experience by tracking your rides, monitoring your progress, and providing route suggestions. Apps like Strava, MapMyRide, and Komoot are popular choices among cyclists. They offer features like GPS tracking, performance analysis, and social networking with other cyclists.",
@@ -298,7 +298,7 @@ const blogData = [
     },
     {
       id: 10,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1531851454380-ab14ff755bfb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDh8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
       title: "How to choose the right bike for you",
       abstract:
         "Choosing the right bike depends on your riding style, terrain, and personal preferences. There are different types of bikes available, including road bikes, mountain bikes, and hybrid bikes. Consider factors like frame material, wheel size, and gear systems. Test ride different models to find the one that feels most comfortable and suits your needs.",
@@ -314,7 +314,7 @@ const blogData = [
     },
     {
       id: 12,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1619194728665-36281d450fde?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
       title: "Cycling events to look forward to this year",
       abstract:
         "This year, there are several exciting cycling events taking place around the world. From local charity rides to international competitions, there's something for every cyclist. Some notable events include the Tour de France, Giro d'Italia, and the RideLondon festival. Participating in these events can be a great way to challenge yourself and connect with other cycling enthusiasts.",
@@ -324,7 +324,7 @@ const blogData = [
   [
     {
       id: 13,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1571081790807-6933479d240f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
       title: "The history of cycling: From invention to modern sport",
       abstract:
         "Cycling has a rich history that dates back to the early 19th century. The first bicycles, known as 'running machines,' were developed in Europe. Over the years, advancements in technology and design transformed bicycles into the modern machines we use today. Cycling has evolved from a mode of transportation to a popular sport enjoyed by millions worldwide.",
@@ -332,7 +332,7 @@ const blogData = [
     },
     {
       id: 14,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1511277918544-4e638c620c25?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTV8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
       title: "Tips for maintaining your bike",
       abstract:
         "Regular maintenance is crucial to keep your bike in good working condition. Basic tasks include checking tire pressure, lubricating the chain, and inspecting brakes and gears. Cleaning your bike regularly helps prevent rust and prolongs its lifespan. It's also important to get your bike serviced by a professional mechanic at least once a year.",
@@ -340,7 +340,7 @@ const blogData = [
     },
     {
       id: 15,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1635159339046-68a9ac16a04d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
       title: "The environmental benefits of cycling",
       abstract:
         "Cycling is an eco-friendly mode of transportation that reduces carbon emissions and traffic congestion. It requires less energy and resources compared to driving a car. By choosing to cycle instead of drive, you contribute to a cleaner and healthier environment. Cycling also promotes sustainable urban development by reducing the need for extensive road infrastructure.",
@@ -348,7 +348,7 @@ const blogData = [
     },
     {
       id: 16,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1714015262881-5bfaf6defb20?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJpY2ljbGV0YSUyMGJteHxlbnwwfHwwfHx8MA%3D%3D",
       title: "Exploring scenic cycling routes in your area",
       abstract:
         "Exploring local scenic cycling routes can be a rewarding experience. Many areas have dedicated bike paths and trails that offer beautiful views and a safe environment for cyclists. Whether you prefer urban routes or countryside trails, there's something for everyone. Use online resources and local maps to discover the best routes in your area.",
@@ -356,7 +356,7 @@ const blogData = [
     },
     {
       id: 17,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1613324089487-c618f5a52630?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjJ8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
       title: "The impact of cycling on community building",
       abstract:
         "Cycling can play a significant role in building stronger communities. Group rides and cycling events bring people together, fostering a sense of camaraderie and shared purpose. Community bike programs and advocacy groups work to improve cycling infrastructure and promote cycling as a healthy and sustainable mode of transportation.",
@@ -364,7 +364,7 @@ const blogData = [
     },
     {
       id: 18,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1626021397894-adae15b5ee76?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODN8fGJpY2ljbGV0YXxlbnwwfHwwfHx8MA%3D%3D",
       title: "Cycling safety tips for urban environments",
       abstract:
         "Cycling in urban environments can be challenging due to traffic and other hazards. To stay safe, always wear a helmet and use lights and reflective gear. Follow traffic rules and be aware of your surroundings. Use bike lanes where available and signal your intentions to other road users. Being vigilant and prepared can help prevent accidents and ensure a safe ride.",
@@ -382,7 +382,7 @@ const blogData = [
     },
     {
       id: 20,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1605537473255-b10095a6c1e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTAzfHxiaWNpY2xldGF8ZW58MHx8MHx8fDA%3D",
       title: "The rise of e-bikes: Pros and cons",
       abstract:
         "E-bikes are becoming increasingly popular as an alternative to traditional bicycles. They offer the advantage of assisted pedaling, making it easier to tackle hills and longer distances. However, they can be more expensive and heavier than regular bikes. It's important to consider your needs and preferences before deciding if an e-bike is right for you.",
