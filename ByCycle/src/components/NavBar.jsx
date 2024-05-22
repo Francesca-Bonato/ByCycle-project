@@ -27,6 +27,15 @@ const logged = [
   { name: "Log Out", href: "/" },
 ];
 
+if (logged.name === "Log out" || unLogged.name === "Log in") {
+  logged.name.onClick(window.location.reload());
+}
+
+function clearLocalStorage() {
+  localStorage.clear();
+  document.location.reload(true);
+}
+
 // Utility function to manage component classes
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -41,18 +50,33 @@ function handleTopPage() {
 export function NavBar({ username }) {
   // Get the current route information
   const location = useLocation();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {
+  // Function to check authentication
+  const checkAuthentication = () => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    const usermail = localStorage.getItem("usermail");
-    const password = localStorage.getItem("password");
+    console.log(Boolean(users));
+    if (users.length !== 0) {
+      const usermail = users[0].usermail;
+      const password = users[0].password;
 
-    const authenticated = users.some(
-      (user) => user.usermail === usermail && user.password === password
-    );
-    setIsAuthenticated(authenticated);
-  }, []);
+      console.log("Retrieved users from localStorage:", users);
+      console.log("Retrieved usermail from localStorage:", usermail);
+      console.log("Retrieved password from localStorage:", password);
+
+      if (usermail && password) {
+        return users.some((user) => {
+          return user.usermail === usermail && user.password === password;
+        });
+      } else {
+        console.log("No usermail or password found in localStorage.");
+        return false;
+      }
+    }
+  };
+
+  const [isAuthenticated, setIsAuthenticated] = useState(checkAuthentication());
+
+  const items = isAuthenticated ? logged : unLogged;
 
   // Render the component
   return (
@@ -193,7 +217,6 @@ export function NavBar({ username }) {
                         className={
                           " block rounded-md px-3 py-2 text-base font-medium"
                         }
-                        
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
@@ -219,11 +242,16 @@ export function NavBar({ username }) {
                       </div>
                     </div>
                     <div className="mt-3 px-2 space-y-1">
-                      {(isAuthenticated ? logged : unLogged).map((item) => (
+                      {items.map((item) => (
                         <Disclosure.Button
                           key={item.name}
                           as={Link}
                           to={item.href}
+                          onSelect={
+                            item.name === "Log Out"
+                              ? clearLocalStorage
+                              : null
+                          }
                           className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
                           onClick={handleTopPage}
                         >

@@ -30,6 +30,7 @@ const Login = () => {
           //simuliamo i dati ricevuti dal server:
           const userData = {
             usermail: usermail,
+            password: password,
             role: "User",
           };
 
