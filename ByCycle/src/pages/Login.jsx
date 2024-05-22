@@ -50,16 +50,19 @@ const Login = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-     // Check if username or email already exists in localStorage
-     let users = JSON.parse(localStorage.getItem("users")) || [];
-    
-     const isEmailTaken = users.some((user) => user.usermail === data.usermail);
- 
-     if ( !isEmailTaken) {
-       console.log("Email not found. Please correct.");
-       alert("Email not found. Please correct.");
-       return;
-     }
+    // Check if username or email already exists in localStorage
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const dataTaken = users.some(
+      (user) =>
+        user.usermail === data.usermail && user.password === data.password
+    );
+
+    if (!dataTaken) {
+      console.log("Email or Password wrong. Please correct.");
+      alert("Email or Password wrong. Please correct.");
+      return;
+    }
 
     console.log(data);
     //Al submit del form, chiamiamo il metodo handleLogin, il quale restituisce userData:

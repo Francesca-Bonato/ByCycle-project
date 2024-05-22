@@ -47,6 +47,7 @@ function Registration() {
     // Simulate user registration
     users.push({
       username: data.username,
+      birthdate: data.birthDate,
       usermail: data.usermail,
       password: data.password,
     });

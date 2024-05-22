@@ -73,7 +73,7 @@ export function NavBar({ username }) {
                   {/* Logo */}
                   <div className="flex items-center">
                     <div className="flex-shrink-0">
-                      <Link to="#">
+                      <Link to="/">
                         <img
                           className="w-[150px] mt-[2px]"
                           src={logoBlack}
