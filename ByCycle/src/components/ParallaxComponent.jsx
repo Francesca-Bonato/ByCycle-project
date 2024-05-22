@@ -20,7 +20,6 @@ export default function ParallaxComponent() {
           "--swiper-pagination-bullet-inactive-opacity": 0.5,
           "--swiper-pagination-bullet-opacity": 3,
           height: "800px",
-          marginBottom: "8%",
         }}
         speed={1200}
         parallax={true}
