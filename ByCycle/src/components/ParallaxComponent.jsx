@@ -17,6 +17,9 @@ export default function ParallaxComponent() {
         style={{
           "--swiper-navigation-color": "#232323",
           "--swiper-pagination-color": "#fff",
+          "--swiper-pagination-bullet-inactive-color": "#000",
+          "--swiper-pagination-bullet-inactive-opacity": 0.5,
+          "--swiper-pagination-bullet-opacity": 3,
           height: "800px",
           marginBottom: "8%",
         }}
