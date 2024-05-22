@@ -78,6 +78,7 @@ export function NavBar({ username }) {
                           className="w-[150px] mt-[2px]"
                           src={logoBlack}
                           alt="Company"
+                          onClick={handleTopPage}
                         />
                       </Link>
                     </div>
