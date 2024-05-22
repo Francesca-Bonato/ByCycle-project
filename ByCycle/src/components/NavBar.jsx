@@ -27,6 +27,10 @@ const logged = [
   { name: "Log Out", href: "/" },
 ];
 
+const reloadPage = () => {
+  window.location.reload();
+};
+
 // Utility function to manage component classes
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -137,7 +141,7 @@ export function NavBar({ username }) {
                                     <Link
                                       to={item.href}
                                       className={classNames(
-                                        active ? "bg-gray-100" : "",
+                                        active ? "bg-blu-100" : "",
                                         "block px-4 py-2 text-sm text-gray-700"
                                       )}
                                     >
@@ -193,7 +197,6 @@ export function NavBar({ username }) {
                         className={
                           " block rounded-md px-3 py-2 text-base font-medium"
                         }
-                        
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
@@ -203,11 +206,13 @@ export function NavBar({ username }) {
                   <div className="border-t border-gray-700 pb-3 pt-4 ">
                     <div className="flex items-center px-5 cursor-pointer ">
                       <div className="flex-shrink-0">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src={imageProfileCustom}
-                          alt=""
-                        />
+                        <Link to="/profile">
+                          <img
+                            className="h-10 w-10 rounded-full"
+                            src={imageProfileCustom}
+                            alt=""
+                          />
+                        </Link>
                       </div>
                       <div className="ml-3">
                         <div className="text-base font-medium leading-none ">

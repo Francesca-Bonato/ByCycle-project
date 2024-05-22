@@ -21,7 +21,7 @@ import CookieConsent from "react-cookie-consent";
 import { Cookies } from "./pages/Cookies";
 import { Terms } from "./pages/Terms";
 import NotFound from "./pages/NotFound";
-
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -40,12 +40,14 @@ const router = createBrowserRouter([
       { path: "/trails", element: <BikeTrails /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Registration /> },
-      { path: "/profile", element: <Profile /> },
+      {
+        path: "/profile",
+        element: <ProtectedRoute element={<Profile />} />,
+      },
       { path: "/contacts", element: <ContactUs /> },
       { path: "/privacy", element: <Privacy /> },
       { path: "/cookies", element: <Cookies /> },
       { path: "/terms", element: <Terms /> },
-
     ],
   },
 ]);

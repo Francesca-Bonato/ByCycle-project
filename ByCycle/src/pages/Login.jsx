@@ -30,6 +30,7 @@ const Login = () => {
           //simuliamo i dati ricevuti dal server:
           const userData = {
             usermail: usermail,
+            password: password,
             role: "User",
           };
 
@@ -109,6 +110,7 @@ const Login = () => {
                 value={data.usermail}
                 onChange={handleChange}
                 required
+                autoComplete="email"
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
@@ -125,6 +127,7 @@ const Login = () => {
                 value={data.password}
                 onChange={handleChange}
                 required
+                autoComplete="current-password"
               />
             </div>
             <Button innerText="Log In" className="self-center md:self-end" />
