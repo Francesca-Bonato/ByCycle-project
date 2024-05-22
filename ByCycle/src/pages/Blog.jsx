@@ -9,7 +9,10 @@ function Blog() {
   const highlightNews = blogData
     .flatMap((arr) => arr)
     .find((item) => item.highlight === true);
-
+  //Function to return to top page
+  function handleClick() {
+    window.scrollTo({ top: 0 });
+  }
   return (
     <>
       {/* Main container with responsive padding*/}
@@ -35,7 +38,7 @@ function Blog() {
                 />
               </div>
               <p className="leading-[150%] text-lg text-gray-600 break-words text-justify">
-                {highlightNews.content}
+                {highlightNews.abstract}
               </p>
               <div>
                 <Button innerText="Read our latest article" />
@@ -69,7 +72,8 @@ function Blog() {
                 >
                   {/* Blog post image */}
                   <div className="w-[300px] h-[300px] rounded-[12px] overflow-hidden">
-                    <Link to="#" className="w-full">
+
+                    <Link to={`/blog/${item.id}`} className="w-full" onClick={handleClick}>
                       <img
                         src={item.img}
                         alt="card image"
@@ -85,7 +89,12 @@ function Blog() {
                     >
                       {item.title}
                     </p>
-                    <Link to="#" className="w-full">
+
+                    <Link
+                      to={`/blog/${item.id}`}
+                      className="w-full"
+                      onClick={handleClick}
+                    >
                       <p className="!font-medium transition-all hover:text-[#26425a] underline">
                         Read More
                       </p>
