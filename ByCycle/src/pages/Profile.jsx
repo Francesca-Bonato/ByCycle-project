@@ -1,13 +1,13 @@
 import  { useState } from 'react';
 
 const initialProfile = {
-  username: "johndoe",
-  firstName: "John",
-  lastName: "Doe",
-  email: "john.doe@example.com",
-  birthDate: "1990-01-01",
-  joinDate: "2020-01-01",
-  description: "This is a short description about John Doe.",
+  username: "Francesco_B",
+  firstName: "Francesco",
+  lastName: "Balleri",
+  email: "fra@email.it",
+  birthDate: "1994-11-21",
+  joinDate: "2024-05-23",
+  description: "This is a short description about Francesco.",
   profilePicture: "https://via.placeholder.com/150"
 };
 

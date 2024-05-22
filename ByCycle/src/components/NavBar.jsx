@@ -33,7 +33,7 @@ function clearPage() {
   if (logged[1].name === "Log Out") {
     /* window.location.reload(); */
     localStorage.clear();
-    sessionStorage.clear();
+   /*  sessionStorage.clear(); */
     window.scrollTo({ top: 0 });
   }
 }
@@ -56,6 +56,7 @@ export function NavBar({ username }) {
   // Function to check authentication
   const checkAuthentication = () => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
+    const usersSession = JSON.parse(sessionStorage.getItem("userLogged")) || [];
 
     if (users.length !== 0) {
       const usermail = users[0].usermail;

@@ -73,11 +73,8 @@ const Login = () => {
 
         //Trasformiamo i dati utente ricevuti in una stringa prima di salvarlo nel session storage:
         const responseToString = JSON.stringify(response.data);
-        sessionStorage.setItem(data.usermail, responseToString);
-
-        
-     /*    //prova controllo
-        localStorage.setItem(data.usermail, responseToString); */
+        /* sessionStorage.setItem(data.usermail, responseToString); */
+        sessionStorage.setItem("userLogged", responseToString);
 
         //Salviamo il token ricevuto nel local storage:
         localStorage.setItem("Token", response.token);
