@@ -18,7 +18,6 @@ export default function ParallaxComponent() {
           "--swiper-navigation-color": "#232323",
           "--swiper-pagination-color": "#fff",
           height: "800px",
-          marginBottom: "8%",
         }}
         speed={1200}
         parallax={true}

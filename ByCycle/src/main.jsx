@@ -13,6 +13,7 @@ import CookieConsent from "react-cookie-consent";
 import { Cookies } from "./pages/Cookies";
 import { Terms } from "./pages/Terms";
 import ContactUs from "./pages/ContactUs";
+import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import Events from "./pages/Events";
 import EventDetails from "./pages/EventDetails";
@@ -31,10 +32,10 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/quiz", element: <Questionnaire /> },
       { path: "/contacts", element: <ContactUs /> },
-      { path: "/questionnaire", element: <Questionnaire /> },
       { path: "/privacy", element: <Privacy /> },
       { path: "/cookies", element: <Cookies /> },
       { path: "/terms", element: <Terms /> },
+      { path: "/blog", element: <Blog /> },
     ],
   },
 ]);
