@@ -82,7 +82,7 @@ export function NavBar({ username }) {
                       </Link>
                     </div>
                     {/* Desktop Navigation */}
-                    <div className="hidden md:block">
+                    <div className="hidden min-[835px]:block">
                       <div className="ml-10 text-center flex justify-center items-baseline space-x-4 ">
                         {navigation.map((item) => (
                           <Link
@@ -104,7 +104,7 @@ export function NavBar({ username }) {
                     </div>
                   </div>
                   {/* Desktop Profile Menu Icon */}
-                  <div className="hidden md:block">
+                  <div className="hidden min-[835px]:block">
                     <div className="ml-4 flex items-center md:ml-6">
                       <Menu as="div" className="relative ml-3">
                         <div>
@@ -152,7 +152,7 @@ export function NavBar({ username }) {
                     </div>
                   </div>
                   {/* Mobile Menu Icon */}
-                  <div className="-mr-2 flex md:hidden">
+                  <div className="-mr-2 flex min-[835px]:hidden">
                     <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md  p-2 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-0.5" />
                       <span className="sr-only">Open main menu</span>
@@ -192,7 +192,7 @@ export function NavBar({ username }) {
                         className={
                           " block rounded-md px-3 py-2 text-base font-medium"
                         }
-                        
+
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
