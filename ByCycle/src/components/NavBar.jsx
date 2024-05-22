@@ -33,7 +33,7 @@ function classNames(...classes) {
 }
 
 //Function to return to top page
-function handleClick() {
+function handleTopPage() {
   window.scrollTo({ top: 0 });
 }
 
@@ -88,7 +88,7 @@ export function NavBar({ username }) {
                           <Link
                             key={item.name}
                             to={item.href}
-                            onClick={handleClick}
+                            onClick={handleTopPage}
                             className={classNames(
                               location.pathname === item.href
                                 ? "bg-gray-900 text-white"
@@ -192,6 +192,7 @@ export function NavBar({ username }) {
                         className={
                           " block rounded-md px-3 py-2 text-base font-medium"
                         }
+                        
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
@@ -223,6 +224,7 @@ export function NavBar({ username }) {
                           as={Link}
                           to={item.href}
                           className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+                          onClick={handleTopPage}
                         >
                           {item.name}
                         </Disclosure.Button>

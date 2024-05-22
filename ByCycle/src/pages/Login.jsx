@@ -50,7 +50,7 @@ const Login = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    // Check if username or email already exists in localStorage
+    // Check if email or password already exists in localStorage
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
     const dataTaken = users.some(
