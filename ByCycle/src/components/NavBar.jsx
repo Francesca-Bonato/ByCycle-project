@@ -23,22 +23,19 @@ const unLogged = [
 
 const logged = [
   { name: "Your Profile", href: "/profile" },
-  { name: "Settings", href: "/profile-settings" },
+  /*  { name: "Settings", href: "/profile-settings" }, */
   { name: "Log Out", href: "/" },
 ];
 
-function clearPage() {
-  if (logged[2].name === "Log Out") {
-    window.location.reload();
-    window.scrollTo({ top: 0 });
-    localStorage.clear();
-    sessionStorage.clear()
-  }
-}
+//TODO rivedere condizione dell IF
 
-function clearLocalStorage() {
-  localStorage.clear();
-  document.location.reload(true);
+function clearPage() {
+  if (logged[1].name === "Log Out") {
+    /* window.location.reload(); */
+    localStorage.clear();
+    sessionStorage.clear();
+    window.scrollTo({ top: 0 });
+  }
 }
 
 // Utility function to manage component classes
@@ -59,14 +56,10 @@ export function NavBar({ username }) {
   // Function to check authentication
   const checkAuthentication = () => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    console.log(Boolean(users));
+
     if (users.length !== 0) {
       const usermail = users[0].usermail;
       const password = users[0].password;
-
-      console.log("Retrieved users from localStorage:", users);
-      console.log("Retrieved usermail from localStorage:", usermail);
-      console.log("Retrieved password from localStorage:", password);
 
       if (usermail && password) {
         return users.some((user) => {
@@ -118,7 +111,7 @@ export function NavBar({ username }) {
                           <Link
                             key={item.name}
                             to={item.href}
-                            onClick={handleTopPage}
+                            onClick={clearPage}
                             className={classNames(
                               location.pathname === item.href
                                 ? "bg-gray-900 text-white"
@@ -165,6 +158,7 @@ export function NavBar({ username }) {
                                   {({ active }) => (
                                     <Link
                                       to={item.href}
+                                      onClick={clearPage}
                                       className={classNames(
                                         active ? "bg-blu-100" : "",
                                         "block px-4 py-2 text-sm text-gray-700"
@@ -254,9 +248,9 @@ export function NavBar({ username }) {
                           key={item.name}
                           as={Link}
                           to={item.href}
-                          onSelect={
+                          /*  onSelect={
                             item.name === "Log Out" ? clearLocalStorage : null
-                          }
+                          } */
                           className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
                           onClick={clearPage}
                         >

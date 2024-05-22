@@ -75,6 +75,10 @@ const Login = () => {
         const responseToString = JSON.stringify(response.data);
         sessionStorage.setItem(data.usermail, responseToString);
 
+        
+     /*    //prova controllo
+        localStorage.setItem(data.usermail, responseToString); */
+
         //Salviamo il token ricevuto nel local storage:
         localStorage.setItem("Token", response.token);
         navigate("/profile");
