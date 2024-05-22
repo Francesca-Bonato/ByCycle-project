@@ -5,7 +5,7 @@ import NavBar from "../components/NavBar";
 function Root() {
   return (
     <div>
-      <NavBar />
+      <NavBar username={localStorage.getItem("user")} />
       <Outlet />
       <Footer />
     </div>

@@ -1,20 +1,11 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logoBlack from "../assets/images/ByCycle_logo_definitivo.png";
 // import logoWhite from "../assets/images/ByCycle_logo_definitivo_white.png";
 import imageProfileCustom from "../assets/images/profile-user-icon-2048x2048-m41rxkoe.png";
-import { users } from "/src/users";
-/////////////////
-
-// Sample data for user and navigation
-const user = {
-  name: "Tom Cook",
-  email: "tom@example.com",
-  imageUrl: imageProfileCustom,
-};
-///////////////////
+/* import { users } from "/src/users"; */
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -47,17 +38,21 @@ function handleClick() {
 }
 
 // Main component
-export function NavBar() {
+export function NavBar({ username }) {
   // Get the current route information
   const location = useLocation();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // State to manage the profile menu display
-  const [menuProfile, setMenuProfile] = useState(false);
+  useEffect(() => {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const usermail = localStorage.getItem("usermail");
+    const password = localStorage.getItem("password");
 
-  // Handler to toggle the profile menu state
-  function handlerOnProfile() {
-    setMenuProfile(!menuProfile);
-  }
+    const authenticated = users.some(
+      (user) => user.usermail === usermail && user.password === password
+    );
+    setIsAuthenticated(authenticated);
+  }, []);
 
   // Render the component
   return (
@@ -118,7 +113,7 @@ export function NavBar() {
                             <span className="sr-only">Open user menu</span>
                             <img
                               className="h-8 w-8 rounded-full"
-                              src={user.imageUrl}
+                              src={imageProfileCustom}
                               alt=""
                             />
                           </Menu.Button>
@@ -134,37 +129,23 @@ export function NavBar() {
                           leaveTo="opacity-0 scale-95"
                         >
                           <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                            {sessionStorage.getItem(user.email)
-                              ? logged.map((item) => (
-                                  <Menu.Item key={item.name}>
-                                    {({ active }) => (
-                                      <Link
-                                        to={item.href}
-                                        className={classNames(
-                                          active ? "bg-gray-100" : "",
-                                          "block px-4 py-2 text-sm text-gray-700"
-                                        )}
-                                      >
-                                        {item.name}
-                                      </Link>
-                                    )}
-                                  </Menu.Item>
-                                ))
-                              : unLogged.map((item) => (
-                                  <Menu.Item key={item.name}>
-                                    {({ active }) => (
-                                      <Link
-                                        to={item.href}
-                                        className={classNames(
-                                          active ? "bg-gray-100" : "",
-                                          "block px-4 py-2 text-sm text-gray-700"
-                                        )}
-                                      >
-                                        {item.name}
-                                      </Link>
-                                    )}
-                                  </Menu.Item>
-                                ))}
+                            {(isAuthenticated ? logged : unLogged).map(
+                              (item) => (
+                                <Menu.Item key={item.name}>
+                                  {({ active }) => (
+                                    <Link
+                                      to={item.href}
+                                      className={classNames(
+                                        active ? "bg-gray-100" : "",
+                                        "block px-4 py-2 text-sm text-gray-700"
+                                      )}
+                                    >
+                                      {item.name}
+                                    </Link>
+                                  )}
+                                </Menu.Item>
+                              )
+                            )}
                           </Menu.Items>
                         </Transition>
                       </Menu>
@@ -222,51 +203,31 @@ export function NavBar() {
                       <div className="flex-shrink-0">
                         <img
                           className="h-10 w-10 rounded-full"
-                          src={user.imageUrl}
+                          src={imageProfileCustom}
                           alt=""
-                          onClick={handlerOnProfile}
                         />
                       </div>
-                      <div className="ml-3" onClick={handlerOnProfile}>
+                      <div className="ml-3">
                         <div className="text-base font-medium leading-none ">
-                          {localStorage.getItem("user") ? user.name : ""}
+                          {username ? username : ""}
                         </div>
                         <div className="text-sm font-medium leading-none ">
-                          {localStorage.getItem("user") ? user.email : ""}
+                          {username ? username : ""}
                         </div>
                       </div>
                     </div>
-
-                    {/* Profile Menu Buttons with Opacity Transition */}
-                    {menuProfile && (
-                      <div
-                        className={`mt-3 space-y-1 px-2 lg:shadow-2xl w-2/5 rounded-lg transition-opacity ${
-                          menuProfile ? "opacity-100" : "opacity-0"
-                        }`}
-                      >
-                        {sessionStorage.getItem(user.email)
-                          ? logged.map((item) => (
-                              <Disclosure.Button
-                                key={item.name}
-                                as="a"
-                                href={item.href}
-                                className="block rounded-md px-3 py-2 text-base font-medium"
-                              >
-                                {item.name}
-                              </Disclosure.Button>
-                            ))
-                          : unLogged.map((item) => (
-                              <Disclosure.Button
-                                key={item.name}
-                                as="a"
-                                href={item.href}
-                                className="block rounded-md px-3 py-2 text-base font-medium"
-                              >
-                                {item.name}
-                              </Disclosure.Button>
-                            ))}
-                      </div>
-                    )}
+                    <div className="mt-3 px-2 space-y-1">
+                      {(isAuthenticated ? logged : unLogged).map((item) => (
+                        <Disclosure.Button
+                          key={item.name}
+                          as={Link}
+                          to={item.href}
+                          className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+                        >
+                          {item.name}
+                        </Disclosure.Button>
+                      ))}
+                    </div>
                   </div>
                 </Disclosure.Panel>
               </Transition>

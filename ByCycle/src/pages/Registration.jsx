@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import registerImage from "../assets/images/registration-image.jpg";
 import Button from "../components/Button";
-import { users } from "/src/users";
 
 function Registration() {
   const [data, setData] = useState({
@@ -22,45 +21,6 @@ function Registration() {
     }));
   }
 
-  function handleRegister(
-    username,
-    birthDate,
-    usermail,
-    password,
-    passwordConf
-  ) {
-    return new Promise((resolve, reject) => {
-      //Simuliamo il ritardo nell'interrogazione del server affinchè recuperi i dati dell'utente dal database:
-      setTimeout(() => {
-        if (
-          username !== "" &&
-          birthDate !== "" &&
-          usermail !== "" &&
-          password !== "" &&
-          passwordConf !== ""
-        ) {
-          const realData = {
-            username: username,
-            birthdate: birthDate,
-            usermail: usermail,
-            password: password,
-            role: "User",
-          };
-
-          const token =
-            "LBJimGWT7oxHtJfVFez4dbKyL3eYcKTJh2FrpwlIAQtqYysLQHziFqEVz676IeoX";
-          //I dati dell'utente vengono restituiti dal metodo handleRegister:
-          resolve({
-            data: realData,
-            token: token,
-          });
-        } else {
-          reject(new Error("Credenziali non valide"));
-        }
-      }, 2000);
-    });
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -68,17 +28,11 @@ function Registration() {
     if (data.password !== data.passwordConf) {
       console.log("Password doesn't match.Please correct");
       alert("Password doesn't match. Please correct");
-      // Aggiungi qui la logica per visualizzare un messaggio di errore all'utente
       return; // Interrompi la procedura di registrazione
     }
 
-
-
-    /////////////////
-    /*  LOGICA CON LOCALSTORAGE */
-
-    /*   // Controlla se il nome utente o l'email sono già presenti nel file Users
-   
+    // Check if username or email already exists in localStorage
+    let users = JSON.parse(localStorage.getItem("users")) || [];
     const isUsernameTaken = users.some(
       (user) => user.username === data.username
     );
@@ -87,60 +41,19 @@ function Registration() {
     if (isUsernameTaken || isEmailTaken) {
       console.log("Username or email already in use. Please correct.");
       alert("Username or email already in use. Please correct.");
-      return; // Interrompi la procedura di registrazione
-    } */
-
-    //////////////////
-    
-
-
-    /////////////
-    /* LOGICA CON FILE USERS.JS */
-    
-    // Controlla se email o username sono già presenti nell'array `users`
-    const isEmailTaken = users.some((user) => user.usermail === data.usermail);
-    const isNameTaken = users.some((user) => user.username === data.username);
-
-    if (isEmailTaken || isNameTaken) {
-      console.log(
-        "Email or Username already in use. Please register with different datas."
-      );
-      alert(
-        "Email or Username already in use. Please register with different datas."
-      );
-      return; // Interrompi la procedura di registrazione
+      return;
     }
 
-    // Aggiungi i dati dell'utente all'array `users`
-    users.push(data);
-    console.log("User registered successfully");
-    alert("User registered successfully");
+    // Simulate user registration
+    users.push({
+      username: data.username,
+      usermail: data.usermail,
+      password: data.password,
+    });
+
+    localStorage.setItem("users", JSON.stringify(users));
+    alert(`User ${data.username} registered successfully`);
     navigate("/profile");
-
-    //////////////
-
-    console.log(data);
-    //Al submit del form, chiamiamo il metodo handleRegister, il quale restituisce userData:
-    handleRegister(
-      data.username,
-      data.birthDate,
-      data.usermail,
-      data.password,
-      data.passwordConf
-    )
-      .then((response) => {
-        console.log(response);
-        //Trasformiamo i dati utente ricevuti in una stringa prima di salvarlo nel local storage:
-        const responseToString = JSON.stringify(response.data);
-        localStorage.setItem(data.username, responseToString);
-        localeStorege.setItem("user", data.username);
-        //Salviamo il token ricevuto nel local storage:
-        localStorage.setItem("Token", response.token);
-        navigate("/profile");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   }
 
   return (
@@ -242,7 +155,7 @@ function Registration() {
         </div>
         <div className="h-screen w-full gap-[47px] hidden md:w-[48%] md:block lg:w-1/2">
           <img
-            alt=""
+            alt="Registration"
             src={registerImage}
             className="inset-0 w-full h-full overflow-hidden object-cover"
           />
