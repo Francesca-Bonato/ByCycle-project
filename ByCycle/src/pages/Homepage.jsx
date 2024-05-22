@@ -1,4 +1,3 @@
-import React from "react";
 import video_jumbotrom from "../assets/video/bg-jumbotron.mp4";
 import image_one from "../assets/images/img_homepage/img_rectangle_7.png";
 import image_two from "../assets/images/img_homepage/img_triathlon_male.png";
@@ -10,6 +9,7 @@ import { Link } from "react-router-dom";
 import Slider from "../components/Slider/Slider";
 import Parallax from "../components/ParallaxComponent";
 import animation_logo from "../assets/images/ByCycle logo ridotto.png";
+import Animated_Carrousell from "../components/Animated_Carrousell";
 
 function Homepage() {
   return (
@@ -55,7 +55,7 @@ function Homepage() {
                 src={animation_logo}
                 alt="ByCycle logo"
                 className="animate-spin"
-                width={"100px"}
+                width={"80px"}
               />
             </div>
             <p className="leading-[150%] text-gray-600 break-words text-justify">
@@ -100,7 +100,7 @@ function Homepage() {
                 src={animation_logo}
                 alt="ByCycle logo"
                 className="animate-spin"
-                width={"100px"}
+                width={"80px"}
               />
             </div>
             <p className="leading-[150%] text-gray-600 break-words text-justify">
@@ -249,7 +249,7 @@ function Homepage() {
           </div>
         </div>
 
-        <div className="flex justify-center lg:justify-start py-5">
+        <div className="flex justify-center lg:justify-start py-7">
           <Link to={"/quiz"}>
             <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
               Pedal into the Quiz
@@ -257,7 +257,9 @@ function Homepage() {
           </Link>
         </div>
       </section>
-      <Parallax/>
+      <Parallax />
+      {/* sponsor animated */}
+      <Animated_Carrousell/>
     </>
   );
 }

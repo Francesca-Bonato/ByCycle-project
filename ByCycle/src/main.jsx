@@ -16,11 +16,13 @@ import { Terms } from "./pages/Terms";
 import ContactUs from "./pages/ContactUs";
 import Blog from "./pages/Blog";
 
+import NotFound from "./pages/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <NotFound/>,
     children: [
       { path: "/", element: <Homepage /> },
       { path: "/community", element: <Community /> },

@@ -1,4 +1,3 @@
-import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -116,6 +115,7 @@ export default function Slider() {
       style={{
         paddingLeft: "4rem",
         paddingRight: "4rem",
+        paddingBottom: "3.5rem",
       }}
         slidesPerView={1}
         spaceBetween={10}
@@ -133,13 +133,17 @@ export default function Slider() {
             slidesPerView: 2,
             spaceBetween: 20,
           },
-          768: {
+          885: {
             slidesPerView: 3,
             spaceBetween: 30,
           },
-          1024: {
+          1200: {
             slidesPerView: 4,
             spaceBetween: 40,
+          },
+          2500: {
+            slidesPerView: 5,
+            spaceBetween: 50,
           },
         }}
         modules={[Pagination, Autoplay]}

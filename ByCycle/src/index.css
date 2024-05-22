@@ -190,8 +190,9 @@ a {
     radial-gradient(100% 100% at var(--_p) 0, #0000 99%, #000 102%) var(--_p)
       100% / var(--t) var(--t) no-repeat,
     linear-gradient(#000 0 0) padding-box;
-  background: #232323 border-box;
-  color: #fff;
+  background: rgba(255, 255, 255, 0.327) border-box;
+  backdrop-filter: blur(20px);
+  color: #232323;
   display: flex;
 }
 .left {
@@ -203,6 +204,10 @@ a {
   --_p: 100%;
   border-bottom-right-radius: 0 0;
   place-self: end;
+}
+
+.bg-gradient{
+  background: linear-gradient(250deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.772) 90%), url(https://fiabitalia.it/wp-content/uploads/2021/06/FIAB_Cicloturismo_2-copia-scaled.jpg) no-repeat center center;
 }
 
 /* Homepage Media Query for Smaller Screens */

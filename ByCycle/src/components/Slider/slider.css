@@ -7,9 +7,6 @@
   .swiper {
     width: 100%; /* Make the swiper container fill the entire width */
     height: 100%; /* Make the swiper container fill the entire height */
-    padding: 10px; /* Set a base padding of 10px on all sides (override browser defaults) */
-    padding-left: 30px; /* Increase left padding for better spacing (override browser defaults) */
-    padding-right: 30px; /* Increase right padding for better spacing (override browser defaults) */
   }
 
   /* Swiper Slide Styling */
