@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { blogData } from "../data";
+import { Link } from "react-router-dom";
 
 function BlogPostDetails() {
   // Get the "id" parameter from the URL using useParams
@@ -53,6 +54,11 @@ function BlogPostDetails() {
             </div>
           )}
         </div>
+        <Link to="/blog">
+          <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  mt-10 border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
+           ◀️ Return to the blog
+          </button>
+        </Link>
       </section>
     </>
   );

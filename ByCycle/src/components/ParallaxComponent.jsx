@@ -87,7 +87,6 @@ export default function ParallaxComponent() {
           </div>
         </SwiperSlide>
       </Swiper>
-      <div className="h-[50px]"></div>
     </>
   );
 }

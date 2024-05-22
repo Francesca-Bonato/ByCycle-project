@@ -42,6 +42,11 @@ function EventDetails() {
             </ul>
           </div>
         </div>
+        <Link to="/events">
+          <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  mt-10 border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
+           ◀️ Return to the news section
+          </button>
+        </Link>
       </section>
     </>
   );

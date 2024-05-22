@@ -1,15 +1,13 @@
-
-
 import Parallax from "../components/ParallaxComponent";
 import Jumbotron from "../components/Jumbotron";
 import AboutUsHomepage from "../components/AboutUsHomepage";
 import NewsSection from "../components/NewsSection";
 import CarouselBlog from "../components/CarouselBlog";
 import CarouselQuiz from "../components/CarouselQuiz";
+import Animated_Carrousell from "../components/Animated_Carrousell";
 
 
 function Homepage() {
-
   return (
     <>
       {/* jumbotron section */}
@@ -17,12 +15,14 @@ function Homepage() {
       {/* About Us section */}
       <AboutUsHomepage />
       {/* news section */}
-      <NewsSection/>
+      <NewsSection />
       {/* Blog carousel */}
-      <CarouselBlog/>
+      <CarouselBlog />
       {/* Quiz carousel */}
-      <CarouselQuiz/>
+      <CarouselQuiz />
       <Parallax />
+      {/* sponsor animated */}
+      <Animated_Carrousell />
     </>
   );
 }
