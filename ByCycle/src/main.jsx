@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       { path: "/register", element: <Registration /> },
       {
         path: "/profile",
-        element: <ProtectedRoute element={<Profile />} />,
+        element: <ProtectedRoute element={<Profile />}  />,
       },
       { path: "/contacts", element: <ContactUs /> },
       { path: "/privacy", element: <Privacy /> },

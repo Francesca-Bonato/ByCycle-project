@@ -23,7 +23,7 @@ function NewsSection() {
           {eventsData.map((item, index) => (
             <>
               {/*NewsCard component for each news item*/}
-              <NewsCard key={item.id} title={item.title} id={item.id} img={item.img}/>
+              <NewsCard key={index} title={item.title} id={item.id} img={item.img}/>
             </>
           ))}
         </div>

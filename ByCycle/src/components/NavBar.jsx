@@ -27,8 +27,13 @@ const logged = [
   { name: "Log Out", href: "/" },
 ];
 
-if (logged.name === "Log out" || unLogged.name === "Log in") {
-  logged.name.onClick(window.location.reload());
+function clearPage() {
+  if (logged[2].name === "Log Out") {
+    window.location.reload();
+    window.scrollTo({ top: 0 });
+    localStorage.clear();
+    sessionStorage.clear()
+  }
 }
 
 function clearLocalStorage() {
@@ -226,7 +231,7 @@ export function NavBar({ username }) {
                   <div className="border-t border-gray-700 pb-3 pt-4 ">
                     <div className="flex items-center px-5 cursor-pointer ">
                       <div className="flex-shrink-0">
-                        <Link to="/profile">
+                        <Link to="#">
                           <img
                             className="h-10 w-10 rounded-full"
                             src={imageProfileCustom}
@@ -250,12 +255,10 @@ export function NavBar({ username }) {
                           as={Link}
                           to={item.href}
                           onSelect={
-                            item.name === "Log Out"
-                              ? clearLocalStorage
-                              : null
+                            item.name === "Log Out" ? clearLocalStorage : null
                           }
                           className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-                          onClick={handleTopPage}
+                          onClick={clearPage}
                         >
                           {item.name}
                         </Disclosure.Button>
