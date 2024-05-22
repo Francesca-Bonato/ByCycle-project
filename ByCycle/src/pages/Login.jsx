@@ -50,20 +50,18 @@ const Login = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    // Controlla se l'email è già presente nel localStorage
-    const existingUsers = Object.keys(localStorage).filter(
-      (key) => key !== "Token"
+    // Check if email or password already exists in localStorage
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    const dataTaken = users.some(
+      (user) =>
+        user.usermail === data.usermail && user.password === data.password
     );
 
-    const isEmailTaken = existingUsers.some((key) => {
-      const user = JSON.parse(localStorage.getItem(key));
-      return user.usermail === data.usermail;
-    });
-
-    if (!isEmailTaken) {
-      console.log("Email not found. Please correct");
-      alert("Email not found. Please correct");
-      return; // Interrompi la procedura di registrazione
+    if (!dataTaken) {
+      console.log("Email or Password wrong. Please correct.");
+      alert("Email or Password wrong. Please correct.");
+      return;
     }
 
     console.log(data);

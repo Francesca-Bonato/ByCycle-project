@@ -7,6 +7,8 @@ import Homepage from "./pages/Homepage";
 import QuizList from "./pages/QuizList";
 import Quiz from "./pages/Quiz";
 import Community from "./pages/Community";
+import Blog from "./pages/Blog";
+import BlogPostDetails from "./pages/BlogPostDetails";
 import Events from "./pages/Events";
 import EventDetails from "./pages/EventDetails";
 import BikeTrails from "./pages/BikeTrails";
@@ -20,6 +22,7 @@ import { Cookies } from "./pages/Cookies";
 import { Terms } from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +33,8 @@ const router = createBrowserRouter([
       { path: "/quiz", element: <QuizList /> },
       { path: "/quiz/:id", element: <Quiz /> },
       { path: "/community", element: <Community /> },
+      { path: "/blog", element: <Blog /> },
+      { path: "/blog/:id", element: <BlogPostDetails /> },
       { path: "/events", element: <Events /> },
       { path: "/events/:id", element: <EventDetails /> },
       { path: "/trails", element: <BikeTrails /> },
@@ -40,6 +45,7 @@ const router = createBrowserRouter([
       { path: "/privacy", element: <Privacy /> },
       { path: "/cookies", element: <Cookies /> },
       { path: "/terms", element: <Terms /> },
+
     ],
   },
 ]);
