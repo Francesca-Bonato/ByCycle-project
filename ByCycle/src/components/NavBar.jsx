@@ -27,11 +27,6 @@ const logged = [
   { name: "Log Out", href: "/" },
 ];
 
-<<<<<<< HEAD
-const reloadPage = () => {
-  window.location.reload();
-};
-=======
 if (logged.name === "Log out" || unLogged.name === "Log in") {
   logged.name.onClick(window.location.reload());
 }
@@ -40,7 +35,6 @@ function clearLocalStorage() {
   localStorage.clear();
   document.location.reload(true);
 }
->>>>>>> 7d11df2d1bce3df2dc14aea35621841617aa3cd5
 
 // Utility function to manage component classes
 function classNames(...classes) {
