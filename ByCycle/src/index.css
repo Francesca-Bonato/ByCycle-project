@@ -179,15 +179,16 @@ a {
   --t: 1.5em; /* the size of the tail */
 
   padding: 10px;
-  border-inline: var(--t) solid #0000;
+  border-inline: var(--t) solid #08080800;
   border-radius: calc(var(--r) + var(--t)) / var(--r);
   mask: radial-gradient(100% 100% at var(--_p) 0, #0000 99%, #000 102%)
       var(--_p) 100% / var(--t) var(--t) no-repeat,
     linear-gradient(#000 0 0) padding-box;
   background: rgba(255, 255, 255, 0.327) border-box;
   backdrop-filter: blur(20px);
-  color: #232323;
+  color: #efe5e5;
   display: flex;
+  text-align: center;
 }
 .left {
   --_p: 0;
@@ -200,10 +201,15 @@ a {
   place-self: end;
 }
 
-.bg-gradient{
+.bg-gradient-quiz-one{
   background: linear-gradient(250deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.772) 90%), url(https://fiabitalia.it/wp-content/uploads/2021/06/FIAB_Cicloturismo_2-copia-scaled.jpg) no-repeat center center;
 }
-
+.bg-gradient-quiz-two{
+  background: linear-gradient(250deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.772) 90%), url(https://images.unsplash.com/photo-1693811925823-f1cde657490a?q=80&w=2685&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) no-repeat center center;
+}
+.bg-gradient-quiz-three{
+  background: linear-gradient(250deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.772) 90%), url(https://plus.unsplash.com/premium_photo-1683742899898-e39333fe4b28?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) no-repeat center center;
+}
 /* Homepage Media Query for Smaller Screens */
 @media (max-width: 768px) {
   /* Set padding to 10px on all sides for smaller screens */

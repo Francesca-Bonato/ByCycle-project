@@ -25,7 +25,7 @@ function CarouselQuiz() {
         </div>
         {/* CTA Button container */}
         <div className="flex justify-center lg:justify-start py-7">
-          <Link to={"/questionnaire"}>
+          <Link to={"/quiz"}>
             <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
               Pedal into the Quiz
             </button>

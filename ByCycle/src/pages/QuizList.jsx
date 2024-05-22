@@ -4,6 +4,7 @@ import { quizData } from "../data";
 function QuizList() {
   return (
     <>
+     <h2 className=" w-full text-center text-[50px] font-bold p-[20px]">Test yourself with our quizzes</h2>
       {/* Main container */}
       <div className="p-6 flex justify-center items-center gap-6 flex-wrap">
         {/* List of clickable quiz cards */}
