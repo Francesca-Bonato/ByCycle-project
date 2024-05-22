@@ -80,7 +80,7 @@ export function NavBar({ username }) {
   return (
     <>
       {/* All Container */}
-      <div className=" w-full sticky top-0 z-[999] bg-white shadow-lg">
+      <div className="w-full sticky top-0 z-[999] bg-white shadow-lg">
         {/* Disclosure component to handle menu visibility */}
         <Disclosure as="nav">
           {({ open }) => (
@@ -106,7 +106,7 @@ export function NavBar({ username }) {
                     </div>
                     {/* Desktop Navigation */}
                     <div className="hidden md:block">
-                      <div className="ml-10 text-center flex justify-center items-baseline space-x-4 ">
+                      <div className="ml-10 text-center flex justify-center items-center space-x-4 ">
                         {navigation.map((item) => (
                           <Link
                             key={item.name}
@@ -131,7 +131,7 @@ export function NavBar({ username }) {
                     <div className="ml-4 flex items-center md:ml-6">
                       <Menu as="div" className="relative ml-3">
                         <div>
-                          <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                          <Menu.Button className="  min-w-[32px] relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="absolute -inset-1.5" />
                             <span className="sr-only">Open user menu</span>
                             <img
