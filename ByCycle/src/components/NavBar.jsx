@@ -22,21 +22,12 @@ const unLogged = [
 ];
 
 const logged = [
-  { name: "Your Profile", href: "/profile" },
+  /* { name: "Your Profile", href: "/profile" }, */
   /*  { name: "Settings", href: "/profile-settings" }, */
   { name: "Log Out", href: "/" },
 ];
 
 //TODO rivedere condizione dell IF
-
-function clearPage() {
-  if (logged[1].name === "Log Out") {
-    /* window.location.reload(); */
-    localStorage.clear();
-   /*  sessionStorage.clear(); */
-    window.scrollTo({ top: 0 });
-  }
-}
 
 // Utility function to manage component classes
 function classNames(...classes) {
@@ -56,7 +47,7 @@ export function NavBar({ username }) {
   // Function to check authentication
   const checkAuthentication = () => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    const usersSession = JSON.parse(sessionStorage.getItem("userLogged")) || [];
+    /* const users = JSON.parse(sessionStorage.getItem("userLogged")) || []; */
 
     if (users.length !== 0) {
       const usermail = users[0].usermail;
@@ -76,6 +67,15 @@ export function NavBar({ username }) {
   const [isAuthenticated, setIsAuthenticated] = useState(checkAuthentication());
 
   const items = isAuthenticated ? logged : unLogged;
+
+  function clearPage() {
+    if (isAuthenticated) {
+      /* window.location.reload(); */
+      localStorage.clear();
+      /*  sessionStorage.clear(); */
+      window.scrollTo({ top: 0 });
+    }
+  }
 
   // Render the component
   return (
@@ -226,7 +226,7 @@ export function NavBar({ username }) {
                   <div className="border-t border-gray-700 pb-3 pt-4 ">
                     <div className="flex items-center px-5 cursor-pointer ">
                       <div className="flex-shrink-0">
-                        <Link to="#">
+                        <Link to="/profile">
                           <img
                             className="h-10 w-10 rounded-full"
                             src={imageProfileCustom}
@@ -249,11 +249,9 @@ export function NavBar({ username }) {
                           key={item.name}
                           as={Link}
                           to={item.href}
-                          /*  onSelect={
-                            item.name === "Log Out" ? clearLocalStorage : null
-                          } */
+                          onClick={item.name === "Log Out" ? clearPage : null}
                           className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-                          onClick={clearPage}
+                          /* onClick={clearPage} */
                         >
                           {item.name}
                         </Disclosure.Button>
