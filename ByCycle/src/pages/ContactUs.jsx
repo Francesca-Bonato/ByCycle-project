@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button  from "../components/Button";
+import Button from "../components/Button";
 
 function ContactUs() {
   const [user, setUser] = useState({
@@ -11,17 +11,19 @@ function ContactUs() {
   function handleSubmit(e) {
     e.preventDefault();
     if (user.message && user.contactNmb && user.email && user.fullName) {
-      alert("Thanks for getting in contact with us! Your request has been sent")
+      alert(
+        "Thanks for getting in contact with us! Your request has been sent"
+      );
       console.log(`i tuoi dati: `, user);
+      setUser({
+        fullName: "",
+        email: "",
+        contactNmb: "",
+        message: "",
+      });
     } else {
-      alert("Please fill out every field")
+      alert("Please fill out every field");
     }
-    setUser({
-      fullName: "",
-      email: "",
-      contactNmb: "",
-      message: ""
-    })
   }
 
   return (
