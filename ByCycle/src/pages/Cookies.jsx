@@ -47,8 +47,8 @@ export function Cookies() {
             <p>For the purposes of this Cookies Policy:</p>
             <ul>
               <li>
-                <strong>Company</strong> (referred to as either "the Company",
-                "We", "Us" or "Our" in this Cookies Policy) refers to ByCycle.
+                <strong>Company</strong> (referred to as either &ldquo;the Company&rdquo;,
+                  &ldquo;We&rdquo;, &ldquo;Us&rdquo; or &ldquo;Our&rdquo; in this Cookies Policy) refers to ByCycle.
               </li>
               <li>
                 <strong>Cookies</strong> means small files that are placed on
@@ -77,7 +77,7 @@ export function Cookies() {
             <h2 className="font-bold">The use of the Cookies</h2>
             <h4>Type of Cookies We Use</h4>
             <p>
-              Cookies can be "Persistent" or "Session" Cookies. Persistent
+              Cookies can be &ldquo;Persistent&rdquo; or &ldquo;Session&rdquo; Cookies. Persistent
               Cookies remain on your personal computer or mobile device when You
               go offline, while Session Cookies are deleted as soon as You close
               your web browser.
@@ -133,7 +133,7 @@ export function Cookies() {
               function properly.
             </p>
             <p>
-              If You'd like to delete Cookies or instruct your web browser to
+              If You&apos;d like to delete Cookies or instruct your web browser to
               delete or refuse Cookies, please visit the help pages of your web
               browser.
             </p>
@@ -195,7 +195,7 @@ export function Cookies() {
               </li>
             </ul>
             <p>
-              For any other web browser, please visit your web browser's
+              For any other web browser, please visit your web browser&apos;s
               official web pages.
             </p>
             <h4>More Information about Cookies</h4>
