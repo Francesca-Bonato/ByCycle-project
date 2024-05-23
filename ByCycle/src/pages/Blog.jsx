@@ -40,9 +40,13 @@ function Blog() {
               <p className="leading-[150%] text-lg text-gray-600 break-words text-justify">
                 {highlightNews.abstract}
               </p>
-              <div>
+              <Link
+                to={`/blog/${highlightNews.id}`}
+                className="flex lg:w-full mb-7"
+                onClick={handleClick}
+              >
                 <Button innerText="Read our latest article" />
-              </div>
+              </Link>
             </div>
 
             {/* Image section */}
@@ -72,8 +76,7 @@ function Blog() {
                 >
                   {/* Blog post image */}
                   <div className="w-[300px] h-[300px] rounded-[12px] overflow-hidden">
-
-                    <Link to={`/blog/${item.id}`} className="w-full">
+                    <Link to={`/blog/${item.id}`} className="w-full"  onClick={handleClick}>
                       <img
                         src={item.img}
                         alt="card image"
