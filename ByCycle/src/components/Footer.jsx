@@ -9,11 +9,6 @@ let year = new Date().getFullYear();
 
 // Footer component
 export function Footer({ ...props }) {
-  // Function to handle click event and scroll to the top of the page
-  function handleClick() {
-    window.scrollTo({ top: 0 });
-  }
-
   return (
     <>
       <footer
@@ -67,7 +62,7 @@ export function Footer({ ...props }) {
                   </Link>
                 </li>
                 <li className="hover:underline">
-                  <Link to="/contacts" onClick={handleClick}>
+                  <Link to="/contacts">
                     <p>Contact Us</p>
                   </Link>
                 </li>

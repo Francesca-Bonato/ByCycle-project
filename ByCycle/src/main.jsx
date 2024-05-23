@@ -22,6 +22,8 @@ import { Cookies } from "./pages/Cookies";
 import { Terms } from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 
+
+
 const router = createBrowserRouter([
   {
     path: "/",
