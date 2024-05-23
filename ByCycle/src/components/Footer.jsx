@@ -10,7 +10,7 @@ let year = new Date().getFullYear();
 // Footer component
 export function Footer({ ...props }) {
   // Function to handle click event and scroll to the top of the page
-  function handleClick() {
+  function handleTopPage() {
     window.scrollTo({ top: 0 });
   }
 
@@ -56,18 +56,18 @@ export function Footer({ ...props }) {
                     <p>Bike</p>
                   </a>
                 </li>
-                <li className="hover:underline">
+                {/* <li className="hover:underline">
                   <a href="Accessories" target="_blank" rel="noreferrer">
                     <p>Accessories</p>
                   </a>
-                </li>
+                </li> */}
                 <li className="hover:underline">
-                  <Link to="/community" className="w-full">
+                  <Link to="/community" className="w-full" onClick={handleTopPage}>
                     <p>Community</p>
                   </Link>
                 </li>
                 <li className="hover:underline">
-                  <Link to="/contacts" onClick={handleClick}>
+                  <Link to="/contacts" onClick={handleTopPage}>
                     <p>Contact Us</p>
                   </Link>
                 </li>
@@ -80,7 +80,7 @@ export function Footer({ ...props }) {
               </Heading>
               <ul className="flex flex-col gap-[9px]">
                 <li className="hover:underline">
-                  <Link to="/news" className="w-full">
+                  <Link to="/events" className="w-full" onClick={handleTopPage}>
                     <p>News</p>
                   </Link>
                 </li>
@@ -108,17 +108,17 @@ export function Footer({ ...props }) {
               </Heading>
               <ul className="flex flex-col items-start gap-[9px]">
                 <li className="hover:underline">
-                  <Link to="/privacy" onClick={handleClick}>
+                  <Link to="/privacy" onClick={handleTopPage}>
                     <p>Privacy Policy</p>
                   </Link>
                 </li>
                 <li className="hover:underline">
-                  <Link to="/terms" onClick={handleClick}>
+                  <Link to="/terms" onClick={handleTopPage}>
                     <p>Terms of Use</p>
                   </Link>
                 </li>
                 <li className="hover:underline">
-                  <Link to="/cookies" onClick={handleClick}>
+                  <Link to="/cookies" onClick={handleTopPage}>
                     <p>Cookies</p>
                   </Link>
                 </li>
