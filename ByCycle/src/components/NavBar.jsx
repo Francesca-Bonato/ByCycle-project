@@ -9,10 +9,10 @@ import imageProfileCustom from "../assets/images/profile-user-icon-2048x2048-m41
 
 const navigation = [
   { name: "Home", href: "/", current: false },
-  { name: "Quiz", href: "/quiz", current: false },
   { name: "Community", href: "/community", current: false },
   { name: "Blog", href: "/blog", current: false },
   { name: "News & Events ", href: "/events", current: false },
+  { name: "Quiz", href: "/quiz", current: false },
   { name: "Trails ", href: "/trails", current: false },
 ];
 
