@@ -22,10 +22,12 @@ const unLogged = [
 ];
 
 const logged = [
-  { name: "Your Profile", href: "/profile" },
-  { name: "Settings", href: "/profile-settings" },
+  /* { name: "Your Profile", href: "/profile" }, */
+  /*  { name: "Settings", href: "/profile-settings" }, */
   { name: "Log Out", href: "/" },
 ];
+
+//TODO rivedere condizione dell IF
 
 // Utility function to manage component classes
 function classNames(...classes) {
@@ -41,24 +43,45 @@ function handleTopPage() {
 export function NavBar({ username }) {
   // Get the current route information
   const location = useLocation();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {
+  // Function to check authentication
+  const checkAuthentication = () => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    const usermail = localStorage.getItem("usermail");
-    const password = localStorage.getItem("password");
+    /* const users = JSON.parse(sessionStorage.getItem("userLogged")) || []; */
 
-    const authenticated = users.some(
-      (user) => user.usermail === usermail && user.password === password
-    );
-    setIsAuthenticated(authenticated);
-  }, []);
+    if (users.length !== 0) {
+      const usermail = users[0].usermail;
+      const password = users[0].password;
+
+      if (usermail && password) {
+        return users.some((user) => {
+          return user.usermail === usermail && user.password === password;
+        });
+      } else {
+        console.log("No usermail or password found in localStorage.");
+        return false;
+      }
+    }
+  };
+
+  const [isAuthenticated, setIsAuthenticated] = useState(checkAuthentication());
+
+  const items = isAuthenticated ? logged : unLogged;
+
+  function clearPage() {
+    if (isAuthenticated) {
+      /* window.location.reload(); */
+      localStorage.clear();
+      /*  sessionStorage.clear(); */
+      window.scrollTo({ top: 0 });
+    }
+  }
 
   // Render the component
   return (
     <>
       {/* All Container */}
-      <div className=" w-full sticky top-0 z-[999] bg-white shadow-lg">
+      <div className="w-full sticky top-0 z-[999] bg-white shadow-lg">
         {/* Disclosure component to handle menu visibility */}
         <Disclosure as="nav">
           {({ open }) => (
@@ -78,6 +101,7 @@ export function NavBar({ username }) {
                           className="w-[150px] mt-[2px]"
                           src={logoBlack}
                           alt="Company"
+                          onClick={handleTopPage}
                         />
                       </Link>
                     </div>
@@ -88,7 +112,7 @@ export function NavBar({ username }) {
                           <Link
                             key={item.name}
                             to={item.href}
-                            onClick={handleTopPage}
+                            onClick={clearPage}
                             className={classNames(
                               location.pathname === item.href
                                 ? "bg-gray-900 text-white"
@@ -108,7 +132,7 @@ export function NavBar({ username }) {
                     <div className="ml-4 flex items-center md:ml-6">
                       <Menu as="div" className="relative ml-3">
                         <div>
-                          <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                          <Menu.Button className="  min-w-[32px] relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="absolute -inset-1.5" />
                             <span className="sr-only">Open user menu</span>
                             <img
@@ -135,8 +159,9 @@ export function NavBar({ username }) {
                                   {({ active }) => (
                                     <Link
                                       to={item.href}
+                                      onClick={clearPage}
                                       className={classNames(
-                                        active ? "bg-gray-100" : "",
+                                        active ? "bg-blu-100" : "",
                                         "block px-4 py-2 text-sm text-gray-700"
                                       )}
                                     >
@@ -192,7 +217,6 @@ export function NavBar({ username }) {
                         className={
                           " block rounded-md px-3 py-2 text-base font-medium"
                         }
-
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
@@ -202,11 +226,13 @@ export function NavBar({ username }) {
                   <div className="border-t border-gray-700 pb-3 pt-4 ">
                     <div className="flex items-center px-5 cursor-pointer ">
                       <div className="flex-shrink-0">
-                        <img
-                          className="h-10 w-10 rounded-full"
-                          src={imageProfileCustom}
-                          alt=""
-                        />
+                        <Link to="/profile">
+                          <img
+                            className="h-10 w-10 rounded-full"
+                            src={imageProfileCustom}
+                            alt=""
+                          />
+                        </Link>
                       </div>
                       <div className="ml-3">
                         <div className="text-base font-medium leading-none ">
@@ -218,13 +244,14 @@ export function NavBar({ username }) {
                       </div>
                     </div>
                     <div className="mt-3 px-2 space-y-1">
-                      {(isAuthenticated ? logged : unLogged).map((item) => (
+                      {items.map((item) => (
                         <Disclosure.Button
                           key={item.name}
                           as={Link}
                           to={item.href}
+                          onClick={item.name === "Log Out" ? clearPage : null}
                           className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-                          onClick={handleTopPage}
+                          /* onClick={clearPage} */
                         >
                           {item.name}
                         </Disclosure.Button>

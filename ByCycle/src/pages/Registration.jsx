@@ -24,6 +24,16 @@ function Registration() {
   function handleSubmit(e) {
     e.preventDefault();
 
+    // Controllo se la data di nascita è maggiore della data odierna
+    const inputDate = new Date(data.birthDate);
+    const today = new Date();
+
+    if (inputDate >= today) {
+      console.log("La data di nascita deve essere precedente a oggi.");
+      alert("La data di nascita deve essere precedente a oggi.");
+      return;
+    }
+
     //controlla password se corrisponde
     if (data.password !== data.passwordConf) {
       console.log("Password doesn't match.Please correct");
@@ -54,7 +64,8 @@ function Registration() {
 
     localStorage.setItem("users", JSON.stringify(users));
     alert(`User ${data.username} registered successfully`);
-    navigate("/profile");
+    navigate("/");
+    handleTopPage();
   }
 
   return (

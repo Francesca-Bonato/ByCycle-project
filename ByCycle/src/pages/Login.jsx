@@ -30,6 +30,7 @@ const Login = () => {
           //simuliamo i dati ricevuti dal server:
           const userData = {
             usermail: usermail,
+            password: password,
             role: "User",
           };
 
@@ -72,7 +73,8 @@ const Login = () => {
 
         //Trasformiamo i dati utente ricevuti in una stringa prima di salvarlo nel session storage:
         const responseToString = JSON.stringify(response.data);
-        sessionStorage.setItem(data.usermail, responseToString);
+        /* sessionStorage.setItem(data.usermail, responseToString); */
+        sessionStorage.setItem("userLogged", responseToString);
 
         //Salviamo il token ricevuto nel local storage:
         localStorage.setItem("Token", response.token);
@@ -109,6 +111,7 @@ const Login = () => {
                 value={data.usermail}
                 onChange={handleChange}
                 required
+                autoComplete="email"
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
@@ -125,6 +128,7 @@ const Login = () => {
                 value={data.password}
                 onChange={handleChange}
                 required
+                autoComplete="current-password"
               />
             </div>
             <Button innerText="Log In" className="self-center md:self-end" />
