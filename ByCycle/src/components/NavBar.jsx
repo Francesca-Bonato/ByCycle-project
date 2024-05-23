@@ -17,7 +17,7 @@ const navigation = [
 ];
 
 const unLogged = [
-  { name: "Sign In", href: "/register" },
+  { name: "Sign Up", href: "/register" },
   { name: "Log In", href: "/login" },
 ];
 
