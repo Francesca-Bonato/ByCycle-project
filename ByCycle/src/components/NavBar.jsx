@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
@@ -17,7 +17,7 @@ const navigation = [
 ];
 
 const unLogged = [
-  { name: "Sign In", href: "/register" },
+  { name: "Sign Up", href: "/register" },
   { name: "Log In", href: "/login" },
 ];
 

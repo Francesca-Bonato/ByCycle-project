@@ -21,6 +21,11 @@ function Registration() {
     }));
   }
 
+  // Function to handle click event and scroll to the top of the page
+  function handleTopPage() {
+    window.scrollTo({ top: 0 });
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
 
