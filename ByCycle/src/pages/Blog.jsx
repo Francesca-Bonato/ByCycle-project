@@ -73,7 +73,7 @@ function Blog() {
                   {/* Blog post image */}
                   <div className="w-[300px] h-[300px] rounded-[12px] overflow-hidden">
 
-                    <Link to={`/blog/${item.id}`} className="w-full" onClick={handleClick}>
+                    <Link to={`/blog/${item.id}`} className="w-full">
                       <img
                         src={item.img}
                         alt="card image"

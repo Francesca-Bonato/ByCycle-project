@@ -1,8 +1,14 @@
 import image_one from "../assets/images/img_homepage/img_rectangle_7.png";
 import image_two from "../assets/images/img_homepage/img_triathlon_male.png";
 import animation_logo from "../assets/images/ByCycle logo ridotto.png";
+import Button from "../components/Button";
+import { Link } from "react-router-dom";
 
 function AboutUsHomepage() {
+  //Function to return to top page
+  function handleClick() {
+    window.scrollTo({ top: 0 });
+  }
   return (
     <>
       {/* Main container with responsive padding */}
@@ -84,11 +90,9 @@ function AboutUsHomepage() {
               enthusiasts. Ready to pedal into the future? Let&apos;s ride!
             </p>
             {/* CTA to join community */}
-            <div className="flex lg:w-full mb-7">
-              <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
-                Join other bikers
-              </button>
-            </div>
+            <Link to={`/events`} className="flex lg:w-full mb-7">
+              <Button innerText="Join other bikers" onClick={handleClick} />
+            </Link>
           </div>
         </div>
       </section>
