@@ -1,4 +1,5 @@
-import  { useState } from 'react';
+import Button from "../components/Button";
+import { useState } from "react";
 
 const initialProfile = {
   username: "Francesco_B",
@@ -8,7 +9,7 @@ const initialProfile = {
   birthDate: "1994-11-21",
   joinDate: "2024-05-23",
   description: "This is a short description about Francesco.",
-  profilePicture: "https://via.placeholder.com/150"
+  profilePicture: "https://via.placeholder.com/150",
 };
 
 const Profile = () => {
@@ -20,26 +21,28 @@ const Profile = () => {
     const { name, value } = e.target;
     setProfile((prevProfile) => ({
       ...prevProfile,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleDescriptionChange = () => {
     setProfile((prevProfile) => ({
       ...prevProfile,
-      description: newDescription
+      description: newDescription,
     }));
     setEditing(false);
   };
 
   const handleDelete = () => {
     // Implement delete functionality as needed
-    alert('Profile deleted');
+    alert("Profile deleted");
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-md mt-10 mb-10" >
-      <h2 className="text-3xl font-bold text-gray-800 mb-6">Profile Settings</h2>
+    <div className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-md mt-10 mb-10">
+      <h2 className="text-3xl font-bold text-gray-800 mb-6">
+        Profile Settings
+      </h2>
       <div className="flex flex-col items-center mb-6">
         <img
           className="w-32 h-32 rounded-full object-cover"
@@ -57,7 +60,7 @@ const Profile = () => {
               reader.onloadend = () => {
                 setProfile((prevProfile) => ({
                   ...prevProfile,
-                  profilePicture: reader.result
+                  profilePicture: reader.result,
                 }));
               };
               reader.readAsDataURL(file);
@@ -127,32 +130,33 @@ const Profile = () => {
               onChange={(e) => setNewDescription(e.target.value)}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
             />
-            <button
-              onClick={handleDescriptionChange}
-              className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-            >
-              Save
-            </button>
+            <div className="flex justify-center">
+              <Button
+                innerText="Save"
+                className=" mt-6"
+                onClick={handleDescriptionChange}
+              />
+            </div>
           </div>
         ) : (
           <div>
-            <p className="mt-1 p-2 border border-gray-300 rounded-md bg-gray-100">{profile.description}</p>
-            <button
-              onClick={() => setEditing(true)}
-              className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-            >
-              Edit
-            </button>
+            <p className="mt-1 p-2 border border-gray-300 rounded-md bg-gray-100">
+              {profile.description}
+            </p>
           </div>
         )}
       </div>
-      <div className="mt-6">
-        <button
+      <div className="flex justify-between">
+        <Button
+          innerText="Edit"
+          className=" mt-6"
+          onClick={() => setEditing(true)}
+        />
+        <Button
+          innerText="Delete Profile"
+          className=" bg-gray-300 mt-6 "
           onClick={handleDelete}
-          className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
-        >
-          Delete Profile
-        </button>
+        />
       </div>
     </div>
   );
