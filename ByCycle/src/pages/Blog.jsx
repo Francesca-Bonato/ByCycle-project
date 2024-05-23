@@ -5,14 +5,12 @@ import { blogData } from "../data";
 import Button from "../components/Button";
 
 function Blog() {
+
   const [index, setIndex] = useState(0);
   const highlightNews = blogData
     .flatMap((arr) => arr)
     .find((item) => item.highlight === true);
-  //Function to return to top page
-  function handleClick() {
-    window.scrollTo({ top: 0 });
-  }
+
   return (
     <>
       {/* Main container with responsive padding*/}
@@ -43,7 +41,6 @@ function Blog() {
               <Link
                 to={`/blog/${highlightNews.id}`}
                 className="flex lg:w-full mb-7"
-                onClick={handleClick}
               >
                 <Button innerText="Read our latest article" />
               </Link>
@@ -96,7 +93,6 @@ function Blog() {
                     <Link
                       to={`/blog/${item.id}`}
                       className="w-full"
-                      onClick={handleClick}
                     >
                       <p className="!font-medium transition-all hover:text-[#26425a] underline">
                         Read More

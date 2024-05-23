@@ -1,14 +1,10 @@
 import { Link } from "react-router-dom";
 
 function NewsCard({ title, img, id }) {
-  //Function to return to top page
-  function handleClick() {
-    window.scrollTo({ top: 0 });
-  }
   return (
     <div className="flex w-full flex-col gap-6 items-center justify-center">
       <div className="w-full rounded-[12px] overflow-hidden">
-        <Link to={`/events/${id}`} className="w-full" onClick={handleClick}>
+        <Link to={`/events/${id}`} className="w-full">
           <img
             src={img}
             alt="card image"
@@ -23,7 +19,7 @@ function NewsCard({ title, img, id }) {
         >
           {title}
         </p>
-        <Link to={`/events/${id}`} className="w-full" onClick={handleClick}>
+        <Link to={`/events/${id}`} className="w-full">
           <p className="!font-medium transition-all hover:text-[#26425a] underline">
             Read More
           </p>
