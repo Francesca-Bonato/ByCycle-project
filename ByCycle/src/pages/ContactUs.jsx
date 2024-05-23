@@ -10,7 +10,18 @@ function ContactUs() {
   });
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(`i tuoi dati: `, user);
+    if (user.message && user.contactNmb && user.email && user.fullName) {
+      alert("Thanks for getting in contact with us! Your request has been sent")
+      console.log(`i tuoi dati: `, user);
+    } else {
+      alert("Please fill out every field")
+    }
+    setUser({
+      fullName: "",
+      email: "",
+      contactNmb: "",
+      message: ""
+    })
   }
 
   return (
