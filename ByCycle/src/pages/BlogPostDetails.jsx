@@ -56,7 +56,7 @@ function BlogPostDetails() {
           )}
         </div>
         <Link to="/blog">
-          <Button innerText="←  Back to all events " />
+          <Button innerText="←  Back to all blog articles " className="mt-8"/>
         </Link>
       </section>
     </>

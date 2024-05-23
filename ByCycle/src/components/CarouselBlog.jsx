@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
 import Slider from "./Slider/Slider";
+import Button from "./Button";
 
 function CarouselBlog() {
   return (
     <>
-    {/* Header container with responsive padding */}
+      {/* Header container with responsive padding */}
       <section className="max-w-[1536px] mx-auto pt-16 pb-5 px-5 md:px-10 lg:px-16 2xl:text-lg">
-
         {/* Flex container for the heading and description/CTA*/}
         <div className="flex flex-wrap lg:flex-nowrap lg:items-center gap-[10%]">
-
           {/* Heading section */}
           <div className="w-full lg:w-[50%]">
             <p className="font-extrabold break-words text-center text-4xl lg:text-5xl lg:text-left">
@@ -34,9 +33,7 @@ function CarouselBlog() {
         {/* CTA button section */}
         <div className="flex justify-center lg:justify-end py-5">
           <Link to={"/blog"}>
-            <button className="bg-[#232323] text-white pt-3 pb-3 pl-8 pr-8 rounded-[40px]  border transition hover:border-solid hover:border-[#232323] hover:bg-white hover:text-black">
-             Read the blog
-            </button>
+            <Button innerText="Read the blog" />
           </Link>
         </div>
       </section>
