@@ -23,11 +23,11 @@ function QuizList() {
                   className="w-[400px] min-h-[500px] bg-white rounded-lg text-black p-4 flex flex-col items-start justify-between gap-3 hover:bg-black hover:text-white hover:bg-gradient-to-t from-black to-transparent hover:shadow-lg transition-all duration-500 relative border-[2px] black"
                 >
                   <img
-                    src={quiz.icon}
+                    src={quiz.img}
                     alt={quiz.title}
-                    className="absolute top-4 left-4 text-3xl"
+                    className="" 
                   />
-                  <div className="relative top-[300px]">
+                  <div className="top-[300px] absolute">
                     <p className="font-bold">{quiz.title}</p>
                     <p className="">{quiz.description}</p>
                   </div>
