@@ -20,11 +20,9 @@ function NewsSection() {
 
         {/* Container for the news cards with responsive layout */}
         <div className="flex gap-[30px] flex-wrap lg:flex-nowrap items-baseline justify-center">
-          {eventsData.map((item, index) => (
-            <>
-              {/*NewsCard component for each news item*/}
-              <NewsCard key={index} title={item.title} id={item.id} img={item.img}/>
-            </>
+          {eventsData.map((item) => (
+              //NewsCard component for each news item
+              <NewsCard key={item.id} title={item.title} id={item.id} img={item.img}/>
           ))}
         </div>
       </section>

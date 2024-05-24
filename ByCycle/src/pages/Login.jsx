@@ -60,8 +60,8 @@ const Login = () => {
     );
 
     if (!dataTaken) {
-      console.log("Email or Password wrong. Please correct.");
-      alert("Email or Password wrong. Please correct.");
+      console.log("Email or password is incorrect. If the e-mail specified exists in our system, a password reset link will be sent.");
+      alert("Email or password is incorrect. If the e-mail specified exists in our system, a password reset link will be sent.");
       return;
     }
 

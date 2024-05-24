@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 function NewsCard({ title, img, id }) {
   return (
     <div className="flex w-full flex-col gap-6 items-center justify-center">
