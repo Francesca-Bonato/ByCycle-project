@@ -196,9 +196,9 @@ export function Footer({ ...props }) {
           </div>
         </div>
         <hr className="w-full h-px bg-gray-200 border-0" />
-        <div className="md:px-10 lg:px-16 flex items-center justify-between w-full sm:gap-[27px] 2xl:text-lg">
-          <p className="p-5 text-xs">{`© ${year} ByCycle All right reserved.`}</p>
-          <div className="flex flex-end items-center opacity-0 active:opacity-[100%]">
+        <div className="flex items-center justify-between w-full sm:gap-[27px] 2xl:text-lg">
+          <p className="pl-5 text-xs">{`© ${year} ByCycle All right reserved.`}</p>
+          <div className="pr-5 flex flex-end items-center opacity-0 active:opacity-[100%]">
             <a
               className="cursor-default"
               href="https://github.com/Francesca-Bonato/ByCycle-project"
