@@ -3,7 +3,6 @@ import { Heading } from "./Heading";
 import { Img } from "./Img/Img";
 import { Footer_SocialBTN } from "./Footer_SocialBTN";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 // Get the current year
 let year = new Date().getFullYear();
@@ -53,11 +52,6 @@ export function Footer({ ...props }) {
                 Company
               </Heading>
               <ul className="flex flex-col gap-[9px]">
-                <li className="hover:underline">
-                  <a href="Bike" target="_blank" rel="noreferrer">
-                    <p>Bike</p>
-                  </a>
-                </li>
                 {/* <li className="hover:underline">
                   <a href="Accessories" target="_blank" rel="noreferrer">
                     <p>Accessories</p>
@@ -70,6 +64,11 @@ export function Footer({ ...props }) {
                     onClick={handleTopPage}
                   >
                     <p>Community</p>
+                  </Link>
+                </li>
+                <li className="hover:underline">
+                  <Link to="/blog" className="w-full" onClick={handleTopPage}>
+                    <p>Blog</p>
                   </Link>
                 </li>
                 <li className="hover:underline">
@@ -101,9 +100,9 @@ export function Footer({ ...props }) {
                   </a>
                 </li>
                 <li className="hover:underline">
-                  <a href="FAQS" target="_blank" rel="noreferrer">
+                  <Link to="/faq" className="w-full" onClick={handleTopPage}>
                     <p>FAQS</p>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
