@@ -21,8 +21,7 @@ import CookieConsent from "react-cookie-consent";
 import { Cookies } from "./pages/Cookies";
 import { Terms } from "./pages/Terms";
 import NotFound from "./pages/NotFound";
-
-
+import { FAQ } from "./pages/FAQ";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +45,7 @@ const router = createBrowserRouter([
       { path: "/privacy", element: <Privacy /> },
       { path: "/cookies", element: <Cookies /> },
       { path: "/terms", element: <Terms /> },
+      { path: "/faq", element: <FAQ /> },
     ],
   },
 ]);

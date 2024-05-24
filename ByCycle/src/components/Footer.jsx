@@ -52,19 +52,23 @@ export function Footer({ ...props }) {
                 Company
               </Heading>
               <ul className="flex flex-col gap-[9px]">
-                <li className="hover:underline">
-                  <a href="Bike" target="_blank" rel="noreferrer">
-                    <p>Bike</p>
-                  </a>
-                </li>
                 {/* <li className="hover:underline">
                   <a href="Accessories" target="_blank" rel="noreferrer">
                     <p>Accessories</p>
                   </a>
                 </li> */}
                 <li className="hover:underline">
-                  <Link to="/community" className="w-full" onClick={handleTopPage}>
+                  <Link
+                    to="/community"
+                    className="w-full"
+                    onClick={handleTopPage}
+                  >
                     <p>Community</p>
+                  </Link>
+                </li>
+                <li className="hover:underline">
+                  <Link to="/blog" className="w-full" onClick={handleTopPage}>
+                    <p>Blog</p>
                   </Link>
                 </li>
                 <li className="hover:underline">
@@ -96,9 +100,9 @@ export function Footer({ ...props }) {
                   </a>
                 </li>
                 <li className="hover:underline">
-                  <a href="FAQS" target="_blank" rel="noreferrer">
+                  <Link to="/faq" className="w-full" onClick={handleTopPage}>
                     <p>FAQS</p>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -191,9 +195,18 @@ export function Footer({ ...props }) {
           </div>
         </div>
         <hr className="w-full h-px bg-gray-200 border-0" />
-        <div className="container-xs md:px-10 lg:px-16 flex items-center w-full sm:gap-[27px] 2xl:text-lg">
-          <div className="flex items-start p-5 md:flex-col">
-            <p size="xs">{`© ${year} ByCycle All right reserved.`}</p>
+        <div className="flex items-center justify-between w-full sm:gap-[27px] 2xl:text-lg">
+          <p className="pl-5 text-xs">{`© ${year} ByCycle All right reserved.`}</p>
+          <div className="pr-5 flex flex-end items-center opacity-0 active:opacity-[100%]">
+            <a
+              className="cursor-default"
+              href="https://github.com/Francesca-Bonato/ByCycle-project"
+            >
+              <img
+                className="w-[50px] h-[50px]"
+                src="assets/images/github-svgrepo-com.svg"
+              />
+            </a>
           </div>
         </div>
       </footer>
