@@ -19,6 +19,8 @@ const ThreadForm = ({ onCreateThread }) => {
     <form onSubmit={handleSubmit} className="w-full py-8 max-w-[1260px]">
       {/* Input for new thread title */}
       <input
+        id="threadTitle"
+        name="threadTitle"
         type="text"
         placeholder="Title"
         value={threadTitle}
@@ -27,6 +29,8 @@ const ThreadForm = ({ onCreateThread }) => {
       />
       {/* Textarea for new thread description */}
       <textarea
+        id="threadDescription"
+        name="threadDescription"
         placeholder="Description"
         value={threadDescription}
         onChange={(e) => setThreadDescription(e.target.value)}

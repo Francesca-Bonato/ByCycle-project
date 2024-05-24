@@ -46,6 +46,7 @@ export function Footer_CTA({ ...props }) {
                 onSubmit={handleNewsletterSubmit}
               >
                 <input
+                  id="footer-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}

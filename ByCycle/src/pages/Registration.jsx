@@ -99,6 +99,7 @@ function Registration() {
                 value={data.username}
                 onChange={handleChange}
                 required
+                autoComplete="on"
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
@@ -145,6 +146,7 @@ function Registration() {
               <input
                 className="w-full p-[10px] border border-gray-300 rounded-3xl"
                 type="password"
+                id="password"
                 name="password"
                 value={data.password}
                 onChange={handleChange}
@@ -161,6 +163,7 @@ function Registration() {
               <input
                 className="w-full p-[10px] border border-gray-300 rounded-3xl"
                 type="password"
+                id="passwordConf"
                 name="passwordConf"
                 value={data.passwordConf}
                 onChange={handleChange}
