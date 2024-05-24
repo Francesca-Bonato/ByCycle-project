@@ -74,6 +74,8 @@ export function NavBar({ username }) {
       localStorage.clear();
       /*  sessionStorage.clear(); */
       window.scrollTo({ top: 0 });
+
+      window.location.reload();
     }
   }
 

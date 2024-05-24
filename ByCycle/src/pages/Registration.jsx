@@ -71,6 +71,8 @@ function Registration() {
     alert(`User ${data.username} registered successfully`);
     navigate("/");
     handleTopPage();
+
+    window.location.reload();
   }
 
   return (
