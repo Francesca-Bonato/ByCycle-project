@@ -16,16 +16,16 @@ function QuizList() {
           {quizData.map((quiz) => {
             return (
               <>
-                {/* Single quiz quiz */}
+                {/* Single quiz card */}
                 <Link
                   key={quiz.id}
                   to={`/quiz/${quiz.id}`}
-                  className="w-[400px] min-h-[500px] bg-white rounded-lg text-black p-4 flex flex-col items-start justify-between gap-3 hover:bg-black hover:text-white hover:bg-gradient-to-t from-black to-transparent hover:shadow-lg transition-all duration-500 relative border-[2px] black"
+                  className="w-[400px] min-h-[500px] bg-white rounded-lg text-black p-4 flex flex-col items-start justify-between gap-3 hover:bg-white hover:text-white hover:bg-gradient-to-t from-gray-800 to-transparent hover:shadow-lg transition-all duration-500 relative border-[2px] black"
                 >
                   <img
                     src={quiz.img}
                     alt={quiz.title}
-                    className="" 
+                    className="rounded-[5px]"
                   />
                   <div className="top-[300px] absolute">
                     <p className="font-bold">{quiz.title}</p>
