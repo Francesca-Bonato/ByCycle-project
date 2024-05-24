@@ -16,6 +16,7 @@ export function Footer({ ...props }) {
 
   return (
     <>
+     <div className="h-[10px]"></div>
       <footer
         {...props}
         className={`${props.className} flex flex-col items-center w-full box-border`}

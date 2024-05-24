@@ -7,6 +7,7 @@ import bycycleIcon from "./assets/images/bycycle-icon-quiz.svg";
 const quizData = [
   {
     id: 1,
+    img: "https://images.unsplash.com/photo-1693811925823-f1cde657490a?q=80&w=2685&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     icon: bycycleIcon,
     title: "Bicycle Inventors and History",
     description:
@@ -68,6 +69,7 @@ const quizData = [
   },
   {
     id: 2,
+    img: "https://images.unsplash.com/photo-1669637751236-9b28eae5faf5?q=80&w=2632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     icon: bycycleIcon,
     title: "Bicycle Maintenance Essentials",
     description:
@@ -143,6 +145,7 @@ const quizData = [
   },
   {
     id: 3,
+    img: "https://fiabitalia.it/wp-content/uploads/2021/06/FIAB_Cicloturismo_2-copia-scaled.jpg",
     icon: bycycleIcon,
     title: "Bicycle Riding Tips",
     description:
@@ -213,7 +216,7 @@ const quizData = [
     ],
   },
 ];
-
+/**************************************************************************/ 
 const blogData = [
   [
     {
