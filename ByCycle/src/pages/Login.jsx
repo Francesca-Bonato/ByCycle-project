@@ -45,15 +45,16 @@ const Login = () => {
     );
 
     if (userRegistered) {
+      let newArr = [];
       // Salva solo i dati necessari in sessionStorage
-      userLogged.push({
+      newArr.push({
         username: userRegistered.username,
         usermail: userRegistered.usermail,
         password: userRegistered.password,
       });
 
-      sessionStorage.setItem("userLogged", JSON.stringify(userLogged));
-      alert(`User ${data.username} logged in successfully`);
+      sessionStorage.setItem("userLogged", JSON.stringify(newArr));
+      alert(`User ${userRegistered.username} logged in successfully`);
 
       if (location.pathname === "/login") {
         navigate("/profile");
