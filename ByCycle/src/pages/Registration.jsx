@@ -14,11 +14,20 @@ function Registration() {
 
   const navigate = useNavigate();
 
+  const [formCompleted, setFormCompleted] = useState(false);
+
   function handleChange(e) {
+    const { name, value } = e.target;
     setData((prevData) => ({
       ...prevData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
+
+    // Controlla se tutti i campi sono stati compilati
+    const allFieldsCompleted = Object.values(data).every(
+      (field) => field.trim() !== ""
+    );
+    setFormCompleted(allFieldsCompleted);
   }
 
   // Function to handle click event and scroll to the top of the page
@@ -28,6 +37,15 @@ function Registration() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    // Verifica se tutti i campi sono stati compilati prima di inviare il modulo
+    const allFieldsCompleted = Object.values(data).every(
+      (field) => field.trim() !== ""
+    );
+    if (!allFieldsCompleted) {
+      alert("Please fill in all fields before submitting the form.");
+      return;
+    }
 
     // Check if user already exists in localStorage
     let users = JSON.parse(localStorage.getItem("users")) || [];
@@ -49,15 +67,28 @@ function Registration() {
     const today = new Date();
 
     if (inputDate >= today) {
-      console.log("La data di nascita deve essere precedente a oggi.");
-      alert("La data di nascita deve essere precedente a oggi.");
+      console.log("Your date of birth must be before today. Please correct.");
+      alert("Your date of birth must be before today. Please correct.");
       return; // Interrompi la procedura di registrazione
     }
 
     //controlla se i due input password corrispondono l'un l'altro
     if (data.password !== data.passwordConf) {
-      console.log("Password doesn't match.Please correct");
-      alert("Password doesn't match. Please correct");
+      console.log("Password doesn't match.Please correct.");
+      alert("Password doesn't match. Please correct.");
+      return; // Interrompi la procedura di registrazione
+    }
+
+    // Controllo se la password soddisfa i requisiti
+    const isValidPassword =
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[#@$!%*?&.])[A-Za-z\d#@$.!%*?&]{8,}$/.test(
+        data.password
+      );
+    if (!isValidPassword) {
+      console.log("Password does not meet requirements.");
+      alert(
+        "Password does not meet requirements. It must contain at least one alphabetic character, one number, one symbol from these (#@$!%*?&.), one uppercase letter and must be at least 8 characters long."
+      );
       return; // Interrompi la procedura di registrazione
     }
 
@@ -103,7 +134,7 @@ function Registration() {
                 value={data.username}
                 onChange={handleChange}
                 required
-                autoComplete="on"
+                autoComplete="username"
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
@@ -138,6 +169,7 @@ function Registration() {
                 value={data.usermail}
                 onChange={handleChange}
                 required
+                autoComplete="email"
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
@@ -155,6 +187,7 @@ function Registration() {
                 value={data.password}
                 onChange={handleChange}
                 required
+                autoComplete="new-password"
               />
             </div>
             <div className="flex flex-col items-start gap-3.5">
@@ -172,9 +205,14 @@ function Registration() {
                 value={data.passwordConf}
                 onChange={handleChange}
                 required
+                autoComplete="new-password"
               />
             </div>
-            <Button innerText="Submit" className="self-center md:self-end" />
+            <Button
+              innerText="Submit"
+              className="self-center md:self-end"
+              disabled={!formCompleted}
+            />
           </form>
         </div>
         <div className="h-screen w-full gap-[47px] hidden md:w-[48%] md:block lg:w-1/2">

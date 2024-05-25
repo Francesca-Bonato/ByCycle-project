@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate, useLocation } from "react-router";
 import loginImage from "../assets/images/login-image-small.jpg";
 import Button from "../components/Button";
@@ -13,11 +13,24 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Crea un riferimento a un elemento HTML nel DOM
+  const formRef = useRef();
+
+  const [formCompleted, setFormCompleted] = useState(false);
+
   function handleChange(e) {
+    const { name, value } = e.target;
     setData((prevData) => ({
       ...prevData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
+
+    // Controlla se tutti i campi sono stati compilati
+    const allFieldsCompleted = Object.values({
+      ...data,
+      [name]: value,
+    }).every((field) => field.trim() !== "");
+    setFormCompleted(allFieldsCompleted);
   }
 
   function handleSubmit(e) {
@@ -64,12 +77,21 @@ const Login = () => {
     }
   }
 
+  const handleBlur = () => {
+    const formFields = Array.from(formRef.current.elements);
+    const allFieldsCompleted = formFields.every(
+      (field) => field.value.trim() !== ""
+    );
+    setFormCompleted(allFieldsCompleted);
+  };
+
   return (
     <div className="w-full h-full bg-white-A700_01">
       <div className="h-full flex flex-col items-center bg-login-bg bg-cover bg-bottom md:bg-none justify-between gap-5 md:flex-row-reverse">
         <div className="flex w-full flex-col gap-8 md:w-[48%]">
           <form
             onSubmit={handleSubmit}
+            onBlur={handleBlur}
             className="flex flex-col gap-[31px] self-stretch m-4"
           >
             <h1 className="text-white text-center font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-2xl md:text-start md:text-[#111827]">
@@ -110,7 +132,11 @@ const Login = () => {
                 autoComplete="current-password"
               />
             </div>
-            <Button innerText="Log In" className="self-center md:self-end" />
+            <Button
+              innerText="Log In"
+              className="self-center md:self-end"
+              disabled={!formCompleted}
+            />
           </form>
         </div>
         <div className="h-full w-full gap-[47px] hidden md:block md:w-[48%] lg:w-1/2">
