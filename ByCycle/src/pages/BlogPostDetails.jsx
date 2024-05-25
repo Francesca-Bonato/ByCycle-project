@@ -13,7 +13,7 @@ function BlogPostDetails() {
 
   // If the event is not found, display an error message
   if (!post) {
-    return <p>Article not found</p>;
+    return <p>Article not found</p>
   }
 
   // Render event details if the event is found

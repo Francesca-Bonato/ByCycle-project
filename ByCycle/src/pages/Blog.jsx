@@ -5,7 +5,6 @@ import { blogData } from "../data";
 import Button from "../components/Button";
 
 function Blog() {
-
   const [index, setIndex] = useState(0);
   const highlightNews = blogData
     .flatMap((arr) => arr)
@@ -65,42 +64,37 @@ function Blog() {
           <div className="flex flex-wrap max-w-[1444px] justify-center pt-16 pb-7 gap-[50px]">
             {/* Mapping through the blog data and displaying each blog post */}
             {blogData[index].map((item) => (
-              <>
-                {/* Single Blog post card */}
-                <div
-                  key={item.title}
-                  className="flex flex-col gap-6 items-center justify-between"
-                >
-                  {/* Blog post image */}
-                  <div className="w-[300px] h-[300px] rounded-[12px] overflow-hidden">
-                    <Link to={`/blog/${item.id}`} className="w-full">
-                      <img
-                        src={item.img}
-                        alt="card image"
-                        className="w-full rounded-[12px] object-cover h-full cursor-pointer transition duration-300 ease-in-out hover:scale-110"
-                      />
-                    </Link>
-                  </div>
-                  {/* Blog post title and read more link */}
-                  <div className="flex w-full flex-col justify-between items-start h-[200px] gap-[20px] max-w-[300px]">
-                    <p
-                      size="xl"
-                      className="text-center text-3xl font-bold w-full leading-[130%] tracking-[-0.48px]"
-                    >
-                      {item.title}
-                    </p>
-
-                    <Link
-                      to={`/blog/${item.id}`}
-                      className="w-full"
-                    >
-                      <p className="!font-medium transition-all hover:text-[#26425a] underline">
-                        Read More
-                      </p>
-                    </Link>
-                  </div>
+              // Single Blog post card
+              <div
+                key={item.title}
+                className="flex flex-col gap-6 items-center justify-between"
+              >
+                {/* Blog post image */}
+                <div className="w-[300px] h-[300px] rounded-[12px] overflow-hidden">
+                  <Link to={`/blog/${item.id}`} className="w-full">
+                    <img
+                      src={item.img}
+                      alt="card image"
+                      className="w-full rounded-[12px] object-cover h-full cursor-pointer transition duration-300 ease-in-out hover:scale-110"
+                    />
+                  </Link>
                 </div>
-              </>
+                {/* Blog post title and read more link */}
+                <div className="flex w-full flex-col justify-between items-start h-[200px] gap-[20px] max-w-[300px]">
+                  <p
+                    size="xl"
+                    className="text-center text-3xl font-bold w-full leading-[130%] tracking-[-0.48px]"
+                  >
+                    {item.title}
+                  </p>
+
+                  <Link to={`/blog/${item.id}`} className="w-full">
+                    <p className="!font-medium transition-all hover:text-[#26425a] underline">
+                      Read More
+                    </p>
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
         </section>

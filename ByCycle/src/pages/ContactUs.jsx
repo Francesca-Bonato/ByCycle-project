@@ -44,12 +44,17 @@ function ContactUs() {
               className="flex flex-col gap-[31px] self-stretch w-full"
             >
               <div className="flex flex-col items-start gap-3.5">
-                <label htmlFor="full-name" className="font-semibold">
+                <label
+                  htmlFor="full-name-label"
+                  id="full-name-label"
+                  className="font-semibold"
+                >
                   Full Name
                 </label>
                 <input
                   className="w-full p-[10px] border border-gray-300 rounded-3xl"
                   type="text"
+                  id="full-name-input"
                   name="full-name"
                   value={user.fullName}
                   onChange={(e) =>
@@ -58,24 +63,34 @@ function ContactUs() {
                 />
               </div>
               <div className="flex flex-col items-start gap-3.5">
-                <label htmlFor="email-address" className="font-semibold">
+                <label
+                  htmlFor="email-address-label"
+                  id="email-address-label"
+                  className="font-semibold"
+                >
                   Email Address
                 </label>
                 <input
                   className="w-full p-[10px] border border-gray-300 rounded-3xl"
                   type="text"
+                  id="email-address-input"
                   name="email-address"
                   value={user.email}
                   onChange={(e) => setUser({ ...user, email: e.target.value })}
                 />
               </div>
               <div className="flex flex-col items-start gap-3.5">
-                <label htmlFor="contact-number" className="font-semibold">
+                <label
+                  htmlFor="contact-number-label"
+                  id="contact-number-label"
+                  className="font-semibold"
+                >
                   Phone Number
                 </label>
                 <input
                   className="w-full p-[10px] border border-gray-300 rounded-3xl"
                   type="text"
+                  id="contact-number-input"
                   name="contact-number"
                   value={user.contactNmb}
                   onChange={(e) =>
@@ -85,7 +100,8 @@ function ContactUs() {
               </div>
               <div className="flex flex-col items-start gap-3">
                 <label
-                  htmlFor="message"
+                  htmlFor="message-label"
+                  id="message-label"
                   className="font-semibold text-black-900"
                 >
                   Description

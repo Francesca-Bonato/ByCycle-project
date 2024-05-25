@@ -114,9 +114,9 @@ function Events() {
       </header>
 
       {/* Event highlight section with image and description */}
-      <h className="text-center text-neutral-800 text-[44px] font-medium leading-[55px] pt-16">
+      <h1 className="text-center text-neutral-800 text-[44px] font-medium leading-[55px] pt-16">
         Highlight of the month
-      </h>
+      </h1>
 
       <div className="flex items-center justify-center gap-10 pt-8 flex-wrap lg:flex-nowrap lg:justify-between">
         <div className="w-full lg:w-auto">
