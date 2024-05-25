@@ -29,25 +29,10 @@ function Registration() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    // Controllo se la data di nascita è maggiore della data odierna
-    const inputDate = new Date(data.birthDate);
-    const today = new Date();
-
-    if (inputDate >= today) {
-      console.log("La data di nascita deve essere precedente a oggi.");
-      alert("La data di nascita deve essere precedente a oggi.");
-      return;
-    }
-
-    //controlla password se corrisponde
-    if (data.password !== data.passwordConf) {
-      console.log("Password doesn't match.Please correct");
-      alert("Password doesn't match. Please correct");
-      return; // Interrompi la procedura di registrazione
-    }
-
-    // Check if username or email already exists in localStorage
+    // Check if user already exists in localStorage
     let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    //Check if email already exists in localStorage
     const isUsernameTaken = users.some(
       (user) => user.username === data.username
     );
@@ -57,6 +42,23 @@ function Registration() {
       console.log("Username or email already in use. Please correct.");
       alert("Username or email already in use. Please correct.");
       return;
+    }
+
+    // Controllo se la data di nascita è maggiore della data odierna
+    const inputDate = new Date(data.birthDate);
+    const today = new Date();
+
+    if (inputDate >= today) {
+      console.log("La data di nascita deve essere precedente a oggi.");
+      alert("La data di nascita deve essere precedente a oggi.");
+      return; // Interrompi la procedura di registrazione
+    }
+
+    //controlla se i due input password corrispondono l'un l'altro
+    if (data.password !== data.passwordConf) {
+      console.log("Password doesn't match.Please correct");
+      alert("Password doesn't match. Please correct");
+      return; // Interrompi la procedura di registrazione
     }
 
     // Simulate user registration

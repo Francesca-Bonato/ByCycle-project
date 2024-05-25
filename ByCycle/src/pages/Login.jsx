@@ -1,88 +1,66 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import loginImage from "../assets/images/login-image-small.jpg";
 import Button from "../components/Button";
 
 const Login = () => {
   const [data, setData] = useState({
+    username: "",
     usermail: "",
     password: "",
   });
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   function handleChange(e) {
-    setData((data) => {
-      const name = e.target.name;
-      const value = e.target.value;
-      return {
-        ...data,
-        [name]: value,
-      };
-    });
-  }
-
-  function handleLogin(usermail, password) {
-    return new Promise((resolve, reject) => {
-      //Simuliamo il ritardo nell'interrogazione del server affinchè recuperi i dati dell'utente dal database:
-      setTimeout(() => {
-        if (usermail !== "" && password !== "") {
-          //simuliamo i dati ricevuti dal server:
-          const userData = {
-            usermail: usermail,
-            password: password,
-            role: "User",
-          };
-
-          const token =
-            "LBJimGWT7oxHtJfVFez4dbKyL3eYcKTJh2FrpwlIAQtqYysLQHziFqEVz676IeoX";
-          //I dati dell'utente vengono restituiti dal metodo handleLogin:
-          resolve({
-            data: userData,
-            token: token,
-          });
-        } else {
-          reject(new Error("Credenziali non valide"));
-        }
-      }, 2000);
-    });
+    setData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    // Check if email or password already exists in localStorage
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+    // Check if user already exists in localStorage
+    let userLogged = JSON.parse(localStorage.getItem("users")) || [];
 
-    const dataTaken = users.some(
+    // Check if email or password already exists in localStorage
+    const dataTaken = userLogged.some(
       (user) =>
         user.usermail === data.usermail && user.password === data.password
     );
 
     if (!dataTaken) {
-      console.log("Email or password is incorrect. If the e-mail specified exists in our system, a password reset link will be sent.");
-      alert("Email or password is incorrect. If the e-mail specified exists in our system, a password reset link will be sent.");
-      return;
+      console.log("Email or password is incorrect. Please correct.");
+      alert("Email or password is incorrect. Please correct.");
+      return; // Interrompi la procedura di login
     }
 
-    console.log(data);
-    //Al submit del form, chiamiamo il metodo handleLogin, il quale restituisce userData:
-    handleLogin(data.usermail, data.password)
-      .then((response) => {
-        console.log(response);
+    // Simulate user login
+    let userRegistered = userLogged.find(
+      (user) =>
+        user.usermail === data.usermail && user.password === data.password
+    );
 
-        //Trasformiamo i dati utente ricevuti in una stringa prima di salvarlo nel session storage:
-        const responseToString = JSON.stringify(response.data);
-        /* sessionStorage.setItem(data.usermail, responseToString); */
-        sessionStorage.setItem("userLogged", responseToString);
-
-        //Salviamo il token ricevuto nel local storage:
-        localStorage.setItem("Token", response.token);
-        navigate("/profile");
-      })
-      .catch((error) => {
-        console.log(error);
+    if (userRegistered) {
+      // Salva solo i dati necessari in sessionStorage
+      userLogged.push({
+        username: userRegistered.username,
+        usermail: userRegistered.usermail,
+        password: userRegistered.password,
       });
+
+      sessionStorage.setItem("userLogged", JSON.stringify(userLogged));
+      alert(`User ${data.username} logged in successfully`);
+
+      if (location.pathname === "/login") {
+        navigate("/profile");
+      }
+
+      window.location.reload();
+    }
   }
 
   return (

@@ -11,22 +11,29 @@ export function FAQ() {
               biking, trails, cycling events, and more!
             </p>
           </li>
+          <br></br>
           <li>
-            <h6 className="font-semibold">2. How can I join the ByCycle community?</h6>
+            <h6 className="font-semibold">
+              2. How can I join the ByCycle community?
+            </h6>
 
             <p>
               Simply follow our page and start engaging with other bike
               enthusiasts through posts, quizzes, and discussions.
             </p>
           </li>
+          <br></br>
           <li>
-            <h6 className="font-semibold">3. What kind of trails do you feature on ByCycle?</h6>
+            <h6 className="font-semibold">
+              3. What kind of trails do you feature on ByCycle?
+            </h6>
 
             <p>
               We showcase a variety of trails for all skill levels, from
               beginner-friendly paths to challenging mountain bike routes.
             </p>
           </li>
+          <br></br>
           <li>
             <h6 className="font-semibold">
               4. Are there any upcoming cycling events I should know about?{" "}
@@ -37,8 +44,11 @@ export function FAQ() {
               races in your area.
             </p>
           </li>
+          <br></br>
           <li>
-            <h6 className="font-semibold">5. Can I participate in cycling quizzes on ByCycle? </h6>
+            <h6 className="font-semibold">
+              5. Can I participate in cycling quizzes on ByCycle?{" "}
+            </h6>
 
             <p>
               {" "}
@@ -46,8 +56,11 @@ export function FAQ() {
               by taking part in our interactive quizzes.
             </p>
           </li>
+          <br></br>
           <li>
-            <h6 className="font-semibold">6. Is ByCycle a casual community or more competitive? </h6>
+            <h6 className="font-semibold">
+              6. Is ByCycle a casual community or more competitive?{" "}
+            </h6>
 
             <p>
               {" "}
@@ -56,8 +69,11 @@ export function FAQ() {
               biking.
             </p>
           </li>
+          <br></br>
           <li>
-            <h6 className="font-semibold">7. How can I contribute to the ByCycle page?</h6>
+            <h6 className="font-semibold">
+              7. How can I contribute to the ByCycle page?
+            </h6>
 
             <p>
               Feel free to share your own biking experiences, trail
@@ -65,8 +81,11 @@ export function FAQ() {
               content with the community.
             </p>
           </li>
+          <br></br>
           <li>
-            <h6 className="font-semibold">8. Do you offer tips and advice for beginner cyclists? </h6>
+            <h6 className="font-semibold">
+              8. Do you offer tips and advice for beginner cyclists?{" "}
+            </h6>
 
             <p>
               {" "}
@@ -74,6 +93,7 @@ export function FAQ() {
               those just starting out in the world of cycling.
             </p>
           </li>
+          <br></br>
           <li>
             <h6 className="font-semibold">
               9. Can I connect with other cyclists in my area through ByCycle?
@@ -85,8 +105,11 @@ export function FAQ() {
               meetups.
             </p>
           </li>
+          <br></br>
           <li>
-            <h6 className="font-semibold">10. What sets ByCycle apart from other cycling communities?</h6>
+            <h6 className="font-semibold">
+              10. What sets ByCycle apart from other cycling communities?
+            </h6>
 
             <p>
               {" "}

@@ -55,14 +55,14 @@ const Profile = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-md mt-10 mb-10">
+    <div className="max-w-4xl mx-auto p-8 bg-white rounded-lg">
       <h1 className="text-center text-neutral-800 font-medium leading-[55px]">
         Profile Settings
       </h1>
-      <div className="flex flex-col items-center my-6">
+      <div className="flex flex-col items-center my-6 ">
         <label htmlFor="profile-picture" className="cursor-pointer">
           <img
-            className="w-32 h-32 rounded-full object-cover"
+            className="w-32 h-32 rounded-full object-cover border border-gray-300"
             src={profile.profilePicture}
             alt="Profile Picture"
           />

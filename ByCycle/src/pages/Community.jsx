@@ -4,6 +4,8 @@ import ThreadForm from "../components/ThreadForm";
 import ThreadReplies from "../components/ThreadReplies";
 import ReplyForm from "../components/ReplyForm";
 
+const users = JSON.parse(localStorage.getItem('users'));
+
 const Community = () => {
   // State to hold the list of threads
   const [threadList, setThreadList] = useState([]);
@@ -29,7 +31,7 @@ const Community = () => {
       title, // The title of the new thread
       description, // The description of the new thread
       author: {
-        name: "Nome Utente", // Replace this with the actual user's name
+        name: users ? users[0].username : "Nome Utente", // Replace this with the actual user's name
         profilePic: "https://example.com/default-profile-pic.jpg", // Replace this with the actual user's profile pic
       },
       replies: [], // Initialize with no replies

@@ -1,11 +1,10 @@
 import { Fragment, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logoBlack from "../assets/images/ByCycle_logo_definitivo.png";
 // import logoWhite from "../assets/images/ByCycle_logo_definitivo_white.png";
 import imageProfileCustom from "../assets/images/profile-user-icon-2048x2048-m41rxkoe.png";
-/* import { users } from "/src/users"; */
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -22,12 +21,10 @@ const unLogged = [
 ];
 
 const logged = [
-  /* { name: "Your Profile", href: "/profile" }, */
+  /*   { name: "Your Profile", href: "/profile" }, */
   /*  { name: "Settings", href: "/profile-settings" }, */
   { name: "Log Out", href: "/" },
 ];
-
-//TODO rivedere condizione dell IF
 
 // Utility function to manage component classes
 function classNames(...classes) {
@@ -41,13 +38,11 @@ function handleTopPage() {
 
 // Main component
 export function NavBar({ username }) {
-  // Get the current route information
-  const location = useLocation();
+  const navigate = useNavigate();
 
   // Function to check authentication
   const checkAuthentication = () => {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    /* const users = JSON.parse(sessionStorage.getItem("userLogged")) || []; */
+    const users = JSON.parse(sessionStorage.getItem("userLogged")) || [];
 
     if (users.length !== 0) {
       const usermail = users[0].usermail;
@@ -58,7 +53,7 @@ export function NavBar({ username }) {
           return user.usermail === usermail && user.password === password;
         });
       } else {
-        console.log("No usermail or password found in localStorage.");
+        console.log("No usermail or password found in sessionStorage.");
         return false;
       }
     }
@@ -70,10 +65,9 @@ export function NavBar({ username }) {
 
   function clearPage() {
     if (isAuthenticated) {
-      /* window.location.reload(); */
-      localStorage.clear();
-      /*  sessionStorage.clear(); */
+      sessionStorage.clear();
       window.scrollTo({ top: 0 });
+      navigate("/");
 
       window.location.reload();
     }
