@@ -108,7 +108,7 @@ export function NavBar({ username }) {
                           <Link
                             key={item.name}
                             to={item.href}
-                            onClick={clearPage}
+                            onClick={handleTopPage}
                             className={classNames(
                               location.pathname === item.href
                                 ? "bg-gray-900 text-white"
