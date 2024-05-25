@@ -21,7 +21,7 @@ const unLogged = [
 ];
 
 const logged = [
-  /*   { name: "Your Profile", href: "/profile" }, */
+    { name: "Your Profile", href: "/profile" },
   /*  { name: "Settings", href: "/profile-settings" }, */
   { name: "Log Out", href: "/" },
 ];
@@ -155,7 +155,7 @@ export function NavBar({ username }) {
                                   {({ active }) => (
                                     <Link
                                       to={item.href}
-                                      onClick={clearPage}
+                                      onClick={item.name === "Log Out" ? clearPage : null}
                                       className={classNames(
                                         active ? "bg-blu-100" : "",
                                         "block px-4 py-2 text-sm text-gray-700"
@@ -222,7 +222,7 @@ export function NavBar({ username }) {
                   <div className="border-t border-gray-700 pb-3 pt-4 ">
                     <div className="flex items-center px-5 cursor-pointer ">
                       <div className="flex-shrink-0">
-                        <Link to="/profile">
+                        <Link to="#">
                           <img
                             className="h-10 w-10 rounded-full"
                             src={imageProfileCustom}
