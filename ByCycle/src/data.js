@@ -309,7 +309,7 @@ const blogData = [
     },
     {
       id: 11,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1501147830916-ce44a6359892?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmljaXxlbnwwfHwwfHx8MA%3D%3D",
       title: "Essential cycling accessories for a safe ride",
       abstract:
         "To ensure a safe and enjoyable ride, it's important to have the right accessories. A good helmet, lights, reflective gear, and a bell are essential for visibility and safety. Additionally, consider carrying a repair kit, water bottle, and a bike lock. These accessories can enhance your cycling experience and provide peace of mind.",
@@ -377,7 +377,7 @@ const blogData = [
   [
     {
       id: 19,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://plus.unsplash.com/premium_photo-1684096758474-c53052d9c58b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGJpY2l8ZW58MHx8MHx8fDA%3D",
       title: "How to prepare for a long-distance cycling tour",
       abstract:
         "Preparing for a long-distance cycling tour requires careful planning and training. Start by building up your stamina and endurance with regular rides. Plan your route and accommodations in advance. Pack essential gear, including repair tools, food, and water. Listen to your body and take breaks when needed. Proper preparation can make your tour a memorable and enjoyable experience.",
@@ -393,7 +393,7 @@ const blogData = [
     },
     {
       id: 21,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://plus.unsplash.com/premium_photo-1684274186177-9f2a3193061a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fGJpY2l8ZW58MHx8MHx8fDA%3D",
       title: "Cycling as a family activity",
       abstract:
         "Cycling is a great activity for families to enjoy together. It promotes physical fitness, encourages outdoor exploration, and provides an opportunity for quality time. Choose family-friendly routes that are safe and suitable for all ages. Consider using child seats or trailers for younger children. Make cycling a regular family activity to build healthy habits and create lasting memories.",
@@ -401,7 +401,7 @@ const blogData = [
     },
     {
       id: 22,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://images.unsplash.com/photo-1594942939850-d8da299577f3?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDZ8fGJpY2l8ZW58MHx8MHx8fDA%3D",
       title: "Innovations in cycling technology",
       abstract:
         "Advancements in technology are continuously improving the cycling experience. From smart helmets with built-in communication systems to GPS-enabled bike computers, these innovations enhance safety and performance. Electric shifting systems and aerodynamic designs are also making bikes faster and more efficient. Keep an eye on the latest tech trends to stay ahead in the cycling world.",
@@ -409,7 +409,7 @@ const blogData = [
     },
     {
       id: 23,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://plus.unsplash.com/premium_photo-1684274186188-2a7abbd85b48?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDl8fGJpY2l8ZW58MHx8MHx8fDA%3D",
       title: "The role of cycling in sustainable urban planning",
       abstract:
         "As cities strive to become more sustainable, cycling plays a crucial role in urban planning. Incorporating bike lanes, bike-sharing programs, and cycling-friendly infrastructure can reduce traffic congestion and pollution. Encouraging cycling as a primary mode of transportation supports a healthier population and more livable cities.",
@@ -417,7 +417,7 @@ const blogData = [
     },
     {
       id: 24,
-      img: "https://source.unsplash.com/random/300x300",
+      img: "https://plus.unsplash.com/premium_photo-1663089654116-a48ada1956f9?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODV8fGJpY2l8ZW58MHx8MHx8fDA%3D",
       title: "Cycling adventures: Stories from around the world",
       abstract:
         "Cycling enthusiasts from around the world share their stories of epic adventures and unforgettable rides. From cross-country tours to mountain expeditions, these stories highlight the joy and challenges of cycling. They inspire others to embark on their own cycling journeys and explore new destinations on two wheels.",
