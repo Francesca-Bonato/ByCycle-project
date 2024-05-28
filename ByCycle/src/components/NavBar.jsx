@@ -5,6 +5,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logoBlack from "../assets/images/ByCycle_logo_definitivo.png";
 // import logoWhite from "../assets/images/ByCycle_logo_definitivo_white.png";
 import imageProfileCustom from "../assets/images/profile-user-icon-2048x2048-m41rxkoe.png";
+import defaultProPic from "../assets/images/default-profile-pic.jpg"
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -133,7 +134,7 @@ export function NavBar({ username }) {
                             <span className="sr-only">Open user menu</span>
                             <img
                               className="h-8 w-8 rounded-full"
-                              src={imageProfileCustom}
+                              src={isAuthenticated ? defaultProPic : imageProfileCustom }
                               alt=""
                             />
                           </Menu.Button>
@@ -225,7 +226,7 @@ export function NavBar({ username }) {
                         <Link to="#">
                           <img
                             className="h-10 w-10 rounded-full"
-                            src={imageProfileCustom}
+                            src={isAuthenticated ? defaultProPic : imageProfileCustom }
                             alt=""
                           />
                         </Link>
