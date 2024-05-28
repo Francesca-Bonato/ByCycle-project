@@ -37,7 +37,7 @@ function BikeTrails() {
             <img
               src="https://images.unsplash.com/photo-1599978558611-35e62245080c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzh8fGJpY2l8ZW58MHx8MHx8fDA%3D"
               alt="image"
-              className="h-[300px] rounded-[16px] object-cover w-full lg:h-[560px]"
+              className="h-[300px] rounded-[16px] object-cover w-full lg:h-[400px]"
             />
           </div>
         </div>
