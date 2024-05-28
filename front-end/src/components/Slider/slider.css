@@ -1,0 +1,35 @@
+/* App Container */
+#app {
+  height: 100%; /* Set the application container to take up the full viewport height */
+}
+
+/* Swiper Container Styling */
+.swiper {
+  width: 100%; /* Make the swiper container fill the entire width */
+  height: 100%; /* Make the swiper container fill the entire height */
+}
+
+/* Swiper Slide Styling */
+.swiper-slide {
+  text-align: center; /* Center the content within each slide */
+  font-size: 18px; /* Set the font size for slide content */
+  background: #fff; /* Set the background color to white */
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center; /* Horizontally center the content within slides */
+  align-items: center; /* Vertically center the content within slides */
+}
+
+/* Swiper Slide Image Styling */
+.swiper-slide img {
+  display: block; /* Ensure the image displays as a block-level element */
+  width: 100%; /* Make the image fill the entire width of the slide */
+  height: 100%; /* Make the image fill the entire height of the slide */
+  object-fit: cover; /* Crop or stretch the image to cover the slide area while maintaining aspect ratio */
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  text-shadow: 0px 0px 5px #232323;
+}
