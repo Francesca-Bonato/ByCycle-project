@@ -5,11 +5,15 @@ name VARCHAR(50) NOT NULL
 
 CREATE TABLE users (
 id BIGINT AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(50),
-surname VARCHAR (50),
-mail VARCHAR(255) NOT NULL UNIQUE,
+username VARCHAR(50) NOT NULL UNIQUE,
+firstname VARCHAR(50),
+lastname VARCHAR (50),
+email VARCHAR(255) NOT NULL UNIQUE,
 password VARCHAR(250) NOT NULL,
 role_id BIGINT NOT NULL,
+birth_date DATE,
+join_date DATE default current_date,
+description TEXT,
 profile_pic VARCHAR(255) DEFAULT "../assets/images/registration-image.jpg",
 created_at timestamp default current_timestamp NOT NULL,
 FOREIGN KEY (role_id) REFERENCES roles(id)
