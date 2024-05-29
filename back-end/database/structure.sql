@@ -51,7 +51,7 @@ CREATE TABLE blog_posts (
   title VARCHAR(255) NOT NULL,
   abstract TEXT NOT NULL,
   highlight BOOLEAN NOT NULL DEFAULT FALSE,
-  main TEXT NOT NULL
+  main TEXT
 );
 
 -- CREATE TABLE blog_data (
