@@ -103,7 +103,7 @@ const Community = () => {
           Join the conversation and connect with fellow cyclists today!
         </strong>
       </p>
-
+        <img className="h-[500px] rounded-[5px] object-cover" src="https://images.unsplash.com/photo-1598609363592-f2dc587ffcb0?q=80&w=2664&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
       {/* Subheading for new thread creation */}
       <h2 className="text-center text-neutral-800 font-medium leading-[55px] pt-8">
         Create a Thread
@@ -112,6 +112,7 @@ const Community = () => {
       {/* Form to create a new thread */}
       <ThreadForm onCreateThread={createThread} />
 
+      <img className="h-[500px] rounded-[5px] object-cover" src="https://images.unsplash.com/photo-1669748828862-44819cec7d6b?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
       {/* Subheading for active threads section */}
       <h2 className="text-center text-neutral-800 font-medium leading-[55px] pt-8">
         Active threads
