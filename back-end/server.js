@@ -3,6 +3,7 @@ import morgan from "morgan";
 import "express-async-errors";
 import mysql from "mysql";
 import dotenv from "dotenv";
+import bcrypt from "bcrypt"
 dotenv.config();
 
 const app = express();
@@ -403,6 +404,14 @@ const setupDb = () => {
 };
 
 setupDb();
+
+app.post('/register', async (req, res) => {
+  const dataUser = req.body;
+  const hashPassword = await bcrypt.hash(dataUser.password, 10)
+  const user = { username: dataUser.username, usermail: dataUser.usermail, password: dataUser.password }
+
+  db.query('INSERT INTO users ')
+})
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
