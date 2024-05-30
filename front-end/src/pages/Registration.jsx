@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import registerImage from "../assets/images/registration-image.jpg";
 import Button from "../components/Button";
+import axios from "axios";
 
 function Registration() {
   const [data, setData] = useState({
@@ -35,8 +36,38 @@ function Registration() {
     window.scrollTo({ top: 0 });
   }
 
+  async function handleRegister(payload) {
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/register",
+        payload
+      );
+
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
+    if (
+      data.username !== "" &&
+      data.usermail !== "" &&
+      data.password !== "" &&
+      data.password === data.passwordConf
+    ) {
+      const sendData = {
+        username: data.username,
+        birthdate: data.birthDate,
+        usermail: data.usermail,
+        password: data.password,
+        passwordConf: data.passwordConf,
+      };
+      handleRegister(sendData);
+    }else{
+      alert("Sono nell'else")
+    }
 
     // Verifica se tutti i campi sono stati compilati prima di inviare il modulo
     const allFieldsCompleted = Object.values(data).every(

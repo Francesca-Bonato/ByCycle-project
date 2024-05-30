@@ -1,13 +1,17 @@
 import express from "express";
-import morgan from "morgan";
+import morgan, { token } from "morgan";
 import "express-async-errors";
 import mysql from "mysql";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt"
+import cors from "cors";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 4000;
+app.use(morgan('dev'))
+app.use(express.json())
+app.use(cors())
+const port = 4000;
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -40,21 +44,28 @@ const setupDb = () => {
     DROP TABLE IF EXISTS users;
     DROP TABLE IF EXISTS roles;
     SET FOREIGN_KEY_CHECKS=1;
+
     CREATE TABLE roles (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL
     );
+
     CREATE TABLE users (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50),
-    surname VARCHAR (50),
-    mail VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(250) NOT NULL,
-    role_id BIGINT NOT NULL,
-    profile_pic VARCHAR(255) DEFAULT "../assets/images/registration-image.jpg",
-    created_at timestamp default current_timestamp NOT NULL,
-    FOREIGN KEY (role_id) REFERENCES roles(id)
-    );
+      id BIGINT AUTO_INCREMENT PRIMARY KEY,
+      username VARCHAR(50) NOT NULL UNIQUE,
+      firstname VARCHAR(50),
+      lastname VARCHAR (50),
+      email VARCHAR(255) NOT NULL UNIQUE,
+      password VARCHAR(250) NOT NULL,
+      role_id BIGINT NOT NULL,
+      birth_date DATE,
+      join_date DATE default current_date,
+      description TEXT,
+      profile_pic VARCHAR(255) DEFAULT "../assets/images/registration-image.jpg",
+      created_at timestamp default current_timestamp NOT NULL,
+      FOREIGN KEY (role_id) REFERENCES roles(id)
+      );
+
     CREATE TABLE quiz (
         id INT PRIMARY KEY AUTO_INCREMENT,
         img VARCHAR(255) NOT NULL,
@@ -131,11 +142,11 @@ const setupDb = () => {
     INSERT INTO roles (id, name)
     VALUES (3, 'super-admin');
 
-    INSERT INTO users (name, surname, mail, password, role_id)
+    INSERT INTO users (username, firstname, lastname, email, password, role_id)
     VALUES
-    ('Mario', 'Rossi', 'mario.rossi@email.com', '12345', 2),
-    ('Luigi', 'Verdi', 'luigi.verdi@email.com', '54321', 2),
-    ('Maria Chaira', 'Andreini', 'mariachiara.andreini@email.com', '98765', 2);
+    ('Mario51', 'Mario', 'Rossi', 'mario.rossi@email.com', '12345', 2),
+    ('Dracula945', 'Luigi', 'Verdi', 'luigi.verdi@email.com', '54321', 2),
+    ('ILoveBiking', 'Maria Chaira', 'Andreini', 'mariachiara.andreini@email.com', '98765', 2);
 
     INSERT INTO quiz (id, img, title, description)
     VALUES
@@ -407,12 +418,31 @@ setupDb();
 
 app.post('/register', async (req, res) => {
   const dataUser = req.body;
+  console.log(dataUser);
   const hashPassword = await bcrypt.hash(dataUser.password, 10)
-  const user = { username: dataUser.username, usermail: dataUser.usermail, password: dataUser.password }
+  const roleId = 2
+  const user = {
+    username: dataUser.username,
+    email: dataUser.usermail,
+    password: hashPassword,
+    role_id: roleId
+  }
 
-  db.query('INSERT INTO users ')
+  db.query('INSERT INTO users SET ?', user, (error, results, fields) => {
+    if (error) {
+      console.error(error);
+      res.status(500).json({ msg: 'database error' })
+      return
+    }
+
+    res.status(201).json({
+      user: user,
+      token: 'etCWBp8lziJKOUDhCVXzKQv8agbPeLRE0Sr66oqMk8lKHb3jaR9Yb6DH7CLqbQgi',
+      msg: 'Registrazione avvenuta con successo!'
+    })
+  })
 })
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server running at http://localhost:${port}`)
 });
