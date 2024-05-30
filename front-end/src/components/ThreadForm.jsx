@@ -7,6 +7,12 @@ const ThreadForm = ({ onCreateThread }) => {
   const [threadTitle, setThreadTitle] = useState("");
   const [threadDescription, setThreadDescription] = useState("");
 
+  //TODO implementare modale
+  const [toLog, setToLog] = useState("")
+  
+  //utente loggato
+  const isLoggedIn = sessionStorage.getItem("userLogged");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onCreateThread(threadTitle, threadDescription);
@@ -26,6 +32,7 @@ const ThreadForm = ({ onCreateThread }) => {
         value={threadTitle}
         onChange={(e) => setThreadTitle(e.target.value)}
         className="w-full border border-gray-300 rounded-xl p-2 mb-2"
+        disabled={!isLoggedIn}
       />
       {/* Textarea for new thread description */}
       <textarea
@@ -35,8 +42,13 @@ const ThreadForm = ({ onCreateThread }) => {
         value={threadDescription}
         onChange={(e) => setThreadDescription(e.target.value)}
         className="w-full border border-gray-300 rounded-xl p-2 mb-2"
+        disabled={!isLoggedIn}
       />
-      <Button innerText="Create Thread" className="max-w-[190px] mt-3" />
+      <Button
+        innerText="Create Thread"
+        className="max-w-[190px] mt-3"
+        disabled={!isLoggedIn}
+      />
     </form>
   );
 };
