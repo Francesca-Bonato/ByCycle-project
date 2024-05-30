@@ -22,6 +22,7 @@ import { Cookies } from "./pages/Cookies";
 import { Terms } from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 import { FAQ } from "./pages/FAQ";
+import PrivateRoute from "./components/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
       { path: "/trails", element: <BikeTrails /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Registration /> },
-      { path: "/profile", element: <Profile /> },
+      { path: "/profile", element: <PrivateRoute element={<Profile />} /> },
       { path: "/contacts", element: <ContactUs /> },
       { path: "/privacy", element: <Privacy /> },
       { path: "/cookies", element: <Cookies /> },

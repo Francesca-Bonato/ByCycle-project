@@ -36,6 +36,8 @@ function Registration() {
     window.scrollTo({ top: 0 });
   }
 
+
+  //database
   async function handleRegister(payload) {
     try {
       const response = await axios.post(
@@ -43,14 +45,17 @@ function Registration() {
         payload
       );
 
-      console.log(response.data);
+      /* console.log(response.data); */
     } catch (error) {
       console.error(error);
     }
   }
+  //fine database
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    //database
     if (
       data.username !== "" &&
       data.usermail !== "" &&
@@ -65,9 +70,12 @@ function Registration() {
         passwordConf: data.passwordConf,
       };
       handleRegister(sendData);
-    }else{
-      alert("Sono nell'else")
+    } else {
+      console.log("Sono nell'else");
     }
+    //fine database
+
+    /*  CONTROLLO DATI  */
 
     // Verifica se tutti i campi sono stati compilati prima di inviare il modulo
     const allFieldsCompleted = Object.values(data).every(
@@ -81,10 +89,11 @@ function Registration() {
     // Check if user already exists in localStorage
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    //Check if email already exists in localStorage
+    //Check if username or email already exists in localStorage
     const isUsernameTaken = users.some(
       (user) => user.username === data.username
     );
+
     const isEmailTaken = users.some((user) => user.usermail === data.usermail);
 
     if (isUsernameTaken || isEmailTaken) {
@@ -123,6 +132,8 @@ function Registration() {
       return; // Interrompi la procedura di registrazione
     }
 
+    /* FINE CONTROLLO DATI */
+
     // Simulate user registration
     users.push({
       username: data.username,
@@ -133,7 +144,7 @@ function Registration() {
 
     localStorage.setItem("users", JSON.stringify(users));
     alert(`User ${data.username} registered successfully`);
-    navigate("/");
+    navigate("/login");
     handleTopPage();
 
     window.location.reload();
