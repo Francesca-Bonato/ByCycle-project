@@ -35,7 +35,9 @@ const register = async (req, res) => {
         jwt.sign({ userId }, secretkey, { expiresIn: "2d" }, (err, token) => {
           if (err) {
             console.error(err);
-            return res.status(500).json({ msg: "Si è verificato un errore nella creazione del token" });
+            return res.status(500).json({
+              msg: "Si è verificato un errore nella creazione del token",
+            });
           }
           res.status(201).json({
             user,
@@ -49,7 +51,55 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-    
+  const { username, password } = req.body;
+  db.query(
+    `SELECT * FROM users WHERE username=?`,
+    [username],
+    (error, result) => {
+      const user = result[0];
+      if (user && user.password === password) {
+        const payload = {
+          id: user.id,
+          username,
+        };
+        const { SECRET_KEY = "" } = process.env;
+        const token = jwt.sign(
+          payload,
+          SECRET_KEY,
+          { expiresIn: "2d" },
+          (err, token) => {
+            if (err) {
+              console.error(err);
+              return res.status(500).json({
+                msg: "Si è verificato un errore nella creazione del token",
+              });
+            }
+            res.status(200).json({
+              user,
+              token,
+              msg: "Login avvenuto con successo!",
+            });
+          }
+        );
+        console.log(token);
+
+        db.query(
+          `UPDATE users SET token=? WHERE id=?`,
+          [token, user.id],
+          (err, result) => {
+            if (err) {
+              res.status(500).json({ msg: `Error server` });
+              console.error(err);
+            }
+            res.status(200).json({ id: user.id, username, token });
+          }
+        );
+      } else {
+        res.status(500).json({ msg: `Username or Password, not valid.` });
+        console.error();
+      }
+    }
+  );
 };
 
 export { register, login };
