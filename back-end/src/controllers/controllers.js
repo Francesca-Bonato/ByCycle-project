@@ -40,7 +40,7 @@ const register = async (req, res) => {
             });
           }
           res.status(201).json({
-            user,
+            user: { ...user, password: undefined },
             token,
             msg: "Registrazione avvenuta con successo!",
           });
@@ -55,9 +55,9 @@ const login = async (req, res) => {
   db.query(
     `SELECT * FROM users WHERE username=?`,
     [username],
-    (error, result) => {
+    async (error, result) => {
       const user = result[0];
-      if (user && user.password === password) {
+      if (user && (await bcrypt.compare(password, user.password))) {
         const payload = {
           id: user.id,
           username,
@@ -95,7 +95,7 @@ const login = async (req, res) => {
           }
         );
       } else {
-        res.status(500).json({ msg: `Username or Password, not valid.` });
+        res.status(401).json({ msg: `Username or Password, not valid.` });
         console.error();
       }
     }
