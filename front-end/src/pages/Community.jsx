@@ -34,7 +34,7 @@ const Community = () => {
       title, // The title of the new thread
       description, // The description of the new thread
       author: {
-        name: users ? users[0].username : "Nome Utente", // Replace this with the actual user's name
+        name: isLoggedIn ? users[0].username : "Nome Utente", // Replace this with the actual user's name
         profilePic: "https://example.com/default-profile-pic.jpg", // Replace this with the actual user's profile pic
       },
       replies: [], // Initialize with no replies
@@ -67,7 +67,7 @@ const Community = () => {
                 id: thread.replies.length + 1, // Unique ID for the new reply
                 text, // The reply text
                 author: {
-                  name: "Nome Utente", // Replace this with the actual user's name
+                  name: isLoggedIn ? users[0].username : "Nome Utente", // Replace this with the actual user's name
                   profilePic: "https://example.com/default-profile-pic.jpg", // Replace this with the actual user's profile pic
                 },
               },
@@ -144,7 +144,7 @@ const Community = () => {
             <h3 className="text-xl font-semibold mb-2">{thread.title}</h3>
             <p className="text-gray-600 mb-2">{thread.description}</p>
             <p className="text-sm text-gray-500 mb-4">
-              Created by: {thread.author.name}
+              Created by: {isLoggedIn ? thread.author.name : null}
             </p>
 
             {/* Button to visualize or hide comments */}
