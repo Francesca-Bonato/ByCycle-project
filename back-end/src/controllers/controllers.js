@@ -56,6 +56,10 @@ const login = async (req, res) => {
     `SELECT * FROM users WHERE username=?`,
     [username],
     async (error, result) => {
+      if (error) {
+        console.error(error);
+        return res.status(500).json({ msg: "database error" });
+      }
       const user = result[0];
       if (user && (await bcrypt.compare(password, user.password))) {
         const payload = {
@@ -95,7 +99,7 @@ const login = async (req, res) => {
           }
         );
       } else {
-        res.status(401).json({ msg: `Username or Password, not valid.` });
+        res.status(401).json({ msg: `Username or password not valid.` });
         console.error();
       }
     }
