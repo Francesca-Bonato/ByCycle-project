@@ -12,14 +12,14 @@ const Profile = () => {
   const formattedJoinDate = user.join_date.split("/").reverse();
   const reorderedJoinString = formattedJoinDate.join("-");
   const initialProfile = {
-    userName: user && user.username !== null ? user.username : "myUsername",
-    firstName: user && user.firstName !== null ? user.firstName : "myName",
-    lastName: user && user.lastName !== null ? user.lastName : "myLastname",
+    userName: user && user.username !== null ? user.username : "",
+    firstName: user && user.firstName !== null ? user.firstName : "",
+    lastName: user && user.lastName !== null ? user.lastName : "",
     email: user && user.email !== null ? user.email : "myUsermail",
     birthDate:
-      user && user.birth_date !== null ? reorderedDateString : "myBirtdate",
+      user && user.birth_date !== null ? reorderedDateString : "",
     joinDate:
-      user && user.join_date !== null ? reorderedJoinString : "Not found.",
+      user && user.join_date !== null ? reorderedJoinString : "Not found",
     description:
       user && user.description !== null
         ? user.description

@@ -9,14 +9,15 @@ const user = JSON.parse(localStorage.getItem("user"));
 //utente loggato
 const isLoggedIn = localStorage.getItem("user");
 const Community = () => {
-  // State to hold the list of threads
+  // State to hold the list of threads, loading and error states
   const [threadList, setThreadList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   // State to hold the ID of the currently active thread (for displaying comments)
   const [activeThreadId, setActiveThreadId] = useState(null);
-  const [isThreadCreated, setIsThreadCreated] = useState(false);
 
   const getThreads = async () => {
+    setLoading(true);
     try {
       // Prende i dati al server usando una richiesta GET
       const response = await axios.get("http://localhost:4000/community");
@@ -24,14 +25,17 @@ const Community = () => {
       setThreadList(response.data);
     } catch (error) {
       console.error(error.data.msg);
+      setError(error);
+    } finally {
+      setLoading(false);
     }
   };
   // useEffect to initialize the thread list from the dummy database on component mount
   useEffect(() => {
-    getThreads();
-    setIsLoading(false);
-    console.log(threadList);
-  }, [isThreadCreated]);
+    if (threadList.length === 0) {
+      getThreads();
+    }
+  }, []);
 
   // Function to create a new thread
   const createThread = async (title, description) => {
@@ -45,19 +49,15 @@ const Community = () => {
     const newThread = {
       title, // The title of the new thread
       description, // The description of the new thread
-      author: {
-        name: isLoggedIn ? user.data.username : "Username", // Replace this with the actual user's name
-        profilePic: "https://example.com/default-profile-pic.jpg", // Replace this with the actual user's profile pic
-      },
-      replies: [], // Initialize with no replies
+      author: user.id, // The name of the author extracted from the database
     };
 
     //Send new thread data to back-end
     const response = axios.post("http://localhost:4000/community", newThread);
     if (response.ok) {
-      setIsThreadCreated(true);
       console.log("Thread created successfully!");
     }
+    getThreads()
   };
 
   // Function to create a new reply to an existing thread
@@ -149,8 +149,10 @@ const Community = () => {
       {/* Container for displaying the list of threads */}
       <div className="w-full flex flex-col items-center justify-center max-w-[1260px] py-8">
         {/* List of active threads */}
-        {isLoading ? (
+        {loading ? (
           <p>Loading threads...</p>
+        ) : error ? (
+          <p>Error fetching threads: {error.message}</p>
         ) : (
           threadList.length > 0 &&
           threadList.map((thread) => (
@@ -162,7 +164,7 @@ const Community = () => {
               <h3 className="text-xl font-semibold mb-2">{thread.title}</h3>
               <p className="text-gray-600 mb-2">{thread.description}</p>
               <p className="text-sm text-gray-500 mb-4">
-                Created by: {isLoggedIn ? thread.author.name : null}
+                Created by: {thread.author_username}
               </p>
 
               {/* Button to visualize or hide comments */}

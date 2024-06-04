@@ -8,10 +8,10 @@ const ThreadForm = ({ onCreateThread }) => {
   const [threadDescription, setThreadDescription] = useState("");
 
   //TODO implementare modale
-  const [toLog, setToLog] = useState("")
-  
+  //const [toLog, setToLog] = useState("")
+
   //utente loggato
-  const isLoggedIn = sessionStorage.getItem("userLogged");
+  const isLoggedIn = localStorage.getItem("user");
 
   const handleSubmit = (e) => {
     e.preventDefault();
