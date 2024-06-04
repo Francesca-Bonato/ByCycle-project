@@ -11,7 +11,7 @@ const isLoggedIn = localStorage.getItem("user");
 const Community = () => {
   // State to hold the list of threads
   const [threadList, setThreadList] = useState([]);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   // State to hold the ID of the currently active thread (for displaying comments)
   const [activeThreadId, setActiveThreadId] = useState(null);
   const [isThreadCreated, setIsThreadCreated] = useState(false);
@@ -19,12 +19,12 @@ const Community = () => {
   const getThreads = async () => {
     // Prende i dati al server usando una richiesta GET
     const response = await axios.get("http://localhost:4000/community");
-    console.log(response)
-    return response.data;
+    console.log(response);
+    setThreadList(response.data);
   };
   // useEffect to initialize the thread list from the dummy database on component mount
   useEffect(() => {
-    setThreadList(getThreads());
+    getThreads();
     setIsLoading(false);
     console.log(threadList);
   }, [isThreadCreated]);
@@ -145,44 +145,47 @@ const Community = () => {
       {/* Container for displaying the list of threads */}
       <div className="w-full flex flex-col items-center justify-center max-w-[1260px] py-8">
         {/* List of active threads */}
-        {isLoading? (
+        {isLoading ? (
           <p>Loading threads...</p>
-        ) : threadList.length > 0 && threadList.map((thread) => (
-          <div
-            key={thread.id}
-            className="w-full border border-gray-300 p-4 mb-4 rounded-xl"
-          >
-            {/* Thread card */}
-            <h3 className="text-xl font-semibold mb-2">{thread.title}</h3>
-            <p className="text-gray-600 mb-2">{thread.description}</p>
-            <p className="text-sm text-gray-500 mb-4">
-              Created by: {isLoggedIn ? thread.author.name : null}
-            </p>
-
-            {/* Button to visualize or hide comments */}
-            <button
-              onClick={() => toggleComments(thread.id)}
-              className="min-w-[119px] h-[48px] font-semibold rounded-[24px] bg-gray-200 hover:bg-gray-300 text-gray-800 px-8 mt-4"
-              disabled={!isLoggedIn}
+        ) : (
+          threadList.length > 0 &&
+          threadList.map((thread) => (
+            <div
+              key={thread.id}
+              className="w-full border border-gray-300 p-4 mb-4 rounded-xl"
             >
-              {activeThreadId === thread.id
-                ? "Hide Comments"
-                : "Visualize Comments"}
-            </button>
+              {/* Thread card */}
+              <h3 className="text-xl font-semibold mb-2">{thread.title}</h3>
+              <p className="text-gray-600 mb-2">{thread.description}</p>
+              <p className="text-sm text-gray-500 mb-4">
+                Created by: {isLoggedIn ? thread.author.name : null}
+              </p>
 
-            {/* Section to visualize comments if the thread is active */}
-            {activeThreadId === thread.id && (
-              <>
-                {/* Component to display the list of replies */}
-                <ThreadReplies replies={thread.replies} />
-                {/* Form to create a new reply */}
-                <ReplyForm
-                  onCreateReply={(text) => createReply(thread.id, text)}
-                />
-              </>
-            )}
-          </div>
-        ))}
+              {/* Button to visualize or hide comments */}
+              <button
+                onClick={() => toggleComments(thread.id)}
+                className="min-w-[119px] h-[48px] font-semibold rounded-[24px] bg-gray-200 hover:bg-gray-300 text-gray-800 px-8 mt-4"
+                disabled={!isLoggedIn}
+              >
+                {activeThreadId === thread.id
+                  ? "Hide Comments"
+                  : "Visualize Comments"}
+              </button>
+
+              {/* Section to visualize comments if the thread is active */}
+              {activeThreadId === thread.id && (
+                <>
+                  {/* Component to display the list of replies */}
+                  <ThreadReplies replies={thread.replies} />
+                  {/* Form to create a new reply */}
+                  <ReplyForm
+                    onCreateReply={(text) => createReply(thread.id, text)}
+                  />
+                </>
+              )}
+            </div>
+          ))
+        )}
       </div>
     </main>
   );
