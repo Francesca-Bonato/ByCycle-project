@@ -8,7 +8,7 @@ const db = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   multipleStatements: true,
-  debug: true
+  //debug: true
 });
 
 db.connect((err) => {
@@ -344,7 +344,6 @@ const setupDb = () => {
         "Cycling is an eco-friendly mode of transportation that reduces carbon emissions and traffic congestion. It requires less energy and resources compared to driving a car. By choosing to cycle instead of drive, you contribute to a cleaner and healthier environment. Cycling also promotes sustainable urban development by reducing the need for extensive road infrastructure.",
          FALSE),
 
-
       ("https://images.unsplash.com/photo-1714015262881-5bfaf6defb20?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJpY2ljbGV0YSUyMGJteHxlbnwwfHwwfHx8MA%3D%3D",
         "Exploring scenic cycling routes in your area",
         "Exploring local scenic cycling routes can be a rewarding experience. Many areas have dedicated bike paths and trails that offer beautiful views and a safe environment for cyclists. Whether you prefer urban routes or countryside trails, there's something for everyone. Use online resources and local maps to discover the best routes in your area.",
@@ -373,7 +372,6 @@ const setupDb = () => {
 
           ('Tuscany Trail', '"./assets/images/img_homepage/image-six-rectangle.jpg"', '2024-05-24', '2024-05-25', 'Castagneto Carducci, Toscana, Italy',
           'The Tuscany Trail is a gravel bike event in the bikepacking category in Italy, in the Tuscany region, and it was first organized in 2014. The 2024 edition of the Tuscany Trail will take place on Friday, May 24, 2024, starting from Castagneto Carducci, in the province of Livorno, Tuscany. The Tuscany Trail offers a 460 km route for gravel bikes.', FALSE, 'expert', FALSE);
-
 
           INSERT INTO threads (id, title, description, author_id)
           VALUES

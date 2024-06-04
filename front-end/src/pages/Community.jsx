@@ -17,10 +17,14 @@ const Community = () => {
   const [isThreadCreated, setIsThreadCreated] = useState(false);
 
   const getThreads = async () => {
-    // Prende i dati al server usando una richiesta GET
-    const response = await axios.get("http://localhost:4000/community");
-    console.log(response);
-    setThreadList(response.data);
+    try {
+      // Prende i dati al server usando una richiesta GET
+      const response = await axios.get("http://localhost:4000/community");
+      console.log(response);
+      setThreadList(response.data);
+    } catch (error) {
+      console.error(error.data.msg);
+    }
   };
   // useEffect to initialize the thread list from the dummy database on component mount
   useEffect(() => {
