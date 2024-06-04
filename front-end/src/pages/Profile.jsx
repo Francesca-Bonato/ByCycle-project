@@ -2,6 +2,7 @@ import Button from "../components/Button";
 import { useState } from "react";
 import defaultProPic from "../assets/images/default-profile-pic.jpg";
 import axios from "axios";
+import { useNavigate } from "react-router";
 
 const Profile = () => {
   //FARE CUSTOM HOOK DI "user" E "initialProfile" ecc...
@@ -10,7 +11,6 @@ const Profile = () => {
   const reorderedDateString = formattedBirthDate.join("-");
   const formattedJoinDate = user.join_date.split("/").reverse();
   const reorderedJoinString = formattedJoinDate.join("-");
-
   const initialProfile = {
     userName: user && user.username !== null ? user.username : "myUsername",
     firstName: user && user.firstName !== null ? user.firstName : "myName",
@@ -29,6 +29,7 @@ const Profile = () => {
   const [profile, setProfile] = useState(initialProfile);
   const [isEditing, setIsEditing] = useState(false);
   const [newDescription, setNewDescription] = useState(profile.description);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -73,6 +74,8 @@ const Profile = () => {
       alert(response.data.msg);
       // Elimina tutti i dati dallo storage locale (potrebbe essere necessario in base all'applicazione)
       localStorage.clear();
+      //Faccio un redirect alla homepage
+      navigate("/");
       // Ricarica la pagina per riflettere le modifiche
       window.location.reload();
       // Termina la funzione in caso di successo
@@ -115,6 +118,7 @@ const Profile = () => {
             name="userName"
             value={profile.userName}
             onChange={handleChange}
+            disabled={isEditing ? true : false}
             className="w-full mt-1 p-2 border border-gray-300 rounded-md"
           />
         </div>
