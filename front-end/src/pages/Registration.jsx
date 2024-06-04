@@ -19,6 +19,7 @@ function Registration() {
     passwordConf: "",
   });
 
+  console.log(data);
   // Funzione per gestire i cambiamenti nei campi del form
   function handleChange(e) {
     const { name, value } = e.target;
@@ -83,11 +84,7 @@ function Registration() {
 
     //----Invio dei dati al back-end ---
     //Controlla se i campi obbligatori sono stati compilati
-    if (
-      data.username !== "" &&
-      data.usermail !== "" &&
-      data.password !== ""
-    ) {
+    if (data.username !== "" && data.usermail !== "" && data.password !== "") {
       try {
         const sendData = {
           username: data.username,

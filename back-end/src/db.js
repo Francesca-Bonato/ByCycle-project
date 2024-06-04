@@ -129,12 +129,6 @@ const setupDb = () => {
       INSERT INTO roles (id, name)
       VALUES (3, 'super-admin');
 
-      INSERT INTO users (username, firstname, lastname, email, password, role_id)
-      VALUES
-      ('Mario51', 'Mario', 'Rossi', 'mario.rossi@email.com', '12345', 2),
-      ('Dracula945', 'Luigi', 'Verdi', 'luigi.verdi@email.com', '54321', 2),
-      ('ILoveBiking', 'Maria Chaira', 'Andreini', 'mariachiara.andreini@email.com', '98765', 2);
-
       INSERT INTO quiz (id, img, title, description)
       VALUES
         (1, "https://images.unsplash.com/photo-1693811925823-f1cde657490a?q=80&w=2685&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "Bicycle Inventors and History", "Test your knowledge about the inventors and key historical milestones of the bicycle."),

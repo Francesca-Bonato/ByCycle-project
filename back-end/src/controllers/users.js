@@ -115,9 +115,12 @@ const login = async (req, res) => {
             }
 
             // Prepare the user data to be sent in the response
+            const formattedBirthDate = dbUser.birth_date.toLocaleDateString();
+            const formattedJoinDate = dbUser.join_date.toLocaleDateString();
             const user = {
               id: dbUser.id,
-              birth_date: dbUser.birth_date,
+              birth_date: formattedBirthDate,
+              join_date: formattedJoinDate,
               description: dbUser.description,
               email: dbUser.email,
               firstName: dbUser.firstname,
@@ -152,16 +155,17 @@ const login = async (req, res) => {
 
 //Function to delete a user
 const deleteUser = (req, res) => {
-  const user = req.params.id;
-  const deleteById = "DELETE FROM users WHERE id=?";
-  db.query(deleteById, user, (err, results) => {
+  const { username } = req.body;
+  console.log(username)
+  //const deleteByUsername = ;
+  db.query(`DELETE FROM users WHERE username=?`, [username], (err, results) => {
     if (err) {
       res.status(500).json({ msg: "Something went wrong" });
       console.error(err);
       return;
     }
-
-    res.status(202).json({ msg: "User deleted successfully." });
+    console.log(results)
+    res.status(202).json({ msg: "Account deleted successfully." });
   });
 };
 

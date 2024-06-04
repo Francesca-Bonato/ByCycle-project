@@ -1,19 +1,29 @@
 import Button from "../components/Button";
 import { useState } from "react";
 import defaultProPic from "../assets/images/default-profile-pic.jpg";
+import axios from "axios";
 
 const Profile = () => {
   //FARE CUSTOM HOOK DI "user" E "initialProfile" ecc...
   const user = JSON.parse(localStorage.getItem("user"));
+  const formattedBirthDate = user.birth_date.split("/").reverse();
+  const reorderedDateString = formattedBirthDate.join("-");
+  const formattedJoinDate = user.join_date.split("/").reverse();
+  const reorderedJoinString = formattedJoinDate.join("-");
 
   const initialProfile = {
-    userName: user ? user.username : "myUsername",
-    firstName: "Manfredi",
-    lastName: "Marrone",
-    email: user ? user.email : "myUsermail",
-    birthDate: user ? user.birthdate : "myBirtdate",
-    joinDate: "2024-05-23",
-    description: "Write a short description about yourself.",
+    userName: user && user.username !== null ? user.username : "myUsername",
+    firstName: user && user.firstName !== null ? user.firstName : "myName",
+    lastName: user && user.lastName !== null ? user.lastName : "myLastname",
+    email: user && user.email !== null ? user.email : "myUsermail",
+    birthDate:
+      user && user.birth_date !== null ? reorderedDateString : "myBirtdate",
+    joinDate:
+      user && user.join_date !== null ? reorderedJoinString : "Not found.",
+    description:
+      user && user.description !== null
+        ? user.description
+        : "Write a short description about yourself.",
     profilePicture: defaultProPic,
   };
   const [profile, setProfile] = useState(initialProfile);
@@ -49,9 +59,31 @@ const Profile = () => {
     }
   };
 
-  const handleDelete = () => {
-    // Implement delete functionality as needed
-    alert("Profile deleted");
+  const handleDelete = async () => {
+    // Funzione per gestire l'eliminazione dell'utente
+    try {
+      // Recupera il nome utente dallo storage locale
+      const username = user.username;
+      // Costruisci la richiesta di eliminazione usando Axios
+      const response = await axios.delete(
+        "http://localhost:4000/users/unsubscribe",
+        { data: { username: username } }
+      );
+      // Visualizza un messaggio di allerta con il messaggio di risposta dal server
+      alert(response.data.msg);
+      // Elimina tutti i dati dallo storage locale (potrebbe essere necessario in base all'applicazione)
+      localStorage.clear();
+      // Ricarica la pagina per riflettere le modifiche
+      window.location.reload();
+      // Termina la funzione in caso di successo
+      return;
+    } catch (error) {
+      // Gestione degli errori
+      // Stampa l'errore nella console per debug
+      console.error(error.data.msg);
+      // Visualizza un messaggio di allerta con il messaggio di errore
+      alert(error.data.msg);
+    }
   };
 
   return (

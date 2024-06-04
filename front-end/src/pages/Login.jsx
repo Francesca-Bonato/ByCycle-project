@@ -83,7 +83,7 @@ const Login = () => {
           "http://localhost:4000/login",
           sendData
         );
-        console.log(response);
+        console.log(response.data.user);
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.setItem("token", response.data.token);
 
@@ -96,7 +96,7 @@ const Login = () => {
         return;
       } catch (error) {
         console.error(error);
-        alert("Server error. Please try again later.");
+        alert(error.response.data.msg);
       }
     } else {
       console.log("Email or password fields are empty. Please correct.");

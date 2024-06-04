@@ -21,7 +21,7 @@ app.get("/users/:username", getUserByUsername)
 app.post("/register", register);
 app.post("/login", login);
 
-app.delete("/users/:id", deleteUser)
+app.delete("/users/unsubscribe", deleteUser)
 
 //gestione discussione community
 app.get("/community", getThreads)
