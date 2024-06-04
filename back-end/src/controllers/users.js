@@ -45,46 +45,36 @@ const register = async (req, res) => {
     role_id: roleId,
   };
 
-  // Insert the new user into the database
-  db.query("INSERT INTO users SET ?", user, (error, results, fields) => {
-    if (error) {
-      console.error(error);
-      res.status(500).json({ msg: "Database error" });
-      return;
-    }
-    // Retrieve the ID of the newly inserted user
-    db.query(
-      "SELECT id FROM users WHERE email=?",
-      user.email,
-      (error, result, field) => {
-        if (error) {
-          console.error(error);
-          res.status(500).json({ msg: "Database error" });
-          return;
-        }
-        // Get the user's ID
-        const userId = result.insertId;
-        const secretkey = process.env.SECRET_KEY;
-
-        // Sign a JWT token for the user
-        jwt.sign({ userId }, secretkey, { expiresIn: "2d" }, (err, token) => {
-          if (err) {
-            console.error(err);
-            return res.status(500).json({
-              msg: "An error has occured during token signature",
-            });
-          }
-
-          // Respond with the user data (excluding the password) and the token
-          res.status(201).json({
-            user: { ...user, password: undefined },
-            token,
-            msg: "Registration successful!",
-          });
-        });
+  // Insert the new user into the database and retrieve the ID
+  const { id } = db.query(
+    "INSERT INTO users SET ? RETURNING id",
+    user,
+    (error, results, fields) => {
+      if (error) {
+        console.error(error);
+        res.status(400).json({ msg: "Email or username already in use" });
+        return;
       }
-    );
-  });
+
+      const secretkey = process.env.SECRET_KEY;
+      // Sign a JWT token for the user
+      jwt.sign({ id }, secretkey, { expiresIn: "2d" }, (err, token) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).json({
+            msg: "An error has occured during token signature",
+          });
+        }
+
+        // Respond with the user data (excluding the password) and the token
+        res.status(201).json({
+          user: { ...user, password: undefined },
+          token,
+          msg: "Registration successful!",
+        });
+      });
+    }
+  );
 };
 
 // Function to login a user
@@ -147,19 +137,11 @@ const login = async (req, res) => {
         );
         console.log(token);
 
-        // db.query(
-        //   `UPDATE users SET token=? WHERE id=?`,
-        //   [token, user.id],
-        //   (err, result) => {
-        //     if (err) {
-        //       res.status(500).json({ msg: `Error server` });
-        //       console.error(err);
-        //     }
-        //     res.status(200).json({ id: user.id, usermail, token });
-        //   }
-        // );
+        // La funzione login dovrebbe restituire solo il token JWT all'utente e non salvare il token nel database, in quanto non è necessario per l'autenticazione con JWT e può introdurre potenziali vulnerabilità.
+        // Salvare il token nel database significa memorizzare informazioni sensibili. Se un malintenzionato accede al database, potrebbe rubare i token e impersonare gli utenti.
+        // L'utente dovrà quindi memorizzare il token in modo sicuro (ad esempio, in un cookie HTTP protetto o nella memoria locale del browser con localStorage).
 
-      // If the user is not found or the password does not match, respond with a 401 status
+        // If the user is not found or the password does not match, respond with a 401 status
       } else {
         res.status(401).json({ msg: `Username or password not valid.` });
         console.error();
