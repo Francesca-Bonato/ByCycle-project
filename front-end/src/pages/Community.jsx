@@ -1,27 +1,36 @@
 import { useEffect, useState } from "react";
-import { communityData } from "../data.js";
 import ThreadForm from "../components/ThreadForm";
 import ThreadReplies from "../components/ThreadReplies";
 import ReplyForm from "../components/ReplyForm";
+import axios from "axios";
 
-const users = JSON.parse(localStorage.getItem("users"));
+const user = JSON.parse(localStorage.getItem("user"));
 
 //utente loggato
-const isLoggedIn = sessionStorage.getItem("userLogged");
-
+const isLoggedIn = localStorage.getItem("user");
 const Community = () => {
   // State to hold the list of threads
   const [threadList, setThreadList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
   // State to hold the ID of the currently active thread (for displaying comments)
   const [activeThreadId, setActiveThreadId] = useState(null);
+  const [isThreadCreated, setIsThreadCreated] = useState(false);
 
+  const getThreads = async () => {
+    // Prende i dati al server usando una richiesta GET
+    const response = await axios.get("http://localhost:4000/community");
+    console.log(response)
+    return response.data;
+  };
   // useEffect to initialize the thread list from the dummy database on component mount
   useEffect(() => {
-    setThreadList(communityData);
-  }, []);
+    setThreadList(getThreads());
+    setIsLoading(false);
+    console.log(threadList);
+  }, [isThreadCreated]);
 
   // Function to create a new thread
-  const createThread = (title, description) => {
+  const createThread = async (title, description) => {
     // Show alert if either thread input is empty
     if (title.trim() === "" || description.trim() === "") {
       alert("Please insert a title and a description for the new thread");
@@ -30,22 +39,21 @@ const Community = () => {
 
     // Create a new thread object
     const newThread = {
-      id: threadList.length + 1, // Unique ID for the new thread
       title, // The title of the new thread
       description, // The description of the new thread
       author: {
-        name: isLoggedIn ? users[0].username : "Nome Utente", // Replace this with the actual user's name
+        name: isLoggedIn ? user.data.username : "Username", // Replace this with the actual user's name
         profilePic: "https://example.com/default-profile-pic.jpg", // Replace this with the actual user's profile pic
       },
       replies: [], // Initialize with no replies
     };
 
-    // Update the dummy database
-    communityData.push(newThread);
-    // Update the state with the new thread list
-    setThreadList([...communityData]);
-
-    console.log("Thread created successfully!");
+    //Send new thread data to back-end
+    const response = axios.post("http://localhost:4000/community", newThread);
+    if (response.ok) {
+      setIsThreadCreated(true);
+      console.log("Thread created successfully!");
+    }
   };
 
   // Function to create a new reply to an existing thread
@@ -67,7 +75,7 @@ const Community = () => {
                 id: thread.replies.length + 1, // Unique ID for the new reply
                 text, // The reply text
                 author: {
-                  name: isLoggedIn ? users[0].username : "Nome Utente", // Replace this with the actual user's name
+                  name: isLoggedIn ? user.username : "Nome Utente", // Replace this with the actual user's name
                   profilePic: "https://example.com/default-profile-pic.jpg", // Replace this with the actual user's profile pic
                 },
               },
@@ -116,7 +124,9 @@ const Community = () => {
         Create a Thread
       </h2>
       {isLoggedIn ? null : (
-        <p className="text-red-500 text-center">You need to login before posting in our community</p>
+        <p className="text-red-500 text-center">
+          You need to login before posting in our community
+        </p>
       )}
 
       {/* Form to create a new thread */}
@@ -135,7 +145,9 @@ const Community = () => {
       {/* Container for displaying the list of threads */}
       <div className="w-full flex flex-col items-center justify-center max-w-[1260px] py-8">
         {/* List of active threads */}
-        {threadList.map((thread) => (
+        {isLoading? (
+          <p>Loading threads...</p>
+        ) : threadList.length > 0 && threadList.map((thread) => (
           <div
             key={thread.id}
             className="w-full border border-gray-300 p-4 mb-4 rounded-xl"

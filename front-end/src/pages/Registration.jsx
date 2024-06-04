@@ -5,6 +5,12 @@ import Button from "../components/Button";
 import axios from "axios";
 
 function Registration() {
+  // Hook per gestire la navigazione
+  const navigate = useNavigate();
+
+  // Stato per tracciare se il form è stato completato
+  const [formCompleted, setFormCompleted] = useState(false);
+  // Stato per memorizzare i dati del form
   const [data, setData] = useState({
     username: "",
     birthDate: "",
@@ -13,12 +19,11 @@ function Registration() {
     passwordConf: "",
   });
 
-  const navigate = useNavigate();
-
-  const [formCompleted, setFormCompleted] = useState(false);
-
+  // Funzione per gestire i cambiamenti nei campi del form
   function handleChange(e) {
     const { name, value } = e.target;
+
+    // Aggiorna i dati del form nello stato
     setData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -31,110 +36,90 @@ function Registration() {
     setFormCompleted(allFieldsCompleted);
   }
 
-  // Function to handle click event and scroll to the top of the page
-  function handleTopPage() {
-    window.scrollTo({ top: 0 });
-  }
-
-
-  //database
-  async function handleRegister(payload) {
-    try {
-      const response = await axios.post(
-        "http://localhost:4000/register",
-        payload
-      );
-
-      /* console.log(response.data); */
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  //fine database
-
-  function handleSubmit(e) {
+  // Funzione per gestire l'invio del form
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    //database
-    if (
-      data.username !== "" &&
-      data.usermail !== "" &&
-      data.password !== "" &&
-      data.password === data.passwordConf
-    ) {
-      const sendData = {
-        username: data.username,
-        birthdate: data.birthDate,
-        usermail: data.usermail,
-        password: data.password,
-        passwordConf: data.passwordConf,
-      };
-      handleRegister(sendData);
-    } else {
-      console.log("Sono nell'else");
-    }
-    //fine database
-
     /*  CONTROLLO DATI  */
-
-    // Verifica se tutti i campi sono stati compilati prima di inviare il modulo
-    const allFieldsCompleted = Object.values(data).every(
-      (field) => field.trim() !== ""
-    );
-    if (!allFieldsCompleted) {
-      alert("Please fill in all fields before submitting the form.");
-      return;
-    }
-
-    // Check if user already exists in localStorage
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-
-    //Check if username or email already exists in localStorage
-    const isUsernameTaken = users.some(
-      (user) => user.username === data.username
-    );
-
-    const isEmailTaken = users.some((user) => user.usermail === data.usermail);
-
-    if (isUsernameTaken || isEmailTaken) {
-      console.log("Username or email already in use. Please correct.");
-      alert("Username or email already in use. Please correct.");
-      return;
-    }
-
-    // Controllo se la data di nascita è maggiore della data odierna
+    // Controllo se la data di nascita è successiva alla data odierna
     const inputDate = new Date(data.birthDate);
     const today = new Date();
 
     if (inputDate >= today) {
-      console.log("Your date of birth must be before today. Please correct.");
-      alert("Your date of birth must be before today. Please correct.");
-      return; // Interrompi la procedura di registrazione
+      console.log(
+        "The date of birth cannot be today or a future date. Please enter a valid birth date."
+      );
+      alert(
+        "The date of birth cannot be today or a future date. Please enter a valid birth date."
+      );
+      return; // Interrompe la procedura di registrazione
     }
 
-    //controlla se i due input password corrispondono l'un l'altro
+    // Controlla se le password inserite corrispondono
     if (data.password !== data.passwordConf) {
-      console.log("Password doesn't match.Please correct.");
-      alert("Password doesn't match. Please correct.");
-      return; // Interrompi la procedura di registrazione
+      console.log(
+        "Passwords do not match. Please make sure both passwords are identical."
+      );
+      alert(
+        "Passwords do not match. Please make sure both passwords are identical."
+      );
+      return; // Interrompe la procedura di registrazione
     }
 
-    // Controllo se la password soddisfa i requisiti
+    // Controllo se la password soddisfa i requisiti di sicurezza
     const isValidPassword =
       /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[#@$!%*?&.])[A-Za-z\d#@$.!%*?&]{8,}$/.test(
         data.password
       );
     if (!isValidPassword) {
-      console.log("Password does not meet requirements.");
+      console.log("Password does not meet the security requirements.");
       alert(
-        "Password does not meet requirements. It must contain at least one alphabetic character, one number, one symbol from these (#@$!%*?&.), one uppercase letter and must be at least 8 characters long."
+        "Password must be at least 8 characters long and include: one uppercase letter, one lowercase letter, one number, and one special character (#@$!%*?&.)."
       );
-      return; // Interrompi la procedura di registrazione
+      return; // Interrompe la procedura di registrazione
     }
 
     /* FINE CONTROLLO DATI */
 
-    // Simulate user registration
+    //----Invio dei dati al back-end ---
+    //Controlla se i campi obbligatori sono stati compilati
+    if (
+      data.username !== "" &&
+      data.usermail !== "" &&
+      data.password !== ""
+    ) {
+      try {
+        const sendData = {
+          username: data.username,
+          birthdate: data.birthDate,
+          usermail: data.usermail,
+          password: data.password,
+          passwordConf: data.passwordConf,
+        };
+
+        // Invia i dati al server usando una richiesta POST
+        const response = await axios.post(
+          "http://localhost:4000/register",
+          sendData
+        );
+        // Mostra un messaggio di successo
+        alert(
+          `Welcome ${response.data.user.username}! Your account has been created. Redirecting to login...`
+        );
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+        // Mostra un messaggio di errore se l'invio dei dati al server non ha avuto successo
+        alert(error.response.data.msg);
+        return;
+      }
+    } else {
+      // Mostra un messaggio di errore se i campi non sono compilati
+      alert("Please complete all required fields to submit the form.");
+      return;
+    }
+
+    /*   Simulate user registration
     users.push({
       username: data.username,
       birthdate: data.birthDate,
@@ -143,10 +128,12 @@ function Registration() {
     });
 
     localStorage.setItem("users", JSON.stringify(users));
-    alert(`User ${data.username} registered successfully`);
-    navigate("/login");
-    handleTopPage();
+    alert(`User ${data.username} registered successfully`); */
 
+    // Naviga alla pagina di login se la registrazione ha successo
+    navigate("/login");
+
+    // Ricarica la pagina
     window.location.reload();
   }
 

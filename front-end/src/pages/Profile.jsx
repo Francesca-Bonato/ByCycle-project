@@ -1,21 +1,21 @@
 import Button from "../components/Button";
 import { useState } from "react";
-import defaultProPic from "../assets/images/default-profile-pic.jpg"
-
-const users = JSON.parse(localStorage.getItem('users'));
-
-const initialProfile = {
-  userName: users ? users[0].username : "myUsername",
-  firstName: "Manfredi",
-  lastName: "Marrone",
-  email: users? users[0].usermail : "myUsermail",
-  birthDate: users? users[0].birthdate : "myBirtdate",
-  joinDate: "2024-05-23",
-  description: "Write a short description about yourself.",
-  profilePicture: defaultProPic,
-};
+import defaultProPic from "../assets/images/default-profile-pic.jpg";
 
 const Profile = () => {
+  //FARE CUSTOM HOOK DI "user" E "initialProfile" ecc...
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const initialProfile = {
+    userName: user ? user.username : "myUsername",
+    firstName: "Manfredi",
+    lastName: "Marrone",
+    email: user ? user.email : "myUsermail",
+    birthDate: user ? user.birthdate : "myBirtdate",
+    joinDate: "2024-05-23",
+    description: "Write a short description about yourself.",
+    profilePicture: defaultProPic,
+  };
   const [profile, setProfile] = useState(initialProfile);
   const [isEditing, setIsEditing] = useState(false);
   const [newDescription, setNewDescription] = useState(profile.description);
@@ -76,7 +76,7 @@ const Profile = () => {
         </label>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <div>
+        <div>
           <label className="block text-gray-700">User Name</label>
           <input
             type="text"

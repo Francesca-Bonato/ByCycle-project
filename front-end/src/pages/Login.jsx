@@ -1,11 +1,11 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
+import axios from "axios";
 import { useNavigate, useLocation } from "react-router";
 import loginImage from "../assets/images/login-image-small.jpg";
 import Button from "../components/Button";
 
 const Login = () => {
   const [data, setData] = useState({
-    username: "",
     usermail: "",
     password: "",
   });
@@ -14,8 +14,6 @@ const Login = () => {
   const location = useLocation();
 
   // Crea un riferimento a un elemento HTML nel DOM
-  const formRef = useRef();
-
   const [formCompleted, setFormCompleted] = useState(false);
 
   function handleChange(e) {
@@ -33,57 +31,86 @@ const Login = () => {
     setFormCompleted(allFieldsCompleted);
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    // Check if user already exists in localStorage
-    let userLogged = JSON.parse(localStorage.getItem("users")) || [];
+    // // Check if user already exists in localStorage
+    // let userLogged = JSON.parse(localStorage.getItem("users")) || [];
 
-    // Check if email or password already exists in localStorage
-    const dataTaken = userLogged.some(
-      (user) =>
-        user.usermail === data.usermail && user.password === data.password
-    );
+    // // Check if email or password already exists in localStorage
+    // const dataTaken = userLogged.some(
+    //   (user) =>
+    //     user.usermail === data.usermail && user.password === data.password
+    // );
 
-    if (!dataTaken) {
-      console.log("Email or password is incorrect. Please correct.");
-      alert("Email or password is incorrect. Please correct.");
-      return; // Interrompi la procedura di login
-    }
+    // if (!dataTaken) {
 
-    // Simulate user login
-    let userRegistered = userLogged.find(
-      (user) =>
-        user.usermail === data.usermail && user.password === data.password
-    );
+    //   return; // Interrompi la procedura di login
+    // }
 
-    if (userRegistered) {
-      let newArr = [];
-      // Salva solo i dati necessari in sessionStorage
-      newArr.push({
-        username: userRegistered.username,
-        usermail: userRegistered.usermail,
-        password: userRegistered.password,
-      });
+    // // Simulate user login
+    // let userRegistered = userLogged.find(
+    //   (user) =>
+    //     user.usermail === data.usermail && user.password === data.password
+    // );
 
-      sessionStorage.setItem("userLogged", JSON.stringify(newArr));
-      alert(`User ${userRegistered.username} logged in successfully`);
+    // if (userRegistered) {
+    //   let newArr = [];
+    //   // Salva solo i dati necessari in sessionStorage
+    //   newArr.push({
+    //     username: userRegistered.username,
+    //     usermail: userRegistered.usermail,
+    //     password: userRegistered.password,
+    //   });
 
-      if (location.pathname === "/login") {
-        navigate("/profile");
+    //   sessionStorage.setItem("userLogged", JSON.stringify(newArr));
+
+    //   if (location.pathname === "/login") {
+    //     navigate("/profile");
+    //   }
+
+    //   window.location.reload();
+    // }
+    if (data.usermail !== "" && data.password !== "") {
+      try {
+        const sendData = {
+          usermail: data.usermail,
+          password: data.password,
+        };
+        console.log("credenziali corrette");
+
+        const response = await axios.post(
+          "http://localhost:4000/login",
+          sendData
+        );
+        console.log(response);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem("token", response.data.token);
+
+        alert(`User ${response.data.user.username} logged in successfully`);
+        if (location.pathname === "/login") {
+          navigate("/profile");
+        }
+
+        window.location.reload();
+        return;
+      } catch (error) {
+        console.error(error);
+        alert("Server error. Please try again later.");
       }
-
-      window.location.reload();
+    } else {
+      console.log("Email or password fields are empty. Please correct.");
+      alert("Insert email or password");
     }
   }
 
-  const handleBlur = () => {
-    const formFields = Array.from(formRef.current.elements);
-    const allFieldsCompleted = formFields.every(
-      (field) => field.value.trim() !== ""
-    );
-    setFormCompleted(allFieldsCompleted);
-  };
+  // const handleBlur = () => {
+  //   const formFields = Array.from(formRef.current.elements);
+  //   const allFieldsCompleted = formFields.every(
+  //     (field) => field.value.trim() !== ""
+  //   );
+  //   setFormCompleted(allFieldsCompleted);
+  // };
 
   return (
     <div className="w-full h-full bg-white-A700_01">
@@ -91,7 +118,7 @@ const Login = () => {
         <div className="flex w-full flex-col gap-8 md:w-[48%]">
           <form
             onSubmit={handleSubmit}
-            onBlur={handleBlur}
+            //onBlur={handleBlur}
             className="flex flex-col gap-[31px] self-stretch m-4"
           >
             <h1 className="text-white text-center font-semibold drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] md:drop-shadow-none md:text-2xl md:text-start md:text-[#111827]">

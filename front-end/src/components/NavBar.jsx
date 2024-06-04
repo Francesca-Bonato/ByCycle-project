@@ -5,7 +5,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logoBlack from "../assets/images/ByCycle_logo_definitivo.png";
 // import logoWhite from "../assets/images/ByCycle_logo_definitivo_white.png";
 import imageProfileCustom from "../assets/images/profile-user-icon-2048x2048-m41rxkoe.png";
-import defaultProPic from "../assets/images/default-profile-pic.jpg"
+import defaultProPic from "../assets/images/default-profile-pic.jpg";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -22,7 +22,7 @@ const unLogged = [
 ];
 
 const logged = [
-    { name: "Your Profile", href: "/profile" },
+  { name: "Your Profile", href: "/profile" },
   /*  { name: "Settings", href: "/profile-settings" }, */
   { name: "Log Out", href: "/" },
 ];
@@ -43,21 +43,13 @@ export function NavBar({ username }) {
 
   // Function to check authentication
   const checkAuthentication = () => {
-    const users = JSON.parse(sessionStorage.getItem("userLogged")) || [];
+    const user = JSON.parse(localStorage.getItem("user"));
 
-    if (users.length !== 0) {
-      const usermail = users[0].usermail;
-      const password = users[0].password;
-
-      if (usermail && password) {
-        return users.some((user) => {
-          return user.usermail === usermail && user.password === password;
-        });
-      } else {
-        console.log("No usermail or password found in sessionStorage.");
-        return false;
-      }
+    if (user) {
+      return true;
     }
+
+    return false;
   };
 
   const [isAuthenticated, setIsAuthenticated] = useState(checkAuthentication());
@@ -66,7 +58,7 @@ export function NavBar({ username }) {
 
   function clearPage() {
     if (isAuthenticated) {
-      sessionStorage.clear();
+      localStorage.clear();
       window.scrollTo({ top: 0 });
       navigate("/");
 
@@ -134,7 +126,11 @@ export function NavBar({ username }) {
                             <span className="sr-only">Open user menu</span>
                             <img
                               className="h-8 w-8 rounded-full"
-                              src={isAuthenticated ? defaultProPic : imageProfileCustom }
+                              src={
+                                isAuthenticated
+                                  ? defaultProPic
+                                  : imageProfileCustom
+                              }
                               alt=""
                             />
                           </Menu.Button>
@@ -156,7 +152,11 @@ export function NavBar({ username }) {
                                   {({ active }) => (
                                     <Link
                                       to={item.href}
-                                      onClick={item.name === "Log Out" ? clearPage : null}
+                                      onClick={
+                                        item.name === "Log Out"
+                                          ? clearPage
+                                          : null
+                                      }
                                       className={classNames(
                                         active ? "bg-blu-100" : "",
                                         "block px-4 py-2 text-sm text-gray-700"
@@ -226,7 +226,11 @@ export function NavBar({ username }) {
                         <Link to="#">
                           <img
                             className="h-10 w-10 rounded-full"
-                            src={isAuthenticated ? defaultProPic : imageProfileCustom }
+                            src={
+                              isAuthenticated
+                                ? defaultProPic
+                                : imageProfileCustom
+                            }
                             alt=""
                           />
                         </Link>
