@@ -98,14 +98,14 @@ const setupDb = () => {
         trip BOOLEAN NOT NULL DEFAULT FALSE
       );
       CREATE TABLE threads (
-        id INT PRIMARY KEY,
+        id INT PRIMARY KEY AUTO_INCREMENT,
         title VARCHAR(255) NOT NULL,
         description TEXT NOT NULL,
         author_id BIGINT NOT NULL,
         FOREIGN KEY (author_id) REFERENCES users(id)
       );
       CREATE TABLE thread_replies (
-        id INT PRIMARY KEY,
+        id INT PRIMARY KEY AUTO_INCREMENT,
         text TEXT NOT NULL,
         thread_id INT NOT NULL,
         author_id BIGINT NOT NULL,
@@ -399,6 +399,6 @@ const setupDb = () => {
   );
 };
 
-setupDb();
+//setupDb();
 
 export { db };

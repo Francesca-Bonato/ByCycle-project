@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
-import PropTypes from "prop-types";
 import Button from "../components/Button.jsx";
 
 const ReplyForm = ({ onCreateReply }) => {
@@ -23,11 +23,6 @@ const ReplyForm = ({ onCreateReply }) => {
       <Button innerText="Reply" />
     </form>
   );
-};
-
-// Define the propTypes for the component
-ReplyForm.propTypes = {
-  onCreateReply: PropTypes.func.isRequired, // onCreateReply should be a function and is required
 };
 
 export default ReplyForm;

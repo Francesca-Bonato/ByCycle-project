@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { register, login, getUsers, deleteUser, getUserByUsername } from "./controllers/users.js";
 import "./passport.js";
-import { getThreads, createNewThread } from "./controllers/contents.js";
+import { getThreads, createThread, getReplies, createReply } from "./controllers/contents.js";
 dotenv.config();
 
 const app = express();
@@ -25,8 +25,9 @@ app.delete("/users/unsubscribe", deleteUser)
 
 //gestione discussione community
 app.get("/community", getThreads)
-
-app.post("/community", createNewThread)
+app.post("/community", createThread)
+app.get("/community/replies/:id", getReplies)
+app.post("/community/replies/:id", createReply)
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

@@ -16,6 +16,12 @@ const Community = () => {
   // State to hold the ID of the currently active thread (for displaying comments)
   const [activeThreadId, setActiveThreadId] = useState(null);
 
+  // State to hold the list of replies, loading and error states
+  const [repliesList, setRepliesList] = useState([]);
+  const [loadingReplies, setLoadingReplies] = useState(false);
+  const [errorReplies, setErrorReplies] = useState(false);
+
+  //function to fetch thread list
   const getThreads = async () => {
     setLoading(true);
     try {
@@ -30,11 +36,28 @@ const Community = () => {
       setLoading(false);
     }
   };
-  // useEffect to initialize the thread list from the dummy database on component mount
-  useEffect(() => {
-    if (threadList.length === 0) {
-      getThreads();
+
+  //function to fetch thread replies
+  const getReplies = async (threadId) => {
+    setLoadingReplies(true);
+    try {
+      // Prende i dati al server usando una richiesta GET
+      const response = await axios.get(
+        `http://localhost:4000/community/replies/${threadId}`
+      );
+      console.log(response);
+      setRepliesList(response.data);
+    } catch (error) {
+      console.error(error.data.msg);
+      setErrorReplies(error);
+    } finally {
+      setLoadingReplies(false);
     }
+  };
+
+  // useEffect to initialize the thread list and the thread replies from the database on component mount
+  useEffect(() => {
+    getThreads();
   }, []);
 
   // Function to create a new thread
@@ -44,52 +67,53 @@ const Community = () => {
       alert("Please insert a title and a description for the new thread");
       return;
     }
-
-    // Create a new thread object
-    const newThread = {
-      title, // The title of the new thread
-      description, // The description of the new thread
-      author: user.id, // The name of the author extracted from the database
-    };
-
-    //Send new thread data to back-end
-    const response = axios.post("http://localhost:4000/community", newThread);
-    if (response.ok) {
-      console.log("Thread created successfully!");
+    try {
+      // Create a new thread object
+      const newThread = {
+        title, // The title of the new thread
+        description, // The description of the new thread
+        author: user.id, // The name of the author extracted from the local storage
+      };
+      //Send new thread data to back-end
+      const response = axios.post("http://localhost:4000/community", newThread);
+      if (response.ok) {
+        console.log("Thread created successfully!");
+      }
+      getThreads();
+    } catch (error) {
+      console.error("Error creating thread:",error);
+      alert(error.data.msg);
     }
-    getThreads()
   };
 
   // Function to create a new reply to an existing thread
-  const createReply = (threadId, text) => {
+  const createReply = async (threadId, text) => {
     // Show alert if reply input is empty
     if (text.trim() === "") {
       alert("Inserisci una risposta.");
       return;
     }
+    // Send new reply data to back-end
+    try {
+      // Create a new reply object
+      const newReply = {
+        text, // The text of the new reply
+        thread_id: threadId, //the ID of the commented thread
+        author_id: user.id, // The name of the author extracted from the local storage
+      };
+      const response = await axios.post(
+        `http://localhost:4000/community/replies/${activeThreadId}`,
+        newReply
+      );
+      if (response.ok) {
+        console.log("Reply created successfully!");
+        getReplies(threadId);
+      }
+    } catch (error) {
+      console.error("Error creating reply:", error);
+      alert(error.data.message);
+    }
 
-    // Update the thread list with the new reply
-    const updatedThread = threadList.map((thread) =>
-      thread.id === threadId
-        ? {
-            ...thread,
-            replies: [
-              ...thread.replies,
-              {
-                id: thread.replies.length + 1, // Unique ID for the new reply
-                text, // The reply text
-                author: {
-                  name: isLoggedIn ? user.username : "Nome Utente", // Replace this with the actual user's name
-                  profilePic: "https://example.com/default-profile-pic.jpg", // Replace this with the actual user's profile pic
-                },
-              },
-            ],
-          }
-        : thread
-    );
-
-    // Update threadList state
-    setThreadList(updatedThread);
     // Keep the thread active after the addition of the reply
     setActiveThreadId(threadId);
   };
@@ -97,7 +121,8 @@ const Community = () => {
   // Function to handle the click on Visualize Comments/Hide Comments button
   const toggleComments = (threadId) => {
     // If the thread is active, hide comments; otherwise, activate the thread to visualize the comments
-    setActiveThreadId(activeThreadId === threadId ? null : threadId);
+    setActiveThreadId(activeThreadId === threadId? null: threadId);
+    getReplies(threadId);
   };
 
   return (
@@ -182,7 +207,13 @@ const Community = () => {
               {activeThreadId === thread.id && (
                 <>
                   {/* Component to display the list of replies */}
-                  <ThreadReplies replies={thread.replies} />
+                  {loadingReplies ? (
+                    <p>Loading replies...</p>
+                  ) : errorReplies ? (
+                    <p>Error fetching replies: {errorReplies.message}</p>
+                  ) : (
+                    <ThreadReplies replies={repliesList} />
+                  )}
                   {/* Form to create a new reply */}
                   <ReplyForm
                     onCreateReply={(text) => createReply(thread.id, text)}
