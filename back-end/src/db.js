@@ -8,6 +8,7 @@ const db = mysql.createConnection({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
   multipleStatements: true,
+  debug: true
 });
 
 db.connect((err) => {
@@ -400,6 +401,6 @@ const setupDb = () => {
   );
 };
 
-setupDb();
+//setupDb();
 
 export { db };
