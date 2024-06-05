@@ -4,11 +4,11 @@ import ThreadReplies from "../components/ThreadReplies";
 import ReplyForm from "../components/ReplyForm";
 import axios from "axios";
 
-const user = JSON.parse(localStorage.getItem("user"));
-
-//utente loggato
-const isLoggedIn = localStorage.getItem("user");
 const Community = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  //utente loggato
+  const isLoggedIn = localStorage.getItem("user");
+
   // State to hold the list of threads, loading and error states
   const [threadList, setThreadList] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -16,10 +16,8 @@ const Community = () => {
   // State to hold the ID of the currently active thread (for displaying comments)
   const [activeThreadId, setActiveThreadId] = useState(null);
 
-  // State to hold the list of replies, loading and error states
-  const [repliesList, setRepliesList] = useState([]);
-  const [loadingReplies, setLoadingReplies] = useState(false);
-  const [errorReplies, setErrorReplies] = useState(false);
+  //state to refresh replies list
+  const [refresh, setRefresh] = useState(null);
 
   //function to fetch thread list
   const getThreads = async () => {
@@ -33,25 +31,9 @@ const Community = () => {
       console.error(error.data.msg);
       setError(error);
     } finally {
-      setLoading(false);
-    }
-  };
-
-  //function to fetch thread replies
-  const getReplies = async (threadId) => {
-    setLoadingReplies(true);
-    try {
-      // Prende i dati al server usando una richiesta GET
-      const response = await axios.get(
-        `http://localhost:4000/community/replies/${threadId}`
-      );
-      console.log(response);
-      setRepliesList(response.data);
-    } catch (error) {
-      console.error(error.data.msg);
-      setErrorReplies(error);
-    } finally {
-      setLoadingReplies(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
     }
   };
 
@@ -81,48 +63,15 @@ const Community = () => {
       }
       getThreads();
     } catch (error) {
-      console.error("Error creating thread:",error);
+      console.error("Error creating thread:", error);
       alert(error.data.msg);
     }
-  };
-
-  // Function to create a new reply to an existing thread
-  const createReply = async (threadId, text) => {
-    // Show alert if reply input is empty
-    if (text.trim() === "") {
-      alert("Inserisci una risposta.");
-      return;
-    }
-    // Send new reply data to back-end
-    try {
-      // Create a new reply object
-      const newReply = {
-        text, // The text of the new reply
-        thread_id: threadId, //the ID of the commented thread
-        author_id: user.id, // The name of the author extracted from the local storage
-      };
-      const response = await axios.post(
-        `http://localhost:4000/community/replies/${activeThreadId}`,
-        newReply
-      );
-      if (response.ok) {
-        console.log("Reply created successfully!");
-        getReplies(threadId);
-      }
-    } catch (error) {
-      console.error("Error creating reply:", error);
-      alert(error.data.message);
-    }
-
-    // Keep the thread active after the addition of the reply
-    setActiveThreadId(threadId);
   };
 
   // Function to handle the click on Visualize Comments/Hide Comments button
   const toggleComments = (threadId) => {
     // If the thread is active, hide comments; otherwise, activate the thread to visualize the comments
-    setActiveThreadId(activeThreadId === threadId? null: threadId);
-    getReplies(threadId);
+    setActiveThreadId(activeThreadId === threadId ? null : threadId);
   };
 
   return (
@@ -207,16 +156,10 @@ const Community = () => {
               {activeThreadId === thread.id && (
                 <>
                   {/* Component to display the list of replies */}
-                  {loadingReplies ? (
-                    <p>Loading replies...</p>
-                  ) : errorReplies ? (
-                    <p>Error fetching replies: {errorReplies.message}</p>
-                  ) : (
-                    <ThreadReplies replies={repliesList} />
-                  )}
+                  <ThreadReplies threadId={thread.id} refresh={refresh} />
                   {/* Form to create a new reply */}
-                  <ReplyForm
-                    onCreateReply={(text) => createReply(thread.id, text)}
+                  <ReplyForm threadId = {thread.id}
+                    onCreateReply={setRefresh} user={user}
                   />
                 </>
               )}
