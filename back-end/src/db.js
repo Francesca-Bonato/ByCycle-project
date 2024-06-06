@@ -46,7 +46,7 @@ const setupDb = () => {
         password VARCHAR(250) NOT NULL,
         role_id BIGINT NOT NULL,
         birth_date DATE,
-        join_date DATE default current_date,
+        join_date timestamp,
         description TEXT,
         profile_pic VARCHAR(255) DEFAULT "../assets/images/registration-image.jpg",
         created_at timestamp default current_timestamp NOT NULL,

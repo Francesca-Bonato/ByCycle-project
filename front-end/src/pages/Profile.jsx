@@ -1,13 +1,13 @@
 import Button from "../components/Button";
 import { useState } from "react";
-import defaultProPic from "../assets/images/default-profile-pic.jpg"
+import defaultProPic from "../assets/images/default-profile-pic.png"
 
 const users = JSON.parse(localStorage.getItem('users'));
 
 const initialProfile = {
   userName: users ? users[0].username : "myUsername",
-  firstName: "Manfredi",
-  lastName: "Marrone",
+  firstName: "",
+  lastName: "",
   email: users? users[0].usermail : "myUsermail",
   birthDate: users? users[0].birthdate : "myBirtdate",
   joinDate: "2024-05-23",
