@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { register, login, getUsers, deleteUser, getUserByUsername } from "./controllers/users.js";
 import "./passport.js";
-import { getThreads, createThread, getReplies, createReply } from "./controllers/contents.js";
+import { getThreads, createThread, getReplies, createReply, getArticles, getArticleByHighlight } from "./controllers/contents.js";
 dotenv.config();
 
 const app = express();
@@ -28,6 +28,10 @@ app.get("/community", getThreads)
 app.post("/community", createThread)
 app.get("/community/replies/:id", getReplies)
 app.post("/community/replies/:id", createReply)
+
+//gestione articoli del blog
+app.get("/blog", getArticles)
+app.get("/blog/highlighted", getArticleByHighlight)
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

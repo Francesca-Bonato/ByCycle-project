@@ -1,12 +1,12 @@
 import { db } from "../db.js";
 
 const getThreads = (req, res) => {
-  const dataThreads = `
+  const threadsData = `
   SELECT threads.*, users.username AS author_username
   FROM threads
   INNER JOIN users ON threads.author_id = users.id`; // SQL query to fetch all threads
 
-  db.query(dataThreads, (err, results) => {
+  db.query(threadsData, (err, results) => {
     //if there is any error, send a 404 response and a "database not found" message, then return
     if (err) {
       res.status(404).json({ msg: "Could not retrieve data from database." });
@@ -31,7 +31,9 @@ const createThread = (req, res) => {
     (error, results, fields) => {
       if (error) {
         console.error(error);
-        res.status(400).json({ msg: "Failed to create thread. Please try again." });
+        res
+          .status(400)
+          .json({ msg: "Failed to create thread. Please try again." });
         return;
       }
       // Respond with the thread data
@@ -45,13 +47,13 @@ const createThread = (req, res) => {
 
 const getReplies = (req, res) => {
   const { id } = req.params;
-  const dataReplies = `
+  const repliesData = `
   SELECT thread_replies.*, users.username AS author_username
   FROM thread_replies
   INNER JOIN users ON thread_replies.author_id = users.id
   WHERE thread_replies.thread_id = ?`; // SQL query to fetch all replies
 
-  db.query(dataReplies, id, (err, results) => {
+  db.query(repliesData, id, (err, results) => {
     //if there is any error, send a 404 response and a "database not found" message, then return
     if (err) {
       res.status(404).json({ msg: "Could not retrieve data from database." });
@@ -67,7 +69,7 @@ const createReply = (req, res) => {
   const newReply = {
     text,
     thread_id,
-    author_id
+    author_id,
   };
 
   // Insert the new reply into the database and retrieve the ID
@@ -77,7 +79,9 @@ const createReply = (req, res) => {
     (error, results, fields) => {
       if (error) {
         console.error(error);
-        res.status(400).json({ msg: "Failed to create reply. Please try again." });
+        res
+          .status(400)
+          .json({ msg: "Failed to create reply. Please try again." });
         return;
       }
       // Respond with the thread data
@@ -89,4 +93,61 @@ const createReply = (req, res) => {
   );
 };
 
-export { getThreads, createThread, getReplies, createReply };
+const getArticles = (req, res) => {
+  // Estrae i parametri di query per pagina e limite, con valori predefiniti
+  const page = parseInt(req.query.page) || 1;
+  const limit = 6;
+  const offset = (page - 1) * limit;
+
+  // Query SQL per ottenere gli articoli con paginazione
+  const blogData = `SELECT * FROM blog_posts LIMIT ${limit} OFFSET ${offset}`;
+  const countQuery = `SELECT COUNT(*) as total FROM blog_posts`;
+
+  // Esegue la query per ottenere gli articoli
+  db.query(blogData, (err, results) => {
+    if (err) {
+      //if there is any error, send a 404 response and a "database not found" message, then return
+      res.status(404).json({ msg: "Could not retrieve data from database" });
+      return;
+    }
+
+    // Esegue la query per ottenere il numero totale di articoli
+    db.query(countQuery, (countErr, countResults) => {
+      if (countErr) {
+        // In caso di errore, invia una risposta 404 e un messaggio di errore
+        res.status(404).json({ msg: "Could not retrieve count from database" });
+        return;
+      }
+      const totalArticles = countResults[0].total;
+      const totalPages = Math.ceil(totalArticles / limit);
+
+      // Invia i risultati con il numero totale di pagine
+      res.status(200).json({
+        articles: results,
+        totalPages: totalPages,
+      });
+    });
+  });
+};
+
+const getArticleByHighlight = (req, res) => {
+  const highlightArticle = "SELECT * FROM blog_posts WHERE highlight=?"; // SQL query to fetch a user by username
+  db.query(highlightArticle, true, (err, results) => {
+    //if there is any error, send a 404 response and a "user not found" message, then return
+    if (err) {
+      res.status(404).json({ msg: "User not found!" });
+      return;
+    }
+
+    res.status(200).json(results);
+  });
+};
+
+export {
+  getThreads,
+  createThread,
+  getReplies,
+  createReply,
+  getArticles,
+  getArticleByHighlight,
+};
