@@ -3,9 +3,12 @@ import { useState } from "react";
 import defaultProPic from "../assets/images/default-profile-pic.jpg";
 import axios from "axios";
 import ModalWindow from "../components/ModalWindow";
+import { useContext } from "react";
+import { Context } from "../components/LocalData";
 
 const Profile = () => {
-  //FARE CUSTOM HOOK DI "user" E "initialProfile" ecc...
+  const { user, initialProfile } = useContext(Context);
+  /*  //FARE CUSTOM HOOK DI "user" E "initialProfile" ecc...
   const user = JSON.parse(localStorage.getItem("user"));
   const formattedBirthDate = user.birth_date.split("/").reverse();
   const reorderedDateString = formattedBirthDate.join("-");
@@ -24,7 +27,7 @@ const Profile = () => {
         ? user.description
         : "Write a short description about yourself.",
     profilePicture: defaultProPic,
-  };
+  }; */
   const [profile, setProfile] = useState(initialProfile);
   const [isEditing, setIsEditing] = useState(false);
   const [newDescription, setNewDescription] = useState(profile.description);
@@ -174,7 +177,7 @@ const Profile = () => {
             </div>
           )}
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center gap-3">
           <Button
             innerText={isEditing ? "Save" : "Edit"}
             className="mt-6"

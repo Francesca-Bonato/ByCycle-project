@@ -23,6 +23,7 @@ import { Terms } from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 import { FAQ } from "./pages/FAQ";
 import PrivateRoute from "./components/PrivateRoute";
+import LocalData from "./components/LocalData";
 
 const router = createBrowserRouter([
   {
@@ -53,15 +54,18 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <CookieConsent
-      className="text-black bg-white hover:bg-[#232323] hover:text-white"
-      location="bottom"
-      buttonText="Accept"
-      cookieName="myAwesomeCookieName"
-      expires={150}
-    >
-      This website uses cookies to enhance the user experience.{" "}
-    </CookieConsent>
-    <RouterProvider router={router} />
+    <LocalData>
+      <CookieConsent
+        className="text-black bg-white hover:bg-[#232323] hover:text-white"
+        location="bottom"
+        buttonText="Accept"
+        cookieName="myAwesomeCookieName"
+        expires={150}
+      >
+        This website uses cookies to enhance the user experience.{" "}
+      </CookieConsent>
+
+      <RouterProvider router={router} />
+    </LocalData>
   </React.StrictMode>
 );

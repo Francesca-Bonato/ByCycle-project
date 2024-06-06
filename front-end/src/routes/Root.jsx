@@ -4,7 +4,6 @@ import NavBar from "../components/NavBar";
 import { useEffect } from "react";
 
 function Root() {
-
   const location = useLocation();
   // useEffect che si attiva ogni volta che si cambia route e che porta in cima alla pagina
   useEffect(() => {
