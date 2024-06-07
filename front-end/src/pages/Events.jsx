@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import NewsCard from "../components/NewsCard.jsx";
 import axios from "axios";
 
-//TODO: FIX - probabilmente errore simile per le categorie. Si potrebbero implementare chiamate GET specifiche per le diverse categorie.
-
 function Events() {
   // State to hold the list of threads, loading and error states
   const [eventList, setEventList] = useState([]);
@@ -57,11 +55,6 @@ function Events() {
       setLoadingHighlight(false);
     }
   };
-  // Parse date strings into Date objects
-  const parseDate = (dateStr) => {
-    const [day, month, year] = dateStr.split("-").map(Number);
-    return new Date(year, month - 1, day); // months are 0-indexed in JS Date
-  };
 
   // Function to change the selected category
   const handleCategoryChange = (category) => {
@@ -70,9 +63,8 @@ function Events() {
 
   // Logic to filter events based on the category
   const filteredEvents = eventList.filter((item) => {
-    const startDate = parseDate(item.startDate);
-    const endDate = parseDate(item.endDate);
-    console.log(startDate, endDate)
+    const startDate = new Date(item.startDate);
+    const endDate = new Date(item.endDate);
     const now = new Date();
     const currentYear = now.getFullYear();
     const currentMonth = now.getMonth();
@@ -102,7 +94,6 @@ function Events() {
         return true;
     }
   });
-
 
   return (
     <>
