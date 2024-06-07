@@ -32,7 +32,7 @@ const ReplyForm = ({ onCreateReply, threadId, user}) => {
       }
     } catch (error) {
       console.error("Error creating reply:", error);
-      alert(error.data.message);
+      alert(error.message);
     }
   };
 

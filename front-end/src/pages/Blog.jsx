@@ -38,7 +38,7 @@ function Blog() {
       setArticleList(response.data.articles); // Set the list of articles
       setTotalPages(response.data.totalPages); // Set the total number of pages
     } catch (error) {
-      console.error(error.data.msg); // Log the error message
+      console.error(error.message); // Log the error message
       setError(error); // Set the error state
     } finally {
       setTimeout(() => {
@@ -64,7 +64,7 @@ function Blog() {
       ); // Fetch highlighted article from a specific endpoint
       setHighlightedArticle(response.data[0]);
     } catch (error) {
-      console.error(error.data.msg);
+      console.error(error.message);
       setErrorHighlight(error);
     } finally {
       setLoadingHighlight(false);

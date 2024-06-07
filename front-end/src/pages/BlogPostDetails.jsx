@@ -25,9 +25,8 @@ function BlogPostDetails() {
     try {
       const response = await axios.get(`http://localhost:4000/blog/${id}`); // Fetch article from a specific endpoint with a dynamic id parameter
       setArticle(response.data[0]);
-      console.log(response.data);
     } catch (error) {
-      console.error(error.data.msg);
+      console.error(error.message);
       setError(error);
     } finally {
       setLoading(false);
@@ -37,9 +36,9 @@ function BlogPostDetails() {
   return (
     <>
       {loading ? (
-        <p>Loading main article...</p>
+        <p>Loading article details...</p>
       ) : error ? (
-        <p>Error fetching main article: {error.message}</p>
+        <p>Error fetching article details: {error.message}</p>
       ) : (
         // Render blog article details if the article is found
         <>
@@ -86,7 +85,6 @@ function BlogPostDetails() {
               />
             </Link>
           </section>
-          )
         </>
       )}
     </>

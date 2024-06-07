@@ -24,7 +24,7 @@ const ThreadReplies = ({ threadId, refresh }) => {
       console.log(response);
       setRepliesList(response.data);
     } catch (error) {
-      console.error(error.data.msg);
+      console.error(error.message);
       setErrorReplies(error);
     } finally {
       setTimeout(() => {

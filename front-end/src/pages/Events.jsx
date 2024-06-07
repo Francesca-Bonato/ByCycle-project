@@ -30,7 +30,7 @@ function Events() {
       const response = await axios.get(`http://localhost:4000/events`);
       setEventList(response.data); // Set the list of articles
     } catch (error) {
-      console.error(error.data.msg); // Log the error message
+      console.error(error.message); // Log the error message
       setError(error); // Set the error state
     } finally {
       setTimeout(() => {
@@ -49,7 +49,7 @@ function Events() {
       ); // Fetch highlighted article from a specific endpoint
       setHighlightEvent(response.data[0]);
     } catch (error) {
-      console.error(error.data.msg);
+      console.error(error.message);
       setErrorHighlight(error);
     } finally {
       setLoadingHighlight(false);
@@ -76,7 +76,6 @@ function Events() {
         // Filter upcoming events
         return startDate > now;
       case "Current Month":
-        console.log(item)
         // Filter events for the current month
         return (
           (startDate.getFullYear() === currentYear &&

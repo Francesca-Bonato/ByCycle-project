@@ -28,7 +28,7 @@ const Community = () => {
       const response = await axios.get("http://localhost:4000/community");
       setThreadList(response.data);
     } catch (error) {
-      console.error(error.data.msg);
+      console.error(error.message);
       setError(error);
     } finally {
       setTimeout(() => {

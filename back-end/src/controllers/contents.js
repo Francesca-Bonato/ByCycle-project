@@ -119,11 +119,9 @@ const getArticles = (req, res) => {
     db.query(countQuery, (countErr, countResults) => {
       if (countErr) {
         // In caso di errore, invia una risposta 404 e un messaggio di errore
-        res
-          .status(404)
-          .json({
-            msg: `Could not retrieve data from database: ${err.message}`,
-          });
+        res.status(404).json({
+          msg: `Could not retrieve data from database: ${err.message}`,
+        });
         return;
       }
       const totalArticles = countResults[0].total;
@@ -177,19 +175,35 @@ const getEvents = (req, res) => {
 
     res.status(200).json(results);
   });
-}
+};
 
 const getEventByHighlight = (req, res) => {
-  const highlightEvent = "SELECT * FROM events WHERE highlight=?"
+  const highlightEvent = "SELECT * FROM events WHERE highlight=?";
   db.query(highlightEvent, true, (err, results) => {
-        //if there is any error, send a 404 response and a "database not found" message, then return
+    //if there is any error, send a 404 response and a "database not found" message, then return
     if (err) {
-      res.status(404).json({msg: "Could not retrieve data from the database"})
+      res
+        .status(404)
+        .json({ msg: "Could not retrieve data from the database" });
       return;
     }
-    res.status(200).json(results)
-  })
-}
+    res.status(200).json(results);
+  });
+};
+
+const getEventById = (req, res) => {
+  const { id } = req.params;
+  const eventData = "SELECT * FROM events WHERE id=?"; // SQL query to fetch a user by username
+  db.query(eventData, id, (err, results) => {
+    //if there is any error, send a 404 response and a "article not found" message, then return
+    if (err) {
+      res.status(404).json({ msg: "Could not retrieve data from database." });
+      return;
+    }
+
+    res.status(200).json(results);
+  });
+};
 
 export {
   getThreads,
@@ -200,5 +214,6 @@ export {
   getArticleByHighlight,
   getArticleById,
   getEvents,
-  getEventByHighlight
+  getEventByHighlight,
+  getEventById,
 };
