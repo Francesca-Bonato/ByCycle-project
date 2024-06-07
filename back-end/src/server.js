@@ -3,9 +3,24 @@ import morgan from "morgan";
 import "express-async-errors";
 import dotenv from "dotenv";
 import cors from "cors";
-import { register, login, getUsers, deleteUser, getUserByUsername } from "./controllers/users.js";
+import {
+  register,
+  login,
+  getUsers,
+  deleteUser,
+  getUserByUsername,
+} from "./controllers/users.js";
 import "./passport.js";
-import { getThreads, createThread, getReplies, createReply, getArticles, getArticleByHighlight } from "./controllers/contents.js";
+import {
+  getThreads,
+  createThread,
+  getReplies,
+  createReply,
+  getArticles,
+  getArticleByHighlight,
+  getArticleById,
+  getEvents,
+} from "./controllers/contents.js";
 dotenv.config();
 
 const app = express();
@@ -15,23 +30,27 @@ app.use(cors());
 const port = process.env.LOCAL_PORT || 4000;
 
 //gestione utenti
-app.get("/users", getUsers)
-app.get("/users/:username", getUserByUsername)
+app.get("/users", getUsers);
+app.get("/users/:username", getUserByUsername);
 
 app.post("/register", register);
 app.post("/login", login);
 
-app.delete("/users/unsubscribe", deleteUser)
+app.delete("/users/unsubscribe", deleteUser);
 
 //gestione discussione community
-app.get("/community", getThreads)
-app.post("/community", createThread)
-app.get("/community/replies/:id", getReplies)
-app.post("/community/replies/:id", createReply)
+app.get("/community", getThreads);
+app.post("/community", createThread);
+app.get("/community/replies/:id", getReplies);
+app.post("/community/replies/:id", createReply);
 
 //gestione articoli del blog
-app.get("/blog", getArticles)
-app.get("/blog/highlighted", getArticleByHighlight)
+app.get("/blog", getArticles);
+app.get("/blog/highlighted", getArticleByHighlight);
+app.get("/blog/:id", getArticleById);
+
+//gestion sezione eventi
+app.get("/events", getEvents);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

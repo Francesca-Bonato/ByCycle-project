@@ -1,5 +1,6 @@
 import { db } from "../db.js";
 
+//controllers per la sezione community
 const getThreads = (req, res) => {
   const threadsData = `
   SELECT threads.*, users.username AS author_username
@@ -93,6 +94,7 @@ const createReply = (req, res) => {
   );
 };
 
+//controllers per la sezione blog
 const getArticles = (req, res) => {
   // Estrae i parametri di query per pagina e limite, con valori predefiniti
   const page = parseInt(req.query.page) || 1;
@@ -107,7 +109,9 @@ const getArticles = (req, res) => {
   db.query(blogData, (err, results) => {
     if (err) {
       //if there is any error, send a 404 response and a "database not found" message, then return
-      res.status(404).json({ msg: `Could not retrieve data from database: ${err.message}` });
+      res
+        .status(404)
+        .json({ msg: `Could not retrieve data from database: ${err.message}` });
       return;
     }
 
@@ -115,7 +119,11 @@ const getArticles = (req, res) => {
     db.query(countQuery, (countErr, countResults) => {
       if (countErr) {
         // In caso di errore, invia una risposta 404 e un messaggio di errore
-        res.status(404).json({ msg: `Could not retrieve data from database: ${err.message}` });
+        res
+          .status(404)
+          .json({
+            msg: `Could not retrieve data from database: ${err.message}`,
+          });
         return;
       }
       const totalArticles = countResults[0].total;
@@ -133,15 +141,43 @@ const getArticles = (req, res) => {
 const getArticleByHighlight = (req, res) => {
   const highlightArticle = "SELECT * FROM blog_posts WHERE highlight=?"; // SQL query to fetch a user by username
   db.query(highlightArticle, true, (err, results) => {
-    //if there is any error, send a 404 response and a "user not found" message, then return
+    //if there is any error, send a 404 response and a "article not found" message, then return
     if (err) {
-      res.status(404).json({ msg: "User not found!" });
+      res.status(404).json({ msg: "Article not found!" });
       return;
     }
 
     res.status(200).json(results);
   });
 };
+
+const getArticleById = (req, res) => {
+  const { id } = req.params;
+  const article = "SELECT * FROM blog_posts WHERE id=?"; // SQL query to fetch a user by username
+  db.query(article, id, (err, results) => {
+    //if there is any error, send a 404 response and a "article not found" message, then return
+    if (err) {
+      res.status(404).json({ msg: "Article not found!" });
+      return;
+    }
+
+    res.status(200).json(results);
+  });
+};
+
+//controllers per la sezione eventi
+const getEvents = (req, res) => {
+  const eventsData = "SELECT * FROM events"; // SQL query to fetch all events
+  db.query(eventsData, (err, results) => {
+    //if there is any error, send a 404 response and a "database not found" message, then return
+    if (err) {
+      res.status(404).json({ msg: "Could not retrieve data from database." });
+      return;
+    }
+
+    res.status(200).json(results);
+  });
+}
 
 export {
   getThreads,
@@ -150,5 +186,6 @@ export {
   createReply,
   getArticles,
   getArticleByHighlight,
+  getArticleById,
+  getEvents
 };
-

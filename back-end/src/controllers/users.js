@@ -8,7 +8,7 @@ const getUsers = (req, res) => {
   db.query(dataUsers, (err, results) => {
     //if there is any error, send a 404 response and a "database not found" message, then return
     if (err) {
-      res.status(404).json({ msg: "Database not found." });
+      res.status(404).json({ msg: "Could not retrieve data from database." });
       return;
     }
 
@@ -88,7 +88,7 @@ const login = async (req, res) => {
     async (error, result) => {
       if (error) {
         console.error(error);
-        return res.status(500).json({ msg: "Database error" });
+        return res.status(500).json({ msg: "Could not retrieve data from database." });
       }
 
       const dbUser = result[0]; // Get the user data from the query result
