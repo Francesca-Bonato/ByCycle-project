@@ -22,12 +22,12 @@ function Blog() {
 
   // Effect hook to fetch articles and highlighted article whenever the currentPage changes
   useEffect(() => {
-    getBlogArticles(currentPage);
-    getHighlightedArticle();
+    fetchBlogArticles(currentPage);
+    fetchHighlightedArticle();
   }, [currentPage]);
 
   // Function to fetch the list of articles for a given page
-  const getBlogArticles = async (page = 1) => {
+  const fetchBlogArticles = async (page = 1) => {
     setLoading(true); // Set loading state to true
     setError(null);
     try {
@@ -35,7 +35,6 @@ function Blog() {
       const response = await axios.get(
         `http://localhost:4000/blog?page=${page}`
       );
-      console.log(response);
       setArticleList(response.data.articles); // Set the list of articles
       setTotalPages(response.data.totalPages); // Set the total number of pages
     } catch (error) {
@@ -56,14 +55,14 @@ function Blog() {
   };
 
   // Function to fetch the highlighted article
-  const getHighlightedArticle = async () => {
+  const fetchHighlightedArticle = async () => {
     setLoadingHighlight(true);
     setErrorHighlight(null);
     try {
       const response = await axios.get(
         "http://localhost:4000/blog/highlighted"
       ); // Fetch highlighted article from a specific endpoint
-      setHighlightedArticle(response.data);
+      setHighlightedArticle(response.data[0]);
     } catch (error) {
       console.error(error.data.msg);
       setErrorHighlight(error);
@@ -85,14 +84,14 @@ function Blog() {
         ) : errorHighlight ? (
           <p>Error fetching main article: {error.message}</p>
         ) : (
-          highlightedArticle.length > 0 && (
+          highlightedArticle && (
             /* Highlight blog article */
             <section className="flex items-center justify-center gap-12 flex-wrap lg:flex-nowrap lg:justify-between xl:pt-16 py-8">
               <div className="flex flex-col items-center justify-center gap-16 lg:flex-row">
                 {/* Text section */}
                 <div className="flex flex-col items-center justify-center gap-5 break-words w-full lg:w-[42%] lg:items-start">
                   <h5 className="w-full text-center text-[35px] font-bold leading-[125%] break-words lg:text-left xl:text-[40px]">
-                    {highlightedArticle[0].title}
+                    {highlightedArticle.title}
                   </h5>
                   <div className="flex xl:w-full ">
                     <img
@@ -103,10 +102,10 @@ function Blog() {
                     />
                   </div>
                   <p className="leading-[150%] text-lg text-gray-600 break-words text-justify">
-                    {highlightedArticle[0].abstract}
+                    {highlightedArticle.abstract}
                   </p>
                   <Link
-                    to={`/blog/${highlightedArticle[0].id}`}
+                    to={`/blog/${highlightedArticle.id}`}
                     className="flex lg:w-full mb-7"
                   >
                     <Button innerText="Read our latest article" />
@@ -116,7 +115,7 @@ function Blog() {
                 {/* Image section */}
                 <div className="w-full lg:w-auto">
                   <img
-                    src={highlightedArticle[0].img}
+                    src={highlightedArticle.img}
                     alt="highlighted blog post image"
                     className="w-full h-[300px] rounded-[16px] object-cover lg:h-[560px]"
                   />

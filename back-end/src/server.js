@@ -20,6 +20,7 @@ import {
   getArticleByHighlight,
   getArticleById,
   getEvents,
+  getEventByHighlight
 } from "./controllers/contents.js";
 dotenv.config();
 
@@ -51,6 +52,7 @@ app.get("/blog/:id", getArticleById);
 
 //gestion sezione eventi
 app.get("/events", getEvents);
+app.get("/events/highlighted", getEventByHighlight);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

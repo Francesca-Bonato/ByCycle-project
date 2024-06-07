@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import NewsCard from "../components/NewsCard.jsx";
 import axios from "axios";
 
-//TODO: FIX - il codice cerca di trovare highlighted event prima che il fetch della lista di eventi sia stato completato. Implementare chiamata GET specifica per fetchare l'evento con proprietà highlight === true. (FetchEventByHighlight)
 //TODO: FIX - probabilmente errore simile per le categorie. Si potrebbero implementare chiamate GET specifiche per le diverse categorie.
 
 function Events() {
@@ -11,22 +10,18 @@ function Events() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const [highlightEvent, setHighlightEvent] = useState(true);
+  // State variables for the highlighted event, loading state, and error state
+  const [highlightEvent, setHighlightEvent] = useState([]);
+  const [loadingHighlight, setLoadingHighlight] = useState(false);
+  const [errorHighlight, setErrorHighlight] = useState(null);
 
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   // Effect hook to fetch articles and highlighted article whenever the currentPage changes
   useEffect(() => {
     fetchEvents();
+    fetchHighlightedEvent();
   }, []);
-
-  // Effect to find the highlighted event whenever eventList changes
-  useEffect(() => {
-    if (eventList.length > 0) {
-      const highlighted = eventList.find((item) => item.highlight === true);
-      setHighlightEvent(highlighted);
-    }
-  }, [eventList]);
 
   // Function to fetch the list of articles for a given page
   const fetchEvents = async () => {
@@ -46,15 +41,38 @@ function Events() {
     }
   };
 
+  // Function to fetch the highlighted article
+  const fetchHighlightedEvent = async () => {
+    setLoadingHighlight(true);
+    setErrorHighlight(null);
+    try {
+      const response = await axios.get(
+        "http://localhost:4000/events/highlighted"
+      ); // Fetch highlighted article from a specific endpoint
+      setHighlightEvent(response.data[0]);
+    } catch (error) {
+      console.error(error.data.msg);
+      setErrorHighlight(error);
+    } finally {
+      setLoadingHighlight(false);
+    }
+  };
   // Parse date strings into Date objects
   const parseDate = (dateStr) => {
     const [day, month, year] = dateStr.split("-").map(Number);
     return new Date(year, month - 1, day); // months are 0-indexed in JS Date
   };
+
+  // Function to change the selected category
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
+
   // Logic to filter events based on the category
   const filteredEvents = eventList.filter((item) => {
     const startDate = parseDate(item.startDate);
     const endDate = parseDate(item.endDate);
+    console.log(startDate, endDate)
     const now = new Date();
     const currentYear = now.getFullYear();
     const currentMonth = now.getMonth();
@@ -66,6 +84,7 @@ function Events() {
         // Filter upcoming events
         return startDate > now;
       case "Current Month":
+        console.log(item)
         // Filter events for the current month
         return (
           (startDate.getFullYear() === currentYear &&
@@ -78,16 +97,12 @@ function Events() {
         return item.level === "beginner";
       case "Trip":
         // Filter trip events
-        return item.trip === true;
+        return item.trip === 1;
       default:
         return true;
     }
   });
 
-  // Function to change the selected category
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-  };
 
   return (
     <>
@@ -166,25 +181,31 @@ function Events() {
             <h1 className="text-center text-neutral-800 text-[44px] font-medium leading-[55px] pt-16">
               Highlight of the month
             </h1>
-            {highlightEvent && (
-              <div className="flex items-center justify-center gap-10 pt-8 flex-wrap lg:flex-nowrap lg:justify-between">
-                <div className="w-full lg:w-auto">
-                  <img
-                    src={highlightEvent.img}
-                    alt="image"
-                    className="h-[300px] rounded-[16px] object-cover w-full lg:h-[560px]"
-                  />
-                </div>
-                <div className="flex flex-col items-center justify-center gap-5 break-words w-full lg:w-[42%] lg:items-start">
-                  <h5 className="w-full text-center text-[35px] font-bold leading-[125%] break-words lg:text-left xl:text-[40px]">
-                    {highlightEvent.title}
-                  </h5>
+            {loadingHighlight ? (
+              <p>Loading highlighted event...</p>
+            ) : errorHighlight ? (
+              <p>Error fetching highlighted event: {error.message}</p>
+            ) : (
+              highlightEvent && (
+                <div className="flex items-center justify-center gap-10 pt-8 flex-wrap lg:flex-nowrap lg:justify-between">
+                  <div className="w-full lg:w-auto">
+                    <img
+                      src={highlightEvent.img}
+                      alt="image"
+                      className="h-[300px] rounded-[16px] object-cover w-full lg:h-[560px]"
+                    />
+                  </div>
+                  <div className="flex flex-col items-center justify-center gap-5 break-words w-full lg:w-[42%] lg:items-start">
+                    <h5 className="w-full text-center text-[35px] font-bold leading-[125%] break-words lg:text-left xl:text-[40px]">
+                      {highlightEvent.title}
+                    </h5>
 
-                  <p className="leading-[150%] text-lg text-gray-600 break-words text-justify">
-                    {highlightEvent.description}
-                  </p>
+                    <p className="leading-[150%] text-lg text-gray-600 break-words text-justify">
+                      {highlightEvent.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              )
             )}
 
             {/* Section for listing multiple events */}

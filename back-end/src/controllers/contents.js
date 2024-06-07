@@ -179,6 +179,18 @@ const getEvents = (req, res) => {
   });
 }
 
+const getEventByHighlight = (req, res) => {
+  const highlightEvent = "SELECT * FROM events WHERE highlight=?"
+  db.query(highlightEvent, true, (err, results) => {
+        //if there is any error, send a 404 response and a "database not found" message, then return
+    if (err) {
+      res.status(404).json({msg: "Could not retrieve data from the database"})
+      return;
+    }
+    res.status(200).json(results)
+  })
+}
+
 export {
   getThreads,
   createThread,
@@ -187,5 +199,6 @@ export {
   getArticles,
   getArticleByHighlight,
   getArticleById,
-  getEvents
+  getEvents,
+  getEventByHighlight
 };
