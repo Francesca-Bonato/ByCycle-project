@@ -85,7 +85,7 @@ const Community = () => {
         enthusiasts from around the world come together to share their passion.
         This is the place to find and participate in discussions on all things
         cycling — from gear and routes to tips and experiences. Please note, to
-        create threads or reply to existing ones, you need to be logged in.{" "}
+        create threads or reply to existing ones, you need to be logged in.
         <br /> <br />
         <strong>
           Join the conversation and connect with fellow cyclists today!
@@ -128,7 +128,7 @@ const Community = () => {
           <p>Error fetching threads: {error.message}</p>
         ) : (
           threadList.length > 0 &&
-          threadList.map((thread) => (
+          [...threadList].reverse().map((thread) => (
             <div
               key={thread.id}
               className="w-full border border-gray-300 p-4 mb-4 rounded-xl"
