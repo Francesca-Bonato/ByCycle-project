@@ -31,6 +31,7 @@ const ThreadReplies = ({ threadId, refresh }) => {
       }, 500);
     }
   };
+  
   return (
     <div className="sm:px-4 mt-5">
       <hr />

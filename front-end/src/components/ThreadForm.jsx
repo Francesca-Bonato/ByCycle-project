@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
-import PropTypes from "prop-types";
 import Button from "../components/Button.jsx";
 
 const ThreadForm = ({ onCreateThread }) => {
@@ -51,10 +51,6 @@ const ThreadForm = ({ onCreateThread }) => {
       />
     </form>
   );
-};
-
-ThreadForm.propTypes = {
-  onCreateThread: PropTypes.func.isRequired, // Defines the onCreateThread prop as a required function
 };
 
 export default ThreadForm;

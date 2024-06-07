@@ -25,7 +25,6 @@ const Community = () => {
     try {
       // Prende i dati al server usando una richiesta GET
       const response = await axios.get("http://localhost:4000/community");
-      console.log(response);
       setThreadList(response.data);
     } catch (error) {
       console.error(error.data.msg);
@@ -58,7 +57,7 @@ const Community = () => {
       };
       //Send new thread data to back-end
       const response = axios.post("http://localhost:4000/community", newThread);
-      if (response.ok) {
+      if (response.status === 201) {
         console.log("Thread created successfully!");
       }
       getThreads();
@@ -158,8 +157,10 @@ const Community = () => {
                   {/* Component to display the list of replies */}
                   <ThreadReplies threadId={thread.id} refresh={refresh} />
                   {/* Form to create a new reply */}
-                  <ReplyForm threadId = {thread.id}
-                    onCreateReply={setRefresh} user={user}
+                  <ReplyForm
+                    threadId={thread.id}
+                    onCreateReply={setRefresh}
+                    user={user}
                   />
                 </>
               )}
