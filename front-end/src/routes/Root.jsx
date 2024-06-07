@@ -1,7 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { Footer } from "../components/Footer";
 import NavBar from "../components/NavBar";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { Context } from "../components/LocalData";
 
 function Root() {
   const location = useLocation();
@@ -10,9 +11,11 @@ function Root() {
     window.scrollTo({ top: 0 });
   }, [location]);
 
+  const {user, initialProfile} = useContext(Context)
+
   return (
     <div>
-      <NavBar username={localStorage.getItem("user")} />
+      <NavBar username={user ? user.username : ""} name={user ? user.firstName : ""} />
       <Outlet />
       <Footer />
     </div>

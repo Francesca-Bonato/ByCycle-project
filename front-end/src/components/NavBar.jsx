@@ -38,7 +38,7 @@ function handleTopPage() {
 }
 
 // Main component
-export function NavBar({ username }) {
+export function NavBar({ username, name }) {
   const navigate = useNavigate();
 
   // Function to check authentication
@@ -237,10 +237,10 @@ export function NavBar({ username }) {
                       </div>
                       <div className="ml-3">
                         <div className="text-base font-medium leading-none ">
-                          {username ? username : ""}
+                          {username}
                         </div>
                         <div className="text-sm font-medium leading-none ">
-                          {username ? username : ""}
+                          {name}
                         </div>
                       </div>
                     </div>
