@@ -107,7 +107,7 @@ const getArticles = (req, res) => {
   db.query(blogData, (err, results) => {
     if (err) {
       //if there is any error, send a 404 response and a "database not found" message, then return
-      res.status(404).json({ msg: "Could not retrieve data from database" });
+      res.status(404).json({ msg: `Could not retrieve data from database: ${err.message}` });
       return;
     }
 
@@ -115,7 +115,7 @@ const getArticles = (req, res) => {
     db.query(countQuery, (countErr, countResults) => {
       if (countErr) {
         // In caso di errore, invia una risposta 404 e un messaggio di errore
-        res.status(404).json({ msg: "Could not retrieve count from database" });
+        res.status(404).json({ msg: `Could not retrieve data from database: ${err.message}` });
         return;
       }
       const totalArticles = countResults[0].total;

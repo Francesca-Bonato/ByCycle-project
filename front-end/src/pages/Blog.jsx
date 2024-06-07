@@ -3,6 +3,7 @@ import animation_logo from "../assets/images/ByCycle logo ridotto.png";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import axios from "axios";
+import MyPlaceholder from "../components/MyPlaceholder";
 
 function Blog() {
   // State to hold the list of threads, loading and error states
@@ -33,7 +34,8 @@ function Blog() {
       const response = await axios.get(
         `http://localhost:4000/blog?page=${page}`
       );
-      setArticleList(response.data.articles);  // Set the list of articles
+      console.log(response);
+      setArticleList(response.data.articles); // Set the list of articles
       setTotalPages(response.data.totalPages); // Set the total number of pages
     } catch (error) {
       console.error(error.data.msg); // Log the error message
@@ -41,7 +43,7 @@ function Blog() {
     } finally {
       setTimeout(() => {
         setLoading(false); // Set loading state to false after a delay
-      }, 500);
+      }, 10000);
     }
   };
 
@@ -127,7 +129,16 @@ function Blog() {
             All blog articles
           </div>
           {loading ? (
-            <p>Loading articles...</p>
+            <MyPlaceholder viewbox="0 0 960 1088">
+            {/* Prima riga */}
+            <rect x="0" y="0" rx="5" ry="5" width="300" height="524" />
+            <rect x="330" y="0" rx="5" ry="5" width="300" height="524" />
+            <rect x="660" y="0" rx="5" ry="5" width="300" height="524" />
+            {/* Seconda riga */}
+            <rect x="0" y="564" rx="5" ry="5" width="300" height="524" />
+            <rect x="330" y="564" rx="5" ry="5" width="300" height="524" />
+            <rect x="660" y="564" rx="5" ry="5" width="300" height="524" />
+            </MyPlaceholder>
           ) : error ? (
             <p>Error fetching articles: {error.message}</p>
           ) : (
@@ -171,7 +182,7 @@ function Blog() {
         </section>
         {/* Pagination buttons to switch between different sets of blog data */}
         <div className="flex items-center justify-center py-[20px] gap-2">
-         {/*  <button
+          {/*  <button
             className={`transition-all rounded-[5px] p-3 hover:bg-[#232323] hover:text-white ${
               currentPage === 1 ? "bg-[#232323] text-white" : ""
             }`}

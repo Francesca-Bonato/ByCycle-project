@@ -1,7 +1,6 @@
 import Button from "../components/Button";
 import { useState } from "react";
-import defaultProPic from "../assets/images/default-profile-pic.jpg";
-import axios from "axios";
+//import axios from "axios";
 import ModalWindow from "../components/ModalWindow";
 import { useContext } from "react";
 import { Context } from "../components/LocalData";
