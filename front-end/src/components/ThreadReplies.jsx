@@ -6,7 +6,7 @@ const ThreadReplies = ({ threadId, refresh }) => {
   // State to hold the list of replies, loading and error states
   const [repliesList, setRepliesList] = useState([]);
   const [loadingReplies, setLoadingReplies] = useState(false);
-  const [errorReplies, setErrorReplies] = useState(false);
+  const [errorReplies, setErrorReplies] = useState(null);
 
   useEffect(() => {
     getReplies(threadId);
@@ -15,6 +15,7 @@ const ThreadReplies = ({ threadId, refresh }) => {
   //function to fetch thread replies
   const getReplies = async (threadId) => {
     setLoadingReplies(true);
+    setErrorReplies(null);
     try {
       // Prende i dati al server usando una richiesta GET
       const response = await axios.get(
@@ -31,7 +32,7 @@ const ThreadReplies = ({ threadId, refresh }) => {
       }, 500);
     }
   };
-  
+
   return (
     <div className="sm:px-4 mt-5">
       <hr />

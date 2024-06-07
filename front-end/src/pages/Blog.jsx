@@ -9,7 +9,7 @@ function Blog() {
   // State to hold the list of threads, loading and error states
   const [articleList, setArticleList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   // State variables for pagination: current page and total number of pages
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +18,7 @@ function Blog() {
   // State variables for the highlighted article, loading state, and error state
   const [highlightedArticle, setHighlightedArticle] = useState([]);
   const [loadingHighlight, setLoadingHighlight] = useState(false);
-  const [errorHighlight, setErrorHighlight] = useState(false);
+  const [errorHighlight, setErrorHighlight] = useState(null);
 
   // Effect hook to fetch articles and highlighted article whenever the currentPage changes
   useEffect(() => {
@@ -29,6 +29,7 @@ function Blog() {
   // Function to fetch the list of articles for a given page
   const getBlogArticles = async (page = 1) => {
     setLoading(true); // Set loading state to true
+    setError(null);
     try {
       // Fetch data from the server using a GET request
       const response = await axios.get(
@@ -43,7 +44,7 @@ function Blog() {
     } finally {
       setTimeout(() => {
         setLoading(false); // Set loading state to false after a delay
-      }, 10000);
+      }, 500);
     }
   };
 
@@ -57,6 +58,7 @@ function Blog() {
   // Function to fetch the highlighted article
   const getHighlightedArticle = async () => {
     setLoadingHighlight(true);
+    setErrorHighlight(null);
     try {
       const response = await axios.get(
         "http://localhost:4000/blog/highlighted"

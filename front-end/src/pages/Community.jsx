@@ -12,7 +12,7 @@ const Community = () => {
   // State to hold the list of threads, loading and error states
   const [threadList, setThreadList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   // State to hold the ID of the currently active thread (for displaying comments)
   const [activeThreadId, setActiveThreadId] = useState(null);
 
@@ -20,8 +20,9 @@ const Community = () => {
   const [refresh, setRefresh] = useState(null);
 
   //function to fetch thread list
-  const getThreads = async () => {
+  const fetchThreads = async () => {
     setLoading(true);
+    setError(null);
     try {
       // Prende i dati al server usando una richiesta GET
       const response = await axios.get("http://localhost:4000/community");
@@ -38,7 +39,7 @@ const Community = () => {
 
   // useEffect to initialize the thread list and the thread replies from the database on component mount
   useEffect(() => {
-    getThreads();
+    fetchThreads();
   }, []);
 
   // Function to create a new thread
@@ -60,7 +61,7 @@ const Community = () => {
       if (response.status === 201) {
         console.log("Thread created successfully!");
       }
-      getThreads();
+      fetchThreads();
     } catch (error) {
       console.error("Error creating thread:", error);
       alert(error.data.msg);
