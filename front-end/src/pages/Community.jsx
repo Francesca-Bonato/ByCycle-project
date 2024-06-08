@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ThreadForm from "../components/ThreadForm";
 import ThreadReplies from "../components/ThreadReplies";
 import ReplyForm from "../components/ReplyForm";
@@ -18,6 +18,9 @@ const Community = () => {
 
   //state to refresh replies list
   const [refresh, setRefresh] = useState(null);
+  const [textNotLog, setTextNotLog] = useState(true);
+  const [buttonClicked, setButtonClicked] = useState(null);
+  const buttonValue = useRef([]);
 
   //function to fetch thread list
   const fetchThreads = async () => {
@@ -129,7 +132,7 @@ const Community = () => {
           <p>Error fetching threads: {error.message}</p>
         ) : (
           threadList.length > 0 &&
-          [...threadList].reverse().map((thread) => (
+          [...threadList].reverse().map((thread, index) => (
             <div
               key={thread.id}
               className="w-full border border-gray-300 p-4 mb-4 rounded-xl"
@@ -143,14 +146,29 @@ const Community = () => {
 
               {/* Button to visualize or hide comments */}
               <button
-                onClick={() => toggleComments(thread.id)}
+                id={`button-${index}`}
+                ref={(el) => (buttonValue.current[index] = el)}
+                onClick={(event) => {
+                  setButtonClicked(event.target.id);
+                  if (!isLoggedIn) {
+                    null;
+                    setTextNotLog(false);
+                  } else {
+                    toggleComments(thread.id);
+                  }
+                }}
                 className="min-w-[119px] h-[48px] font-semibold rounded-[24px] bg-gray-200 hover:bg-gray-300 text-gray-800 px-8 mt-4"
-                disabled={!isLoggedIn}
+                //disabled={!isLoggedIn}
               >
                 {activeThreadId === thread.id
                   ? "Hide Comments"
                   : "Visualize Comments"}
               </button>
+              {buttonClicked === `button-${index}` && (
+                <span className="ml-4 text-[red] font-bold">
+                  {textNotLog ? "" : "Login to view comments!"}
+                </span>
+              )}
 
               {/* Section to visualize comments if the thread is active */}
               {activeThreadId === thread.id && (
