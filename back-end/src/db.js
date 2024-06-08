@@ -401,6 +401,6 @@ const setupDb = () => {
   );
 };
 
-setupDb();
+//setupDb();
 
 export { db };
