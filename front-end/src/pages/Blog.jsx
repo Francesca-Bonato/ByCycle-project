@@ -6,6 +6,7 @@ import axios from "axios";
 import MyPlaceholder from "../components/MyPlaceholder";
 
 function Blog() {
+  const numPlaceholder = 6;
   // State to hold the list of threads, loading and error states
   const [articleList, setArticleList] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -130,16 +131,13 @@ function Blog() {
             All blog articles
           </div>
           {loading ? (
-            <MyPlaceholder viewbox="0 0 960 1088">
-            {/* Prima riga */}
-            <rect x="0" y="0" rx="5" ry="5" width="300" height="524" />
-            <rect x="330" y="0" rx="5" ry="5" width="300" height="524" />
-            <rect x="660" y="0" rx="5" ry="5" width="300" height="524" />
-            {/* Seconda riga */}
-            <rect x="0" y="564" rx="5" ry="5" width="300" height="524" />
-            <rect x="330" y="564" rx="5" ry="5" width="300" height="524" />
-            <rect x="660" y="564" rx="5" ry="5" width="300" height="524" />
-            </MyPlaceholder>
+            <div className="w-full">
+              <div className="flex flex-wrap max-w-[1444px] justify-center pt-16 pb-7 gap-[50px]">
+                {Array.from({ length: numPlaceholder }).map((_, index) => (
+                  <MyPlaceholder key={index} />
+                ))}
+              </div>
+            </div>
           ) : error ? (
             <p>Error fetching articles: {error.message}</p>
           ) : (

@@ -3,6 +3,7 @@ import ThreadForm from "../components/ThreadForm";
 import ThreadReplies from "../components/ThreadReplies";
 import ReplyForm from "../components/ReplyForm";
 import axios from "axios";
+import MyPlaceholder from "../components/MyPlaceholder";
 
 const Community = () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -127,7 +128,7 @@ const Community = () => {
       <div className="w-full flex flex-col items-center justify-center max-w-[1260px] py-8">
         {/* List of active threads */}
         {loading ? (
-          <p>Loading threads...</p>
+          <MyPlaceholder />
         ) : error ? (
           <p>Error fetching threads: {error.message}</p>
         ) : (
