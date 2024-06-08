@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+/* eslint-disable react/prop-types */
 
 const shapes = {
   circle: "rounded-[50%]",
@@ -38,17 +37,6 @@ const Footer_SocialBTN = ({
       {!!rightIcon && rightIcon}
     </button>
   );
-};
-
-Footer_SocialBTN.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-  leftIcon: PropTypes.node,
-  rightIcon: PropTypes.node,
-  shape: PropTypes.oneOf(["circle"]),
-  size: PropTypes.oneOf(["xs"]),
-  variant: PropTypes.oneOf(["fill"]),
-  color: PropTypes.oneOf(["black_900_01"]),
 };
 
 export { Footer_SocialBTN };

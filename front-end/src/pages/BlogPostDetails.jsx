@@ -25,6 +25,7 @@ function BlogPostDetails() {
     try {
       const response = await axios.get(`http://localhost:4000/blog/${id}`); // Fetch article from a specific endpoint with a dynamic id parameter
       setArticle(response.data[0]);
+      console.log(response.data[0])
     } catch (error) {
       console.error(error.message);
       setError(error);
