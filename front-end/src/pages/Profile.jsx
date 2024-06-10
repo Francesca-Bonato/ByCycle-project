@@ -1,36 +1,35 @@
+import React, { useState, useEffect, useContext, useMemo } from "react";
 import Button from "../components/Button";
-import { useEffect, useState } from "react";
-//import axios from "axios";
 import ModalWindow from "../components/ModalWindow";
-import { useContext } from "react";
 import { Context } from "../components/LocalData";
 
 const Profile = () => {
   const { user, initialProfile } = useContext(Context);
-  /*  //FARE CUSTOM HOOK DI "user" E "initialProfile" ecc...
-  const user = JSON.parse(localStorage.getItem("user"));
-  const formattedBirthDate = user.birth_date.split("/").reverse();
-  const reorderedDateString = formattedBirthDate.join("-");
-  const formattedJoinDate = user.join_date.split("/").reverse();
-  const reorderedJoinString = formattedJoinDate.join("-");
-  const initialProfile = {
-    userName: user && user.username !== null ? user.username : "",
-    firstName: user && user.firstName !== null ? user.firstName : "",
-    lastName: user && user.lastName !== null ? user.lastName : "",
-    email: user && user.email !== null ? user.email : "myUsermail",
-    birthDate: user && user.birth_date !== null ? reorderedDateString : "",
-    joinDate:
-      user && user.join_date !== null ? reorderedJoinString : "Not found",
-    description:
-      user && user.description !== null
-        ? user.description
-        : "Write a short description about yourself.",
-    profilePicture: defaultProPic,
-  }; */
-  const [profile, setProfile] = useState(initialProfile);
+  const [profile, setProfile] = useState(initialProfile || {});
   const [isEditing, setIsEditing] = useState(false);
-  const [newDescription, setNewDescription] = useState(profile.description);
+  const [newDescription, setNewDescription] = useState(
+    profile.description || ""
+  );
   const [openModal, setOpenModal] = useState(false);
+
+  // Crea updatedUser usando useMemo per migliorare le prestazioni
+  const updatedUser = useMemo(
+    () => ({
+      ...user,
+      profilePic: profile.profilePicture,
+      description: profile.description,
+      username: profile.userName,
+      firstName: profile.firstName,
+      lastName: profile.lastName,
+      birthDate: profile.birthDate,
+    }),
+    [profile, user]
+  );
+
+  // Aggiorna localStorage quando profile cambia
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+  }, [updatedUser]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,63 +51,28 @@ const Profile = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        const newProfilePicture = reader.result;
         setProfile((prevProfile) => ({
           ...prevProfile,
-          profilePicture: newProfilePicture,
+          profilePicture: reader.result,
         }));
+        // Aggiorna localStorage
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            ...user,
+            profilePic: reader.result,
+          })
+        );
       };
       reader.readAsDataURL(file);
       window.location.reload();
     }
   };
 
-  // Aggiorna localStorage quando profile.profilePicture cambia
-  useEffect(() => {
-    if (profile.profilePicture) {
-      const updatedUser = { ...user, profilePic: profile.profilePicture };
-      localStorage.setItem("user", JSON.stringify(updatedUser));
-    }
-  }, [profile.profilePicture]);
-
-  useEffect(() => {
-    if (profile.description) {
-      const updatedUser = { ...user, description: profile.description };
-      localStorage.setItem("user", JSON.stringify(updatedUser));
-    }
-  }, [profile.description]);
-
-  useEffect(() => {
-    if (profile.userName) {
-      const updatedUser = { ...user, username: profile.userName };
-      localStorage.setItem("user", JSON.stringify(updatedUser));
-    }
-  }, [profile.userName]);
-
-  useEffect(() => {
-    if (profile.firstName) {
-      const updatedUser = { ...user, firstName: profile.firstName };
-      localStorage.setItem("user", JSON.stringify(updatedUser));
-    }
-  }, [profile.firstName]);
-
-  useEffect(() => {
-    if (profile.lastName) {
-      const updatedUser = { ...user, lastName: profile.lastName };
-      localStorage.setItem("user", JSON.stringify(updatedUser));
-    }
-  }, [profile.lastName]);
-
-  useEffect(() => {
-    if (profile.birthDate) {
-      const updatedUser = { ...user, birthDate: profile.birthDate };
-      localStorage.setItem("user", JSON.stringify(updatedUser));
-    }
-  }, [profile.birthDate]);
-
   function toggleModal() {
     setOpenModal(!openModal);
   }
+
   return (
     <>
       {openModal ? <ModalWindow onCancel={toggleModal} /> : null}
@@ -120,7 +84,7 @@ const Profile = () => {
           <label htmlFor="profile-picture" className="cursor-pointer">
             <img
               className="w-32 h-32 rounded-full object-cover border border-gray-300"
-              src={profile.profilePicture}
+              src={profile.profilePicture || defaultImage}
               alt="Profile Picture"
             />
             <input
@@ -138,9 +102,9 @@ const Profile = () => {
             <input
               type="text"
               name="userName"
-              value={profile.userName}
+              value={profile.userName || ""}
               onChange={handleChange}
-              disabled={!isEditing ? true : false}
+              disabled={!isEditing}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
             />
           </div>
@@ -149,9 +113,9 @@ const Profile = () => {
             <input
               type="text"
               name="firstName"
-              value={profile.firstName}
+              value={profile.firstName || ""}
+              disabled={!isEditing}
               onChange={handleChange}
-              disabled={!isEditing ? true : false}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
             />
           </div>
@@ -160,9 +124,9 @@ const Profile = () => {
             <input
               type="text"
               name="lastName"
-              value={profile.lastName}
+              value={profile.lastName || ""}
+              disabled={!isEditing}
               onChange={handleChange}
-              disabled={!isEditing ? true : false}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
             />
           </div>
@@ -171,9 +135,9 @@ const Profile = () => {
             <input
               type="email"
               name="email"
-              value={profile.email}
+              value={profile.email || ""}
+              disabled={!isEditing}
               onChange={handleChange}
-              disabled={!isEditing ? true : false}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
             />
           </div>
@@ -182,8 +146,8 @@ const Profile = () => {
             <input
               type="date"
               name="birthDate"
-              value={profile.birthDate}
-              disabled={!isEditing ? true : false}
+              value={profile.birthDate || ""}
+              disabled={!isEditing}
               onChange={handleChange}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
             />
@@ -193,7 +157,7 @@ const Profile = () => {
             <input
               type="date"
               name="joinDate"
-              value={profile.joinDate}
+              value={profile.joinDate || ""}
               readOnly
               className="w-full mt-1 p-2 border border-gray-300 rounded-md bg-gray-100"
             />
@@ -209,18 +173,11 @@ const Profile = () => {
                 onChange={(e) => setNewDescription(e.target.value)}
                 className="w-full mt-1 p-2 border border-gray-300 rounded-md"
               />
-              {/* <div className="flex justify-center">
-              <Button
-                innerText="Save"
-                className=" mt-6"
-                onClick={handleDescriptionChange}
-              />
-            </div> */}
             </div>
           ) : (
             <div>
               <p className="mt-1 p-2 border border-gray-300 rounded-md bg-gray-100">
-                {profile.description}
+                {profile.description || ""}
               </p>
             </div>
           )}
@@ -231,10 +188,8 @@ const Profile = () => {
             className="mt-6"
             onClick={() => {
               if (isEditing) {
-                window.location.reload();
                 handleDescriptionChange();
               }
-
               setIsEditing((editing) => !editing);
             }}
           />
