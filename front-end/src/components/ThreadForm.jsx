@@ -30,6 +30,8 @@ const ThreadForm = ({ onCreateThread }) => {
         type="text"
         placeholder="Title"
         value={threadTitle}
+        required
+        autoFocus
         onChange={(e) => setThreadTitle(e.target.value)}
         className="w-full border border-gray-300 rounded-xl p-2 mb-2"
         disabled={!isLoggedIn}
@@ -40,6 +42,7 @@ const ThreadForm = ({ onCreateThread }) => {
         name="threadDescription"
         placeholder="Description"
         value={threadDescription}
+        required
         onChange={(e) => setThreadDescription(e.target.value)}
         className="w-full border border-gray-300 rounded-xl p-2 mb-2"
         disabled={!isLoggedIn}
