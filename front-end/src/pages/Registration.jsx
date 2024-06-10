@@ -160,6 +160,7 @@ function Registration() {
                 value={data.username}
                 onChange={handleChange}
                 required
+                autoFocus
                 autoComplete="username"
               />
             </div>

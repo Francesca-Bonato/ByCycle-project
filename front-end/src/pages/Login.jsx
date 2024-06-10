@@ -139,6 +139,7 @@ const Login = () => {
                 value={data.usermail}
                 onChange={handleChange}
                 required
+                autoFocus
                 autoComplete="email"
               />
             </div>
