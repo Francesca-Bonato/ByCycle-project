@@ -28,7 +28,7 @@ const ThreadReplies = ({ threadId, refresh }) => {
       setErrorReplies(error);
     } finally {
       setTimeout(() => {
-        setLoadingReplies(false)
+        setLoadingReplies(false);
       }, 500);
     }
   };
@@ -46,7 +46,8 @@ const ThreadReplies = ({ threadId, refresh }) => {
           <div key={reply.id} className="w-full rounded-xl border p-3 mt-3">
             <p>{reply.text}</p>
             <p className="text-sm text-gray-500 mt-3">
-              Commented by: {reply.author_username}
+              Commented by:{" "}
+              <span className="font-bold">{reply.author_username}</span>
             </p>
           </div>
         ))

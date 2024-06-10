@@ -199,9 +199,32 @@ function Events() {
             )}
 
             {/* Section for listing multiple events */}
-            <div className="text-center text-neutral-800 text-[44px] font-medium leading-[55px] pt-16">
-              All events
-            </div>
+            {selectedCategory === "All" && (
+              <div className="text-center text-neutral-800 text-[44px] font-medium leading-[55px] pt-16">
+                All Events
+              </div>
+            )}
+            {selectedCategory === "Upcoming" && (
+              <div className="text-center text-neutral-800 text-[44px] font-medium leading-[55px] pt-16">
+                Upcoming Events
+              </div>
+            )}
+            {selectedCategory === "Current Month" && (
+              <div className="text-center text-neutral-800 text-[44px] font-medium leading-[55px] pt-16">
+                Current Month Events
+              </div>
+            )}
+            {selectedCategory === "Beginner Level" && (
+              <div className="text-center text-neutral-800 text-[44px] font-medium leading-[55px] pt-16">
+                Beginner Level Events
+              </div>
+            )}
+            {selectedCategory === "Trip" && (
+              <div className="text-center text-neutral-800 text-[44px] font-medium leading-[55px] pt-16">
+                Trip Events
+              </div>
+            )}
+
             <div className="flex gap-[30px] flex-wrap lg:flex-nowrap items-baseline justify-center pt-8 pb-16">
               {filteredEvents.map((item, index) => (
                 <NewsCard

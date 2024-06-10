@@ -142,7 +142,8 @@ const Community = () => {
               <h3 className="text-xl font-semibold mb-2">{thread.title}</h3>
               <p className="text-gray-600 mb-2">{thread.description}</p>
               <p className="text-sm text-gray-500 mb-4">
-                Created by: {thread.author_username}
+                Created by:{" "}
+                <span className="font-bold">{thread.author_username}</span>
               </p>
 
               {/* Button to visualize or hide comments */}
