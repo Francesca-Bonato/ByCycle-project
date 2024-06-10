@@ -1,50 +1,47 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logoBlack from "../assets/images/ByCycle_logo_definitivo.png";
-// import logoWhite from "../assets/images/ByCycle_logo_definitivo_white.png";
 import imageProfileCustom from "../assets/images/profile-user-icon-2048x2048-m41rxkoe.png";
-import defaultProPic from "../assets/images/default-profile-pic.png";
+import { Context } from "./LocalData";
 
-const navigation = [
-  { name: "Home", href: "/", current: false },
-  { name: "Community", href: "/community", current: false },
-  { name: "Blog", href: "/blog", current: false },
-  { name: "News & Events ", href: "/events", current: false },
-  { name: "Quiz", href: "/quiz", current: false },
-  { name: "Trails ", href: "/trails", current: false },
-];
-
-const unLogged = [
-  { name: "Sign Up", href: "/register" },
-  { name: "Log In", href: "/login" },
-];
-
-const logged = [
-  { name: "Your Profile", href: "/profile" },
-  /*  { name: "Settings", href: "/profile-settings" }, */
-  { name: "Log Out", href: "/" },
-];
-
-// Utility function to manage component classes
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-//Function to return to top page
-function handleTopPage() {
-  window.scrollTo({ top: 0 });
-}
-
-// Main component
 export function NavBar({ username, name }) {
+  const { user, initialProfile } = useContext(Context);
+  // Main component
+  const navigation = [
+    { name: "Home", href: "/", current: false },
+    { name: "Community", href: "/community", current: false },
+    { name: "Blog", href: "/blog", current: false },
+    { name: "News & Events ", href: "/events", current: false },
+    { name: "Quiz", href: "/quiz", current: false },
+    { name: "Trails ", href: "/trails", current: false },
+  ];
+
+  const unLogged = [
+    { name: "Sign Up", href: "/register" },
+    { name: "Log In", href: "/login" },
+  ];
+
+  const logged = [
+    { name: "Your Profile", href: "/profile" },
+    /*  { name: "Settings", href: "/profile-settings" }, */
+    { name: "Log Out", href: "/" },
+  ];
+
+  // Utility function to manage component classes
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
+
+  //Function to return to top page
+  function handleTopPage() {
+    window.scrollTo({ top: 0 });
+  }
   const navigate = useNavigate();
 
   // Function to check authentication
   const checkAuthentication = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
-
     if (user) {
       return true;
     }
@@ -53,7 +50,6 @@ export function NavBar({ username, name }) {
   };
 
   const [isAuthenticated, setIsAuthenticated] = useState(checkAuthentication());
-
   const items = isAuthenticated ? logged : unLogged;
 
   function clearPage() {
@@ -125,10 +121,10 @@ export function NavBar({ username, name }) {
                             <span className="absolute -inset-1.5" />
                             <span className="sr-only">Open user menu</span>
                             <img
-                              className="h-8 w-8 rounded-full"
+                              className="h-8 w-8 object-cover rounded-full"
                               src={
                                 isAuthenticated
-                                  ? defaultProPic
+                                  ? initialProfile.profilePicture
                                   : imageProfileCustom
                               }
                               alt=""
@@ -228,7 +224,7 @@ export function NavBar({ username, name }) {
                             className="h-10 w-10 rounded-full"
                             src={
                               isAuthenticated
-                                ? defaultProPic
+                                ? initialProfile.profilePicture
                                 : imageProfileCustom
                             }
                             alt=""

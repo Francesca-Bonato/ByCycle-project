@@ -113,7 +113,7 @@ const login = async (req, res) => {
                 msg: "An error has occured during token signature",
               });
             }
-
+            const profilePic = dbUser.profile_pic ? `http://localhost:4000/assets/${dbUser.profile_pic}` : `http://localhost:4000/assets/default-profile-pic.png`
             // Prepare the user data to be sent in the response
             const formattedBirthDate = dbUser.birth_date.toLocaleDateString();
             const formattedJoinDate = dbUser.join_date.toLocaleDateString();
@@ -126,8 +126,7 @@ const login = async (req, res) => {
               firstName: dbUser.firstname,
               lastName: dbUser.lastname,
               username: dbUser.username,
-              profilePic:
-                "http://localhost:4000/users/assets/images/registration-image.jpg",
+              profilePic: profilePic
             };
 
             // Respond with the user data and the token

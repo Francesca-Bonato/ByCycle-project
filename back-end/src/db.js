@@ -51,7 +51,7 @@ const setupDb = () => {
         birth_date DATE,
         join_date DATE default current_date,
         description TEXT,
-        profile_pic VARCHAR(255) DEFAULT "../assets/images/registration-image.jpg",
+        profile_pic VARCHAR(255) DEFAULT NULL,
         created_at timestamp default current_timestamp NOT NULL,
         FOREIGN KEY (role_id) REFERENCES roles(id)
         );

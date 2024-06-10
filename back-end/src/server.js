@@ -29,6 +29,7 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
+app.use(express.static('public'))
 const port = process.env.LOCAL_PORT || 4000;
 
 //gestione utenti

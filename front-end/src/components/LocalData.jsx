@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import defaultProPic from "../assets/images/default-profile-pic.png";
-import Profile from "../pages/Profile";
 
 export const Context = React.createContext();
 
@@ -26,7 +24,7 @@ export default function LocalData({ children }) {
       user && user.description !== null
         ? user.description
         : "Write a short description about yourself.",
-    profilePicture: defaultProPic,
+    profilePicture: user && user.profilePic !== null ? user.profilePic : null,
   };
   return (
     <Context.Provider value={{ user, initialProfile }}>

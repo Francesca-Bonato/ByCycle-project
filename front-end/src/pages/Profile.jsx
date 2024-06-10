@@ -1,5 +1,5 @@
 import Button from "../components/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 //import axios from "axios";
 import ModalWindow from "../components/ModalWindow";
 import { useContext } from "react";
@@ -52,14 +52,59 @@ const Profile = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
+        const newProfilePicture = reader.result;
         setProfile((prevProfile) => ({
           ...prevProfile,
-          profilePicture: reader.result,
+          profilePicture: newProfilePicture,
         }));
       };
       reader.readAsDataURL(file);
+      window.location.reload();
     }
   };
+
+  // Aggiorna localStorage quando profile.profilePicture cambia
+  useEffect(() => {
+    if (profile.profilePicture) {
+      const updatedUser = { ...user, profilePic: profile.profilePicture };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    }
+  }, [profile.profilePicture]);
+
+  useEffect(() => {
+    if (profile.description) {
+      const updatedUser = { ...user, description: profile.description };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    }
+  }, [profile.description]);
+
+  useEffect(() => {
+    if (profile.userName) {
+      const updatedUser = { ...user, username: profile.userName };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    }
+  }, [profile.userName]);
+
+  useEffect(() => {
+    if (profile.firstName) {
+      const updatedUser = { ...user, firstName: profile.firstName };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    }
+  }, [profile.firstName]);
+
+  useEffect(() => {
+    if (profile.lastName) {
+      const updatedUser = { ...user, lastName: profile.lastName };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    }
+  }, [profile.lastName]);
+
+  useEffect(() => {
+    if (profile.birthDate) {
+      const updatedUser = { ...user, birthDate: profile.birthDate };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    }
+  }, [profile.birthDate]);
 
   function toggleModal() {
     setOpenModal(!openModal);
@@ -95,7 +140,7 @@ const Profile = () => {
               name="userName"
               value={profile.userName}
               onChange={handleChange}
-              disabled={isEditing ? true : false}
+              disabled={!isEditing ? true : false}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
             />
           </div>
@@ -106,6 +151,7 @@ const Profile = () => {
               name="firstName"
               value={profile.firstName}
               onChange={handleChange}
+              disabled={!isEditing ? true : false}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
             />
           </div>
@@ -116,6 +162,7 @@ const Profile = () => {
               name="lastName"
               value={profile.lastName}
               onChange={handleChange}
+              disabled={!isEditing ? true : false}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
             />
           </div>
@@ -126,6 +173,7 @@ const Profile = () => {
               name="email"
               value={profile.email}
               onChange={handleChange}
+              disabled={!isEditing ? true : false}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
             />
           </div>
@@ -135,6 +183,7 @@ const Profile = () => {
               type="date"
               name="birthDate"
               value={profile.birthDate}
+              disabled={!isEditing ? true : false}
               onChange={handleChange}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
             />
@@ -182,8 +231,10 @@ const Profile = () => {
             className="mt-6"
             onClick={() => {
               if (isEditing) {
+                window.location.reload();
                 handleDescriptionChange();
               }
+
               setIsEditing((editing) => !editing);
             }}
           />

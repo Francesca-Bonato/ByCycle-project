@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function NewsCard({ title, img, id }) {
   return (
     <div className="flex w-full flex-col gap-6 items-center justify-center">
-      <div className="w-full rounded-[12px] overflow-hidden">
+      <div className="w-full rounded-[20px] overflow-hidden">
         <Link to={`/events/${id}`} className="w-full">
           <img
             src={img}
