@@ -3,7 +3,6 @@ import ThreadForm from "../components/ThreadForm";
 import ThreadReplies from "../components/ThreadReplies";
 import ReplyForm from "../components/ReplyForm";
 import axios from "axios";
-import MyPlaceholder from "../components/MyPlaceholder";
 
 const Community = () => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -19,6 +18,7 @@ const Community = () => {
 
   //state to refresh replies list
   const [refresh, setRefresh] = useState(null);
+  //state & ref to unlogged function comments
   const [textNotLog, setTextNotLog] = useState(true);
   const [buttonClicked, setButtonClicked] = useState(null);
   const buttonValue = useRef([]);
@@ -128,7 +128,7 @@ const Community = () => {
       <div className="w-full flex flex-col items-center justify-center max-w-[1260px] py-8">
         {/* List of active threads */}
         {loading ? (
-          <MyPlaceholder />
+          <p>Loading Threads...</p>
         ) : error ? (
           <p>Error fetching threads: {error.message}</p>
         ) : (
@@ -159,14 +159,13 @@ const Community = () => {
                   }
                 }}
                 className="min-w-[119px] h-[48px] font-semibold rounded-[24px] bg-gray-200 hover:bg-gray-300 text-gray-800 px-8 mt-4"
-                //disabled={!isLoggedIn}
               >
                 {activeThreadId === thread.id
                   ? "Hide Comments"
                   : "Visualize Comments"}
               </button>
               {buttonClicked === `button-${index}` && (
-                <span className="ml-4 text-[red] font-bold">
+                <span className="ml-4 text-[red]">
                   {textNotLog ? "" : "Login to view comments!"}
                 </span>
               )}

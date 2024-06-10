@@ -3,10 +3,11 @@ import animation_logo from "../assets/images/ByCycle logo ridotto.png";
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import axios from "axios";
-import MyPlaceholder from "../components/MyPlaceholder";
+import PlaceholderAllBlog from "../components/PlaceholderAllBlog";
+import PlaceHolderHighlighter from "../components/PlaceHolderHighlighter";
 
 function Blog() {
-  const numPlaceholder = 6;
+  const numPlaceholderAll = 6;
   // State to hold the list of threads, loading and error states
   const [articleList, setArticleList] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -42,9 +43,7 @@ function Blog() {
       console.error(error.message); // Log the error message
       setError(error); // Set the error state
     } finally {
-      setTimeout(() => {
-        setLoading(false); // Set loading state to false after a delay
-      }, 500);
+      setLoading(false); // Set loading state to false after a delay
     }
   };
 
@@ -81,7 +80,7 @@ function Blog() {
           Blog
         </h1>
         {loadingHighlight ? (
-          <p>Loading main article...</p>
+          <PlaceHolderHighlighter />
         ) : errorHighlight ? (
           <p>Error fetching main article: {error.message}</p>
         ) : (
@@ -133,8 +132,8 @@ function Blog() {
           {loading ? (
             <div className="w-full">
               <div className="flex flex-wrap max-w-[1444px] justify-center pt-16 pb-7 gap-[50px]">
-                {Array.from({ length: numPlaceholder }).map((_, index) => (
-                  <MyPlaceholder key={index} />
+                {Array.from({ length: numPlaceholderAll }).map((_, index) => (
+                  <PlaceholderAllBlog key={index} />
                 ))}
               </div>
             </div>

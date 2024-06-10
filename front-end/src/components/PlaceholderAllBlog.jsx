@@ -1,6 +1,6 @@
 import React from "react";
 
-function MyPlaceholder() {
+function PlaceholderAllBlog() {
   return (
     <div className="flex items-center justify-center">
       <div className="w-[300px]">
@@ -20,4 +20,4 @@ function MyPlaceholder() {
   );
 }
 
-export default MyPlaceholder;
+export default PlaceholderAllBlog;
