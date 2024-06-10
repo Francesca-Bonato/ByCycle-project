@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import defaultProPic from "../assets/images/default-profile-pic.jpg";
+import defaultProPic from "../assets/images/default-profile-pic.png";
 import Profile from "../pages/Profile";
 
 export const Context = React.createContext();
