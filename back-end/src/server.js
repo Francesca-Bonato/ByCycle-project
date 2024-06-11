@@ -21,8 +21,9 @@ import {
   getArticleById,
   getEvents,
   getEventByHighlight,
-  getEventById
+  getEventById,
 } from "./controllers/contents.js";
+import { sendNewsletter } from "./controllers/newsletter.js"
 dotenv.config();
 
 const app = express();
@@ -56,6 +57,9 @@ app.get("/blog/:id", getArticleById);
 app.get("/events", getEvents);
 app.get("/events/highlighted", getEventByHighlight);
 app.get("/events/:id", getEventById);
+
+//invio newsletter
+app.post("/newsletters", sendNewsletter)
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);

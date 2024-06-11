@@ -6,22 +6,56 @@ export function Footer_CTA({ ...props }) {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
+  const [error, setError] = useState("");
 
-  useEffect(() => {
+/*   useEffect(() => {
     const storedEmail = localStorage.getItem(email);
     setIsSubscribed(!!storedEmail);
   }, [email]);
 
   function handleNewsletterSubmit(e) {
     e.preventDefault();
+    setError("");
     const storedEmail = localStorage.getItem(email);
+    try {
+      if (storedEmail) {
+        setIsSubscribed(true);
+      } else {
+        localStorage.setItem(email, "subscribed");
+        setSubscribed(true);
+        setIsSubscribed(false);
+      }
+    } catch (error) {
+      setError("An error occurred. Please try again later.");
+    }
+  } */
 
-    if (storedEmail) {
-      setIsSubscribed(true);
-    } else {
-      localStorage.setItem(email, "subscribed");
-      setSubscribed(true);
-      setIsSubscribed(false);
+  async function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    setError("");
+
+    try {
+      const response = await fetch("/newsletters", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setSubscribed(true);
+        setIsSubscribed(false);
+      } else {
+        const data = await response.json();
+        if (data.message === "Email already subscribed") {
+          setIsSubscribed(true);
+        } else {
+          setError("An error occurred. Please try again later.");
+        }
+      }
+    } catch (error) {
+      setError("An error occurred. Please try again later.");
     }
   }
 
@@ -73,6 +107,13 @@ export function Footer_CTA({ ...props }) {
                 <p className="text-orange-600 absolute p-1 drop-shadow-[0_1px_10px_rgba(255,255,255,1)]">
                   This email is already subscribed. Please insert a different
                   email !
+                </p>
+              </div>
+            )}
+            {error && (
+              <div className="flex justify-center translate-y-5">
+                <p className="text-red-600 absolute p-1 drop-shadow-[0_1px_10px_rgba(255,255,255,1)]">
+                  {error}
                 </p>
               </div>
             )}

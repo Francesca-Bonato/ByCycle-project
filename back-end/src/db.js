@@ -35,6 +35,7 @@ const setupDb = () => {
       DROP TABLE IF EXISTS quiz;
       DROP TABLE IF EXISTS users;
       DROP TABLE IF EXISTS roles;
+      DROP TABLE IF EXISTS newsletters;
       SET FOREIGN_KEY_CHECKS=1;
       CREATE TABLE roles (
       id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -54,7 +55,13 @@ const setupDb = () => {
         profile_pic VARCHAR(255) DEFAULT NULL,
         created_at timestamp default current_timestamp NOT NULL,
         FOREIGN KEY (role_id) REFERENCES roles(id)
-        );
+      );
+      CREATE TABLE newsletters (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        email VARCHAR(255) NOT NULL UNIQUE,
+        username VARCHAR(255) NOT NULL UNIQUE,
+        subscription_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
       CREATE TABLE quiz (
           id INT PRIMARY KEY AUTO_INCREMENT,
           img VARCHAR(255) NOT NULL,

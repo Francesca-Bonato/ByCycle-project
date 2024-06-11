@@ -235,7 +235,7 @@ export function NavBar({ username, name }) {
                         <div className="text-base font-medium leading-none ">
                           {username}
                         </div>
-                        <div className="text-sm font-medium leading-none ">
+                        <div className="text-sm font-medium leading-none text-[#303030]">
                           {name}
                         </div>
                       </div>
