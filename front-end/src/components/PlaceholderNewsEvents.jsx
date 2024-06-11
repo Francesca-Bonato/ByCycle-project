@@ -24,6 +24,7 @@ function PlaceholderNewsEvents() {
               <div className="h-4 bg-gray-300 w-[200px] lg:w-[500px] mb-2"></div>
               <div className="h-4 bg-gray-300 w-[300px] lg:w-[400px] mb-2"></div>
             </div>
+            
           </div>
         </div>
       </div>

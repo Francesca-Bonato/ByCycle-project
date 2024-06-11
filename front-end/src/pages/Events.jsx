@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import NewsCard from "../components/NewsCard.jsx";
 import axios from "axios";
+import PlaceholderNewsEvents from "../components/PlaceholderNewsEvents.jsx";
 
 function Events() {
   // State to hold the list of threads, loading and error states
@@ -97,7 +98,7 @@ function Events() {
   return (
     <>
       {loading ? (
-        <p>Loading list of events...</p>
+        <PlaceholderNewsEvents />
       ) : error ? (
         <p>Error fetching list of events: {error.message}</p>
       ) : (
