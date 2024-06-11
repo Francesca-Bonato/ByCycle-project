@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import { useState, useEffect, useContext, useMemo } from "react";
 import Button from "../components/Button";
 import ModalWindow from "../components/ModalWindow";
 import { Context } from "../components/LocalData";
@@ -62,8 +62,9 @@ const Profile = () => {
       reader.onloadend = () => {
         setProfile((prevProfile) => ({
           ...prevProfile,
-          profilePicture: reader.result,
+          profilePic: reader.result,
         }));
+        upToDatabaseProfilePic();
         localStorage.setItem(
           "user",
           JSON.stringify({
@@ -91,7 +92,7 @@ const Profile = () => {
         lastname: profile.lastName,
         birth_date: profile.birthDate,
         email: profile.email,
-      };
+             };
       const response = await axios.put(
         `http://localhost:4000/profile/update/${userId}`,
         updatedUser
@@ -102,6 +103,25 @@ const Profile = () => {
       alert(error.response.data.msg);
     }
   }
+
+
+  async function upToDatabaseProfilePic() {
+    try {
+      const userId = user.id;
+      const updatedUser = {
+        profile_pic: profile.profilePic
+      };
+      const response = await axios.put(
+        `http://localhost:4000/profile/update/${userId}/profilepic`,
+        updatedUser
+      );
+      alert(response.data.msg);
+    } catch (error) {
+      console.error(error.response.data.msg);
+      alert(error.response.data.msg);
+    }
+  }
+
   return (
     <>
       {openModal ? <ModalWindow onCancel={toggleModal} /> : null}
@@ -113,7 +133,7 @@ const Profile = () => {
           <label htmlFor="profile-picture" className="cursor-pointer">
             <img
               className="w-32 h-32 rounded-full object-cover border border-gray-300"
-              src={profile.profilePicture || defaultImage}
+              src={profile.profilePicture}
               alt="Profile Picture"
             />
             <input
