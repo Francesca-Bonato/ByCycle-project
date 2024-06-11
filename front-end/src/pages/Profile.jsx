@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, useMemo } from "react";
 import Button from "../components/Button";
 import ModalWindow from "../components/ModalWindow";
 import { Context } from "../components/LocalData";
+import axios from "axios";
 
 const Profile = () => {
   const { user, initialProfile } = useContext(Context);
@@ -12,7 +13,7 @@ const Profile = () => {
   );
   const [openModal, setOpenModal] = useState(false);
 
-  // Crea updatedUser usando useMemo per migliorare le prestazioni
+  // Create updatedUser using useMemo to improve performance
   const updatedUser = useMemo(
     () => ({
       ...user,
@@ -21,12 +22,13 @@ const Profile = () => {
       username: profile.userName,
       firstName: profile.firstName,
       lastName: profile.lastName,
-      birthDate: profile.birthDate,
+      birth_date: profile.birthDate,
+      email: profile.email
     }),
     [profile, user]
   );
 
-  // Aggiorna localStorage quando profile cambia
+  // Update localStorage when profile changes
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(updatedUser));
   }, [updatedUser]);
@@ -55,7 +57,6 @@ const Profile = () => {
           ...prevProfile,
           profilePicture: reader.result,
         }));
-        // Aggiorna localStorage
         localStorage.setItem(
           "user",
           JSON.stringify({
@@ -73,6 +74,27 @@ const Profile = () => {
     setOpenModal(!openModal);
   }
 
+  async function upToDatabaseProfile() {
+    try {
+      const userId = user.id;
+      const updatedUser = {
+        description: profile.description,
+        username: profile.userName,
+        firstname: profile.firstName,
+        lastname: profile.lastName,
+        birth_date: profile.birthDate,
+        email: profile.email,
+      };
+      const response = await axios.put(
+        `http://localhost:4000/profile/update/${userId}`,
+        updatedUser
+      );
+      alert(response.data.msg);
+    } catch (error) {
+      console.error(error.response.data.msg);
+      alert(error.response.data.msg);
+    }
+  }
   return (
     <>
       {openModal ? <ModalWindow onCancel={toggleModal} /> : null}
@@ -137,7 +159,7 @@ const Profile = () => {
               name="email"
               value={profile.email || ""}
               disabled={!isEditing}
-              onChange={handleChange}
+              onChange={handleChange} 
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
             />
           </div>
@@ -146,7 +168,11 @@ const Profile = () => {
             <input
               type="date"
               name="birthDate"
-              value={profile.birthDate || ""}
+              value={
+                profile.birthDate
+                  ? new Date(profile.birthDate).toISOString().split("T")[0]
+                  : ""
+              }
               disabled={!isEditing}
               onChange={handleChange}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
@@ -157,7 +183,11 @@ const Profile = () => {
             <input
               type="date"
               name="joinDate"
-              value={profile.joinDate || ""}
+              value={
+                profile.joinDate
+                  ? new Date(profile.joinDate).toISOString().split("T")[0]
+                  : ""
+              }
               readOnly
               className="w-full mt-1 p-2 border border-gray-300 rounded-md bg-gray-100"
             />
@@ -189,6 +219,10 @@ const Profile = () => {
             onClick={() => {
               if (isEditing) {
                 handleDescriptionChange();
+                upToDatabaseProfile();
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1000);
               }
               setIsEditing((editing) => !editing);
             }}

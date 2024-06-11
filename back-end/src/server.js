@@ -9,6 +9,7 @@ import {
   getUsers,
   deleteUser,
   getUserByUsername,
+  updateUser,
 } from "./controllers/users.js";
 import "./passport.js";
 import {
@@ -52,11 +53,13 @@ app.get("/blog", getArticles);
 app.get("/blog/highlighted", getArticleByHighlight);
 app.get("/blog/:id", getArticleById);
 
-//gestion sezione eventi
+//gestione sezione eventi
 app.get("/events", getEvents);
 app.get("/events/highlighted", getEventByHighlight);
 app.get("/events/:id", getEventById);
 
+//Gestione sezione profilo
+app.put("/profile/update/:id", updateUser)
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
