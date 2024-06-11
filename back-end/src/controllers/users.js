@@ -189,22 +189,20 @@ const updateUser = (req, res) => {
   });
 };
 
+// Aggiornamento dell'immagine del profilo
 const updateProfilePic = (req, res) => {
   const { id } = req.params;
-  const filename = req.file?.path;
+  const filename = req.file?.filename; // Usare solo il nome del file, non l'intero percorso
   if (filename) {
-    picToUser = `UPDATE users SET profile_pic=? WHERE id=?`;
+    const picToUser = `UPDATE users SET profile_pic=? WHERE id=?`;
     db.query(picToUser, [filename, id], (error, result) => {
       if (error) {
-        res
-          .status(400)
-          .json({ msg: "Could not retrieve data from database", error });
-        return;
+        return res.status(500).json({ msg: "Could not update profile picture", error });
       }
-
-      console.log(result);
-      res.status(200).json({ msg: "Profile picture uploaded successfully!" });
+      res.status(200).json({ msg: "Profile picture updated successfully!" });
     });
+  } else {
+    res.status(400).json({ msg: "No image provided" });
   }
 };
 

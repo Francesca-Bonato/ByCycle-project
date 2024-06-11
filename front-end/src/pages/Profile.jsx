@@ -17,7 +17,7 @@ const Profile = () => {
   const updatedUser = useMemo(
     () => ({
       ...user,
-      profilePic: profile.profilePicture,
+      profilePic: profile.profilePic, // Adjusted to use `profilePic`
       description: profile.description,
       username: profile.userName,
       firstName: profile.firstName,
@@ -37,7 +37,7 @@ const Profile = () => {
     const { name, value } = e.target;
     let updatedValue = value;
 
-    // Converti la prima lettera in maiuscolo se il campo è firstName o lastName
+    // Convert the first letter to uppercase if the field is firstName or lastName
     if (name === "firstName" || name === "lastName") {
       updatedValue = value.charAt(0).toUpperCase() + value.slice(1);
     }
@@ -55,26 +55,42 @@ const Profile = () => {
     }));
   };
 
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
+      const formData = new FormData();
+      formData.append("profilePic", file);
+
+      try {
+        const response = await axios.put(
+          `http://localhost:4000/profile/update/${user.id}/profilepic`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+
+        // Aggiorna il profilo locale senza ricaricare la pagina
         setProfile((prevProfile) => ({
           ...prevProfile,
-          profilePic: reader.result,
+          profilePic: response.data.profilePic,
         }));
-        upToDatabaseProfilePic();
+
         localStorage.setItem(
           "user",
           JSON.stringify({
             ...user,
-            profilePic: reader.result,
+            profilePic: response.data.profilePic,
           })
         );
-      };
-      reader.readAsDataURL(file);
-      window.location.reload();
+
+        alert(response.data.msg);
+      } catch (error) {
+        console.error(error.response.data.msg);
+        alert(error.response.data.msg);
+      }
     }
   };
 
@@ -84,35 +100,17 @@ const Profile = () => {
 
   async function upToDatabaseProfile() {
     try {
-      const userId = user.id;
       const updatedUser = {
         description: profile.description,
         username: profile.userName,
-        firstname: profile.firstName,
-        lastname: profile.lastName,
+        firstName: profile.firstName,
+        lastName: profile.lastName,
         birth_date: profile.birthDate,
         email: profile.email,
-             };
-      const response = await axios.put(
-        `http://localhost:4000/profile/update/${userId}`,
-        updatedUser
-      );
-      alert(response.data.msg);
-    } catch (error) {
-      console.error(error.response.data.msg);
-      alert(error.response.data.msg);
-    }
-  }
-
-
-  async function upToDatabaseProfilePic() {
-    try {
-      const userId = user.id;
-      const updatedUser = {
-        profile_pic: profile.profilePic
       };
+
       const response = await axios.put(
-        `http://localhost:4000/profile/update/${userId}/profilepic`,
+        `http://localhost:4000/profile/update/${user.id}`,
         updatedUser
       );
       alert(response.data.msg);
@@ -129,11 +127,11 @@ const Profile = () => {
         <h1 className="text-center text-neutral-800 font-medium leading-[55px]">
           Profile Settings
         </h1>
-        <div className="flex flex-col items-center my-6 ">
+        <div className="flex flex-col items-center my-6">
           <label htmlFor="profile-picture" className="cursor-pointer">
             <img
               className="w-32 h-32 rounded-full object-cover border border-gray-300"
-              src={profile.profilePicture}
+              src={profile.profilePic} // Adjusted to use `profilePic`
               alt="Profile Picture"
             />
             <input
@@ -247,16 +245,15 @@ const Profile = () => {
               if (isEditing) {
                 handleDescriptionChange();
                 upToDatabaseProfile();
-                setTimeout(() => {
-                  window.location.reload();
-                }, 1000);
+                setIsEditing(false);
+              } else {
+                setIsEditing(true);
               }
-              setIsEditing((editing) => !editing);
             }}
           />
           <Button
             innerText="Delete Profile"
-            className=" bg-gray-300 mt-6 "
+            className="bg-gray-300 mt-6"
             onClick={toggleModal}
           />
         </div>

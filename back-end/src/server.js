@@ -36,6 +36,28 @@ app.use(cors());
 app.use(express.static('public'))
 const port = process.env.LOCAL_PORT || 4000;
 
+// Middleware di caricamento file
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './public/assets/uploads');
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, uniqueSuffix + '-' + file.originalname);
+  }
+});
+
+const upload = multer({
+  storage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith('image/')) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only image files are allowed!'), false);
+    }
+  }
+});
+
 //gestione utenti
 app.get("/users", getUsers);
 app.get("/users/:username", getUserByUsername);
@@ -63,16 +85,6 @@ app.get("/events/:id", getEventById);
 
 //invio newsletter
 app.post("/newsletters", sendNewsletter)
-
-//creazione storage
-const storage = multer.diskStorage({
-  destination: './public/assets/uploads',
-  filename: (req, res, cb) => {
-    cb(null, file.originalname)
-  }
-})
-
-const upload = multer({storage})
 
 //gestione sezione profilo utenti
 app.put("/profile/update/:id", updateUser)
