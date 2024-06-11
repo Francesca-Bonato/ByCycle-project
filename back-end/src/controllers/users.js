@@ -152,6 +152,25 @@ const login = async (req, res) => {
   );
 };
 
+const saveProfilePic = (req, res) => {
+
+}
+
+const updateUser = (req, res) => {
+  const updatedUser = req.body;
+  const id = req.params.id;
+  const upToUser = "UPDATE users SET ? WHERE id=?"
+  db.query(upToUser, [updatedUser, id], (error, result) => {
+    if (error) {
+      res.status(500).json({ msg: "Database error.", error })
+      return
+    }
+
+    console.log(result.insertId)
+    res.status(200).json({ msg: "User updated successfully!" })
+  })
+}
+
 //Function to delete a user
 const deleteUser = (req, res) => {
   const { username } = req.body;
@@ -168,4 +187,4 @@ const deleteUser = (req, res) => {
   });
 };
 
-export { getUsers, getUserByUsername, register, login, deleteUser };
+export { getUsers, getUserByUsername, register, login, deleteUser, updateUser };
