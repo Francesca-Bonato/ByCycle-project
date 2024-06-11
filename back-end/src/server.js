@@ -76,7 +76,10 @@ const upload = multer({storage})
 
 //gestione sezione profilo utenti
 app.put("/profile/update/:id", updateUser)
+
+//upload immagine profilo
 app.put("/profile/update/:id/profilepic", upload.single("image"), updateProfilePic)
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

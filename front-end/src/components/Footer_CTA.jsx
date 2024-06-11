@@ -4,13 +4,13 @@ import { Heading } from "./Heading";
 
 export function Footer_CTA({ ...props }) {
   const [email, setEmail] = useState("");
-  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [alreadySubscribed, setAlreadySubscribed] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
   const [error, setError] = useState("");
 
-/*   useEffect(() => {
+  useEffect(() => {
     const storedEmail = localStorage.getItem(email);
-    setIsSubscribed(!!storedEmail);
+    setAlreadySubscribed(!!storedEmail);
   }, [email]);
 
   function handleNewsletterSubmit(e) {
@@ -19,18 +19,18 @@ export function Footer_CTA({ ...props }) {
     const storedEmail = localStorage.getItem(email);
     try {
       if (storedEmail) {
-        setIsSubscribed(true);
+        setAlreadySubscribed(true);
       } else {
         localStorage.setItem(email, "subscribed");
         setSubscribed(true);
-        setIsSubscribed(false);
+        setAlreadySubscribed(false);
       }
     } catch (error) {
       setError("An error occurred. Please try again later.");
     }
-  } */
+  }
 
-  async function handleNewsletterSubmit(e) {
+  /* async function handleNewsletterSubmit(e) {
     e.preventDefault();
     setError("");
 
@@ -45,11 +45,11 @@ export function Footer_CTA({ ...props }) {
 
       if (response.ok) {
         setSubscribed(true);
-        setIsSubscribed(false);
+        setAlreadySubscribed(false);
       } else {
         const data = await response.json();
         if (data.message === "Email already subscribed") {
-          setIsSubscribed(true);
+          setAlreadySubscribed(true);
         } else {
           setError("An error occurred. Please try again later.");
         }
@@ -57,7 +57,7 @@ export function Footer_CTA({ ...props }) {
     } catch (error) {
       setError("An error occurred. Please try again later.");
     }
-  }
+  } */
 
   return (
     <div
@@ -102,7 +102,7 @@ export function Footer_CTA({ ...props }) {
                 Thank you for subscribing to our newsletter!
               </p>
             )}
-            {isSubscribed && (
+            {alreadySubscribed && (
               <div className="flex justify-center translate-y-5">
                 <p className="text-orange-600 absolute p-1 drop-shadow-[0_1px_10px_rgba(255,255,255,1)]">
                   This email is already subscribed. Please insert a different
