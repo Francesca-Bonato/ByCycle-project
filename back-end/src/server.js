@@ -3,6 +3,7 @@ import morgan from "morgan";
 import "express-async-errors";
 import dotenv from "dotenv";
 import cors from "cors";
+import multer from "multer";
 import {
   register,
   login,
@@ -10,6 +11,7 @@ import {
   deleteUser,
   getUserByUsername,
   updateUser,
+  updateProfilePic
 } from "./controllers/users.js";
 import "./passport.js";
 import {
@@ -62,8 +64,22 @@ app.get("/events/:id", getEventById);
 //invio newsletter
 app.post("/newsletters", sendNewsletter)
 
-//Gestione sezione profilo
+//creazione storage
+const storage = multer.diskStorage({
+  destination: './public/assets/uploads',
+  filename: (req, res, cb) => {
+    cb(null, file.originalname)
+  }
+})
+
+const upload = multer({storage})
+
+//gestione sezione profilo utenti
 app.put("/profile/update/:id", updateUser)
+
+//upload immagine profilo
+app.put("/profile/update/:id/profilepic", upload.single("image"), updateProfilePic)
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
