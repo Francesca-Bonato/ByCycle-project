@@ -88,7 +88,9 @@ const login = async (req, res) => {
     async (error, result) => {
       if (error) {
         console.error(error);
-        return res.status(500).json({ msg: "Could not retrieve data from database." });
+        return res
+          .status(500)
+          .json({ msg: "Could not retrieve data from database." });
       }
 
       const dbUser = result[0]; // Get the user data from the query result
@@ -113,7 +115,9 @@ const login = async (req, res) => {
                 msg: "An error has occured during token signature",
               });
             }
-            const profilePic = dbUser.profile_pic ? `http://localhost:4000/assets/${dbUser.profile_pic}` : `http://localhost:4000/assets/default-profile-pic.png`
+            const profilePic = dbUser.profile_pic
+              ? `http://localhost:4000/assets/${dbUser.profile_pic}`
+              : `http://localhost:4000/assets/default-profile-pic.png`;
             // Prepare the user data to be sent in the response
             const formattedBirthDate = dbUser.birth_date.toLocaleDateString();
             const formattedJoinDate = dbUser.join_date.toLocaleDateString();
@@ -126,7 +130,7 @@ const login = async (req, res) => {
               firstName: dbUser.firstname,
               lastName: dbUser.lastname,
               username: dbUser.username,
-              profilePic: profilePic
+              profilePic: profilePic,
             };
 
             // Respond with the user data and the token
@@ -152,39 +156,64 @@ const login = async (req, res) => {
   );
 };
 
-const saveProfilePic = (req, res) => {
-
-}
-
-const updateUser = (req, res) => {
-  const updatedUser = req.body;
-  const id = req.params.id;
-  const upToUser = "UPDATE users SET ? WHERE id=?"
-  db.query(upToUser, [updatedUser, id], (error, result) => {
-    if (error) {
-      res.status(500).json({ msg: "Database error.", error })
-      return
-    }
-
-    console.log(result.insertId)
-    res.status(200).json({ msg: "User updated successfully!" })
-  })
-}
-
 //Function to delete a user
 const deleteUser = (req, res) => {
   const { username } = req.body;
-  console.log(username)
+  console.log(username);
   //const deleteByUsername = ;
   db.query(`DELETE FROM users WHERE username=?`, [username], (err, results) => {
     if (err) {
-      res.status(500).json({ msg: "Something went wrong" });
+      res.status(400).json({ msg: "Could not retrieve data from database" });
       console.error(err);
       return;
     }
-    console.log(results)
+    console.log(results);
     res.status(202).json({ msg: "Account deleted successfully." });
   });
 };
 
-export { getUsers, getUserByUsername, register, login, deleteUser, updateUser };
+const updateUser = (req, res) => {
+  const updatedUser = req.body;
+  const id = req.params.id;
+  const upToUser = "UPDATE users SET ? WHERE id=?";
+  db.query(upToUser, [updatedUser, id], (error, result) => {
+    if (error) {
+      res
+        .status(400)
+        .json({ msg: "Could not retrieve data from database", error });
+      return;
+    }
+
+    console.log(result.insertId);
+    res.status(200).json({ msg: "User updated successfully!" });
+  });
+};
+
+const updateProfilePic = (req, res) => {
+  const { id } = req.params;
+  const filename = req.file?.path;
+  if (filename) {
+    picToUser = `UPDATE users SET profile_pic=? WHERE id=?`;
+    db.query(picToUser, [filename, id], (error, result) => {
+      if (error) {
+        res
+          .status(400)
+          .json({ msg: "Could not retrieve data from database", error });
+        return;
+      }
+
+      console.log(result);
+      res.status(200).json({ msg: "Profile picture uploaded successfully!" });
+    });
+  }
+};
+
+export {
+  getUsers,
+  getUserByUsername,
+  register,
+  login,
+  deleteUser,
+  updateUser,
+  updateProfilePic,
+};
