@@ -116,7 +116,7 @@ const login = async (req, res) => {
               });
             }
             const profilePic = dbUser.profile_pic
-              ? `http://localhost:4000/assets/${dbUser.profile_pic}`
+              ? `http://localhost:4000/assets/uploads/${dbUser.profile_pic}`
               : `http://localhost:4000/assets/default-profile-pic.png`;
             // Prepare the user data to be sent in the response
             const formattedBirthDate = dbUser.birth_date.toLocaleDateString();

@@ -47,16 +47,18 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({
+const upload = multer({ storage })
+
+/* const upload = multer({
   storage,
   fileFilter: (req, file, cb) => {
-    if (file.mimetype.startsWith('image/')) {
+    if (file.mimetype.startsWith('uploads/')) {
       cb(null, true);
     } else {
       cb(new Error('Only image files are allowed!'), false);
     }
   }
-});
+}); */
 
 //gestione utenti
 app.get("/users", getUsers);

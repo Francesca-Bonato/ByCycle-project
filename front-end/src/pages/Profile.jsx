@@ -17,7 +17,7 @@ const Profile = () => {
   const updatedUser = useMemo(
     () => ({
       ...user,
-      profilePic: profile.profilePic, // Adjusted to use `profilePic`
+      profilePic: profile.profilePicture, // Adjusted to use `profilePic`
       description: profile.description,
       username: profile.userName,
       firstName: profile.firstName,
@@ -57,42 +57,68 @@ const Profile = () => {
 
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
+    
+    const formData = new FormData();
+    formData.append("image", file);
+
     if (file) {
-      const formData = new FormData();
-      formData.append("profilePic", file);
-
-      try {
-        const response = await axios.put(
-          `http://localhost:4000/profile/update/${user.id}/profilepic`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
-
-        // Aggiorna il profilo locale senza ricaricare la pagina
+      const reader = new FileReader();
+      reader.onloadend = () => {
         setProfile((prevProfile) => ({
           ...prevProfile,
-          profilePic: response.data.profilePic,
+          profilePicture: reader.result,
         }));
-
         localStorage.setItem(
           "user",
           JSON.stringify({
             ...user,
-            profilePic: response.data.profilePic,
+            profilePic: reader.result,
           })
         );
+      };
+      reader.readAsDataURL(file);
+      window.location.reload();
+    }
 
-        alert(response.data.msg);
-      } catch (error) {
-        console.error(error.response.data.msg);
-        alert(error.response.data.msg);
-      }
+    try {
+      const response = await axios.put(
+        `http://localhost:4000/profile/update/${user.id}/profilepic`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      alert(response.data.msg);
+    } catch (error) {
+      console.error(error.response.data.msg);
+      alert(error.response.data.msg);
     }
   };
+
+  /* async function handleBackendimage(e) {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    try {
+      const response = await axios.put(
+        `http://localhost:4000/profile/update/${user.id}/profilepic`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      alert(response.data.msg);
+    } catch (error) {
+      console.error(error.response.data.msg);
+      alert(error.response.data.msg);
+    }
+  } */
 
   function toggleModal() {
     setOpenModal(!openModal);
@@ -131,7 +157,7 @@ const Profile = () => {
           <label htmlFor="profile-picture" className="cursor-pointer">
             <img
               className="w-32 h-32 rounded-full object-cover border border-gray-300"
-              src={profile.profilePic} // Adjusted to use `profilePic`
+              src={profile.profilePicture} // Adjusted to use `profilePic`
               alt="Profile Picture"
             />
             <input
@@ -139,7 +165,10 @@ const Profile = () => {
               type="file"
               accept="image/*"
               className="hidden"
-              onChange={handleImageChange}
+              onChange={(e) => {
+                handleImageChange(e);
+               /*  handleBackendimage */;
+              }}
             />
           </label>
         </div>
