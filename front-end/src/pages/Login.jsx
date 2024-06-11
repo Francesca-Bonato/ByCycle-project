@@ -34,43 +34,6 @@ const Login = () => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // // Check if user already exists in localStorage
-    // let userLogged = JSON.parse(localStorage.getItem("users")) || [];
-
-    // // Check if email or password already exists in localStorage
-    // const dataTaken = userLogged.some(
-    //   (user) =>
-    //     user.usermail === data.usermail && user.password === data.password
-    // );
-
-    // if (!dataTaken) {
-
-    //   return; // Interrompi la procedura di login
-    // }
-
-    // // Simulate user login
-    // let userRegistered = userLogged.find(
-    //   (user) =>
-    //     user.usermail === data.usermail && user.password === data.password
-    // );
-
-    // if (userRegistered) {
-    //   let newArr = [];
-    //   // Salva solo i dati necessari in sessionStorage
-    //   newArr.push({
-    //     username: userRegistered.username,
-    //     usermail: userRegistered.usermail,
-    //     password: userRegistered.password,
-    //   });
-
-    //   sessionStorage.setItem("userLogged", JSON.stringify(newArr));
-
-    //   if (location.pathname === "/login") {
-    //     navigate("/profile");
-    //   }
-
-    //   window.location.reload();
-    // }
     if (data.usermail !== "" && data.password !== "") {
       try {
         const sendData = {
@@ -88,6 +51,7 @@ const Login = () => {
         localStorage.setItem("token", response.data.token);
 
         alert(`User ${response.data.user.username} logged in successfully`);
+        
         if (location.pathname === "/login") {
           navigate("/profile");
         }
