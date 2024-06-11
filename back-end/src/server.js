@@ -64,6 +64,7 @@ app.post("/newsletters", sendNewsletter)
 
 //Gestione sezione profilo
 app.put("/profile/update/:id", updateUser)
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

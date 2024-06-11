@@ -23,7 +23,7 @@ const Profile = () => {
       firstName: profile.firstName,
       lastName: profile.lastName,
       birth_date: profile.birthDate,
-      email: profile.email
+      email: profile.email,
     }),
     [profile, user]
   );
@@ -35,9 +35,16 @@ const Profile = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    let updatedValue = value;
+
+    // Converti la prima lettera in maiuscolo se il campo è firstName o lastName
+    if (name === "firstName" || name === "lastName") {
+      updatedValue = value.charAt(0).toUpperCase() + value.slice(1);
+    }
+
     setProfile((prevProfile) => ({
       ...prevProfile,
-      [name]: value,
+      [name]: updatedValue,
     }));
   };
 
@@ -159,7 +166,7 @@ const Profile = () => {
               name="email"
               value={profile.email || ""}
               disabled={!isEditing}
-              onChange={handleChange} 
+              onChange={handleChange}
               className="w-full mt-1 p-2 border border-gray-300 rounded-md"
             />
           </div>
